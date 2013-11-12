@@ -21,6 +21,7 @@ public class CategoryDaoImpl extends GenericDaoImpl< Category > implements Categ
 		return results.get(0);
 	}
 	
+	//idée: faire findByProduct
 	
 
 }
