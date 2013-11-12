@@ -6,6 +6,6 @@ import com.stlagora.model.entities.Category;
 
 public interface CategoryDao extends GenericDAO<Category>{
 
-	public Category findCategoryByName(String categoryName);
+	public Category findByName(String categoryName);
 	
 }
