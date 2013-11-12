@@ -14,8 +14,8 @@ public class CategoryDaoImpl extends GenericDAOImpl< Category > implements Categ
 		super();
 	}
 	
-	public Category findCategoryByName(String categoryName) {
-		Query q = em.createQuery("SELECT u FROM CATEGORY WHERE u.categoryName =:categoryName");
+	public Category findByName(String categoryName) {
+		Query q = em.createQuery("SELECT c FROM CATEGORY WHERE c.categoryName =:categoryName");
 		q.setParameter("categoryName", categoryName);
 		List<Category> results = q.getResultList();
 		return results.get(0);
