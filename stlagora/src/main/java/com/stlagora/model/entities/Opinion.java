@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
 
 @Entity
 public class Opinion implements Serializable {
@@ -19,8 +19,7 @@ private static final long serialVersionUID = 1L;
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column (name="id" ,unique=true, nullable=false)
-private int id;
+private long id;
 
 @ManyToOne
 @JoinColumn(name = "writer_id",unique = true, nullable = false)
@@ -38,14 +37,14 @@ private String comment;
 /**
  * @return the id
  */
-public int getId() {
+public long getId() {
 	return id;
 }
 
 /**
  * @param id the id to set
  */
-public void setId(int id) {
+public void setId(long id) {
 	this.id = id;
 }
 

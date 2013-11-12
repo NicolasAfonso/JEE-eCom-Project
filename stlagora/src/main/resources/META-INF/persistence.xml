@@ -6,9 +6,9 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/__default</jta-data-source>
 		<class>com.stlagora.model.entities.User</class>
-		<class>com.stlagora.model.entities.Opinion</class>
-		<class>com.stlagora.model.entities.Transaction</class>
 		<class>com.stlagora.model.entities.Product</class>
+		<class>com.stlagora.model.entities.Category</class>
+		<class>com.stlagora.model.entities.Transaction</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
