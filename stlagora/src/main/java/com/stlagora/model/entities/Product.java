@@ -45,7 +45,7 @@ public class Product implements Serializable {
 	private Float price ; 
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id",unique = true, nullable = false)
+	@JoinColumn(name = "seller_id",unique = true, nullable = false)
 	private User seller;
 	
 	@Column(name = "availableDate", nullable = false)
