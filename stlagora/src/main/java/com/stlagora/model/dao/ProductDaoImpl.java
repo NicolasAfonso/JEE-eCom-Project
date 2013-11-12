@@ -14,7 +14,10 @@ public class ProductDaoImpl extends GenericDAOImpl<Product> implements ProductDa
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	public ProductDaoImpl(){
+		super();
+	}
 	public Product findByName(String name) {
 		Query q = em.createQuery("SELECT p FROM User p WHERE p.name=:name",Product.class);
 		q.setParameter("name",name);

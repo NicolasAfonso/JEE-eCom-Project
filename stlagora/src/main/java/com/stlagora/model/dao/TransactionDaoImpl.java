@@ -15,7 +15,11 @@ public class TransactionDaoImpl extends GenericDAOImpl<Transaction> implements T
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	public TransactionDaoImpl(){
+		super();
+	}
+		
 	public List<Transaction> findBySeller(User seller) {
 		Query q = em.createQuery("SELECT t FROM User t WHERE t.seller_id=:seller_id",Transaction.class);
 		q.setParameter("seller_id",seller.getId());
