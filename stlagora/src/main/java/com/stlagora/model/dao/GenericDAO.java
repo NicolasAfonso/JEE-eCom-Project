@@ -11,7 +11,7 @@ public interface GenericDAO<T> extends Serializable{
 	
 	public void create(T newObject);
 	
-	public T findById(Class<T> c, long objectId);
+	public T findById(long objectId);
 	
 	public Collection<T> findAll(Class<T> c ,long objectId);
 	

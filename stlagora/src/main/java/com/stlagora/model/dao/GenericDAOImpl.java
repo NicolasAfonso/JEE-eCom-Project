@@ -1,8 +1,12 @@
 package com.stlagora.model.dao;
 
 import java.util.Collection;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -13,11 +17,17 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext
+	
     protected EntityManager em;
+    private Class type;
+    public GenericDAOImpl(){
+    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPU");   
+    	this.em = emf.createEntityManager(); 
+    	 Type t = getClass().getGenericSuperclass();
+         ParameterizedType pt = (ParameterizedType) t;
+         type = (Class) pt.getActualTypeArguments()[0];
 
-	
-	
+    }
 	public void create(T newObject) {
 		em.getTransaction().begin();
 		try {
@@ -29,8 +39,8 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 		em.getTransaction().commit();
 	}
 
-	public T findById(Class<T> c, long objectId) {
-		return (T) em.find(c.getClass(), objectId);
+	public T findById(long objectId) {
+		return (T) em.find(type, objectId);
 	}
 
 	public Collection<T> findAll(Class<T> c, long objectId) {
