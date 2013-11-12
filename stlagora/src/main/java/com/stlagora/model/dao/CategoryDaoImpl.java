@@ -15,7 +15,7 @@ public class CategoryDaoImpl extends GenericDaoImpl< Category > implements Categ
 	}
 	
 	public Category findByName(String categoryName) {
-		Query q = em.createQuery("SELECT c FROM CATEGORY WHERE c.categoryName =:categoryName");
+		Query q = em.createQuery("SELECT c FROM Category WHERE c.categoryName =:categoryName");
 		q.setParameter("categoryName", categoryName);
 		List<Category> results = q.getResultList();
 		return results.get(0);
