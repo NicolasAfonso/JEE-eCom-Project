@@ -8,7 +8,7 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 
 
-public class CategoryDaoImpl extends GenericDAOImpl< Category > implements CategoryDao{
+public class CategoryDaoImpl extends GenericDaoImpl< Category > implements CategoryDao{
 
 	public CategoryDaoImpl(){
 		super();

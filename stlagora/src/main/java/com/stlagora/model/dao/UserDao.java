@@ -9,7 +9,7 @@ import java.util.List;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ROLE;
 
-public interface UserDAO extends GenericDAO<User>  {
+public interface UserDao extends GenericDao<User>  {
 
 	
 	public User findByPseudo(String pseudo);

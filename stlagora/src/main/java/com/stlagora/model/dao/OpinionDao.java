@@ -7,7 +7,7 @@ import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.User;
 
 
-public interface OpinionDao extends GenericDAO<Opinion>{
+public interface OpinionDao extends GenericDao<Opinion>{
 	
 	public List<Opinion> findByDate(Date date);
 	public List<Opinion> findByMark(float mark);

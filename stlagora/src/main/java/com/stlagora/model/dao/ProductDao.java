@@ -13,7 +13,7 @@ import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
 
-public interface ProductDao extends GenericDAO<Product> {
+public interface ProductDao extends GenericDao<Product> {
 
 	
 	public Product findByName(String name);

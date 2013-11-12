@@ -12,7 +12,7 @@ import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
 
 
-public interface TransactionDao extends GenericDAO<Transaction> {
+public interface TransactionDao extends GenericDao<Transaction> {
 
 	public List<Transaction> findBySeller(User seller);
 	public List<Transaction> findByBuyer(User buyer);

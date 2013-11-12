@@ -9,7 +9,7 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
 
-public class ProductDaoImpl extends GenericDAOImpl<Product> implements ProductDao {
+public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDao {
 
 	/**
 	 * 

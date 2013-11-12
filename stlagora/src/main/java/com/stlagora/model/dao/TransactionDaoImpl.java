@@ -9,7 +9,7 @@ import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
 
-public class TransactionDaoImpl extends GenericDAOImpl<Transaction> implements TransactionDao{
+public class TransactionDaoImpl extends GenericDaoImpl<Transaction> implements TransactionDao{
 
 	/**
 	 * 

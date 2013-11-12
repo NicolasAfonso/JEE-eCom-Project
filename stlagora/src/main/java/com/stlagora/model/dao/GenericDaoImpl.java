@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-public class GenericDAOImpl<T> implements GenericDAO<T> {
+public class GenericDaoImpl<T> implements GenericDao<T> {
 
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	
     protected EntityManager em;
     private Class type;
-    public GenericDAOImpl(){
+    public GenericDaoImpl(){
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPU");   
     	this.em = emf.createEntityManager(); 
     	 Type t = getClass().getGenericSuperclass();

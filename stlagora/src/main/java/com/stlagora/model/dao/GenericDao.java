@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.eclipse.persistence.internal.oxm.schema.model.List;
 
-public interface GenericDAO<T> extends Serializable{
+public interface GenericDao<T> extends Serializable{
 	
 	public void create(T newObject);
 	

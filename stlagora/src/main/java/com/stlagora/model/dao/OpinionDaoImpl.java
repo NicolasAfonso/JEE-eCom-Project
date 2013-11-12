@@ -8,7 +8,7 @@ import javax.persistence.Query;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.User;
 
-public class OpinionDaoImpl extends GenericDAOImpl< Opinion > implements OpinionDao {
+public class OpinionDaoImpl extends GenericDaoImpl< Opinion > implements OpinionDao {
 
 	public List<Opinion> findByDate(Date date) {
 		Query q = em.createQuery("SELECT u FROM USERS WHERE u.date =:date");

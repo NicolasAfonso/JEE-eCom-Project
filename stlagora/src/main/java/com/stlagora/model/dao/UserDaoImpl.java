@@ -13,14 +13,14 @@ import javax.persistence.Query;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ROLE;
 
-public class UserDAOImpl extends GenericDAOImpl< User > implements UserDAO{
+public class UserDaoImpl extends GenericDaoImpl< User > implements UserDao{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public UserDAOImpl(){
+	public UserDaoImpl(){
 		super();
 	}
 	
