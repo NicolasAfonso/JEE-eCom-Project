@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -14,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -46,7 +44,6 @@ public class Product implements Serializable {
 	@Column(name = "price", nullable = false)
 	private Float price ; 
 	
-
 	@ManyToOne
 	@JoinColumn(name = "user_id",unique = true, nullable = false)
 	private User seller;
@@ -57,6 +54,16 @@ public class Product implements Serializable {
 	@Column(name = "lastUpdate", nullable = false)
 	private Date lastUpdate;
 	
+	@Column(name = "globalMark", nullable = true)
+	private Float globalMark;
+	
+	/**
+	 * @param lastUpdate the lastUpdate to set
+	 */
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
 	@ElementCollection
 	private List<Opinion> opinions = new ArrayList<Opinion>();  
 	
@@ -86,6 +93,7 @@ public class Product implements Serializable {
 		this.seller = seller;
 		this.availableDate = availableDate;
 		this.lastUpdate = lastUpdate;
+		
 	}
 
 
@@ -215,6 +223,36 @@ public class Product implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
+	/**
+	 * @return the globalMark
+	 */
+	public Float getGlobalMark() {
+		return globalMark;
+	}
+
+
+	/**
+	 * @param globalMark the globalMark to set
+	 */
+	public void setGlobalMark(Float globalMark) {
+		this.globalMark = globalMark;
+	}
+
+
+	/**
+	 * @return the opinions
+	 */
+	public List<Opinion> getOpinions() {
+		return opinions;
+	}
+
+
+	/**
+	 * @param opinions the opinions to set
+	 */
+	public void setOpinions(List<Opinion> opinions) {
+		this.opinions = opinions;
+	}
 
 	
 
