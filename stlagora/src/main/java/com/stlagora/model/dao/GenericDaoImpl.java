@@ -49,8 +49,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 	}
 
 	public void update(T object) {
+		em.getTransaction().begin();
 		em.merge(object);
-		
+		em.getTransaction().commit();
 	}
 
 	public void delete(T object) {

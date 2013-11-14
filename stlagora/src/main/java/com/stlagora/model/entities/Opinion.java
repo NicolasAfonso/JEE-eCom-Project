@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ private static final long serialVersionUID = 1L;
 private long id;
 
 @ManyToOne
-@JoinColumn(name = "writer_id",unique = true, nullable = false)
+@JoinColumn(name = "writer_id", nullable = false)
 private User writer;
 
 @Column (name="date" ,nullable=false)
@@ -35,6 +36,7 @@ private float mark;
 
 @Column (name="comment")
 private String comment;
+
 
 /**
  * @return the id

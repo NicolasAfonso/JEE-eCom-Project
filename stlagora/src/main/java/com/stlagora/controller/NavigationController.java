@@ -58,52 +58,66 @@ public class NavigationController implements Serializable {
 //		
 //		userDao.create(new User("tutu", "tutu", "tutu", "tutu", new Date(0), "00000000", ROLE.MEMBER));
 //		userDao.create(new User("toto", "toto", "toto", "toto", new Date(0), "00000000", ROLE.MEMBER));
-		List<User> l = userDao.findByPhoneNumber("00000000");
-		User o = userDao.findByEmail("tutu");
-		System.err.println(l.size());
+//		List<User> l = userDao.findByPhoneNumber("00000000");
+		User o = userDao.findByEmail("toto");
+//		System.err.println(l.size());
 //		System.err.println(o.getEmail());
 		System.out.println("#USER FINISH#");
 		
 		System.out.println("#TEST PRODUCT#");
 		ProductDao productDao = new ProductDaoImpl();
-		//productDao.create(new Product("toto", "toto", "toto", "toto", 1f, o,new Date(0), new Date(0)));
-		Product p = productDao.findByName("toto");
+//		productDao.create(new Product("toto", "toto", "toto", "toto", 1f, o,new Date(0), new Date(0)));
+		
+		
+		Product k = productDao.findByName("toto");
 		Opinion op = new Opinion();
 		op.setComment("pop");
 		op.setMark(1f);
 		op.setWriter(o);
 		op.setDate(new Date(0));
-		
+		k.getOpinions().add(op);
+		productDao.update(k);
+//		op.setComment("pop");
+//		op.setMark(1f);
+//		op.setWriter(o);
+//		op.setDate(new Date(0));
+//		op.setProduct(k);
+//		productDao.create(new Product("toto", "toto", "toto", "toto", 1f, o,new Date(0), new Date(0)));
+//		Product p = productDao.findByName("toto");
+
+//		
 		// Normalement Inutile
-//		OpinionDao oz = new OpinionDaoImpl();
+//    	OpinionDao oz = new OpinionDaoImpl();
 //		oz.create(op);
-		p.getOpinions().add(op);
-		productDao.update(p);
+//		p.getOpinions().add(op);
+//		productDao.update(p);
 		Product i = productDao.findByName("toto");
+		System.out.println(i.getOpinions().get(0).getComment().toString());
 		
 		
-		System.out.println(i.getOpinions().size());
+		System.out.println("titi"+k.getOpinions().get(0).getComment().toString());
+		System.out.println(k.getOpinions().size());
 		System.out.println("#FIN TEST PRODUCT#");
 //		
-//		System.out.println("#TEST CATEGORIES#");
-//		CategoryDao categoryDao = new CategoryDaoImpl() ;
-//		Category c = new Category();
-//		c.setCategoryName("pop");
-//		c.setDescription("pop pop");
-//		c.getProducts().add(i);
-//		categoryDao.create(c);
-//		System.out.println("#FIN TEST CATEGORIES#");
+		System.out.println("#TEST CATEGORIES#");
+		CategoryDao categoryDao = new CategoryDaoImpl() ;
+		Category c = new Category();
+		c.setCategoryName("pop");
+		c.setDescription("pop pop");
+		c.getProducts().add(k);
+		categoryDao.create(c);
+		System.out.println("#FIN TEST CATEGORIES#");
 		
 		System.out.println("#TEST TRANSACTION#");
-//		TransactionDao transactionDao = new TransactionDaoImpl();
-//		Transaction t = new Transaction();
-//		t.setAmount(1f);
-//		t.setBuyer(o);
-//		t.setSeller(o);
-//		t.setDate(new Date(0));
-//		t.setProduct(p);
-//		
-//		transactionDao.create(t);
+		TransactionDao transactionDao = new TransactionDaoImpl();
+		Transaction t = new Transaction();
+		t.setAmount(1f);
+		t.setBuyer(o);
+		t.setSeller(o);
+		t.setDate(new Date(0));
+		t.setProduct(k);
+		
+		transactionDao.create(t);
 		System.out.println("#FIN TEST TRANSACTION#");
 		return "page1";
 	}
