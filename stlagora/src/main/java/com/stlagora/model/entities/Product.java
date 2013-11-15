@@ -60,13 +60,18 @@ public class Product implements Serializable {
 	@Column(name = "globalMark", nullable = true)
 	private Float globalMark;
 
-	private List<Opinion> opinions = new ArrayList<Opinion>();  
+//	private List<Opinion> opinions = new ArrayList<Opinion>();  
+	@OneToMany(mappedBy = "product", cascade=CascadeType.ALL)
+	private List<Opinion> opinions = new ArrayList<Opinion>(); 
 
+	@ManyToOne
+	@JoinColumn(name = "category_id",unique = true)
+	private Category category;
+	
 	public Product(){
-	
+		
+		
 	}
-	
-	
 	/**
 	 * @param name
 	 * @param description

@@ -55,7 +55,8 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private ROLE role;
 	
-	private List<Opinion> opinions = new ArrayList<Opinion>();  
+	@OneToMany(mappedBy = "usermarked", cascade=CascadeType.ALL)
+	private List<Opinion> opinions = new ArrayList<Opinion>(); 
 	
 	public User(){
 		

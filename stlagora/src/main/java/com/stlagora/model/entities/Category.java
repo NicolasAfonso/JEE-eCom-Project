@@ -32,7 +32,7 @@ public class Category implements Serializable {
 
 	@Column (name="categoryDescription" ,nullable=false)
 	private String categoryDescription;
-	
+	@OneToMany(mappedBy = "category", cascade=CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
 
 	public long getId() {

@@ -75,7 +75,9 @@ public class NavigationController implements Serializable {
 		op.setMark(1f);
 		op.setWriter(o);
 		op.setDate(new Date(0));
-		k.getOpinions().add(op);
+		op.setProduct(k);
+		System.out.println(k.getOpinions().size());
+		System.out.println(k.getOpinions().get(0).getComment());
 		productDao.update(k);
 //		op.setComment("pop");
 //		op.setMark(1f);
@@ -91,33 +93,33 @@ public class NavigationController implements Serializable {
 //		oz.create(op);
 //		p.getOpinions().add(op);
 //		productDao.update(p);
-		Product i = productDao.findByName("toto");
-		System.out.println(i.getOpinions().get(0).getComment().toString());
-		
-		
-		System.out.println("titi"+k.getOpinions().get(0).getComment().toString());
-		System.out.println(k.getOpinions().size());
-		System.out.println("#FIN TEST PRODUCT#");
+//		Product i = productDao.findByName("toto");
+//		System.out.println(i.getOpinions().get(0).getComment().toString());
 //		
-		System.out.println("#TEST CATEGORIES#");
-		CategoryDao categoryDao = new CategoryDaoImpl() ;
-		Category c = new Category();
-		c.setCategoryName("pop");
-		c.setDescription("pop pop");
-		c.getProducts().add(k);
-		categoryDao.create(c);
-		System.out.println("#FIN TEST CATEGORIES#");
-		
-		System.out.println("#TEST TRANSACTION#");
-		TransactionDao transactionDao = new TransactionDaoImpl();
-		Transaction t = new Transaction();
-		t.setAmount(1f);
-		t.setBuyer(o);
-		t.setSeller(o);
-		t.setDate(new Date(0));
-		t.setProduct(k);
-		
-		transactionDao.create(t);
+//		
+//		System.out.println("titi"+k.getOpinions().get(0).getComment().toString());
+//		System.out.println(k.getOpinions().size());
+//		System.out.println("#FIN TEST PRODUCT#");
+//		
+//		System.out.println("#TEST CATEGORIES#");
+//		CategoryDao categoryDao = new CategoryDaoImpl() ;
+//		Category c = new Category();
+//		c.setCategoryName("pop");
+//		c.setDescription("pop pop");
+//		c.getProducts().add(k);
+//		categoryDao.create(c);
+//		System.out.println("#FIN TEST CATEGORIES#");
+//		
+//		System.out.println("#TEST TRANSACTION#");
+//		TransactionDao transactionDao = new TransactionDaoImpl();
+//		Transaction t = new Transaction();
+//		t.setAmount(1f);
+//		t.setBuyer(o);
+//		t.setSeller(o);
+//		t.setDate(new Date(0));
+//		t.setProduct(k);
+//		
+//		transactionDao.create(t);
 		System.out.println("#FIN TEST TRANSACTION#");
 		return "page1";
 	}

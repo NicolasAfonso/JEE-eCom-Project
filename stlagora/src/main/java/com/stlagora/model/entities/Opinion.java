@@ -37,6 +37,42 @@ private float mark;
 @Column (name="comment")
 private String comment;
 
+@ManyToOne
+@JoinColumn(name = "product_id",unique = true)
+private Product product;
+
+@ManyToOne
+@JoinColumn(name = "usermarked_id",unique = true)
+private User usermarked;
+
+
+/**
+ * @return the product
+ */
+public Product getProduct() {
+	return product;
+}
+
+/**
+ * @param product the product to set
+ */
+public void setProduct(Product product) {
+	this.product = product;
+}
+
+/**
+ * @return the usermarked
+ */
+public User getUsermarked() {
+	return usermarked;
+}
+
+/**
+ * @param usermarked the usermarked to set
+ */
+public void setUsermarked(User usermarked) {
+	this.usermarked = usermarked;
+}
 
 /**
  * @return the id
