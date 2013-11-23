@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Nov 23 17:20:59 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-85c3-9f6e-0000028cf880 
+on database directory memory:C:\Users\Jeff\Desktop\ecom-abmp\stlagora\stlagora-model\STLDB with class loader sun.misc.Launcher$AppClassLoader@1e1ff563 
+Loaded from file:/C:/Users/Jeff/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_09-b05
+user.dir=C:\Users\Jeff\Desktop\ecom-abmp\stlagora\stlagora-model
+os.name=Windows 8
+os.arch=amd64
+os.version=6.2
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
