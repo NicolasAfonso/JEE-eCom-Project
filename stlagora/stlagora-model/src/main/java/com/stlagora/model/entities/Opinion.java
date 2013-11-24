@@ -45,6 +45,20 @@ private Product product;
 @JoinColumn(name = "usermarked_id",unique = true)
 private User usermarked;
 
+public Opinion(){ 
+
+}
+
+public Opinion(User writer, Date date, float mark, String comment,
+		Product product, User usermarked) {
+	super();
+	this.writer = writer;
+	this.date = date;
+	this.mark = mark;
+	this.comment = comment;
+	this.product = product;
+	this.usermarked = usermarked;
+}
 
 /**
  * @return the product

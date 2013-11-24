@@ -194,6 +194,20 @@ public class User implements Serializable {
 	 */
 	public void setRole(ROLE role) {
 		this.role = role;
+	}
+
+	/**
+	 * @return the opinions
+	 */
+	public List<Opinion> getOpinions() {
+		return opinions;
+	}
+
+	/**
+	 * @param opinions the opinions to set
+	 */
+	public void setOpinions(List<Opinion> opinions) {
+		this.opinions = opinions;
 	} 
 	
 }	

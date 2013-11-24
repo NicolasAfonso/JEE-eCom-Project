@@ -70,26 +70,22 @@ public class NavigationController implements Serializable {
 
 	public String moveToPage1(){
 		
+//		System.out.println("#TEST PRODUCT#");
 		
-		
-		
-		//log.debug("Tutu");
-		System.out.println("#TEST USER#");
-		UserDao userDao = new UserDaoImpl();
-//		
-//		userDao.create(new User("tutu", "tutu", "tutu", "tutu", new Date(0), "00000000", ROLE.MEMBER));
-//		userDao.create(new User("toto", "toto", "toto", "toto", new Date(0), "00000000", ROLE.MEMBER));
-//		List<User> l = userDao.findByPhoneNumber("00000000");
-//		User o = userDao.findByEmail("toto");
-//		System.err.println(l.size());
-//		System.err.println(o.getEmail());
-		System.out.println("#USER FINISH#");
-		
-		System.out.println("#TEST PRODUCT#");
-		ProductDao productDao = new ProductDaoImpl();
 //		productDao.create(new Product("toto", "toto", "toto", "toto", 1f, o,new Date(0), new Date(0)));
 		
+		CategoryDao categoryDao = new CategoryDaoImpl();
+		ProductDao productDao = new ProductDaoImpl();	
+		UserDao userDao = new UserDaoImpl();
+		categoryDao.create(new Category("Test","test-desc"));
 		
+		//Create Users test
+//		userDao.create(new User("tutu", "tutu", "tutu", "tutu", new Date(0), "00000000", ROLE.MEMBER));
+//    	Category c = categoryDao.findByName("Test");
+//		User u1 = userDao.findByEmail("tutu");
+//    	productDao.create(new Product("p1", "tato", "toto", "toto", c, 1f, u1 ,new Date(0), new Date(0)));  
+		
+    	log.debug("Taille"+categoryDao.findByName("Test").getProducts().size());
 //		Product k = productDao.findByName("toto");
 //		Opinion op = new Opinion();
 //		op.setComment("pop");
@@ -106,8 +102,6 @@ public class NavigationController implements Serializable {
 //		op.setDate(new Date(0));
 //		op.setProduct(k);
 //		productDao.create(new Product("toto", "toto", "toto", "toto", 1f, o,new Date(0), new Date(0)));
-		t = productDao.findByName("toto");
-
 //		
 		// Normalement Inutile
 //    	OpinionDao oz = new OpinionDaoImpl();

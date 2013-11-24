@@ -23,11 +23,11 @@ private static final long serialVersionUID = 1L;
 private Long id;
 
 @ManyToOne
-@JoinColumn(name = "seller",unique = true, nullable = false)
+@JoinColumn(name = "seller", nullable = false)
 private User seller;
 
 @ManyToOne
-@JoinColumn(name = "buyer",unique = true, nullable = false)
+@JoinColumn(name = "buyer", nullable = false)
 private User buyer;
 
 @Column(name ="amount", nullable=false)
@@ -37,8 +37,25 @@ private float amount;
 private Date date;
 
 @ManyToOne
-@JoinColumn(name = "product_id",unique = true, nullable = false)
+@JoinColumn(name = "product",nullable = false)
 private Product product;
+
+public Transaction()
+{
+	
+}
+
+
+public Transaction(User seller, User buyer, float amount, Date date,
+		Product product) {
+	super();
+	this.seller = seller;
+	this.buyer = buyer;
+	this.amount = amount;
+	this.date = date;
+	this.product = product;
+}
+
 
 /**
  * @return the id

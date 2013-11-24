@@ -35,12 +35,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 		Query q = em.createQuery("SELECT p FROM Product p WHERE p.price=:price",Product.class);
 		q.setParameter("price",price);
 		List<Product> products = q.getResultList();
-		return (List<Product>) products.get(0);
+		return products;
 	}
 
 	public List<Product> findBySeller(User seller) {
-		Query q = em.createQuery("SELECT p FROM Product p WHERE p.seller_id=:seller_id",Product.class);
-		q.setParameter("seller_id",seller.getId());
+		Query q = em.createQuery("SELECT p FROM Product p WHERE p.seller=:seller_id",Product.class);
+		q.setParameter("seller_id",seller);
 		List<Product> products = q.getResultList();
 		return products;
 	}
@@ -54,16 +54,22 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 
 	public List<Product> findByLastUpdate(Date lastUpdate) {
 		Query q = em.createQuery("SELECT p FROM Product p WHERE p.lastUpdate=:lastUpdate",Product.class);
-		q.setParameter("availableDate",lastUpdate);
+		q.setParameter("lastUpdate",lastUpdate);
 		List<Product> products = q.getResultList();
 		return products;
 	}
 
 	public List<Product> findByGlobalMark(Float globalMark) {
 		Query q = em.createQuery("SELECT p FROM Product p WHERE p.globalMark=:globalMark",Product.class);
-		q.setParameter("availableDate",globalMark);
+		q.setParameter("globalMark",globalMark);
 		List<Product> products = q.getResultList();
 		return products;
 	}
-
+	
+	public List<Product> findByCategory(Category category) {
+		Query q = em.createQuery("SELECT p FROM Product p WHERE p.category=:category",Product.class);
+		q.setParameter("category",category);
+		List<Product> products = q.getResultList();
+		return products;
+	}
 }

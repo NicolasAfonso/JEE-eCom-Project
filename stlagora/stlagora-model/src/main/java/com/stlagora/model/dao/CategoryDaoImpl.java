@@ -12,6 +12,11 @@ import com.stlagora.model.entities.Product;
 
 public class CategoryDaoImpl extends GenericDaoImpl< Category > implements CategoryDao{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public CategoryDaoImpl(String persistanceUnit){
 		super(persistanceUnit);
 	}
@@ -22,19 +27,10 @@ public class CategoryDaoImpl extends GenericDaoImpl< Category > implements Categ
 	}
 	
 	public Category findByName(String categoryName) {
-		Query q = em.createQuery("SELECT c FROM Category WHERE c.categoryName =:categoryName");
+		Query q = em.createQuery("SELECT c FROM Category c WHERE c.categoryName =:categoryName");
 		q.setParameter("categoryName", categoryName);
-		List<Category> results = q.getResultList();
-		return results.get(0);
+		return (Category) q.getSingleResult();
 	}
 	
-	//idée: faire findByProduct
-	// on va dire dans un premier temps qu'un produit ne peut être associé qu'a UNE SEULE catégorie
-	public Category findByProduct(Product product) {
-		Query q = em.createQuery("SELECT c FROM Category WHERE :product IN c.products");
-		q.setParameter("product", product);
-		List<Category> results = q.getResultList();
-		return results.get(0);
-	}
 
 }

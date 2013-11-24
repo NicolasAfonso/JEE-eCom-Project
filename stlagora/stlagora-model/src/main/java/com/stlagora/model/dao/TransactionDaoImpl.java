@@ -26,15 +26,15 @@ public class TransactionDaoImpl extends GenericDaoImpl<Transaction> implements T
 	}
 	
 	public List<Transaction> findBySeller(User seller) {
-		Query q = em.createQuery("SELECT t FROM Transaction t WHERE t.seller_id=:seller_id",Transaction.class);
-		q.setParameter("seller_id",seller.getId());
+		Query q = em.createQuery("SELECT t FROM Transaction t WHERE t.seller=:seller",Transaction.class);
+		q.setParameter("seller",seller);
 		List<Transaction> transactions = q.getResultList();
 		return transactions;
 	}
 
 	public List<Transaction> findByBuyer(User buyer) {
-		Query q = em.createQuery("SELECT t FROM Transaction t WHERE t.buyer=:buyer_id",Transaction.class);
-		q.setParameter("seller_id",buyer.getId());
+		Query q = em.createQuery("SELECT t FROM Transaction t WHERE t.buyer=:buyer",Transaction.class);
+		q.setParameter("buyer",buyer);
 		List<Transaction> transactions = q.getResultList();
 		return transactions;
 	}
@@ -54,8 +54,8 @@ public class TransactionDaoImpl extends GenericDaoImpl<Transaction> implements T
 	}
 
 	public List<Transaction> findByProduct(Product product) {
-		Query q = em.createQuery("SELECT t FROM Transaction t WHERE t.product_id=:product",Transaction.class);
-		q.setParameter("product",product.getId());
+		Query q = em.createQuery("SELECT t FROM Transaction t WHERE t.product=:product",Transaction.class);
+		q.setParameter("product",product);
 		List<Transaction> transactions = q.getResultList();
 		return transactions;
 	}

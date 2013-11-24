@@ -8,6 +8,6 @@ import com.stlagora.model.entities.Product;
 public interface CategoryDao extends GenericDao<Category>{
 
 	public Category findByName(String categoryName);
-	public Category findByProduct(Product product);
+
 	
 }

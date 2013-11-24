@@ -48,7 +48,7 @@ public class Product implements Serializable {
 	private Float price ; 
 	
 	@ManyToOne
-	@JoinColumn(name = "seller_id",unique = true, nullable = false)
+	@JoinColumn(name = "seller", nullable = false)
 	private User seller;
 	
 	@Column(name = "availableDate", nullable = false)
@@ -60,12 +60,11 @@ public class Product implements Serializable {
 	@Column(name = "globalMark", nullable = true)
 	private Float globalMark;
 
-//	private List<Opinion> opinions = new ArrayList<Opinion>();  
 	@OneToMany(mappedBy = "product", cascade=CascadeType.ALL)
 	private List<Opinion> opinions = new ArrayList<Opinion>(); 
 
 	@ManyToOne
-	@JoinColumn(name = "category_id",unique = true)
+	@JoinColumn(name = "category_id",nullable = false)
 	private Category category;
 	
 	public Product(){
@@ -81,8 +80,9 @@ public class Product implements Serializable {
 	 * @param seller
 	 * @param availableDate
 	 * @param updateDate
+	 * @param category
 	 */
-	public Product(String name, String description, String images, String plan,
+	public Product(String name, String description, String images, String plan,Category category,
 			Float price, User seller, Date availableDate, Date lastUpdate) {
 		super();
 		this.name = name;
@@ -90,10 +90,12 @@ public class Product implements Serializable {
 		this.images = images;
 		this.plan = plan;
 		this.price = price;
+		this.category = category;
 		this.seller = seller;
 		this.availableDate = availableDate;
 		this.lastUpdate = lastUpdate;
-		
+		this.globalMark=0f;
+
 	}
 
 
@@ -260,6 +262,18 @@ public class Product implements Serializable {
 	 */
 	public void setOpinions(List<Opinion> opinions) {
 		this.opinions = opinions;
+	}
+	/**
+	 * @return the category
+	 */
+	public Category getCategory() {
+		return category;
+	}
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	

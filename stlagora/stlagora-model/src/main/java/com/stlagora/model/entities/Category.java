@@ -32,9 +32,25 @@ public class Category implements Serializable {
 
 	@Column (name="categoryDescription" ,nullable=false)
 	private String categoryDescription;
+	
 	@OneToMany(mappedBy = "category", cascade=CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
-
+	
+	
+	/**
+	 * 
+	 * @param categoryName
+	 * @param categoryDescription
+	 */
+	public Category(String categoryName, String categoryDescription) {
+		super();
+		this.categoryName = categoryName;
+		this.categoryDescription = categoryDescription;
+	}
+	
+	public Category(){
+		
+	}
 	public long getId() {
 		return id;
 	}
