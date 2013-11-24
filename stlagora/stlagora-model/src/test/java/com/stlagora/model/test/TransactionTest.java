@@ -23,7 +23,9 @@ import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class TransactionTest {
 	private  static String persistanceUnit = "stlagora-Test";
@@ -52,9 +54,9 @@ public class TransactionTest {
 		User u2 = userDao.findByEmail("tutu@tata.com");
 		
 		
-		productDao.create(new Product("p1", "tato", "toto", "toto", c, 1f, u1 ,new Date(0), new Date(0)));  
-		productDao.create(new Product("p2", "toto", "toto", "toto", c, 2f, u1 ,new Date(0), new Date(0)));  
-		productDao.create(new Product("p3", "toto", "toto", "toto", c, 2f, u2 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p2", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u1 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p3", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u2 ,new Date(0), new Date(0)));  
 		
 		Product p = productDao.findByName("p1");
 		transactionDao.create(new Transaction(p.getSeller(),userDao.findByEmail("tutu@tata.com"),p.getPrice(),new Date(0),p));

@@ -21,7 +21,9 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class OpinionTest {
 
@@ -45,7 +47,7 @@ public class OpinionTest {
 		
 		Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tata@tata.com");
-		productDao.create(new Product("p1", "tato", "toto", "toto", c, 1f, u1 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
 		
 		opinionDao = new OpinionDaoImpl(persistanceUnit);
 		opinionDao.create(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",null,userDao.findByEmail("tata@tata.com")));

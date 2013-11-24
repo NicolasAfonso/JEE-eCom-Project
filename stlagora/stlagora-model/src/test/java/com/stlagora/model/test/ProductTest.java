@@ -24,7 +24,9 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class ProductTest {
 
@@ -48,7 +50,7 @@ public class ProductTest {
 		//Create Category for test
 		categoryDao.create(new Category("Test","TestObj"));
 		User u1 = userDao.findByEmail("tutu");
-		productDao.create(new Product("p1", "toto", "toto", "toto", categoryDao.findByName("Test"),1f , u1,new Date(0), new Date(0)));
+		productDao.create(new Product("p1", "toto", "toto", "toto", categoryDao.findByName("Test"),TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE,1f , u1,new Date(0), new Date(0)));
 		opinionDao.create(new Opinion(u1,new Date(0),1f,"tutu",productDao.findByName("p1"),null));
 	}
 
@@ -70,7 +72,7 @@ public class ProductTest {
     @Test
 	public void testCreateProduct() {
 		  User u1 = userDao.findByEmail("tutu");
-		  productDao.create(new Product("p2", "tato", "toto", "toto", categoryDao.findByName("Test"), 1f, u1 ,new Date(0), new Date(0)));
+		  productDao.create(new Product("p2", "tato", "toto", "toto", categoryDao.findByName("Test"),TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));
 	  }
     
     @Test 
@@ -108,9 +110,9 @@ public class ProductTest {
     
     @Test 
     public void testSearchGlobalMark() {
-		  List<Product> l3 = productDao.findByGlobalMark(0f);
+		  List<Product> l3 = productDao.findByGlobalMark(3f);
 		  assertEquals(2,l3.size());
-		  assertEquals(l3.get(1).getGlobalMark(),0f,0);
+		  assertEquals(l3.get(1).getGlobalMark(),3f,0);
 		  
 		  List<Product> l4 = productDao.findByGlobalMark(1f);
 		  assertEquals(0,l4.size());
@@ -141,12 +143,25 @@ public class ProductTest {
 		  assertEquals(2,l3.size());
     }
     
+    
+    @Test
+    public void testStatus(){
+    	 List<Product> l3 = productDao.findByProductStatus(PRODUCT_STATUS.AVAILABLE);
+		 assertEquals(2,l3.size());
+    }
+    
+    @Test
+    public void testType(){
+    	 List<Product> l3 = productDao.findByProductType(TYPE_FICHIER.STL);
+		 assertEquals(1,l3.size());
+    }
+    
     @Test
     public void testCategory(){
     	 List<Product> l3 = productDao.findByCategory(categoryDao.findByName("Test"));
 		 assertEquals(2,l3.size());
     }
-    
+
     
     
 } 

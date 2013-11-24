@@ -13,6 +13,8 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
+import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public interface ProductDao extends GenericDao<Product> {
 
@@ -24,5 +26,6 @@ public interface ProductDao extends GenericDao<Product> {
 	public List<Product> findByAvailableDate(Date availableDate);
 	public List<Product> findByLastUpdate(Date lastUpdate);
 	public List<Product> findByGlobalMark(Float globalMark);
-
+	public List<Product> findByProductStatus(PRODUCT_STATUS status);
+	public List<Product> findByProductType(TYPE_FICHIER type);
 }

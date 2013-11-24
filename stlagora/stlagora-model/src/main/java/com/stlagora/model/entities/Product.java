@@ -19,6 +19,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
+import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
+
 
 
 @Entity
@@ -48,6 +51,12 @@ public class Product implements Serializable {
 	@Column(name = "price", nullable = false)
 	private Float price ; 
 	
+	@Column(name = "type", nullable = false)
+	private TYPE_FICHIER type ; 
+	
+	@Column(name = "status", nullable = false)
+	private PRODUCT_STATUS status ; 
+	
 	@ManyToOne
 	@JoinColumn(name = "seller", nullable = false)
 	private User seller;
@@ -68,35 +77,39 @@ public class Product implements Serializable {
 	@JoinColumn(name = "category_id",nullable = false)
 	private Category category;
 	
-	public Product(){
-		
-		
-	}
+	
 	/**
 	 * @param name
 	 * @param description
 	 * @param images
 	 * @param plan
 	 * @param price
+	 * @param type
+	 * @param status
 	 * @param seller
 	 * @param availableDate
-	 * @param updateDate
+	 * @param lastUpdate
 	 * @param category
 	 */
-	public Product(String name, String description, String images, String plan,Category category,
-			Float price, User seller, Date availableDate, Date lastUpdate) {
+	public Product(String name, String description, String images, String plan, Category category, TYPE_FICHIER type, PRODUCT_STATUS status, Float price, User seller, Date availableDate, Date lastUpdate){
+		
 		super();
 		this.name = name;
 		this.description = description;
 		this.images = images;
 		this.plan = plan;
 		this.price = price;
-		this.category = category;
+		this.type = type;
+		this.status = status;
 		this.seller = seller;
 		this.availableDate = availableDate;
 		this.lastUpdate = lastUpdate;
-		this.globalMark=0f;
-
+		this.globalMark = 3f;
+		this.category = category;
+	}
+	
+	public Product(){
+		
 	}
 
 
@@ -276,7 +289,32 @@ public class Product implements Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	/**
+	 * @return the type
+	 */
+	public TYPE_FICHIER getType() {
+		return type;
+	}
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(TYPE_FICHIER type) {
+		this.type = type;
+	}
+	/**
+	 * @return the status
+	 */
+	public PRODUCT_STATUS getStatus() {
+		return status;
+	}
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(PRODUCT_STATUS status) {
+		this.status = status;
+	}
+	
+	
 	
 
 }
