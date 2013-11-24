@@ -38,11 +38,11 @@ private float mark;
 private String comment;
 
 @ManyToOne
-@JoinColumn(name = "product_id",unique = true)
+@JoinColumn(name = "product_id")
 private Product product;
 
 @ManyToOne
-@JoinColumn(name = "usermarked_id",unique = true)
+@JoinColumn(name = "usermarked_id")
 private User usermarked;
 
 public Opinion(){ 

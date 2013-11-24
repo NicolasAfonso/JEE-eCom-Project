@@ -61,6 +61,7 @@ public class OpinionTest {
 		
 		opinionDao.delete(opinionDao.findById(1));
 		opinionDao.delete(opinionDao.findById(2));	
+		opinionDao.delete(opinionDao.findById(3));	
 		productDao.delete(productDao.findByName("p1"));
 		userDao.delete(userDao.findByEmail("tutu@tata.com"));
 		userDao.delete(userDao.findByEmail("tata@tata.com"));

@@ -93,12 +93,6 @@ public class UserTest {
 		assertEquals(2,(long) userDao.findByRole(ROLE.MEMBER).size());
 	}
 	
-	@Test
-	public void testOpinion() {
-		User u = userDao.findByEmail("tata@tata.com");
-		assertEquals(1,u.getOpinions().size());
-	}
-
 	@Test 
 	public void testUpdate() {
 		User u = userDao.findByEmail("tutu@tata.com");

@@ -19,7 +19,7 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ROLE;
-//TODO Probleme listProducts
+
 public class CategoryTest {
 	
 	private  static String persistanceUnit = "stlagora-Test";
@@ -54,14 +54,6 @@ public class CategoryTest {
 		categoryDao.delete(categoryDao.findByName("Test"));
 		
 	}
-
-   
-    @Test
-	public void testProduct() {
-    	Category c = categoryDao.findByName("Test");
-    	assertEquals(c.getId(),productDao.findByName("p1").getCategory().getId());
-    	assertEquals(1,categoryDao.findByName("Test").getProducts().size());
-    }
     
     @Test
    	public void testFindByName() {

@@ -77,40 +77,48 @@ public class NavigationController implements Serializable {
 		CategoryDao categoryDao = new CategoryDaoImpl();
 		ProductDao productDao = new ProductDaoImpl();	
 		UserDao userDao = new UserDaoImpl();
-		categoryDao.create(new Category("Test","test-desc"));
-		
-		//Create Users test
+//		categoryDao.create(new Category("Test","test-desc"));
+//		
+//		
+//		//Create Users test
 //		userDao.create(new User("tutu", "tutu", "tutu", "tutu", new Date(0), "00000000", ROLE.MEMBER));
-//    	Category c = categoryDao.findByName("Test");
+//     	Category c = categoryDao.findByName("Test");
 //		User u1 = userDao.findByEmail("tutu");
 //    	productDao.create(new Product("p1", "tato", "toto", "toto", c, 1f, u1 ,new Date(0), new Date(0)));  
-		
-    	log.debug("Taille"+categoryDao.findByName("Test").getProducts().size());
-//		Product k = productDao.findByName("toto");
+//		
+//    	log.debug("Taille"+categoryDao.findByName("Test").getProducts().size());
+		Product k = productDao.findByName("p1");
+		OpinionDao oz = new OpinionDaoImpl();
+//		//User
 //		Opinion op = new Opinion();
-//		op.setComment("pop");
+//		op.setComment("popuser");
 //		op.setMark(1f);
-//		op.setWriter(o);
+//		op.setWriter(u1);
 //		op.setDate(new Date(0));
-//		op.setProduct(k);
-//		System.out.println(k.getOpinions().size());
-//		System.out.println(k.getOpinions().get(0).getComment());
-//		productDao.update(k);
-//		op.setComment("pop");
-//		op.setMark(1f);
-//		op.setWriter(o);
-//		op.setDate(new Date(0));
-//		op.setProduct(k);
-//		productDao.create(new Product("toto", "toto", "toto", "toto", 1f, o,new Date(0), new Date(0)));
-//		
-		// Normalement Inutile
-//    	OpinionDao oz = new OpinionDaoImpl();
+//		op.setUsermarked(u1);
 //		oz.create(op);
-//		p.getOpinions().add(op);
-//		productDao.update(p);
-//		Product i = productDao.findByName("toto");
-//		System.out.println(i.getOpinions().get(0).getComment().toString());
+//		//Product
+//		Opinion op2 = new Opinion();
+//		op2.setComment("popuser");
+//		op2.setMark(1f);
+//		op2.setWriter(u1);
+//		op2.setProduct(k);
+//		op2.setDate(new Date(0));
+//		op2.setUsermarked(u1);
+//		oz.create(op2);
+//
 //		
+//		// Normalement Inutile
+		
+		
+//		k.getOpinions().add(op);
+//		productDao.update(k);
+		Product i = productDao.findByName("p1");
+		User u2 =  userDao.findByEmail("tutu");
+		System.out.println("Opinion"+i.getOpinions().get(0).getComment().toString());
+		System.out.println("Opinion user :" + u2.getOpinions().get(0).getComment().toString());
+		System.out.println(categoryDao.findByName("Test").getProducts().get(0).getName());
+		System.out.println("Opinino dep "+ oz.findByUserMarked(u2).size());
 //		
 //		System.out.println("titi"+k.getOpinions().get(0).getComment().toString());
 //		System.out.println(k.getOpinions().size());

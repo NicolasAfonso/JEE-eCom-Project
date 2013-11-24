@@ -27,7 +27,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 public class ProductTest {
-	//TODO Opinions
+
 	private  static ProductDao productDao;
 	private  static UserDao userDao ; 
 	private  static String persistanceUnit = "stlagora-Test";
@@ -147,11 +147,6 @@ public class ProductTest {
 		 assertEquals(2,l3.size());
     }
     
-    @Test 
-    public void testOpinion() {
-		  List<Opinion> l3 = productDao.findByName("p1").getOpinions();
-		  assertEquals(1,l3.size());
-    }
     
     
 } 
