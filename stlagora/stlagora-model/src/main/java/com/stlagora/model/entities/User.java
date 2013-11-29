@@ -2,6 +2,8 @@ package com.stlagora.model.entities;
 
 
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 import com.stlagora.model.entities.enumerate.ROLE;
 
@@ -46,6 +50,9 @@ public class User implements Serializable {
 	@Column(name = "email", nullable = false, unique=true) 
 	private String email;
 	
+	@Column(name = "password", nullable = false) 
+	private String password;
+	
 	@Column(name = "subscriptionDate", nullable = false) 
 	private Date subscriptionDate;
 	
@@ -72,7 +79,7 @@ public class User implements Serializable {
 	 * @param phoneNumber
 	 * @param role
 	 */
-	public User(String pseudo, String surname, String firstname, String email,Date subscriptionDate, String phoneNumber, ROLE role) {
+	public User(String pseudo, String surname, String firstname, String email, String password,Date subscriptionDate, String phoneNumber, ROLE role) {
 		super();
 		this.pseudo = pseudo;
 		this.surname = surname;
@@ -81,6 +88,9 @@ public class User implements Serializable {
 		this.subscriptionDate = subscriptionDate;
 		this.phoneNumber = phoneNumber;
 		this.role = role;
+		
+		//Crypt Password	 
+		this.password = new String(DigestUtils.sha512(password));
 	}
 
 
@@ -208,6 +218,21 @@ public class User implements Serializable {
 	 */
 	public void setOpinions(List<Opinion> opinions) {
 		this.opinions = opinions;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = new String(DigestUtils.sha512(password));
 	} 
+	
 	
 }	

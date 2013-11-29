@@ -8,5 +8,9 @@
 <h:body>
 	<h1>Premier exemple JSF 2.0 - Page 2</h1>
 	<p> Page 2</p>
+	<h2>Hello #{sessionUser.user.email}</h2>
+		<h:form>
+	<h:commandButton value="Pay" action="#{purchaseController.payCart()}" />
+	</h:form>
 </h:body>
 </html>

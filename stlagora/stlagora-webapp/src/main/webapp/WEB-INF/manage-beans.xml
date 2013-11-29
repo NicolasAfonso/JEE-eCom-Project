@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
     http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
-    version="2.0">
+	version="2.0">
 	<managed-bean>
-		<managed-bean-name>navigationController</managed-bean-name>
-		<managed-bean-class>com.stlagora.controller.NavigationController</managed-bean-class>
+		<managed-bean-name>homeController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.HomeController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>manageProfileController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.ManageProfileController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>searchController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.SearchController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sellController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.SellController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>purchaseController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.PurchaseController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>loginController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.LoginController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cart</managed-bean-name>
+		<managed-bean-class>com.stlagora.beans.Cart</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sessionUser</managed-bean-name>
+		<managed-bean-class>com.stlagora.beans.SessionUser</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
 </faces-config>

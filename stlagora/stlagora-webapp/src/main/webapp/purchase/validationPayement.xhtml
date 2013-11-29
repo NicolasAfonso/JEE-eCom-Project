@@ -3,16 +3,15 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:tp="http://java.sun.com/jsf/composite/components">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>JSF tutorial</title>
 </h:head>
+<h:form>
+<h:commandButton action="/home" value="home" />
+</h:form>
 <h:body>
-	<h2>valueChangeListener Examples</h2>
-	
-	<h:form>
-	<h:commandButton action="#{navigationController.moveToPage1}" value="Page1" />
-	</h:form>
+	<h2>Thanks #{sessionUser.user.email}</h2>
+
 </h:body>
 </html>

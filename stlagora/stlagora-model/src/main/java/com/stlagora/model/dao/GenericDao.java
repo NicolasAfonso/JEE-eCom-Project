@@ -1,11 +1,9 @@
 package com.stlagora.model.dao;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
-
-import org.eclipse.persistence.internal.oxm.schema.model.List;
 
 public interface GenericDao<T> extends Serializable{
 	
@@ -13,7 +11,7 @@ public interface GenericDao<T> extends Serializable{
 	
 	public T findById(long objectId);
 	
-	public Collection<T> findAll(Class<T> c ,long objectId);
+	public List<T> findAll();
 	
 	public void update(T object);
 	

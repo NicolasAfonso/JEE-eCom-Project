@@ -46,8 +46,8 @@ public class TransactionTest {
 		categoryDao.create(new Category("Test","test-desc"));
 
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com", new Date(0), "00000000", ROLE.MEMBER));
-		userDao.create(new User("tata", "tata", "tata", "tata@tata.com", new Date(0), "11111111", ROLE.MEMBER));
+		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000", ROLE.MEMBER));
+		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111", ROLE.MEMBER));
 		
 		Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tata@tata.com");

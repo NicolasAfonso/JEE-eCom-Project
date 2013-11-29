@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF tutorial</title>
+</h:head>
+<h:body>
+<h:outputText value="#{sessionUser.loggedIn}" /> 
+<h:form>
+<h:commandButton action="home" value="home" />
+</h:form>
+<h:form>
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel for="username" value="Username:" />
+			<p:inputText value="#{loginController.username}" id="username"
+				required="true" label="username" />
+
+			<h:outputLabel for="password" value="Password:" />
+			<h:inputSecret value="#{loginController.password}" id="password"
+				required="true" label="password" />
+
+			<f:facet name="footer">
+				<p:commandButton id="loginButton" value="Login"
+					action="#{loginController.login}" />
+			</f:facet>
+		</h:panelGrid>
+
+	</h:form>
+	</h:body>
+</html>

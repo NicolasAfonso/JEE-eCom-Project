@@ -1,6 +1,7 @@
 package com.stlagora.model.dao;
 
 import java.util.Collection;
+import java.util.List;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -42,9 +43,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 		return (T) em.find(type, objectId);
 	}
 
-	public Collection<T> findAll(Class<T> c, long objectId) {
-		Query query = em.createQuery("SELECT e FROM "+ c.getName() +"e");
-	    return (Collection<T>) query.getResultList();
+	public List<T> findAll() {
+		Query query = em.createQuery("SELECT e FROM "+ type.getName()+" e");
+	    return  query.getResultList();
 	}
 
 	public void update(T object) {

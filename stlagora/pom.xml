@@ -7,6 +7,15 @@
 	<packaging>pom</packaging>
 	<url>http://maven.apache.org</url>
 
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
 	<properties>
 		<junit.version>4.11</junit.version>
 		<jsf-api.version>2.1.7</jsf-api.version>
@@ -17,6 +26,8 @@
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
 		<log4j.version>1.2.17</log4j.version>
 		<derby.version>10.10.1.1</derby.version>
+		<primefaces.version>4.0</primefaces.version>
+		<commons-codec.version>1.8</commons-codec.version>
 	</properties>
 
 	<modules>
@@ -35,11 +46,11 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>${derby.version}</version>
-			<scope>test</scope>
-		</dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derby</artifactId>
+				<version>${derby.version}</version>
+				<scope>test</scope>
+			</dependency>
 			<!-- Ajout JSF au GlassFish -->
 			<dependency>
 				<groupId>com.sun.faces</groupId>
@@ -71,6 +82,24 @@
 				<artifactId>log4j</artifactId>
 				<version>${log4j.version}</version>
 			</dependency>
+
+			<!-- PrimeFaces -->
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>${primefaces.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec.version}</version>
+			</dependency>
+	<dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-jdk14</artifactId>
+   <version></version>
+   <scope>compile</scope>
+</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>

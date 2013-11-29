@@ -44,8 +44,8 @@ public class ProductTest {
 		categoryDao = new CategoryDaoImpl(persistanceUnit);
 		opinionDao = new OpinionDaoImpl(persistanceUnit);
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu", new Date(0), "00000000", ROLE.MEMBER));
-		userDao.create(new User("toto", "toto", "toto", "toto", new Date(0), "00000000", ROLE.MEMBER));
+		userDao.create(new User("tutu", "tutu", "tutu", "tutu","test", new Date(0), "00000000", ROLE.MEMBER));
+		userDao.create(new User("toto", "toto", "toto", "toto", "test",new Date(0), "00000000", ROLE.MEMBER));
 		
 		//Create Category for test
 		categoryDao.create(new Category("Test","TestObj"));

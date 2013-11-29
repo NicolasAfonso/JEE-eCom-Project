@@ -39,7 +39,7 @@ public class CategoryTest {
 		categoryDao.create(new Category("Test","test-desc"));
 		
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu", new Date(0), "00000000", ROLE.MEMBER));
+		userDao.create(new User("tutu", "tutu", "tutu", "tutu", "test", new Date(0), "00000000", ROLE.MEMBER));
     	Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tutu");
     	productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  

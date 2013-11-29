@@ -19,7 +19,7 @@
 					<webResources>
 						<resource>
 							<!-- this is relative to the pom.xml directory -->
-							<directory>resources</directory>
+							<directory>src/main/resources</directory>
 						</resource>
 					</webResources>
 				</configuration>
@@ -36,6 +36,10 @@
 			<groupId>com.stlagora</groupId>
 			<artifactId>stlagora-controller</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
 		</dependency>
 	</dependencies>
 </project>

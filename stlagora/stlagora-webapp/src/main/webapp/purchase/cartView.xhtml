@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components">
+<h:head>
+	<title>Premier exemple JSF 2.0</title>
+	<h:outputStylesheet library="default" name="css/form.css" />
+</h:head>
+<h:body>
+	<h1>Premier exemple JSF 2.dsdssd0sscd3sssxsSxdddddssdd0 - Page 1</h1>
+	<p>Page 1</p>
+<h:form>
+<h:commandButton action="/home" value="home" />
+</h:form>
+<h:form>
+	<h:dataTable value="#{cart.products}" var="product">
+
+		<h:column>
+			<!-- column header -->
+			<f:facet name="header">Order No</f:facet>
+			<!-- row record -->
+    				#{product.name}
+    			</h:column>
+
+		<h:column>
+			<f:facet name="header">Product Name</f:facet>
+    				#{product.description}
+    			</h:column>
+
+		<h:column>
+			<f:facet name="header">Price</f:facet>
+    				#{product.price}
+    			</h:column>
+    					<h:column>
+			<h:commandButton value="remove" action="#{cart.remove(product)}" />
+		</h:column>
+	</h:dataTable> 
+	</h:form>
+	Nb Article #{cart.numberArticle}<br/>
+	Total #{cart.amount} €<br/>
+	<h:form>
+	<h:commandButton value="Validate" action="#{purchaseController.validateCart()}" />
+	</h:form>
+
+</h:body>
+</html>

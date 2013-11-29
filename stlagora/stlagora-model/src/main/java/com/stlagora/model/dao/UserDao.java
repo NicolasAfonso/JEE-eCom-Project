@@ -6,11 +6,13 @@ package com.stlagora.model.dao;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
+
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 public interface UserDao extends GenericDao<User>  {
-
+	
 	
 	public User findByPseudo(String pseudo);
 	public List<User> findBySurname(String surname);
