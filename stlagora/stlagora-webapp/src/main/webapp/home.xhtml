@@ -9,69 +9,71 @@
 <h:head>
 	<title>JSF tutorial</title>
 	<h:outputStylesheet name="./css/global.css"></h:outputStylesheet>
-	 <style type="text/css">
-        .auto-style1
-        {
-            width: 100%;
-        }
-    </style>
+	<style type="text/css">
+.auto-style1 {
+	width: 100%;
+}
+</style>
 </h:head>
 <h:body>
-	<h3> 
-	#{general.welcomeMessage}
-	#{general.tutu}
-		<h:outputText value="#{sessionUser.loggedIn}" />
-		<h:outputText value="#{cart.numberArticle}" />
-		
-
-	</h3>
 	<header>
-		<table class="auto-style1">
-                <tr>
-                    <td id="menu_logo">
-                    	<h:commandButton action="#{homeController.moveToMyProfile}" image="./images/logo.png" />
-<!--                         <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/logo.png" /> -->
-                    </td>
-                    <td id="menu_search">
-                    	<h:inputText styleClass="searchbar"></h:inputText>
-<!--                         <asp:TextBox ID="TextBox1" runat="server" CssClass="searchbar"></asp:TextBox> -->
-                    </td>
-                    <td class="menu_shortcuts">
-	                    <h:commandButton action="#{homeController.moveToMyProfile}" image="./images/Currency- Euro2.png" />
-	                    <h:commandButton action="#{homeController.moveToMyProfile}">vendre</h:commandButton>
-                    </td>
-                    <td class="menu_shortcuts">
-                        <h:commandButton action="#{homeController.moveToMyProfile}" image="./images/User2.png" />
-	                    <h:commandButton action="#{homeController.moveToMyProfile}">mon compte</h:commandButton>
-                        <div id="username">
-                            <h:commandButton action="#{homeController.moveToMyProfile}" image="./images/Arrow2.png" />
-	                    <h:commandButton action="#{homeController.moveToMyProfile}">Martin Durand</h:commandButton>
-                        </div>
-                    </td> 
-                    <td class="menu_shortcuts">
-                        <h:commandButton action="#{homeController.moveToMyProfile}" image="./images/Cart2.png" />
-                        <h:commandButton action="#{homeController.moveToMyProfile}">Mon panier</h:commandButton>
-                        <br />
-                        <h:commandButton action="#{homeController.moveToMyProfile}" styleClass="blue_bold_italic">0 article</h:commandButton>
-                    </td>
-                </tr>
-            </table>
-            <div id="menu">
-                menu
-            </div>
+	<h:form>
+	<table class="auto-style1">
+		<tr>
+			<td id="menu_logo">
+			<p:commandLink action="home">
+					<h:graphicImage name="./images/logo.png" />
+			</p:commandLink>
+			</td>
+			<td id="menu_search"><h:inputText styleClass="searchbar"></h:inputText>
+				<!--                         <asp:TextBox ID="TextBox1" runat="server" CssClass="searchbar"></asp:TextBox> -->
+			</td>
+			<td class="menu_shortcuts">
+			<p:commandLink action="#{homeController.moveToSell}">
+					<h:graphicImage name="./images/CurrencyEuro2.png" />
+					#{general.sellLabel}
+			</p:commandLink>
+			</td>
+			<td class="menu_shortcuts">
+			<div id="username">
+    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" action="#{homeController.moveToMyProfile}">
+					<h:graphicImage name="./images/User2.png" />
+					#{general.myProfile}
+			</p:commandLink>		
+
+				<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
+					#{sessionUser.user.pseudo}
+					<h:graphicImage name="./images/Arrow2.png" />
+			</p:commandLink>
+				</div></td>
+			<td class="menu_shortcuts">
+			<p:commandLink action="#{homeController.moveToCart}">
+					<h:graphicImage name="./images/Cart2.png"> </h:graphicImage>		
+					#{general.myCart} - #{cart.numberArticle}
+			</p:commandLink>
+			</td>
+		</tr>
+	</table>
+	</h:form>
+	<div id="menu">menu</div>
 	</header>
+	<div id="pagecontent">
+		<h3>
+		#{general.welcomeMessage} #{general.tutu}
+	</h3>
 	<h:form>
 		<h:commandButton action="#{homeController.moveToMyProfile}"
 			value="Profile" />
 		<h:commandButton action="#{homeController.moveToSearch}"
 			value="Search" />
-			
+
 		<h:commandButton action="#{homeController.moveToCart}" value="Cart" />
 		<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
-		<p:commandButton styleClass="button" action="#{loginController.logout}" value="logout" />
-		<p:commandButton styleClass="button" action="#{homeController.initBDD}" value="initBDD" />
+		<h:commandButton styleClass="button"
+			action="#{loginController.logout}" value="logout" />
+		<p:commandButton styleClass="button"
+			action="#{homeController.initBDD}" value="initBDD" />
 	</h:form>
-
-	
+		</div>
 </h:body>
 </html>

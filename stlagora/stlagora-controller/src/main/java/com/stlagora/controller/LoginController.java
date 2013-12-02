@@ -105,7 +105,7 @@ public class LoginController implements Serializable {
 
 	}
 	
-	public void logout()
+	public String logout()
 	{ 
         FacesMessage msg = null;  
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
@@ -116,6 +116,7 @@ public class LoginController implements Serializable {
 			sessionUser.setLoggedIn(false);
 
 		}
+		return "home";
 
 	}
 
