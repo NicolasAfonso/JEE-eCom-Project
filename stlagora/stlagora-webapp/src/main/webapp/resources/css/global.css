@@ -1,0 +1,115 @@
+@font-face
+{
+    font-family: "EurostileT";
+    src: url("EUROSTILE_REGULAR_FS.TTF") format('truetype');
+}
+
+body
+{
+    font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    height: 100%;
+    width: 100%;
+    min-width: 1000px;
+    padding: 0;
+    margin: 0;
+}
+
+table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#form
+{
+    height: 100%;
+    width: 100%;
+}
+
+header
+{
+    height: 110px;
+    width: 100%;
+    min-width: 1000px;
+    position: fixed;
+    background-color: azure;
+}
+
+#menu
+{
+    text-align: center;
+    background-color: lightblue;
+}
+
+#menu_logo
+{
+    min-width: 165px;
+    width: 15%;
+}
+
+#menu_search
+{
+    text-align: center;
+    max-width: 55%;
+}
+
+.searchbar
+{
+    width: 95%;
+}
+
+#username
+{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.menu_shortcuts
+{
+    /*min-width: ???px*/
+    text-align: center;
+    width: 10%;
+}
+
+#page
+{
+    height: 1000px;
+    min-height: 90%;
+    background-color: white;
+    padding: 20px;
+}
+
+#pagecontent
+{
+    padding-top: 110px;
+    text-align: center;
+}
+
+footer
+{
+    height: 10%;
+    font-size: small;
+    text-align: center;
+    background-color: lightblue;
+}
+
+/* OTHERS */
+
+.green_bold
+{
+    font-weight: bold;
+    color: #6ecc59;
+}
+
+.blue_bold_italic
+{
+    color: #0079db;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.blue_underline
+{
+    color: #0079db;
+    text-decoration: underline;
+}

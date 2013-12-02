@@ -8,9 +8,15 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>JSF tutorial</title>
+	<h:outputStylesheet name="./css/global.css"></h:outputStylesheet>
+	 <style type="text/css">
+        .auto-style1
+        {
+            width: 100%;
+        }
+    </style>
 </h:head>
 <h:body>
-	<h2>valueChangeListener Examples</h2>
 	<h3> 
 	#{msg.welcomeMessage}
 		<h:outputText value="#{sessionUser.loggedIn}" />
@@ -26,8 +32,8 @@
 			
 		<h:commandButton action="#{homeController.moveToCart}" value="Cart" />
 		<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
-		<h:commandButton action="#{loginController.logout}" value="logout" />
-		<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
+		<p:commandButton styleClass="button" action="#{loginController.logout}" value="logout" />
+		<p:commandButton styleClass="button" action="#{homeController.initBDD}" value="initBDD" />
 	</h:form>
 
 	
