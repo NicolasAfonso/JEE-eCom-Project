@@ -12,6 +12,7 @@
 <h:body>
 	<h2>valueChangeListener Examples</h2>
 	<h3> 
+	#{msg.welcomeMessage}
 		<h:outputText value="#{sessionUser.loggedIn}" />
 		<h:outputText value="#{cart.numberArticle}" />
 		
@@ -28,7 +29,7 @@
 		<h:commandButton action="#{loginController.logout}" value="logout" />
 		<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
 	</h:form>
-	Hello 
+
 	
 </h:body>
 </html>

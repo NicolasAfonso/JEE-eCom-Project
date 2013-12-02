@@ -37,21 +37,14 @@ public class PurchaseController implements Serializable {
 	}
 	
 	public String validateCart(){
-		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		 if(sessionUser == null || sessionUser.isLoggedIn()==false)
-		 {
-			 return "/login";
-		 }
-		 else
-		 {
 			 validate = true ;
 			 Cart cart = (Cart) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cart");
 			 for (Product product : cart.getProducts() ) {
 				 productList.add(product);
 				}
 			
-			 return "/purchase/payementView";
-		 }
+			 return "/purchase/payementView?faces-redirect=true";
+		 
 		
 		
 	}
@@ -70,11 +63,11 @@ public class PurchaseController implements Serializable {
 			cart.clean();
 			productList.clear();
 			validate = false;
-			return "/purchase/validationPayement";
+			return "/purchase/validationPayement?faces-redirect=true";
 		}
 		else
 		{
-			return "/purchase/cartView";
+			return "/purchase/cartView?faces-redirect=true";
 		}
 		
 	}

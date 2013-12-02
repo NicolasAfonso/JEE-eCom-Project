@@ -11,7 +11,7 @@
 	<h:form>
 		<h:commandButton action="/home?faces-redirect=true" value="home" />
 	</h:form>
-	<h2>Hello #{sessionUser.user.email}</h2>
+	<h2>#{profile.welcome} #{sessionUser.user.email}</h2>
 	<h3>TransactionBuy</h3>
 	<h:dataTable value="#{manageProfileController.transactionBuy}"
 		var="transaction">

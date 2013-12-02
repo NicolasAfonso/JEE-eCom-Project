@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
     http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
-    version="2.0">
-<!--      <application>
-     	   <locale-config>
-     	        <default-locale>fr</default-locale>
-     	   </locale-config>
-	   <resource-bundle>
-		<base-name>messages</base-name>
-		<var>msg</var>
-	   </resource-bundle>
-     </application> -->
+	version="2.0">
+	<application>
+		<locale-config>
+			<default-locale>fr</default-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>messages.general_messages</base-name>
+			<var>general</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.profile.profile_messages</base-name>
+			<var>profile</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.cart.cart_messages</base-name>
+			<var>car</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.login.login_messages</base-name>
+			<var>login</var>
+		</resource-bundle>
+				<resource-bundle>
+			<base-name>messages.sell.sell_messages</base-name>
+			<var>sell</var>
+		</resource-bundle>
+	</application>
 </faces-config>

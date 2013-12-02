@@ -11,9 +11,12 @@
 </h:head>
 <h:body>
 	<h:form>
+	#{sellController.name}
+	#{sellController.description}
+	#{sellController.price}
 		<h:commandButton action="/home?faces-redirect=true" value="home" />
-		<p:commandButton value="Submit" ajax="false"
-			actionListener="#{sellController.confirmSell()}" />
+		<h:commandButton value="Submit" ajax="false"
+			action="#{sellController.confirmSell}" />
 	</h:form>
 
 

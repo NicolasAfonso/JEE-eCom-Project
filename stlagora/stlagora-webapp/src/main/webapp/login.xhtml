@@ -10,7 +10,7 @@
 	<title>JSF tutorial</title>
 </h:head>
 <h:body>
-	<h:outputText value="#{sessionUser.loggedIn}" />
+	
 	<h:form>
 		<h:commandButton action="home?faces-redirect=true" value="home" />
 	</h:form>
@@ -26,25 +26,35 @@
 				<h:inputSecret value="#{loginController.password}" id="password"
 					required="true" label="password" />
 			</h:panelGrid>
-			<p:commandButton value="Login" ajax="false" action="#{loginController.login}" />
+			<h:commandButton value="Login" action="#{loginController.login}" />
 		</p:panel>
 	</h:form>
-
+<p>Inscription</p>
 	<h:form>
+	<p:panel>
+	<h:panelGrid columns="2" cellpadding="5">
+		<h:outputLabel for="username" value="Username:" />
 		<p:inputText value="#{manageProfileController.username}" id="username"
 			required="true" label="username" />
+			<h:outputLabel for="name" value="Name:" />
 		<p:inputText value="#{manageProfileController.name}" id="name"
 			required="true" label="name" />
+			<h:outputLabel for="surname" value="Surname:" />
 		<p:inputText value="#{manageProfileController.surname}" id="surname"
 			required="true" label="surname" />
+			<h:outputLabel for="email" value="Email:" />
 		<p:inputText value="#{manageProfileController.email}" id="email"
 			type="email" required="true" label="email" />
+			<h:outputLabel for="password" value="Password:" />
 		<p:inputText value="#{manageProfileController.password}" id="password"
 			required="true" label="password" />
+			<h:outputLabel for="phoneNumber" value="phoneNumber:" />
 		<p:inputText value="#{manageProfileController.phoneNumber}"
 			id="phoneNumber" required="true" label="phoneNumber" />
+			</h:panelGrid>
 		<h:commandButton action="#{manageProfileController.createUser()}"
 			value="Create" />
+			</p:panel>
 	</h:form>
 
 </h:body>

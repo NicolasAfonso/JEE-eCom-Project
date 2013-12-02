@@ -34,7 +34,8 @@ public class LoginController implements Serializable {
 	private String username;  
     
     private String password;  
-      
+    
+
     public String getUsername() {  
         return username;  
     }  
@@ -51,7 +52,7 @@ public class LoginController implements Serializable {
         this.password = password;  
     }  
     
-	public void login()
+	public String login()
 	{ 
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
         User user = sessionUser.getUser();
@@ -84,13 +85,20 @@ public class LoginController implements Serializable {
 				sessionUser.setLoggedIn(true);
 				sessionUser.setUser(user);
 	            FacesMessage msg = new FacesMessage("Succesful","Welcome");  
-	            FacesContext.getCurrentInstance().addMessage(null, msg);  
+	            FacesContext.getCurrentInstance().addMessage(null, msg); 
+	            return sessionUser.getUrl();
 			}
 			else
 			{
 			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
 			     FacesContext.getCurrentInstance().addMessage(null, msg);  
+			     return "/login";
 			}
+		}
+		else{
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
+		     FacesContext.getCurrentInstance().addMessage(null, msg);  
+		     return "/login";
 		}
 
 
@@ -110,6 +118,8 @@ public class LoginController implements Serializable {
 		}
 
 	}
+
+
 
 	
 	

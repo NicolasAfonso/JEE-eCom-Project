@@ -10,37 +10,47 @@
 	<title>JSF tutorial</title>
 </h:head>
 <h:body>
-<h:commandButton action="/home?faces-redirect=true" value="home" />
-<h:form enctype="multipart/form-data">  
-  
-    <p:messages showDetail="true"/>  
-  	
+	<h:form>
+		<h:commandButton action="/home?faces-redirect=true" value="home" />
+	</h:form>
+	<h:form enctype="multipart/form-data">
 
-    		<p:panel>
+		<p:messages showDetail="true" />
+
+
+		<p:panel>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="name" value="Product name:" />
-				<p:inputText value="#{sellController.name}" required="true" id="name" label="name" />
+				<p:inputText value="#{sellController.name}" required="true"
+					id="name" label="name" />
 				<h:outputLabel for="price" value="Price:" />
-				<p:inputText value="#{sellController.price}" required="true" id="price" label="price" />
+				<p:inputText value="#{sellController.price}" required="true"
+					id="price" label="price" />
+				<h:outputLabel for="Description" value="Description:" />
+				<p:inputText value="#{sellController.description}"
+					required="true" id="description" label="description" />
+					<h:selectOneMenu id="city" value="#{sellController.productCategory}" required="true">  
+                <f:selectItem itemLabel="Select One" itemValue="#{category.categoryName}" />  
+                <f:selectItems value="#{sellController.categories}" var="category" />  
+            </h:selectOneMenu>  
 				<!-- <h:outputLabel for="Categorie" value="Categorie:" /> -->
-<!-- 				<p:selectOneListbox id="scroll" value="#{sellController.categories}" var="c" style="height:200px">  
+				<!-- 				<p:selectOneListbox id="scroll" value="#{sellController.categories}" var="c" style="height:200px">  
             <f:selectItems value="#{sellController.categories}" var="c" itemLabel="#{c}" itemValue="#{c}" />   
             <p:column>  
                 #{c.categoryName}
             </p:column>  
         </p:selectOneListbox>   -->
+				  <p:fileUpload value="#{sellController.file}" mode="simple" />
 			</h:panelGrid>
-			<p:fileUpload value="#{sellController.file}" mode="simple"/>  
-		</p:panel>
-    
-    
-    
-    
-    <h:commandButton value="Submit" actionListener="#{sellController.validateSell()}"/>  
-  	
-  	
-</h:form> 
 
-	
+		</p:panel>
+
+		<h:commandButton value="Submit"
+			action="#{sellController.confirmSell}" />
+
+
+	</h:form>
+
+
 </h:body>
 </html>

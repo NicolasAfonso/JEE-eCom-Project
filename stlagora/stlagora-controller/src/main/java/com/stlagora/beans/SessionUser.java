@@ -31,7 +31,7 @@ public class SessionUser implements Serializable{
 	
 	boolean loggedIn = false; 
 	private User user = null; 
-	
+    private String url ; 
 	public SessionUser(){
 		
 	}
@@ -64,4 +64,17 @@ public class SessionUser implements Serializable{
 		this.user = user;
 	}
 	
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * @param url the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }	

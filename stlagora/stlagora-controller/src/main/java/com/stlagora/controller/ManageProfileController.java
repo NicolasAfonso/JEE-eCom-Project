@@ -47,7 +47,7 @@ public class ManageProfileController implements Serializable {
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
 		sessionUser.setUser(userDao.findByPseudo(username));
-		return "/profile/myProfile";
+		return "/profile/myProfile?faces-redirect=true";
 	}
 	
 	public ManageProfileController(){
