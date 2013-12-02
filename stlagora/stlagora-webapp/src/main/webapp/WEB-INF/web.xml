@@ -17,10 +17,10 @@
 	</welcome-file-list>
 
 	<!-- Error pages -->
-	<error-page>
-		<!-- <error-code>404</error-code> -->
-		<location>/error.xhtml</location>
-	</error-page>
+<!-- 	<error-page> -->
+<!-- 		<error-code>404</error-code> -->
+<!-- 		<location>/error.xhtml</location> -->
+<!-- 	</error-page> -->
 	<!-- Login filter -->
 	<filter>
 		<filter-name>LoginFilter</filter-name>

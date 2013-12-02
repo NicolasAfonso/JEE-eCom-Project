@@ -9,7 +9,7 @@
 			<default-locale>fr</default-locale>
 		</locale-config>
 		<resource-bundle>
-			<base-name>messages.general_messages</base-name>
+			<base-name>messages.general.general_messages</base-name>
 			<var>general</var>
 		</resource-bundle>
 		<resource-bundle>
