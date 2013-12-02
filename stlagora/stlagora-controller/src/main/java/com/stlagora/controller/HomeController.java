@@ -45,56 +45,23 @@ public class HomeController implements Serializable {
 	public HomeController(){
 		
 	}
-	@ManagedProperty(value="#{param.pageId}")
-	private String pageId;
-	@ManagedProperty(value="#{t}")
-	private List<Product> t = new ArrayList<Product>();
 	
-	/**
-	 * @return the t
-	 */
-	public List<Product> getT() {
-		return t;
+	public String moveToMyProfile()
+	{
+		return "/profile/myProfile?faces-redirect=true";
 	}
 
-	/**
-	 * @param t the t to set
-	 */
-	public void setT(List<Product> t) {
-		this.t = t;
-	}
-
-	public String getPageId() {
-		return pageId;
-	}
-
-	public void setPageId(String pageId) {
-		this.pageId = pageId;
-	}
-
-	public String moveToMyProfile(){
-		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		 if(sessionUser == null || sessionUser.isLoggedIn()==false)
-		 {
-			 return "/login";
-		 }
-		 else
-		 {
-			 return "/profile/myProfile";
-		 }
-		
+	
+	public String moveToCart(){
+		return "/cartView?faces-redirect=true";
 	}
 	
 	public String moveToSearch(){
-		CategoryDao categoryDao = new CategoryDaoImpl();
-		ProductDao productDao = new ProductDaoImpl();	
-		UserDao userDao = new UserDaoImpl();
-		t = productDao.findAll();
-		return "/search/resultSearch";
+		return "/search/resultSearch?faces-redirect=true";
 	}
 	
-	public String moveToCart(){
-		return "/purchase/cartView";
+	public String moveToSell(){
+		return "/sell/sellProduct?faces-redirect=true";
 	}
 	
 	public void initBDD(){
@@ -102,7 +69,6 @@ public class HomeController implements Serializable {
 		
 		CategoryDaoImpl categoryDao = new CategoryDaoImpl();
 		ProductDaoImpl productDao = new ProductDaoImpl();	
-		TransactionDaoImpl transactionDao = new TransactionDaoImpl();
 		
 		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0),"00000000", ROLE.MEMBER));
 		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111", ROLE.MEMBER));

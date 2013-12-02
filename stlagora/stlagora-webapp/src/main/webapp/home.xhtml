@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 	<h2>valueChangeListener Examples</h2>
-	<h3>
+	<h3> 
 		<h:outputText value="#{sessionUser.loggedIn}" />
 		<h:outputText value="#{cart.numberArticle}" />
 		
@@ -22,8 +22,9 @@
 			value="Profile" />
 		<h:commandButton action="#{homeController.moveToSearch}"
 			value="Search" />
+			
 		<h:commandButton action="#{homeController.moveToCart}" value="Cart" />
-
+		<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
 		<h:commandButton action="#{loginController.logout}" value="logout" />
 		<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
 	</h:form>

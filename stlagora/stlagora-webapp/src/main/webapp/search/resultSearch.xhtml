@@ -9,11 +9,11 @@
 </h:head>
 <h:body>
 <h:form>
-<h:commandButton action="/home" value="home" />
-</h:form>
+<h:commandButton action="/home?faces-redirect=true" value="home" />
+</h:form> 
 	<h2>Hello #{sessionUser.user.email}</h2>
 	<h:form>
-<h:dataTable value="#{homeController.t}" var="product">
+<h:dataTable value="#{searchController.results}" var="product">
 		<h:column>
 			<!-- column header -->
 			<f:facet name="header">Order No</f:facet>

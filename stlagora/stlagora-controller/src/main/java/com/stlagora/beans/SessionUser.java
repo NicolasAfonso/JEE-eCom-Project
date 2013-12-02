@@ -27,11 +27,10 @@ public class SessionUser implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(SessionUser.class.getName());
+	
+	
 	boolean loggedIn = false; 
 	private User user = null; 
-	private TransactionDao transactionDao = new TransactionDaoImpl();
-	
-	private List<Transaction> transactions = new ArrayList<Transaction>();
 	
 	public SessionUser(){
 		
@@ -64,24 +63,5 @@ public class SessionUser implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	/**
-	 * @return the transactions
-	 */
-	public List<Transaction> getTransactions() {
-		if(user != null)
-		{
-			transactions = transactionDao.findByBuyer(user);
-		}
-		return transactions;
-	}
-
-	/**
-	 * @param transactions the transactions to set
-	 */
-	public void setTransactions(List<Transaction> transactions) {
-		this.transactions = transactions;
-	}
-	
 	
 }	

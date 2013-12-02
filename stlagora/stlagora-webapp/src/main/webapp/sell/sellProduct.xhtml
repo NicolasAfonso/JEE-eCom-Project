@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF tutorial</title>
+</h:head>
+<h:body>
+<h:commandButton action="/home?faces-redirect=true" value="home" />
+<h:form enctype="multipart/form-data">  
+  
+    <p:messages showDetail="true"/>  
+  	
+
+    		<p:panel>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="name" value="Product name:" />
+				<p:inputText value="#{sellController.name}" required="true" id="name" label="name" />
+				<h:outputLabel for="price" value="Price:" />
+				<p:inputText value="#{sellController.price}" required="true" id="price" label="price" />
+				<!-- <h:outputLabel for="Categorie" value="Categorie:" /> -->
+<!-- 				<p:selectOneListbox id="scroll" value="#{sellController.categories}" var="c" style="height:200px">  
+            <f:selectItems value="#{sellController.categories}" var="c" itemLabel="#{c}" itemValue="#{c}" />   
+            <p:column>  
+                #{c.categoryName}
+            </p:column>  
+        </p:selectOneListbox>   -->
+			</h:panelGrid>
+			<p:fileUpload value="#{sellController.file}" mode="simple"/>  
+		</p:panel>
+    
+    
+    
+    
+    <h:commandButton value="Submit" actionListener="#{sellController.validateSell()}"/>  
+  	
+  	
+</h:form> 
+
+	
+</h:body>
+</html>

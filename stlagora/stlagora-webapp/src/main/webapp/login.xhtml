@@ -10,26 +10,42 @@
 	<title>JSF tutorial</title>
 </h:head>
 <h:body>
-<h:outputText value="#{sessionUser.loggedIn}" /> 
-<h:form>
-<h:commandButton action="home" value="home" />
-</h:form>
-<h:form>
-		<h:panelGrid columns="2" cellpadding="5">
-			<h:outputLabel for="username" value="Username:" />
-			<p:inputText value="#{loginController.username}" id="username"
-				required="true" label="username" />
-
-			<h:outputLabel for="password" value="Password:" />
-			<h:inputSecret value="#{loginController.password}" id="password"
-				required="true" label="password" />
-
-			<f:facet name="footer">
-				<p:commandButton id="loginButton" value="Login"
-					action="#{loginController.login}" />
-			</f:facet>
-		</h:panelGrid>
-
+	<h:outputText value="#{sessionUser.loggedIn}" />
+	<h:form>
+		<h:commandButton action="home?faces-redirect=true" value="home" />
 	</h:form>
-	</h:body>
+	<h:form>
+		<p:messages showDetail="true" />
+		<p:panel>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="username" value="Username:" />
+				<p:inputText value="#{loginController.username}" id="username"
+					required="true" label="username" />
+
+				<h:outputLabel for="password" value="Password:" />
+				<h:inputSecret value="#{loginController.password}" id="password"
+					required="true" label="password" />
+			</h:panelGrid>
+			<p:commandButton value="Login" ajax="false" action="#{loginController.login}" />
+		</p:panel>
+	</h:form>
+
+	<h:form>
+		<p:inputText value="#{manageProfileController.username}" id="username"
+			required="true" label="username" />
+		<p:inputText value="#{manageProfileController.name}" id="name"
+			required="true" label="name" />
+		<p:inputText value="#{manageProfileController.surname}" id="surname"
+			required="true" label="surname" />
+		<p:inputText value="#{manageProfileController.email}" id="email"
+			type="email" required="true" label="email" />
+		<p:inputText value="#{manageProfileController.password}" id="password"
+			required="true" label="password" />
+		<p:inputText value="#{manageProfileController.phoneNumber}"
+			id="phoneNumber" required="true" label="phoneNumber" />
+		<h:commandButton action="#{manageProfileController.createUser()}"
+			value="Create" />
+	</h:form>
+
+</h:body>
 </html>

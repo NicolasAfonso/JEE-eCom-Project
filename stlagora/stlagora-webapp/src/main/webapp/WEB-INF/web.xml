@@ -15,6 +15,19 @@
 	<welcome-file-list>
 		<welcome-file>home.xhtml</welcome-file>
 	</welcome-file-list>
+	<!-- Login filter -->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.stlagora.filters.LoginFilter</filter-class>
+    </filter>
+    <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/profile/*</url-pattern>
+        <url-pattern>/purchase/*</url-pattern>
+        <url-pattern>/sell/*</url-pattern>
+    </filter-mapping>
+
 
 	<!-- Déclaration du contrôleur central de JSF : la FacesServlet -->
 	<servlet>

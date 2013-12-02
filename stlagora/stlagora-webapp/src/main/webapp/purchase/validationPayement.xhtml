@@ -8,7 +8,7 @@
 	<title>JSF tutorial</title>
 </h:head>
 <h:form>
-<h:commandButton action="/home" value="home" />
+<h:commandButton action="/home?faces-redirect=true" value="home" />
 </h:form>
 <h:body>
 	<h2>Thanks #{sessionUser.user.email}</h2>
