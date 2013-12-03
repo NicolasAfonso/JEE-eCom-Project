@@ -18,9 +18,13 @@ import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.Product;
 
 @ManagedBean(name = "searchController", eager = true)
-@RequestScoped
+@SessionScoped
 public class SearchController implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	CategoryDao categoryDao = new CategoryDaoImpl();
 	ProductDao productDao = new ProductDaoImpl();	
 	UserDao userDao = new UserDaoImpl();
@@ -28,11 +32,19 @@ public class SearchController implements Serializable {
 	@ManagedProperty(value="#{results}")
 	private List<Product> results = new ArrayList<Product>();
 	
+	private String search ; 
+	
+	public String moveToSearch(){
+		return "/search/resultSearch?faces-redirect=true";
+	}
+	
+
 	/**
 	 * @return the t
 	 */
 	public List<Product> getResults() {
-		results = productDao.findAll();
+		search = "p";
+		results = productDao.findBySearch(search);
 		return results;
 	}
 
@@ -43,4 +55,19 @@ public class SearchController implements Serializable {
 		this.results = results;
 	}
 
+	/**
+	 * @return the search
+	 */
+	public String getSearch() {
+		return search;
+	}
+
+	/**
+	 * @param search the search to set
+	 */
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
+	
 }

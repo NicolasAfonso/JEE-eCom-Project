@@ -28,4 +28,5 @@ public interface ProductDao extends GenericDao<Product> {
 	public List<Product> findByGlobalMark(Float globalMark);
 	public List<Product> findByProductStatus(PRODUCT_STATUS status);
 	public List<Product> findByProductType(TYPE_FICHIER type);
+	public List<Product> findBySearch(String search);
 }

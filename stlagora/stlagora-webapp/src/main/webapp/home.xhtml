@@ -25,8 +25,11 @@
 						<h:graphicImage name="#{images.logo}" />
 				</p:commandLink>
 				</td>
-				<td id="menu_search"><h:inputText styleClass="search"></h:inputText>
-				</td>
+				<h:form>
+				<td id="menu_search"><h:inputText styleClass="search" value="#{searchController.search}"></h:inputText>
+								<h:commandButton action="#{searchController.moveToSearch}"  style="display: none" value="" />
+								</td>
+				</h:form>
 				<td class="menu_shortcuts">
 				<p:commandLink action="#{homeController.moveToSell}" styleClass="green_bold">
 						<h:graphicImage name="#{images.sell}" />
@@ -58,7 +61,7 @@
 	</div>
 	<div id="pagecontent">
 		<h3>
-		#{general.welcomeMessage} #{general.tutu}
+		#{general.welcomeMessage}
 	</h3>
 	<h:form>
 		<h:commandButton action="#{homeController.moveToMyProfile}"
@@ -68,10 +71,8 @@
 
 		<h:commandButton action="#{homeController.moveToCart}" value="Cart" />
 		<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
-		<h:commandButton styleClass="button"
-			action="#{loginController.logout}" value="logout" />
-		<p:commandButton styleClass="button"
-			action="#{homeController.initBDD}" value="initBDD" />
+		<h:commandButton action="#{loginController.logout}" value="logout" />
+		<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
 	</h:form>
 		</div>
 </h:body>
