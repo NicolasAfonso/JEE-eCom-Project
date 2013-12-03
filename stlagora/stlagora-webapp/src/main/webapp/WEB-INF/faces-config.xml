@@ -28,5 +28,9 @@
 			<base-name>messages.sell.sell_messages</base-name>
 			<var>sell</var>
 		</resource-bundle>
+		<resource-bundle>
+			<base-name>conf.images</base-name>
+			<var>images</var>
+		</resource-bundle>
 	</application>
 </faces-config>

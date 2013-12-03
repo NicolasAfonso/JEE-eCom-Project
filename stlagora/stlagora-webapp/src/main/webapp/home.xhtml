@@ -16,47 +16,46 @@
 </style>
 </h:head>
 <h:body>
-	<header>
-	<h:form>
-	<table class="auto-style1">
-		<tr>
-			<td id="menu_logo">
-			<p:commandLink action="home">
-					<h:graphicImage name="./images/logo.png" />
-			</p:commandLink>
-			</td>
-			<td id="menu_search"><h:inputText styleClass="searchbar"></h:inputText>
-				<!--                         <asp:TextBox ID="TextBox1" runat="server" CssClass="searchbar"></asp:TextBox> -->
-			</td>
-			<td class="menu_shortcuts">
-			<p:commandLink action="#{homeController.moveToSell}">
-					<h:graphicImage name="./images/CurrencyEuro2.png" />
-					#{general.sellLabel}
-			</p:commandLink>
-			</td>
-			<td class="menu_shortcuts">
-			<div id="username">
-    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" action="#{homeController.moveToMyProfile}">
-					<h:graphicImage name="./images/User2.png" />
-					#{general.myProfile}
-			</p:commandLink>		
-
-				<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
-					#{sessionUser.user.pseudo}
-					<h:graphicImage name="./images/Arrow2.png" />
-			</p:commandLink>
-				</div></td>
-			<td class="menu_shortcuts">
-			<p:commandLink action="#{homeController.moveToCart}">
-					<h:graphicImage name="./images/Cart2.png"> </h:graphicImage>		
-					#{general.myCart} - #{cart.numberArticle}
-			</p:commandLink>
-			</td>
-		</tr>
-	</table>
-	</h:form>
-	<div id="menu">menu</div>
-	</header>
+	<div id="header">
+		<h:form>
+		<table class="auto-style1">
+			<tr>
+				<td id="menu_logo">
+				<p:commandLink action="home">
+						<h:graphicImage name="#{images.logo}" />
+				</p:commandLink>
+				</td>
+				<td id="menu_search"><h:inputText styleClass="search"></h:inputText>
+				</td>
+				<td class="menu_shortcuts">
+				<p:commandLink action="#{homeController.moveToSell}" styleClass="green_bold">
+						<h:graphicImage name="#{images.sell}" />
+						#{general.sellLabel}
+				</p:commandLink> 
+				</td>
+				<td class="menu_shortcuts">
+				<div id="username">
+	    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" action="#{homeController.moveToMyProfile}">
+						<h:graphicImage name="#{images.account}" />
+						#{general.myProfile}
+				</p:commandLink>		
+	
+					<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
+						#{sessionUser.user.pseudo}
+						<h:graphicImage name="#{images.profile_arrow}" /> 
+				</p:commandLink>
+					</div></td>
+				<td class="menu_shortcuts">
+				<p:commandLink action="#{homeController.moveToCart}">
+						<h:graphicImage name="#{images.cart}"> </h:graphicImage>		
+						#{general.myCart} - #{cart.numberArticle}
+				</p:commandLink>
+				</td>
+			</tr>
+		</table>
+		</h:form>
+		<div id="menu">menu</div>
+	</div>
 	<div id="pagecontent">
 		<h3>
 		#{general.welcomeMessage} #{general.tutu}

@@ -1,12 +1,16 @@
 @font-face
 {
     font-family: "EurostileT";
-    src: url("EUROSTILE_REGULAR_FS.TTF") format('truetype');
+    src: url("#{resource['fonts/EUROSTILE_REGULAR_FS.TTF']}") format('truetype');
+}
+
+html
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 }
 
 body
 {
-    font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     height: 100%;
     width: 100%;
     min-width: 1000px;
@@ -26,7 +30,23 @@ table
     width: 100%;
 }
 
-header
+.button
+{
+	background: green;
+	border: 2px solid red;
+	height: 50px;
+	width: 50px;
+}
+
+.button:hover
+{
+	background: blue;
+	border: 2px solid red;
+	height: 50px;
+	width: 50px;
+}
+
+#header
 {
     height: 110px;
     width: 100%;
@@ -53,9 +73,24 @@ header
     max-width: 55%;
 }
 
-.searchbar
-{
-    width: 95%;
+.search {
+	width: 95%;
+/* 	border: 2px solid red; */
+ 	background: url("#{resource['images/search.png']}") no-repeat 10px 6px #fcfcfc;
+    border: 1px solid #d1d1d1;
+    color: #bebebe;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
 }
 
 #username
@@ -85,7 +120,7 @@ header
     text-align: center;
 }
 
-footer
+#footer
 {
     height: 10%;
     font-size: small;
