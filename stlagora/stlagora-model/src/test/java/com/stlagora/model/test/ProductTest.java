@@ -24,6 +24,7 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
@@ -44,8 +45,8 @@ public class ProductTest {
 		categoryDao = new CategoryDaoImpl(persistanceUnit);
 		opinionDao = new OpinionDaoImpl(persistanceUnit);
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu","test", new Date(0), "00000000", ROLE.MEMBER));
-		userDao.create(new User("toto", "toto", "toto", "toto", "test",new Date(0), "00000000", ROLE.MEMBER));
+		userDao.create(new User("tutu", "tutu", "tutu", "tutu","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.create(new User("toto", "toto", "toto", "toto", "test",new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		
 		//Create Category for test
 		categoryDao.create(new Category("Test","TestObj"));

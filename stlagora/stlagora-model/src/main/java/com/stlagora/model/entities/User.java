@@ -23,6 +23,7 @@ import javax.persistence.Table;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 @Entity
@@ -38,8 +39,8 @@ public class User implements Serializable {
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "pseudo", nullable = false, unique=true) 
-	private String pseudo;
+	@Column(name = "login", nullable = false, unique=true) 
+	private String login;
 	
 	@Column(name = "surname", nullable = false) 
 	private String surname;
@@ -59,8 +60,20 @@ public class User implements Serializable {
 	@Column(name = "phoneNumber", nullable = false) 
 	private String phoneNumber;
 	
+	@Column(name = "siret" , nullable = true)
+	private String siret ;
+	
+	@Column(name="companyName")
+	private String companyName; 
+	
+	@Column (name="rib",nullable=true)
+	private String rib; 
+	
 	@Enumerated(EnumType.STRING)
 	private ROLE role;
+	
+	@Enumerated(EnumType.STRING)
+	private ACCOUNT_TYPE accountType; 
 	
 	@OneToMany(mappedBy = "usermarked", cascade=CascadeType.ALL)
 	private List<Opinion> opinions = new ArrayList<Opinion>(); 
@@ -79,15 +92,19 @@ public class User implements Serializable {
 	 * @param phoneNumber
 	 * @param role
 	 */
-	public User(String pseudo, String surname, String firstname, String email, String password,Date subscriptionDate, String phoneNumber, ROLE role) {
+	public User(String login, String surname, String firstname, String email, String password,Date subscriptionDate, String phoneNumber,String siret,String companyName,String rib,ACCOUNT_TYPE accountType, ROLE role) {
 		super();
-		this.pseudo = pseudo;
+		this.login = login;
 		this.surname = surname;
 		this.firstname = firstname;
 		this.email = email;
 		this.subscriptionDate = subscriptionDate;
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;	
+		this.companyName = companyName; 
 		this.role = role;
+		this.siret = siret;
+		this.accountType = accountType;
+		this.rib = rib; 
 		
 		//Crypt Password	 
 		this.password = new String(DigestUtils.sha512(password));
@@ -111,15 +128,15 @@ public class User implements Serializable {
 	/**
 	 * @return the pseudo
 	 */
-	public String getPseudo() {
-		return pseudo;
+	public String getLogin() {
+		return login;
 	}
 
 	/**
 	 * @param pseudo the pseudo to set
 	 */
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	/**
@@ -232,7 +249,64 @@ public class User implements Serializable {
 	 */
 	public void setPassword(String password) {
 		this.password = new String(DigestUtils.sha512(password));
+	}
+
+	/**
+	 * @return the siret
+	 */
+	public String getSiret() {
+		return siret;
+	}
+
+	/**
+	 * @param siret the siret to set
+	 */
+	public void setSiret(String siret) {
+		this.siret = siret;
+	}
+
+	/**
+	 * @return the companyName
+	 */
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	/**
+	 * @param companyName the companyName to set
+	 */
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	/**
+	 * @return the rib
+	 */
+	public String getRib() {
+		return rib;
+	}
+
+	/**
+	 * @param rib the rib to set
+	 */
+	public void setRib(String rib) {
+		this.rib = rib;
+	}
+
+	/**
+	 * @return the accountType
+	 */
+	public ACCOUNT_TYPE getAccountType() {
+		return accountType;
+	}
+
+	/**
+	 * @param accountType the accountType to set
+	 */
+	public void setAccountType(ACCOUNT_TYPE accountType) {
+		this.accountType = accountType;
 	} 
+	
 	
 	
 }	

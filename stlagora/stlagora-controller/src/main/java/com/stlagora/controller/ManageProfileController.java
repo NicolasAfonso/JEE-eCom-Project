@@ -16,6 +16,7 @@ import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 import com.stlagora.model.entities.Product;
 
@@ -43,7 +44,7 @@ public class ManageProfileController implements Serializable {
 	private List<Transaction> transactionBuy = new ArrayList<Transaction>() ;
 	private List<Transaction> transactionSold = new ArrayList<Transaction>();
 	public String createUser(){
-		userDao.create(new User(username,name,surname,email,password,new Date(System.currentTimeMillis()),phoneNumber,ROLE.MEMBER));
+		userDao.create(new User(username,name,surname,email,password,new Date(System.currentTimeMillis()),phoneNumber,"","","",ACCOUNT_TYPE.PRIVATE,ROLE.MEMBER));
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
 		sessionUser.setUser(userDao.findByPseudo(username));

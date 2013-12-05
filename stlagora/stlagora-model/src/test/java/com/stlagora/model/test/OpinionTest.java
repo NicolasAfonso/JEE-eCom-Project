@@ -21,6 +21,7 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
@@ -42,8 +43,8 @@ public class OpinionTest {
 		categoryDao.create(new Category("Test","test-desc"));
 
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000", ROLE.MEMBER));
-		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111", ROLE.MEMBER));
+		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		
 		Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tata@tata.com");
