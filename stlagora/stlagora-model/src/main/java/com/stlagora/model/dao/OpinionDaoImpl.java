@@ -3,12 +3,13 @@ package com.stlagora.model.dao;
 import java.sql.Date;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
-
+@Stateless
 public class OpinionDaoImpl extends GenericDaoImpl< Opinion > implements OpinionDao {
 
 	public OpinionDaoImpl(String persistanceUnit) {
@@ -16,7 +17,7 @@ public class OpinionDaoImpl extends GenericDaoImpl< Opinion > implements Opinion
 	}
 	
 	public OpinionDaoImpl(){
-		super("STLAGORA_PU");
+		super();
 	}
 
 	public List<Opinion> findByDate(Date date) {

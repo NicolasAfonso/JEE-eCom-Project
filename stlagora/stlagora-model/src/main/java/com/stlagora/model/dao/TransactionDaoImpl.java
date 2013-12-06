@@ -3,12 +3,13 @@ package com.stlagora.model.dao;
 import java.sql.Date;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
-
+@Stateless
 public class TransactionDaoImpl extends GenericDaoImpl<Transaction> implements TransactionDao{
 
 	/**
@@ -17,7 +18,7 @@ public class TransactionDaoImpl extends GenericDaoImpl<Transaction> implements T
 	private static final long serialVersionUID = 1L;
 	
 	public TransactionDaoImpl(){
-		super("STLAGORA_PU");
+		super();
 	}
 	
 	public TransactionDaoImpl(String persistanceUnit)

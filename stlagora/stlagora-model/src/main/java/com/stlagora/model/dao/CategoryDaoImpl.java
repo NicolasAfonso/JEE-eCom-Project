@@ -2,6 +2,7 @@ package com.stlagora.model.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import org.apache.log4j.lf5.viewer.categoryexplorer.CategoryImmediateEditor;
@@ -9,7 +10,7 @@ import org.apache.log4j.lf5.viewer.categoryexplorer.CategoryImmediateEditor;
 import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 
-
+@Stateless
 public class CategoryDaoImpl extends GenericDaoImpl< Category > implements CategoryDao{
 
 	/**
@@ -23,7 +24,7 @@ public class CategoryDaoImpl extends GenericDaoImpl< Category > implements Categ
 	
 	public CategoryDaoImpl()
 	{
-		super("STLAGORA_PU");
+		super();
 	}
 	
 	public Category findByName(String categoryName) {

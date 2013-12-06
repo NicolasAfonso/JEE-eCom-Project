@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Local;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.JoinColumn;
@@ -18,7 +19,6 @@ import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public interface ProductDao extends GenericDao<Product> {
 
-	
 	public Product findByName(String name);
 	public List<Product> findByPrice(Float price) ; 
 	public List<Product> findBySeller(User seller);

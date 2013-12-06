@@ -8,12 +8,13 @@ package com.stlagora.model.dao;
 import java.sql.Date;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ROLE;
-
+@Stateless
 public class UserDaoImpl extends GenericDaoImpl< User > implements UserDao{
 
 	/**
@@ -22,7 +23,7 @@ public class UserDaoImpl extends GenericDaoImpl< User > implements UserDao{
 	private static final long serialVersionUID = 1L;
 	
 	public UserDaoImpl(){
-		super("STLAGORA_PU");
+		super();
 	}
 	
 	public UserDaoImpl(String persistanceUnit)

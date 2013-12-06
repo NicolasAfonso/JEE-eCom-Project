@@ -3,6 +3,8 @@ package com.stlagora.model.dao;
 import java.sql.Date;
 import java.util.List;
 
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import com.stlagora.model.entities.Category;
@@ -10,7 +12,7 @@ import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
-
+@Stateless
 public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDao {
 
 	/**
@@ -19,7 +21,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 	private static final long serialVersionUID = 1L;
 	
 	public ProductDaoImpl(){
-		super("STLAGORA_PU");
+		super();
 	}
 	
 	public ProductDaoImpl(String persistanceUnit){

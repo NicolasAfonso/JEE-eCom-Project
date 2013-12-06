@@ -2,6 +2,7 @@ package com.stlagora.model.dao;
 
 import java.util.Collection;
 import java.util.List;
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -11,18 +12,26 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-public class GenericDaoImpl<T> implements GenericDao<T> {
+public class GenericDaoImpl<T> implements GenericDao<T>,Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@PersistenceContext(unitName="STLAGORA_PU")
     protected EntityManager em;
     private Class type;
     public GenericDaoImpl(String persistanceUnit){
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistanceUnit);   
     	this.em = emf.createEntityManager(); 
+    	 Type t = getClass().getGenericSuperclass();
+         ParameterizedType pt = (ParameterizedType) t;
+         type = (Class) pt.getActualTypeArguments()[0];
+
+    }
+    
+    public GenericDaoImpl(){
     	 Type t = getClass().getGenericSuperclass();
          ParameterizedType pt = (ParameterizedType) t;
          type = (Class) pt.getActualTypeArguments()[0];
@@ -63,7 +72,11 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 		}
 		em.getTransaction().commit();
 	}
+	
 
+    public EntityManager getEntityManager() {
+        return em;
+    }
 
 	
 	

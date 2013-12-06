@@ -16,4 +16,7 @@ public interface GenericDao<T> extends Serializable{
 	public void update(T object);
 	
 	public void delete(T object);
+
+	public EntityManager getEntityManager();
+
 }
