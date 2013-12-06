@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<h:form>
+			<div id="pagecontent">
+				<div class="form_container">
+				
+					<div class="gray_background">
+<!-- 						primefaces : tri -->
+						<h:outputLabel styleClass="small bold" value="#{general.search1} #{general.number} #{general.search2}" />
+						<br />
+						<h:outputText styleClass="small" value="#{general.selecting}" />  
+				        <p:selectOneMenu styleClass="small" id="selectionSorting">  
+				            <f:selectItem itemLabel="#{general.increasingPriceSelecting}" itemValue="1" />  
+				            <f:selectItem itemLabel="#{general.decreasingPriceSelecting}" itemValue="2" />  
+				            <f:selectItem itemLabel="#{general.sellerSelecting}" itemValue="3" /> 
+				        </p:selectOneMenu> 
+					</div>
+					<br />
+					
+					<p:commandLink id="linkPagesUp">
+						<h:outputText styleClass="hyperlink_prevous" value="#{general.linkPrevous}" />
+
+						<h:outputText styleClass="hyperlink_numberPage" value="#{general.linkNumberPage}" />
+
+						<h:outputText styleClass="hyperlink_linkNext" value="#{general.linkNext}" />
+					</p:commandLink>
+					
+					<div class="product_search">
+						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.productInfo}" />
+						<br />
+						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
+						<br />
+						<h:commandButton id="buttonAdd" value="#{general.buttonAddcart}" styleClass="button_add_cart"/>
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.labelVendeur}"/>
+						<h:outputLabel styleClass="small" value="#{general.nameVendeur}"/>
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.labelNote}"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<br />
+						<p:commandLink id="linkOpinion">
+							<h:outputText styleClass="hyperlink_classic" value="#{general.linkOpinion}" />
+						</p:commandLink>
+					</div>
+					<br />
+					
+					<p:commandLink id="linkPagesDown">
+						<h:outputText styleClass="hyperlink_page" value="#{general.linkPrevous}" />
+
+						<h:outputText styleClass="hyperlink_page" value="#{general.linkNumberPage}" />
+
+						<h:outputText styleClass="hyperlink_page" value="#{general.linkNext}" />
+					</p:commandLink>
+					
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<h:form>
+			<div id="pagecontent">
+				<div class="form_container">
+				
+					<div class="gray_background">
+<!-- 						TITRE -->
+						<h:outputLabel styleClass="large bold" value="#{general.recap}" />
+						<br />
+						<h:graphicImage styleClass="secure_image" name="#{general.nameImageSecure}" />
+						
+					</div>
+					<br />
+					
+					<div class="product_search">
+						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.productInfo}" />
+						<h:outputLabel styleClass="small" value="#{general.labelVendu}"/>
+						<h:outputLabel styleClass="small" value="#{general.nameVendeur}"/>
+						<br />
+						<h:outputLabel styleClass="small gray" value="#{general.labelDelete}"/>
+						<h:outputLabel styleClass="small bold" value="#{general.price}" />
+					</div>
+					<br />
+					
+					<div class="gray_background">
+<!-- 						TITRE -->
+						<h:outputLabel styleClass="large bold red" value="#{general.totalPrice}" />	
+						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
+											
+					</div>
+					
+					<h:commandButton id="button_validate" value="#{general.validateCommand}" styleClass="button_classic"/>
+					<br />
+					<h:commandButton id="button_backShopping" value="#{general.backShopping}" styleClass="button_back"/>
+					
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<h:form>
+			<div id="pagecontent">
+				<div class="form_container">
+					
+					<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+					<br />
+					<div class="form_border">
+					
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<p:inputText id="name_contact" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<p:inputText id="name_contact" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<p:selectOneMenu styleClass="small" id="selectionSorting">  
+				            <f:selectItem itemLabel="#{general.increasingPriceSelecting}" />  
+				            <f:selectItem itemLabel="#{general.decreasingPriceSelecting}" itemValue="2" />  
+				            <f:selectItem itemLabel="#{general.sellerSelecting}" itemValue="3" /> 
+				        </p:selectOneMenu> 
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<p:inputText id="name_contact" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<br />
+						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						<br />
+						
+					</div>
+					<h:outputLabel value="#{general.mandatoryField}" styleClass="small" />
+					<br />
+						
+					<h:commandButton id="download" value="#{general.buttonDownload}" styleClass="button_download"/>
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</html>
