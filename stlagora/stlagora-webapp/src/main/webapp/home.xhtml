@@ -28,30 +28,35 @@
 				<h:form>
 				<td id="menu_search"><h:inputText styleClass="search" value="#{searchController.search}"></h:inputText>
 								<h:commandButton action="#{searchController.moveToSearch}"  style="display: none" value="" />
-								</td>
+				</td>
 				</h:form>
 				<td class="menu_shortcuts">
-				<p:commandLink action="#{homeController.moveToSell}" styleClass="green_bold">
+				<p:commandLink action="#{homeController.moveToSell}" styleClass="hyperlink_title">
 						<h:graphicImage name="#{images.sell}" />
 						#{general.sellLabel}
-				</p:commandLink> 
+				</p:commandLink>
 				</td>
 				<td class="menu_shortcuts">
 				<div id="username">
-	    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" action="#{homeController.moveToMyProfile}">
+	    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" styleClass="hyperlink_title" action="#{homeController.moveToMyProfile}">
 						<h:graphicImage name="#{images.account}" />
 						#{general.myProfile}
-				</p:commandLink>		
+				</p:commandLink>
 	
 					<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
-						#{sessionUser.user.pseudo}
+						#{sessionUser.user.login}
 						<h:graphicImage name="#{images.profile_arrow}" /> 
 				</p:commandLink>
 					</div></td>
 				<td class="menu_shortcuts">
-				<p:commandLink action="#{homeController.moveToCart}">
+				<p:commandLink styleClass="hyperlink_title" action="#{homeController.moveToCart}">
 						<h:graphicImage name="#{images.cart}"> </h:graphicImage>		
-						#{general.myCart} - #{cart.numberArticle}
+						#{general.myCart}
+<!-- 						- #{cart.numberArticle} -->
+				</p:commandLink>
+				<br />
+				<p:commandLink styleClass="hyperlink" action="#{homeController.moveToCart}">	
+						#{cart.numberArticle} article(s)
 				</p:commandLink>
 				</td>
 			</tr>
@@ -69,7 +74,7 @@
 		<h:commandButton action="#{homeController.moveToSearch}"
 			value="Search" />
 
-		<h:commandButton action="#{homeController.moveToCart}" value="Cart" />
+		<h:commandButton styleClass="" action="#{homeController.moveToCart}" value="Cart" /> 
 		<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
 		<h:commandButton action="#{loginController.logout}" value="logout" />
 		<h:commandButton action="#{homeController.initBDD}" value="initBDD" />

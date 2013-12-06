@@ -47,7 +47,7 @@ public class ManageProfileController implements Serializable {
 		userDao.create(new User(username,name,surname,email,password,new Date(System.currentTimeMillis()),phoneNumber,"","","",ACCOUNT_TYPE.PRIVATE,ROLE.MEMBER));
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
-		sessionUser.setUser(userDao.findByPseudo(username));
+		sessionUser.setUser(userDao.findByLogin(username));
 		return "/profile/myProfile?faces-redirect=true";
 	}
 	

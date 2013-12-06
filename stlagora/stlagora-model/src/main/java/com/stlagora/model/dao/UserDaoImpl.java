@@ -31,9 +31,9 @@ public class UserDaoImpl extends GenericDaoImpl< User > implements UserDao{
 	}
 	
 	
-	public User findByPseudo(String pseudo) {
-		Query q = em.createQuery("SELECT u FROM User u WHERE u.pseudo =:pseudo");
-		q.setParameter("pseudo", pseudo);
+	public User findByLogin(String login) {
+		Query q = em.createQuery("SELECT u FROM User u WHERE u.login =:login");
+		q.setParameter("login", login);
 		return (User) q.getSingleResult();
 	}
 

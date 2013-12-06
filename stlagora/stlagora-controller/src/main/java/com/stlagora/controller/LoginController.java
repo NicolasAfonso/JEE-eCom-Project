@@ -59,7 +59,7 @@ public class LoginController implements Serializable {
 		if(user==null)
 		{
 			try{
-				user = userDao.findByPseudo(username);	
+				user = userDao.findByLogin(username);	
 			}catch(Exception e){
 				log.error("no exist");
 			}

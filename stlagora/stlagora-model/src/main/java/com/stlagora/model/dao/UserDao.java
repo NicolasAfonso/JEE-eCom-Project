@@ -14,7 +14,7 @@ import com.stlagora.model.entities.enumerate.ROLE;
 public interface UserDao extends GenericDao<User>  {
 	
 	
-	public User findByPseudo(String pseudo);
+	public User findByLogin(String login);
 	public List<User> findBySurname(String surname);
 	public List<User> findByFirstname(String firstname);
 	public User findByEmail(String email);
