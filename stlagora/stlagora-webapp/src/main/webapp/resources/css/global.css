@@ -1,50 +1,101 @@
 @font-face
 {
     font-family: "EurostileT";
-    src: url("#{resource['fonts/EUROSTILE_REGULAR_FS.TTF']}") format('truetype');
+    src: url("#{resource['fonts/EurostileT.ttf']}") format('truetype');
+    font-family: "EurostileLT";
+    src: url("#{resource['fonts/Eurostile_LT_Medium.ttf']}") format('truetype');
 }
 
 html
 {
-	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	height: 100%;
+    width: 100%;
 }
 
 body
 {
-    height: 100%;
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.0em;
+	height: 100%;
     width: 100%;
     min-width: 1000px;
     padding: 0;
     margin: 0;
 }
 
-table
+form
 {
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-#form
-{
-    height: 100%;
+	height: 100%;
     width: 100%;
 }
 
-.button
+/* BASICS */
+
+.x-small
 {
-	background: green;
-	border: 2px solid red;
-	height: 50px;
-	width: 50px;
+	font-size: 8px;
 }
 
-.button:hover
+.small
 {
-	background: blue;
-	border: 2px solid red;
-	height: 50px;
-	width: 50px;
+	font-size: 10px;
 }
+
+.large
+{
+	font-size: 14px;
+}
+
+.x-large
+{
+	font-size: 16px;
+}
+
+.gray
+{
+	color: gray;
+}
+
+.red
+{
+	color: #dc0800;
+}
+
+.white
+{
+	color: white;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.italic
+{
+	font-style: italic;
+}
+
+.underlined
+{
+	text-decoration: underline;
+}
+
+h1
+{
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h2
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	color: gray;
+}
+
+/* HEADER */
 
 #header
 {
@@ -75,7 +126,6 @@ table
 
 .search {
 	width: 95%;
-/* 	border: 2px solid red; */
  	background: url("#{resource['images/search.png']}") no-repeat 10px 6px #fcfcfc;
     border: 1px solid #d1d1d1;
     color: #bebebe;
@@ -106,19 +156,200 @@ table
     width: 12%;
 }
 
+/* BODY */
+
 #page
 {
-    height: 1000px;
     min-height: 90%;
     background-color: white;
-    padding: 20px;
 }
 
 #pagecontent
 {
-    padding-top: 110px;
-    text-align: center;
+    padding: 110px 20px 20px 20px;
 }
+
+/* HYPERLINKS */
+
+.hyperlink_header_titles
+{
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.hyperlink_header_subtitles
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	color: #0079db;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.hyperlink_classic
+{
+	color: #286bcc;
+}
+
+.hyperlink_page
+{
+	color: gray;
+	text-decoration: none;
+}
+
+/* BACKGROUNDS */
+
+.gray_background
+{
+	padding: 5px 20px;
+	background-color: #f1f1f1;
+}
+
+/* TEXTS */
+
+.price
+{
+	color: #dc0800;
+	font-size: x-large;
+	font-weight: bold;
+}
+
+/* FORMS */
+
+.form_border
+{
+	padding: 15px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #92d050;
+}
+
+/* BUTTONS */
+
+.button_classic
+{
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
+	background-image: -webkit-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #6ecc59;
+	font-weight: bold;
+}
+
+.button_classic:hover
+{
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #C2FF81 0%, #74C14A 100%);
+	background-image: -webkit-linear-gradient(bottom, #C2FF81 0%, #74C14A 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #6ecc59;
+	font-weight: bold;
+}
+
+.button_back
+{
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+	font-weight: bold;
+}
+
+.button_back:hover
+{
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+	font-weight: bold;
+}
+
+.button_delete
+{
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #dc0800 0%, #f19c99 100%);
+	background-image: -webkit-linear-gradient(bottom, #dc0800 0%, #f19c99 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #dc0800;
+	font-weight: bold;
+	color: white;
+}
+
+.button_delete:hover
+{
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #f19c99 0%, #dc0800 100%);
+	background-image: -webkit-linear-gradient(bottom, #f19c99 0%, #dc0800 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #dc0800;
+	font-weight: bold;
+	color: white;
+}
+
+.button_browse
+{
+	background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+}
+
+.button_browse:hover
+{
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+}
+
+.button_add_card
+{
+	height: 40px;
+	width: 120px;
+}
+
+/* IMAGES */
+
+.star
+{
+	height: 15px;
+	width: 15px;
+}
+
+.product_search_image
+{
+	max-height: 100px;
+	max-width: 130px;
+}
+
+.product_card_image
+{
+	max-height: 250px;
+	max-width: 350px;
+}
+
+/* FOOTER */
 
 #footer
 {
@@ -126,25 +357,4 @@ table
     font-size: small;
     text-align: center;
     background-color: lightblue;
-}
-
-/* OTHERS */
-
-.green_bold
-{
-    font-weight: bold;
-    color: #6ecc59;
-}
-
-.blue_bold_italic
-{
-    color: #0079db;
-    font-style: italic;
-    font-weight: bold;
-}
-
-.blue_underline
-{
-    color: #0079db;
-    text-decoration: underline;
 }

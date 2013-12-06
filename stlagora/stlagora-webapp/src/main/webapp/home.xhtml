@@ -16,8 +16,9 @@
 </style>
 </h:head>
 <h:body>
+<h:form>
+
 	<div id="header">
-		<h:form>
 		<table class="auto-style1">
 			<tr>
 				<td id="menu_logo">
@@ -31,54 +32,88 @@
 				</td>
 				</h:form>
 				<td class="menu_shortcuts">
-				<p:commandLink action="#{homeController.moveToSell}" styleClass="hyperlink_title">
+				<p:commandLink action="#{homeController.moveToSell}" styleClass="hyperlink_header_titles">
 						<h:graphicImage name="#{images.sell}" />
 						#{general.sellLabel}
 				</p:commandLink>
 				</td>
 				<td class="menu_shortcuts">
 				<div id="username">
-	    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" styleClass="hyperlink_title" action="#{homeController.moveToMyProfile}">
+	    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" styleClass="hyperlink_header_titles" action="#{homeController.moveToMyProfile}">
 						<h:graphicImage name="#{images.account}" />
 						#{general.myProfile}
 				</p:commandLink>
 	
-					<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
+				<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
 						#{sessionUser.user.login}
 						<h:graphicImage name="#{images.profile_arrow}" /> 
 				</p:commandLink>
 					</div></td>
 				<td class="menu_shortcuts">
-				<p:commandLink styleClass="hyperlink_title" action="#{homeController.moveToCart}">
+				<p:commandLink styleClass="hyperlink_header_titles" action="#{homeController.moveToCart}">
 						<h:graphicImage name="#{images.cart}"> </h:graphicImage>		
 						#{general.myCart}
 <!-- 						- #{cart.numberArticle} -->
 				</p:commandLink>
 				<br />
-				<p:commandLink styleClass="hyperlink" action="#{homeController.moveToCart}">	
+				<p:commandLink styleClass="hyperlink_header_subtitles" action="#{homeController.moveToCart}">	
 						#{cart.numberArticle} article(s)
 				</p:commandLink>
 				</td>
 			</tr>
 		</table>
-		</h:form>
 		<div id="menu">menu</div>
 	</div>
-	<div id="pagecontent">
-		<h3>
-		#{general.welcomeMessage}
-	</h3>
-	<h:form>
-		<h:commandButton action="#{homeController.moveToMyProfile}"
-			value="Profile" />
-		<h:commandButton action="#{homeController.moveToSearch}"
-			value="Search" />
-
-		<h:commandButton styleClass="" action="#{homeController.moveToCart}" value="Cart" /> 
-		<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
-		<h:commandButton action="#{loginController.logout}" value="logout" />
-		<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
-	</h:form>
+	
+	<div id="page">
+		<div id="pagecontent">
+			<h3>
+				#{general.welcomeMessage}
+			</h3>
+			<h:commandButton action="#{homeController.moveToMyProfile}"
+				value="Profile" />
+			<h:commandButton action="#{homeController.moveToSearch}"
+				value="Search" />
+	
+			<h:commandButton styleClass="button_classic" action="#{homeController.moveToCart}" value="Cart" /> 
+			<h:commandButton styleClass="button_back" action="#{homeController.moveToSell}" value="Sell" />
+			<h:commandButton styleClass="button_delete" action="#{loginController.logout}" value="logout" />
+			<h:commandButton styleClass="button_browse" action="#{homeController.initBDD}" value="initBDD" />
+			<br />
+			<p:commandLink styleClass="hyperlink_page" action="#{homeController.moveToCart}">
+				toto
+			</p:commandLink>
+			
+			<div class="form_border">
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+				toto<br />
+			</div>
+			
+			<div class="gray_background">
+				<h1>Vendez vos produits</h1>
+<!-- 				<h2>Et me faites pas chier</h2> -->
+			</div>
 		</div>
+	</div>
+		
+	<div id="footer">
+	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">À propos</p:commandLink>
+	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">Plan du site</p:commandLink>
+	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">Informations légales</p:commandLink>
+	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">Protection des données</p:commandLink>
+	    <br />
+	    Copyright STL-AGora all rights reserved
+    </div>
+</h:form>
 </h:body>
 </html>
