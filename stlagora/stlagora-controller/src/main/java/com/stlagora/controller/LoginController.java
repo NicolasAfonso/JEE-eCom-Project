@@ -1,6 +1,8 @@
 package com.stlagora.controller;
 
 import java.io.Serializable;
+
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -24,7 +26,8 @@ public class LoginController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Logger log = Logger.getLogger(LoginController.class.getName());
-	private UserDao userDao = new UserDaoImpl();
+	@EJB
+	private UserDao userDao;
 
 	private String login;  
     private String password;  

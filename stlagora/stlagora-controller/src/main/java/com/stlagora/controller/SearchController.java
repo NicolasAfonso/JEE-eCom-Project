@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -26,8 +27,11 @@ public class SearchController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6448263727822874238L;
-	CategoryDao categoryDao = new CategoryDaoImpl();
-	ProductDao productDao = new ProductDaoImpl();	
+
+	@EJB
+	ProductDao productDao;
+	
+	@EJB
 	UserDao userDao = new UserDaoImpl();
 	
 
@@ -36,6 +40,9 @@ public class SearchController implements Serializable {
 	private String search;
 	private Category categorySearch;
 	
+	public List<Product> getProducts(){
+		return productDao.findAll();
+	}
 	/**
 	 * @return the t
 	 */

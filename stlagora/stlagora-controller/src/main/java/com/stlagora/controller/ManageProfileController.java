@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -12,10 +13,12 @@ import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 
 import com.stlagora.beans.SessionUser;
+import com.stlagora.model.dao.OpinionDao;
 import com.stlagora.model.dao.TransactionDao;
 import com.stlagora.model.dao.TransactionDaoImpl;
 import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.dao.UserDaoImpl;
+import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
@@ -30,8 +33,11 @@ public class ManageProfileController implements Serializable {
 	 */
 	private Logger log = Logger.getLogger(ManageProfileController.class.getName());
 	private static final long serialVersionUID = 1L;
-	private UserDao userDao = new UserDaoImpl();
-	private TransactionDao transactionDao = new TransactionDaoImpl();
+	
+	@EJB
+	private UserDao userDao;
+	@EJB
+	private TransactionDao transactionDao;
 	
 	/**
 	 * Subscription variable
@@ -52,12 +58,6 @@ public class ManageProfileController implements Serializable {
 	private List<Transaction> transactionSold = new ArrayList<Transaction>();
 	
 	public ManageProfileController(){
-		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		 if(sessionUser != null)
-		 {
-			 transactionBuy =  transactionDao.findByBuyer(sessionUser.getUser());
-			 transactionSold = transactionDao.findBySeller(sessionUser.getUser());
-		 }
 		
 	}
 	
@@ -102,6 +102,7 @@ public class ManageProfileController implements Serializable {
 		sessionUser.setLoggedIn(false);
 		return "home?faces-redirect=true";
 	}
+	
 
 	/**
 	 * GETTER ET SETTER
@@ -195,6 +196,11 @@ public class ManageProfileController implements Serializable {
 	 * @return the transactionBuy
 	 */
 	public List<Transaction> getTransactionBuy() {
+		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		 if(sessionUser != null)
+		 {
+			 transactionBuy =  transactionDao.findByBuyer(sessionUser.getUser());
+		 }
 		return transactionBuy;
 	}
 
@@ -209,6 +215,11 @@ public class ManageProfileController implements Serializable {
 	 * @return the transactionSold
 	 */
 	public List<Transaction> getTransactionSold() {
+		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		 if(sessionUser != null)
+		 {
+			 transactionSold = transactionDao.findBySeller(sessionUser.getUser());
+		 }
 		return transactionSold;
 	}
 
