@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.apache.log4j.Logger;
+
 import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.TransactionDao;
 import com.stlagora.model.dao.TransactionDaoImpl;
@@ -18,15 +20,15 @@ import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
-import com.stlagora.model.entities.Product;
 
-@ManagedBean(name = "manageProfileController", eager = true)
+@ManagedBean(name = "manageProfileController")
 @RequestScoped
 public class ManageProfileController implements Serializable {
 
 	/**
 	 * 
 	 */
+	private Logger log = Logger.getLogger(ManageProfileController.class.getName());
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao = new UserDaoImpl();
 	private TransactionDao transactionDao = new TransactionDaoImpl();
@@ -34,22 +36,20 @@ public class ManageProfileController implements Serializable {
 	/**
 	 * Subscription variable
 	 */
-	private String username ;
-	private String name ;
-	private String surname ; 
+	private String login ;
+	private String surname ;
+	private String firstname ; 
 	private String email ;
 	private String password ;
 	private String phoneNumber ;
+	private String siret;
+	private String rib;
+	private String companyName;
+	private ACCOUNT_TYPE accountType;
+
 	
 	private List<Transaction> transactionBuy = new ArrayList<Transaction>() ;
 	private List<Transaction> transactionSold = new ArrayList<Transaction>();
-	public String createUser(){
-		userDao.create(new User(username,name,surname,email,password,new Date(System.currentTimeMillis()),phoneNumber,"","","",ACCOUNT_TYPE.PRIVATE,ROLE.MEMBER));
-        SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		sessionUser.setLoggedIn(true);
-		sessionUser.setUser(userDao.findByLogin(username));
-		return "/profile/myProfile?faces-redirect=true";
-	}
 	
 	public ManageProfileController(){
 		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
@@ -61,15 +61,48 @@ public class ManageProfileController implements Serializable {
 		
 	}
 	
-	public String showPurchase(){
-		return "";
+	public String createUser(){
+		User u = new User(login,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,accountType,ROLE.MEMBER);
+		userDao.create(u);
+        SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		sessionUser.setLoggedIn(true);
+		try{
+		User userCreate = userDao.findByLogin(login);
+		sessionUser.setUser(userCreate);
+		}catch(Exception e){
+			log.error("User not found");
+		}
+		return "/profile/myProfile?faces-redirect=true";
 	}
 	
-	public String showSell(){
-		return "";
+	public String update()
+	{
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		User u = sessionUser.getUser();
+		u.setFirstname(firstname);
+		u.setSurname(surname);
+		u.setEmail(email);
+		u.setPassword(password);
+		u.setPhoneNumber(phoneNumber);
+		u.setSiret(siret);
+		u.setCompanyName(companyName);
+		u.setRib(rib);
+		u.setAccountType(accountType);
+		userDao.update(u);
+		return "/profile/myProfile?faces-redirect=true";
+		
+	}
+	
+	public String remove(){
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		User u = sessionUser.getUser();
+		u.setLogin("remove"+login+"remove");
+		userDao.update(u);
+		sessionUser.setUser(null);
+		sessionUser.setLoggedIn(false);
+		return "home?faces-redirect=true";
 	}
 
-	
 	/**
 	 * GETTER ET SETTER
 	 */
@@ -77,29 +110,29 @@ public class ManageProfileController implements Serializable {
 	/**
 	 * @return the username
 	 */
-	public String getUsername() {
-		return username;
+	public String getLogin() {
+		return login;
 	}
 
 	/**
 	 * @param pseudo the username to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getFirstname() {
+		return firstname;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	/**
@@ -184,6 +217,48 @@ public class ManageProfileController implements Serializable {
 	 */
 	public void setTransactionSold(List<Transaction> transactionSold) {
 		this.transactionSold = transactionSold;
+	}
+
+	/**
+	 * @return the siret
+	 */
+	public String getSiret() {
+		return siret;
+	}
+
+	/**
+	 * @param siret the siret to set
+	 */
+	public void setSiret(String siret) {
+		this.siret = siret;
+	}
+
+	/**
+	 * @return the rib
+	 */
+	public String getRib() {
+		return rib;
+	}
+
+	/**
+	 * @param rib the rib to set
+	 */
+	public void setRib(String rib) {
+		this.rib = rib;
+	}
+
+	/**
+	 * @return the companyName
+	 */
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	/**
+	 * @param companyName the companyName to set
+	 */
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 	
 	

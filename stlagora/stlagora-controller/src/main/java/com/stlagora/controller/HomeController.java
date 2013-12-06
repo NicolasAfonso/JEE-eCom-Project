@@ -46,6 +46,7 @@ public class HomeController implements Serializable {
 	private Logger log = Logger.getLogger(HomeController.class.getName());
 	
 	private String search;
+	private Category category;
 	
 	public HomeController(){
 		
@@ -67,8 +68,9 @@ public class HomeController implements Serializable {
 	
 	public String moveToSearch(){
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();  
-        flash.put("search", search);  
-		return "/search/resultSearch";
+        flash.put("search", search); 
+        flash.put("category", category);  
+		return "/search/resultSearch?faces-redirect=true";
 	}
 	
 	public void initBDD(){

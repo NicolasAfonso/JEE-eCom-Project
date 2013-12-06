@@ -19,8 +19,8 @@ public class Cart implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Product> products = new ArrayList<Product>();
 	private Logger log = Logger.getLogger(Cart.class.getName());
+	private List<Product> products = new ArrayList<Product>();
 	private float amount = 0 ;
 	private int numberArticle = 0 ;
 

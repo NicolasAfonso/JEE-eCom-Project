@@ -78,7 +78,7 @@ public class UserTest {
 	
 	@Test
 	public void testPseudo() {
-		assertEquals(1,(long)userDao.findByPseudo("tutu").getId());
+		assertEquals(1,(long)userDao.findByLogin("tutu").getId());
 	}
 	
 	@Test

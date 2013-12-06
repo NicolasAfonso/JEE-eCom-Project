@@ -84,12 +84,17 @@ public class User implements Serializable {
 	
 	/**
 	 * 
-	 * @param pseudo
+	 * @param login
 	 * @param surname
 	 * @param firstname
 	 * @param email
+	 * @param password
 	 * @param subscriptionDate
 	 * @param phoneNumber
+	 * @param siret
+	 * @param companyName
+	 * @param rib
+	 * @param accountType
 	 * @param role
 	 */
 	public User(String login, String surname, String firstname, String email, String password,Date subscriptionDate, String phoneNumber,String siret,String companyName,String rib,ACCOUNT_TYPE accountType, ROLE role) {

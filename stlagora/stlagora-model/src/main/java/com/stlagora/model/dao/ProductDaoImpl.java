@@ -96,5 +96,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 		return products;
 	}
 	
+	public List<Product> findBySearchCategory(String search,Category category) {
+		Query q = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :search and p.category=:cat",Product.class);
+		q.setParameter("search","%"+search+"%");
+		q.setParameter("cat",category);
+		List<Product> products = q.getResultList();
+		return products;
+	}
 	
 }

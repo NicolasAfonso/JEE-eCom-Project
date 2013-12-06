@@ -1,14 +1,9 @@
 package com.stlagora.controller;
 
 import java.io.Serializable;
-import java.nio.channels.SeekableByteChannel;
-
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -31,26 +26,10 @@ public class LoginController implements Serializable {
 	private Logger log = Logger.getLogger(LoginController.class.getName());
 	private UserDao userDao = new UserDaoImpl();
 
-	private String username;  
-    
+	private String login;  
     private String password;  
-    
 
-    public String getUsername() {  
-        return username;  
-    }  
-  
-    public void setUsername(String username) {  
-        this.username = username;  
-    }  
-  
-    public String getPassword() {  
-        return password;  
-    }  
-  
-    public void setPassword(String password) {  
-        this.password = password;  
-    }  
+   
     
 	public String login()
 	{ 
@@ -59,17 +38,17 @@ public class LoginController implements Serializable {
 		if(user==null)
 		{
 			try{
-				user = userDao.findByLogin(username);	
+				user = userDao.findByLogin(login);	
 			}catch(Exception e){
-				log.error("no exist");
+				log.error("User "+login+ "not found ");
 			}
 			
 			if(user == null)
 			{
 				try{
-				user = userDao.findByEmail(username);
+				user = userDao.findByEmail(login);
 			}catch(Exception e){
-				log.error("no exist");
+				log.error("User "+login+ "not found ");
 			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
 			     FacesContext.getCurrentInstance().addMessage(null, msg);  
 			}
@@ -107,7 +86,6 @@ public class LoginController implements Serializable {
 	
 	public String logout()
 	{ 
-        FacesMessage msg = null;  
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
         User user = sessionUser.getUser();
 		if(user!=null)
@@ -116,12 +94,33 @@ public class LoginController implements Serializable {
 			sessionUser.setLoggedIn(false);
 
 		}
-		return "home";
+		return "/home?faces-redirect=true";
 
 	}
 
 
-
+	/**
+	 * Getter and Setter
+	 */
+	/**
+	 * 
+	 * @return
+	 */
+	 public String getLogin() {  
+	        return login;  
+	    }  
+	  
+	    public void setLogin(String login) {  
+	        this.login = login;  
+	    }  
+	  
+	    public String getPassword() {  
+	        return password;  
+	    }  
+	  
+	    public void setPassword(String password) {  
+	        this.password = password;  
+	    }  
 	
 	
 }
