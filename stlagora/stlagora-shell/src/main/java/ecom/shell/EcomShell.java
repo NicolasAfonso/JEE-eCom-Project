@@ -5,12 +5,14 @@
  */
 package ecom.shell;
 
+import com.stlagora.model.entities.enumerate.ROLE;
+
 import shell.Shell;
 import shell.ShellContext;
 
 
 public class EcomShell extends Shell implements EcomShellConstantes {
-    public EcomShell(String[] args) {
+    public EcomShell(String[] args,ROLE role) {
         super(args);
 
         ShellContext context = getContext();
@@ -51,12 +53,19 @@ public class EcomShell extends Shell implements EcomShellConstantes {
         context.setVar(OUTPUT_MIME_FORMAT, TEXT_MIMETYPE);
         context.setVar(CURRENT_CURRENCY, CURRENCY_EUR);
         context.setVar(CURRENT_TX, null);
-
+        
+        if(role.equals(ROLE.ADMIN)){
+        	context.setVar(USERROLE,ROLE_ADMIN);
+        }else
+        {
+        	context.setVar(USERROLE,ROLE_MEMBER);
+        }
+        
         context.setVar(BANNER, getBanner());
     }
 
     public static void main(String[] args) {
-        new EcomShell(args).run();
+        new EcomShell(args,ROLE.MEMBER).run();
     }
 
     protected String getBanner() {

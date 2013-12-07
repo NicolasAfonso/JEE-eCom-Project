@@ -21,7 +21,9 @@ interface EcomShellConstantes {
     final static String CURRENT_LANGUAGE = "CURRENT_LANGUAGE";
     final static String LANGUAGE_EN = "EN";
     final static String LANGUAGE_FR = "FR";
-
+    final static String USERROLE = "USERROLE";
+    final static String ROLE_MEMBER = "MEMBER";
+    final static String ROLE_ADMIN = "ADMIN";
     final static String ERROR_UNKNOWN_OR_UNSUPPORTED_ARGS_EN = "Unknown or unsupported param";
     final static String ERROR_UNKNOWN_OR_UNSUPPORTED_ARGS_FR = "Parametre inconnu ou non supporte";
     final static String ERROR_INCORRECT_NB_ARGS_EN = "Incorrect number of arguments";

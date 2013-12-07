@@ -42,6 +42,7 @@ public class UserCommandImpl implements ShellCommand, EcomShellConstantes {
 	public void execute(String cmdline, PrintStream out, PrintStream err) {
 		StringTokenizer st = new StringTokenizer(cmdline, " ");
 		context_language = (String)this.shellContext.getVar(CURRENT_LANGUAGE);
+		String userRole = (String)this.shellContext.getVar(USERROLE);
 		st.nextToken();
 		if (st.countTokens() == 0)
 		{
@@ -54,7 +55,8 @@ public class UserCommandImpl implements ShellCommand, EcomShellConstantes {
 				err.print("\""+cmdline+"\" : ");
 				if(context_language.equals("EN")) err.println(ERROR_UNKNOWN_OR_UNSUPPORTED_ARGS_EN);
 				else if(context_language.equals("FR")) err.println(ERROR_UNKNOWN_OR_UNSUPPORTED_ARGS_FR);
-			}else if(format.equals("-add"))
+			}
+			else if(format.equals("-add") && userRole.equals(ROLE_ADMIN))
 			{	UserDaoImpl userDao = new UserDaoImpl("STLAGORA_PU_SHELL");
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Create User Interface");
@@ -92,7 +94,7 @@ public class UserCommandImpl implements ShellCommand, EcomShellConstantes {
 			}
 
 			}
-			else if(format.equals("-remove"))
+			else if(format.equals("-remove") && userRole.equals(ROLE_ADMIN))
 			{
 				UserDaoImpl userDao = new UserDaoImpl("STLAGORA_PU_SHELL");
 				String login = st.nextToken();
@@ -115,7 +117,7 @@ public class UserCommandImpl implements ShellCommand, EcomShellConstantes {
 				}
 			}else
 			{
-				System.out.println("No product in database");
+				System.out.println("ERROR RIGHT");
 			}
 		}
 		
