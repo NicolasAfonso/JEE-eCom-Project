@@ -1,3 +1,13 @@
 /.metadata
 
 /stlagora/target
+/stlagora/stlagora-shell/derby.log
+/stlagora/stlagora-shell/.settings
+/stlagora/stlagora-shell/.classpath
+/stlagora/stlagora-shell/.gitignore
+/stlagora/stlagora-shell/.project
+
+/stlagora/stlagora-shell/src/main/java/ecom/.DS_Store
+/stlagora/stlagora-shell/src/main/java/shell/.DS_Store
+
+/stlagora/stlagora-shell/src/main/java/ecom/shell/.DS_Store
