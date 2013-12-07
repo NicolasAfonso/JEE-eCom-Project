@@ -61,9 +61,10 @@ public class EcomShell extends Shell implements EcomShellConstantes {
 
     protected String getBanner() {
         StringBuffer sb = new StringBuffer();
-        sb.append("\n-------------------------------------------------");
-        sb.append("\n| eCommerce Application Sample for J2EE Training |");
-        sb.append("\n| Authors: F. Boyer, D. Donsez, 07/2000-10/2006  |");
+        sb.append("\n--------------------------------------------------");
+        sb.append("\n|------------ STL Agora Heavy Client ------------|");
+        sb.append("\n| forked from eCOM shell by F. Boyer & D. Donsez |");
+        sb.append("\n|                December 2013                   |");
         sb.append("\n-------------------------------------------------");
 
         return sb.toString();
