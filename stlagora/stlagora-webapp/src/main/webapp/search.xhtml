@@ -14,10 +14,10 @@
 				
 					<div class="gray_background">
 <!-- 						primefaces : tri -->
-						<h:outputLabel styleClass="small bold" value="#{general.search1} #{general.number} #{general.search2}" />
+						<h:outputLabel styleClass="bold" value="#{general.search1} #{general.number} #{general.search2}" />
 						<br />
-						<h:outputText styleClass="small" value="#{general.selecting}" />  
-				        <p:selectOneMenu styleClass="small" id="selectionSorting">  
+						<h:outputText value="#{general.selecting}" />  
+				        <p:selectOneMenu id="selectionSorting">  
 				            <f:selectItem itemLabel="#{general.increasingPriceSelecting}" itemValue="1" />  
 				            <f:selectItem itemLabel="#{general.decreasingPriceSelecting}" itemValue="2" />  
 				            <f:selectItem itemLabel="#{general.sellerSelecting}" itemValue="3" /> 
@@ -36,16 +36,16 @@
 					<div class="product_search">
 						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.productInfo}" />
+						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
 						<br />
 						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
 						<br />
 						<h:commandButton id="buttonAdd" value="#{general.buttonAddcart}" styleClass="button_add_cart"/>
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.labelVendeur}"/>
-						<h:outputLabel styleClass="small" value="#{general.nameVendeur}"/>
+						<h:outputLabel styleClass="bold" value="#{general.labelVendeur}"/>
+						<h:outputLabel value="#{general.nameVendeur}"/>
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.labelNote}"/>
+						<h:outputLabel styleClass="bold" value="#{general.labelNote}"/>
 						<h:graphicImage styleClass="star"/>
 						<h:graphicImage styleClass="star"/>
 						<h:graphicImage styleClass="star"/>

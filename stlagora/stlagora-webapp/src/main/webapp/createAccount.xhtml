@@ -12,64 +12,64 @@
 			<div id="pagecontent">
 				<div class="form_container">
 					
-					<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+					<h:outputLabel styleClass="bold" value="#{general.contactDetails}" />
 					<br />
 					<div class="form_border">
 					
-						<h:outputText styleClass="small bold" value="#{general.civility}" />
+						<h:outputText styleClass="bold" value="#{general.civility}" />
 						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
-					        <p:selectOneRadio styleClass="small" id="radioBox_details">  
+					        <p:selectOneRadio id="radioBox_details">  
 					            <f:selectItem itemLabel="Mme" itemValue="1" />  
 					            <f:selectItem itemLabel="M." itemValue="2" />  
 					        </p:selectOneRadio>  
 					    </h:panelGrid> 
 					
-						<h:outputLabel styleClass="small bold" value="#{general.fieldName}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldName}" />
 						<br />
 						<p:inputText id="name_contact" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
-						<h:outputLabel styleClass="small bold" value="#{general.fieldSurname}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldSurname}" />
 						<br />
 						<p:inputText id="surname_contact" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
-						<h:outputLabel styleClass="small bold" value="#{general.fieldLogin}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldLogin}" />
 						<br />
 						<p:inputText id="login_contact" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
-						<h:outputLabel styleClass="small bold" value="#{general.fieldPhone}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldPhone}" />
 						<br />
 						<p:inputText id="phoneNumber1" required="true" style="width: 20px;">
 							<f:validateLength minimum="2" />
 						</p:inputText>
-						<h:outputLabel styleClass="small" value="-" />
+						<h:outputLabel value="-" />
 						<p:inputText id="phoneNumber2" required="true" style="width: 20px;">
 							<f:validateLength minimum="2" />
 						</p:inputText>
-						<h:outputLabel styleClass="small" value="-" />
+						<h:outputLabel value="-" />
 						<p:inputText id="phoneNumber3" required="true" style="width: 20px;">
 							<f:validateLength minimum="2" />
 						</p:inputText>
-						<h:outputLabel styleClass="small" value="-" />
+						<h:outputLabel value="-" />
 						<p:inputText id="phoneNumber4" required="true" style="width: 20px;">
 							<f:validateLength minimum="2" />
 						</p:inputText>
-						<h:outputLabel styleClass="small" value="-" />
+						<h:outputLabel value="-" />
 						<p:inputText id="phoneNumber5" required="true" style="width: 20px;">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />								
 						
 					</div>
-					<h:outputLabel value="#{general.mandatoryField}" styleClass="small" />
+					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
 						
 					<h:commandButton id="button_create" value="#{general.buttonCreate}" styleClass="button_classic"/>

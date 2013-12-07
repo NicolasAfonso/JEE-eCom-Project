@@ -14,35 +14,23 @@
 				
 					<div class="gray_background">
 <!-- 						TITRE -->
-						<h:outputLabel styleClass="large bold" value="#{general.recap}" />
-						<br />
-						<h:graphicImage styleClass="secure_image" name="#{general.nameImageSecure}" />
-						
+						<h:outputLabel styleClass="large bold" value="#{general.download}" />						
 					</div>
 					<br />
 					
-					<div class="product_search">
+					<div class="item">
 						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
 						<br />
 						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
 						<h:outputLabel value="#{general.labelVendu}"/>
 						<h:outputLabel value="#{general.nameVendeur}"/>
 						<br />
-						<h:outputLabel styleClass="gray" value="#{general.labelDelete}"/>
-						<h:outputLabel styleClass="bold" value="#{general.price}" />
+						<h:outputLabel styleClass="gray italic" value="#{general.labelBought} #{general.dateBought}"/>
+						<h:outputLabel styleClass="bold gray italic" value="(#{general.price})" />
 					</div>
 					<br />
 					
-					<div class="gray_background">
-<!-- 						TITRE -->
-						<h:outputLabel styleClass="large bold red" value="#{general.totalPrice}" />	
-						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
-											
-					</div>
-					
-					<h:commandButton id="button_validate" value="#{general.validateCommand}" styleClass="button_classic"/>
-					<br />
-					<h:commandButton id="button_backShopping" value="#{general.backShopping}" styleClass="button_back"/>
+					<h:commandButton id="downloadFile" value="#{general.buttonDownloadFile}" styleClass="button_downloadFile"/>
 					
 				</div>
 			</div>

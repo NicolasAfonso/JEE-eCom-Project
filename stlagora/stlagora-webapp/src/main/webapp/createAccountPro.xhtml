@@ -12,41 +12,41 @@
 			<div id="pagecontent">
 				<div class="form_container">
 					
-					<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+					<h:outputLabel styleClass="bold" value="#{general.contactDetails}" />
 					<br />
 					<div class="form_border">
-						<h:outputText styleClass="small bold" value="#{general.statut}" />
+						<h:outputText styleClass="bold" value="#{general.statut}" />
 						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
-					        <p:selectOneRadio styleClass="small" id="radioBox_statutAccount">  
+					        <p:selectOneRadio id="radioBox_statutAccount">  
 					            <f:selectItem itemLabel="Particulier" itemValue="1" />  
 					            <f:selectItem itemLabel="Entreprise" itemValue="2" />  
 					        </p:selectOneRadio>  
 					    </h:panelGrid> 
 					
-						<h:outputLabel styleClass="small bold" value="#{general.fieldNameFirm}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldNameFirm}" />
 						<br />
 						<p:inputText id="name_firm" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
-						<h:outputLabel styleClass="small bold" value="#{general.fieldSiret}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldSiret}" />
 						<br />
 						<p:inputText id="siret" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
-						<h:outputLabel styleClass="small bold" value="#{general.fieldIban}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldIban}" />
 						<br />
-						<h:outputLabel styleClass="x-small italic" value="#{general.comments}" />
+						<h:outputLabel styleClass="small italic" value="#{general.comments}" />
 						<br />
 						<p:inputText id="iban" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />													
 					</div>
-					<h:outputLabel value="#{general.mandatoryField}" styleClass="small" />
+					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
 						
 					<h:commandButton id="button_create" value="#{general.buttonCreate}" styleClass="button_classic"/>

@@ -12,48 +12,54 @@
 			<div id="pagecontent">
 				<div class="form_container">
 					
-					<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+					<h:outputLabel styleClass="bold" value="#{general.creditCard}" />
 					<br />
 					<div class="form_border">
 					
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<h:outputLabel styleClass="bold gray" value="#{general.bankInformations}" />
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						<h:outputLabel styleClass="bold" value="#{general.typeCard}" />
+						
+						<h:graphicImage styleClass="typeCard_image" name="#{general.nameImageTypeCard}" />
 						<br />
-						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
-						<br />
-						<p:inputText id="name_contact" required="true">
+						<h:outputLabel styleClass="bold" value="#{general.cardHolder}" />
+						
+						<p:inputText id="name_cardHolder" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
-						<br />
-						<p:inputText id="name_contact" required="true">
+						<h:outputLabel styleClass="bold" value="#{general.numberCard}" />
+						
+						<p:inputText id="numberCard" required="true">
+<!-- 						nombre pour carte de crédit -->
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
-						<br />
-						<p:selectOneMenu styleClass="small" id="selectionSorting">  
-				            <f:selectItem itemLabel="#{general.increasingPriceSelecting}" />  
-				            <f:selectItem itemLabel="#{general.decreasingPriceSelecting}" itemValue="2" />  
-				            <f:selectItem itemLabel="#{general.sellerSelecting}" itemValue="3" /> 
+						<h:outputLabel styleClass="bold" value="#{general.expiryDate}" />
+						
+						<p:selectOneMenu id="expiryMonth">  
+				            <f:selectItem itemLabel="#{general.expiryMonth}" />  
 				        </p:selectOneMenu> 
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
-						<br />
-						<p:inputText id="name_contact" required="true">
+				        
+				        <p:selectOneMenu id="expiryYear">  
+				            <f:selectItem itemLabel="#{general.expiryYear}" />  
+				        </p:selectOneMenu> 
+				        <br />
+				        
+						<h:outputLabel styleClass="bold" value="#{general.codeControl}" />
+						
+						<p:inputText id="codeControl" required="true">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						<h:outputLabel styleClass="small bold" value="#{general.contactDetails}" />
+						
+						<h:outputLabel styleClass="small gray" value="#{general.indicationCodeControl}" />
 						<br />
-						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						<h:graphicImage styleClass="indicationCodeControl" name="#{general.imageIndicationCode}" />
 						<br />
 						
 					</div>
-					<h:outputLabel value="#{general.mandatoryField}" styleClass="small" />
+					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
 						
 					<h:commandButton id="download" value="#{general.buttonDownload}" styleClass="button_download"/>
