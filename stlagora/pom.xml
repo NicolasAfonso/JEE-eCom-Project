@@ -36,6 +36,7 @@
 		<module>stlagora-model</module>
 		<module>stlagora-controller</module>
 		<module>stlagora-webapp</module>
+		<module>stlagora-shell</module>
 		<!-- <module>stlagora-assemblies</module> -->
 	</modules>
 

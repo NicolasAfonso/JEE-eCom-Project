@@ -12,6 +12,7 @@
 		<class>com.stlagora.model.entities.Transaction</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
+		 <property name="persistenceUnitName" value="STLAGORA_PU"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
 			<property name="javax.persistence.jdbc.url"
@@ -24,7 +25,29 @@
 	<property name="eclipselink.ddl-generation" value="none" />  
 		</properties>
 	</persistence-unit>
-
+	
+		<persistence-unit name="STLAGORA_PU_SHELL" transaction-type="RESOURCE_LOCAL">
+		<class>com.stlagora.model.entities.User</class>
+		<class>com.stlagora.model.entities.Product</class>
+		<class>com.stlagora.model.entities.Opinion</class>
+		<class>com.stlagora.model.entities.Category</class>
+		<class>com.stlagora.model.entities.Transaction</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+		 <property name="persistenceUnitName" value="STLAGORA_PU"/>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:derby://localhost:1527/sun-appserv-samples" />
+			<property name="javax.persistence.jdbc.user" value="APP" />
+			<property name="javax.persistence.jdbc.password" value="APP" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+ 	<!-- 	 <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />   -->
+	<property name="eclipselink.ddl-generation" value="none" />  
+		</properties>
+	</persistence-unit>
+	
 	<persistence-unit name="stlagora-Test"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
