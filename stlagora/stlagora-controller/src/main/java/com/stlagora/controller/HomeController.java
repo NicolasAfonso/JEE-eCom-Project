@@ -54,7 +54,7 @@ public class HomeController implements Serializable {
 	
 	public String moveToMyProfile()
 	{
-		return "/profile/myProfile?faces-redirect=true";
+		return "/profile/accountParameters?faces-redirect=true";
 	}
 
 	
