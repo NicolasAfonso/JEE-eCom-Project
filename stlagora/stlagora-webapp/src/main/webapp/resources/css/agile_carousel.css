@@ -49,13 +49,13 @@ float: left;
 
 .agile_carousel .control_set {
 position: absolute;
-z-index: 4000;
+z-index: 1;
 }
 
 /*-- default styles for all button containers --*/
 
 .agile_carousel .button_container {
-z-index: 5000;	
+z-index: 2;	
 }
 
 /*-- default style for controls whose trigger type is "hover" --*/
@@ -79,7 +79,7 @@ such as the current slide number --*/
 /*-- style applied to all controls --*/
 
 .slide_button {
-z-index: 5000;
+z-index: 2;
 cursor: pointer;
 display: block;
 background-position: 0 0;
@@ -415,7 +415,7 @@ top: 100px;
 left: 10px;
 color: #ccc;
 position: absolute;
-z-index: 5000;
+z-index: 2;
 }
 
 
@@ -543,7 +543,7 @@ top: 100px;
 left: 10px;
 color: #ccc;
 position: absolute;
-z-index: 5000;
+z-index: 2;
 }
 
 /* -------------------------------------------- */

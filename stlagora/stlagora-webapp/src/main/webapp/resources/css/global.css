@@ -31,11 +31,6 @@ form
 
 /* BASICS */
 
-.x-small
-{
-	font-size: 8px;
-}
-
 .small
 {
 	font-size: 10px;
@@ -86,6 +81,24 @@ form
 	width:100%;
 }
 
+#div_container
+{
+	display: table;
+	width: 100%;
+}
+
+.table_cell_middle
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.table_cell_top
+{
+	display: table-cell;
+	vertical-align: top;
+}
+
 h1
 {
 	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
@@ -109,6 +122,7 @@ h2
     min-width: 1000px;
     position: fixed;
     background-color: azure;
+    z-index: 3;
 }
 
 #menu
@@ -223,13 +237,37 @@ h2
 
 /* FORMS */
 
+#form_container
+{
+	display: table;
+	width: 100%;
+	border-collapse: separate;
+  	border-spacing: 20px;
+}
+
 .form_border
 {
+	display: table-cell;
+	vertical-align: middle;
 	padding: 15px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	border: 1px solid #92d050;
+}
+
+/* SPECIAL DIVS */
+
+.product_search_title
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.product_search_info
+{
+	display: table-cell;
+	vertical-align: middle;
 }
 
 /* BUTTONS */
@@ -344,8 +382,8 @@ h2
 
 .product_search_image
 {
-	max-height: 100px;
-	max-width: 130px;
+	max-height: 150px;
+	max-width: 200px;
 }
 
 .product_card_image
@@ -359,7 +397,15 @@ h2
 #footer
 {
     height: 10%;
+    width: 100%;
+    display: table;
+    background-color: lightblue;
+}
+
+#footercontent
+{
+    display: table-cell;
+    vertical-align: middle;
     font-size: small;
     text-align: center;
-    background-color: lightblue;
 }
