@@ -19,18 +19,19 @@
 	
 		<h:form>
 			<div id="infoProduct">
-				<div>
+				<div id="imageProd">
 					<h:graphicImage styleClass="product_card_image" name="#{general.nameImage}" />
 				</div>
-				<div>
-					<div id="infoProd">
+				<div id= "info">
+					<div id="infoGeneral">
 						<h1> 
+							Salut!!
 							#{general.productInfo}
 						</h1>
 						<br />
 						<h:outputLabel value="de " />
-						<p:commandLink id="linkOpinion">
-							<h:outputText styleClass="hyperlink_classic" value="#{general.nameVendeur}" />
+						<p:commandLink styleClass="hyperlink_classic" id="nameVendeur">
+							<h:outputText  value="#{general.nameVendeur}" />
 						</p:commandLink>
 						<br />
 						<h:graphicImage styleClass="star"/>
@@ -46,7 +47,7 @@
 						<h:commandButton id="buttonAdd" value="#{general.buttonAddcart}" styleClass="button_add_cart"/>
 					</div>
 					<br />
-					<div>
+					<div id="features">
 						<div class="gray_background">
 							<h:outputLabel styleClass="bold" value="Informations produit" />
 						</div>

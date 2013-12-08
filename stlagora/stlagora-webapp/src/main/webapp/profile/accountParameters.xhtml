@@ -30,33 +30,36 @@
 				<h:outputLabel styleClass="bold" value="#{general.accountParameters}" />
 				<br />
 				<div class="form_container">
-					<p:commandLink id="modifParameters">
-						<h:outputText styleClass="hyperlink_classic" value="#{general.modifParameters}" />
+				<div class="form_border">
+					<p:commandLink id="modifParameters"  styleClass="hyperlink_classic">
+						<h:outputText value="#{general.modifParameters}" />
 					</p:commandLink>
 					<br />
 					<h:outputLabel styleClass="small gray" value="#{general.linkParameters}" />
 					<br />
-					<p:commandLink id="passwordForget">
-						<h:outputText styleClass="hyperlink_classic" value="#{general.linkPassword}" />
+					<p:commandLink id="passwordForget"  styleClass="hyperlink_classic">
+						<h:outputText value="#{general.linkPassword}" />
 					</p:commandLink>
+				</div>
 				</div>
 				<br />
 		
 				<h:outputLabel styleClass="bold" value="#{general.accountCommands}" />
 				<div class="form_container">
-					<p:commandLink id="linkHistoSell">
-						<h:outputText styleClass="hyperlink_classic" value="#{general.linkHistoSell}" />
+				<div class="form_border">
+					<p:commandLink id="linkHistoSell" styleClass="hyperlink_classic">
+						<h:outputText value="#{general.linkHistoSell}" />
 					</p:commandLink>
 					<br />
-					<p:commandLink id="linkHistoPurchase">
-						<h:outputText styleClass="hyperlink_classic" value="#{general.linkHistoPurchase}" />
+					<p:commandLink id="linkHistoPurchase"  styleClass="hyperlink_classic">
+						<h:outputText value="#{general.linkHistoPurchase}" />
 					</p:commandLink>
 					<br />
-					<p:commandLink id="linkProducts">
-						<h:outputText styleClass="hyperlink_classic" value="#{general.linkProducts}" />
+					<p:commandLink id="linkProducts" styleClass="hyperlink_classic">
+						<h:outputText value="#{general.linkProducts}" />
 					</p:commandLink>
 				</div>
-					
+				</div>
 			</div>
 		</h:form>
 		

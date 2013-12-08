@@ -11,7 +11,6 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 	<h:body>
-	
 		<ui:insert name="header">
 			<ui:include src="/resources/templates/header.xhtml" />
 		</ui:insert>
@@ -42,13 +41,13 @@
 					</p:commandLink>
 					
 					<div class="product_search">
-						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						<h:graphicImage title="#{general.nameImage}" alt="#{general.nameImage}" library="images" name="#{general.nameImage}"/>
 						<br />
 						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
 						<br />
 						<h:outputLabel styleClass="price" value="#{general.price}" />
 						<br />
-						<h:commandButton id="buttonAdd" value="#{general.buttonAddcart}" styleClass="button_add_cart"/>
+						<h:commandButton id="buttonAdd" image="/resources/images/button_add.png"/>
 						<br />
 						<h:outputLabel styleClass="bold" value="#{general.labelVendeur}"/>
 						<h:outputLabel value="#{general.nameVendeur}"/>
@@ -61,8 +60,8 @@
 						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
 						
 						<br />
-						<p:commandLink id="linkOpinion" styleClass=" underlined hyperlink_classic">
-							<h:outputText  value="#{general.linkOpinion}" />
+						<p:commandLink id="linkOpinion" >
+							<h:outputText styleClass="hyperlink_classic underlined"  value="#{general.linkOpinion}" />
 						</p:commandLink>
 					</div>
 					<br />

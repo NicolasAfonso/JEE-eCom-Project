@@ -24,35 +24,30 @@
 					<div class="gray_background">
 						<h1>
 							#{general.recap}
+							<h:graphicImage title="#{general.nameImageSecure}" alt="#{general.nameImageSecure}" library="images" name="paiementSecu.png" />
 						</h1>
-						<br />
-						<h:graphicImage styleClass="secure_image" name="#{general.nameImageSecure}" />
-						
 					</div>
 					<br />
 					
 					<div class="product_search">
 						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						<br />
+						
 						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
 						<h:outputLabel value="#{general.labelVendu}"/>
 						<h:outputLabel value="#{general.nameVendeur}"/>
-						<br />
+						
 						<h:outputLabel styleClass="gray" value="#{general.labelDelete}"/>
 						<h:outputLabel styleClass="bold" value="#{general.price}" />
 					</div>
 					<br />
 					
 					<div class="gray_background">
-<!-- 						TITRE -->
-						<h:outputLabel styleClass="price" value="#{general.totalPrice}" />	
-						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
-											
+						<h:outputLabel styleClass="price" value="#{general.totalPrice} #{general.price}" />				
 					</div>
 					
-					<h:commandButton id="button_validate" value="#{general.validateCommand}" styleClass="button_classic"/>
-					<br />
 					<h:commandButton id="button_backShopping" value="#{general.backShopping}" styleClass="button_back"/>
+					<h:commandButton id="button_validate" value="#{general.validateCommand}" styleClass="button_classic"/>
+
 					
 				</div>
 			</div>

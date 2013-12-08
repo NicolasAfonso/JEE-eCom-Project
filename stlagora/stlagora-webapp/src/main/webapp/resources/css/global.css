@@ -209,12 +209,14 @@ h2
 
 .hyperlink_classic
 {
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 	color: #286bcc;
 	text-decoration: none;
 }
 
 .hyperlink_page
 {
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 	color: gray;
 	text-decoration: none;
 }
