@@ -38,7 +38,8 @@ public class EcomShell extends Shell implements EcomShellConstantes {
 
         // Add "quit" command.
         //addCommand(new ecom.shell.QuitCommandImpl(context));
-
+        
+        addCommand(new ecom.shell.TransactionCommandImpl(context));
         // Add "currency" command.
         //addCommand(new ecom.shell.CurrencyCommandImpl(context));
         // Add "output" command.

@@ -23,6 +23,7 @@ public class UserCommandImpl implements ShellCommand, EcomShellConstantes {
 	private ShellContext shellContext;
 	private String context_language;
 	
+	
 	public String getName() {
 		return "usermanager";
 	}

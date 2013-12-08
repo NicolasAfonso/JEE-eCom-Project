@@ -59,11 +59,11 @@ public class HomeController implements Serializable {
 
 	
 	public String moveToCart(){
-		return "/cartView?faces-redirect=true";
+		return "/global/cart?faces-redirect=true";
 	}
 	
 	public String moveToSell(){
-		return "/sell/sellProduct?faces-redirect=true";
+		return "/sell/sell?faces-redirect=true";
 	}
 	
 	public String moveToSearch(){
