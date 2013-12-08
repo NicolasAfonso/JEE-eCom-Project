@@ -1,12 +1,28 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Premier exemple JSF 2.0</title>
-	<h:outputStylesheet library="default" name="css/form.css"  />
+	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
+
 <h:body> 
+
+	<ui:insert name="header">
+		<ui:include src="resources/templates/header.xhtml" />
+	</ui:insert>
+
 	<h1>Premier exemple JSF 2.0 - Page 1</h1>
 	<p> ERROR</p>
+	
+	<ui:insert name="footer">
+		<ui:include src="resources/templates/footer.xhtml" />
+	</ui:insert>
+	
 </h:body>
 </html>

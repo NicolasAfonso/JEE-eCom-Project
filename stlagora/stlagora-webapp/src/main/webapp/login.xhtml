@@ -4,20 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:tp="http://java.sun.com/jsf/composite/components"
-	xmlns:p="http://primefaces.org/ui">
-
-	<h:head>
-		<title>JSF tutorial</title>
-		<h:outputStylesheet name="./css/global.css"></h:outputStylesheet>
-		<style type="text/css">
-		.auto-style1 {
-			width: 100%;
-		}
-		</style>
-	</h:head>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<h:outputStylesheet library="css" name="global.css" />
+</h:head>
 
 	<h:body>
+	
+		<ui:insert name="header">
+			<ui:include src="resources/templates/header.xhtml" />
+		</ui:insert>
+	
 		<h:form>
 			<div id="pagecontent">
 				<div class="form_container">
@@ -103,5 +102,10 @@
 				</div>
 			</div>
 		</h:form>
+		
+		<ui:insert name="footer">
+			<ui:include src="resources/templates/footer.xhtml" />
+		</ui:insert>
+		
 	</h:body>
 </html>
