@@ -13,7 +13,7 @@
 	<h:body>
 	
 		<ui:insert name="header">
-			<ui:include src="resources/templates/header.xhtml" />
+			<ui:include src="/resources/templates/header.xhtml" />
 		</ui:insert>
 	
 		<h:form>
@@ -33,12 +33,12 @@
 					</div>
 					<br />
 					
-					<p:commandLink id="linkPagesUp">
-						<h:outputText styleClass="hyperlink_page" value="#{general.linkPrevous}" />
+					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page">
+						<h:outputText value="#{general.linkPrevous}" />
 
-						<h:outputText styleClass="hyperlink_page" value="#{general.linkNumberPage}" />
+						<h:outputText value="#{general.linkNumberPage}" />
 
-						<h:outputText styleClass="hyperlink_page" value="#{general.linkNext}" />
+						<h:outputText value="#{general.linkNext}" />
 					</p:commandLink>
 					
 					<div class="product_search">
@@ -54,19 +54,20 @@
 						<h:outputLabel value="#{general.nameVendeur}"/>
 						<br />
 						<h:outputLabel styleClass="bold" value="#{general.labelNote}"/>
-						<h:graphicImage styleClass="star"/>
-						<h:graphicImage styleClass="star"/>
-						<h:graphicImage styleClass="star"/>
-						<h:graphicImage styleClass="star"/>
-						<h:graphicImage styleClass="star"/>
+						<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
+						<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
+						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
+						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
+						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
+						
 						<br />
-						<p:commandLink id="linkOpinion">
-							<h:outputText styleClass="hyperlink_classic underlined" value="#{general.linkOpinion}" />
+						<p:commandLink id="linkOpinion" styleClass=" underlined hyperlink_classic">
+							<h:outputText  value="#{general.linkOpinion}" />
 						</p:commandLink>
 					</div>
 					<br />
 					
-					<p:commandLink id="linkPagesDown">
+					<p:commandLink id="linkPagesDown" styleClass="hyperlink_page">
 						<h:outputText styleClass="hyperlink_page" value="#{general.linkPrevous}" />
 
 						<h:outputText styleClass="hyperlink_page" value="#{general.linkNumberPage}" />
@@ -79,7 +80,7 @@
 		</h:form>
 		
 		<ui:insert name="footer">
-			<ui:include src="resources/templates/footer.xhtml" />
+			<ui:include src="/resources/templates/footer.xhtml" />
 		</ui:insert>
 		
 	</h:body>
