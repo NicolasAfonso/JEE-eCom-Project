@@ -13,25 +13,24 @@
 				<div class="form_container">
 				
 					<div class="gray_background">
-<!-- 						TITRE -->
-						<h:outputLabel styleClass="large bold" value="#{general.download}" />						
+						<h1>
+							#{general.historySell}
+						</h1>						
 					</div>
 					<br />
 					
-					<div class="item">
+					<div class="history_sell">
 						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						<br />
+						
 						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
-						<h:outputLabel value="#{general.labelVendu}"/>
-						<h:outputLabel value="#{general.nameVendeur}"/>
-						<br />
-						<h:outputLabel styleClass="gray italic" value="#{general.labelBought} #{general.dateBought}"/>
-						<h:outputLabel styleClass="bold gray italic" value="(#{general.price})" />
+						
+						<h:outputLabel value="Acheté par "/>
+						<p:commandLink id="buyer">
+							<h:outputText styleClass="hyperlink_classic" value="#{general.buyer}" />
+						</p:commandLink>
+						<h:outputLabel styleClass="gray italic" value=" le #{general.dateBought}"/>
+						
 					</div>
-					<br />
-					
-					<h:commandButton id="downloadFile" value="#{general.buttonDownloadFile}" styleClass="button_classic"/>
-					
 				</div>
 			</div>
 		</h:form>

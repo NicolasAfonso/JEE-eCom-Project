@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:body>
+		<h:form>
+			<div id="pagecontent">
+				<h:outputLabel styleClass="bold" value="#{general.accountParameters}" />
+				<br />
+				<div class="form_container">
+					<h:outputLabel styleClass="bold" value="#{general.fieldNameP}" />
+					<h:outputLabel value="Durand" />
+					<p:commandLink id="modif">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
+					</p:commandLink>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.fieldSurnameP}" />
+					<h:outputLabel value="Martin" />
+					<p:commandLink id="modif">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
+					</p:commandLink>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.fieldEmailP}" />
+					<h:outputLabel value="durand.martin@gmail.com" />
+					<p:commandLink id="modif">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
+					</p:commandLink>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.fieldPasswordP}" />
+					<h:outputLabel value="********" />
+					<p:commandLink id="modif">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
+					</p:commandLink>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.fieldPhoneP}" />
+					<h:outputLabel value="06.12.34.56.78" />
+					<p:commandLink id="modif">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
+					</p:commandLink>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.statut}" />
+					<h:outputLabel value="Professionnel" />
+					<p:commandLink id="modif">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
+					</p:commandLink>
+				</div>
+				<br />
+				<h:commandButton id="button_record" styleClass="button_classic" value="#{general.button_record}" />
+			</div>
+		</h:form>
+	</h:body>
+</html>

@@ -13,24 +13,41 @@
 				<div class="form_container">
 				
 					<div class="gray_background">
-<!-- 						TITRE -->
-						<h:outputLabel styleClass="large bold" value="#{general.download}" />						
+						<h1>
+							#{general.historyPurchase}
+						</h1>						
 					</div>
 					<br />
 					
-					<div class="item">
+					<div class="history_purchase">
 						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						<br />
+						
 						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
+						<br />
 						<h:outputLabel value="#{general.labelVendu}"/>
 						<h:outputLabel value="#{general.nameVendeur}"/>
-						<br />
+						
 						<h:outputLabel styleClass="gray italic" value="#{general.labelBought} #{general.dateBought}"/>
 						<h:outputLabel styleClass="bold gray italic" value="(#{general.price})" />
+						
+						<h:commandButton id="downloadFile" value="#{general.buttonDownloadFile}" styleClass="button_classic"/>
 					</div>
 					<br />
+					<div class="item">
+						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+						
+						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
+						<br />
+						<h:outputLabel value="#{general.labelVendu}"/>
+						<h:outputLabel value="#{general.nameVendeur}"/>
+						
+						<h:outputLabel styleClass="gray italic" value="#{general.labelBought} #{general.dateBought}"/>
+						<h:outputLabel styleClass="bold gray italic" value="(#{general.price})" />
+						
+						<h:commandButton id="downloadFile" value="#{general.buttonDownloadFile}" styleClass="button_classic"/>
+					</div>
 					
-					<h:commandButton id="downloadFile" value="#{general.buttonDownloadFile}" styleClass="button_classic"/>
+					
 					
 				</div>
 			</div>

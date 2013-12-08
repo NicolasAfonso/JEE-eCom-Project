@@ -3,9 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:tp="http://java.sun.com/jsf/composite/components"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:body>
 		<h:form>
@@ -13,8 +12,9 @@
 				<div class="form_container">
 				
 					<div class="gray_background">
-<!-- 						TITRE -->
-						<h:outputLabel styleClass="large bold" value="#{general.recap}" />
+						<h1>
+							#{general.recap}
+						</h1>
 						<br />
 						<h:graphicImage styleClass="secure_image" name="#{general.nameImageSecure}" />
 						
@@ -35,7 +35,7 @@
 					
 					<div class="gray_background">
 <!-- 						TITRE -->
-						<h:outputLabel styleClass="large bold red" value="#{general.totalPrice}" />	
+						<h:outputLabel styleClass="price" value="#{general.totalPrice}" />	
 						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
 											
 					</div>

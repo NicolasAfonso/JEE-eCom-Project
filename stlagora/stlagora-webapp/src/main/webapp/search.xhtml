@@ -26,11 +26,11 @@
 					<br />
 					
 					<p:commandLink id="linkPagesUp">
-						<h:outputText styleClass="hyperlink_prevous" value="#{general.linkPrevous}" />
+						<h:outputText styleClass="hyperlink_page" value="#{general.linkPrevous}" />
 
-						<h:outputText styleClass="hyperlink_numberPage" value="#{general.linkNumberPage}" />
+						<h:outputText styleClass="hyperlink_page" value="#{general.linkNumberPage}" />
 
-						<h:outputText styleClass="hyperlink_linkNext" value="#{general.linkNext}" />
+						<h:outputText styleClass="hyperlink_page" value="#{general.linkNext}" />
 					</p:commandLink>
 					
 					<div class="product_search">
@@ -38,7 +38,7 @@
 						<br />
 						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
 						<br />
-						<h:outputLabel styleClass="large bold red" value="#{general.price}" />
+						<h:outputLabel styleClass="price" value="#{general.price}" />
 						<br />
 						<h:commandButton id="buttonAdd" value="#{general.buttonAddcart}" styleClass="button_add_cart"/>
 						<br />
@@ -53,7 +53,7 @@
 						<h:graphicImage styleClass="star"/>
 						<br />
 						<p:commandLink id="linkOpinion">
-							<h:outputText styleClass="hyperlink_classic" value="#{general.linkOpinion}" />
+							<h:outputText styleClass="hyperlink_classic underlined" value="#{general.linkOpinion}" />
 						</p:commandLink>
 					</div>
 					<br />

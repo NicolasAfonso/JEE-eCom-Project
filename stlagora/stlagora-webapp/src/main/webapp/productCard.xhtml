@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<h:form>
+			<div id="infoProduct">
+				<div>
+					<h:graphicImage styleClass="product_card_image" name="#{general.nameImage}" />
+				</div>
+				<div>
+					<div id="infoProd">
+						<h1> 
+							#{general.productInfo}
+						</h1>
+						<br />
+						<h:outputLabel value="de " />
+						<p:commandLink id="linkOpinion">
+							<h:outputText styleClass="hyperlink_classic" value="#{general.nameVendeur}" />
+						</p:commandLink>
+						<br />
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<h:graphicImage styleClass="star"/>
+						<p:commandLink id="linkOpinion">
+							<h:outputText styleClass="hyperlink_classic underlined" value="#{general.linkOpinion}" />
+						</p:commandLink>
+						<br />
+						<h:outputLabel styleClass="price" value="#{general.price}" />
+						<h:commandButton id="buttonAdd" value="#{general.buttonAddcart}" styleClass="button_add_cart"/>
+					</div>
+					<br />
+					<div>
+						<div class="gray_background">
+							<h:outputLabel styleClass="bold" value="Informations produit" />
+						</div>
+						<br />
+						<h:outputLabel value="Largeur : " />
+						<h:outputLabel styleClass="bold" value="#{general.largeur}" />
+						<br />
+						<h:outputLabel value="Hauteur : " />
+						<h:outputLabel styleClass="bold" value="#{general.hauteur}" />
+						<br />
+						<h:outputLabel value="Profondeur : " />
+						<h:outputLabel styleClass="bold" value="#{general.profondeur}" />
+						<br />
+						<h:outputLabel value="Poids : " />
+						<h:outputLabel styleClass="bold" value="#{general.poids}" />
+						<br />
+					</div>
+				</div>
+			</div>
+			<div id="opinions">
+				<div class="gray_background">
+					<h:outputLabel styleClass="bold" value="Consulter les " />
+					<h:outputLabel styleClass="hyperlink_classic bold" value="#{general.numberOpinions} pour " />
+					<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
+				</div>
+				<div class="opinion">
+					<h:outputLabel value="#{general.labelNote}"/>
+					<h:graphicImage styleClass="star"/>
+					<h:graphicImage styleClass="star"/>
+					<h:graphicImage styleClass="star"/>
+					<h:graphicImage styleClass="star"/>
+					<h:graphicImage styleClass="star"/>
+					<br />
+					<h:outputLabel value="Par :"/>
+					<p:commandLink id="nameSeller">
+						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.linkSeller}" />
+					</p:commandLink>
+					<br />
+					
+					<h:outputLabel styleClass="bold gray" value="#{general.commentTitle}"/>
+					<br />
+					<h:outputLabel value="#{general.comment}"/>
+					<br />
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</html>

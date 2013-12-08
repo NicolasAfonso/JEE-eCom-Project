@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<h:form>
+			<div id="pagecontent">
+				<div class="form_container">
+				
+					<div class="gray_background">
+						<h1>
+							#{general.sellProducts}
+						</h1>				
+					</div>
+					<br />
+					
+					<div>
+						<h2>
+							#{general.informationsProduct}
+						</h2>
+						<br />
+						<h:outputLabel styleClass="bold" value="#{general.productCategory}" />
+						<p:selectOneMenu id="category">  
+					    	<f:selectItem itemLabel="#{general.gadgets}" />  
+					    	<f:selectItem itemLabel="#{general.artDeco}" />  
+					    	<f:selectItem itemLabel="#{general.utils}" />  
+					    </p:selectOneMenu> 
+						<br />
+						<h:outputLabel styleClass="bold" value="#{general.productName}" />
+						<p:inputText id="name_product" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass="bold" value="#{general.productCaract}" />
+						<p:inputText id="productCaract" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass="bold" value="#{general.productPrice}" />
+						<p:inputText id="productPrice" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<h:outputLabel value=" euros" />
+						<br />
+						<h:outputLabel styleClass="bold" value="#{general.productImage}" />
+						<p:inputText id="productImage" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<h:commandButton id="browseImg" value="#{general.buttonBrowse}" styleClass="button_browse"/>
+						<br />
+						<h2>
+							#{general.downloadProduct}
+						</h2>
+						<br />
+						<h:outputLabel styleClass="bold" value="#{general.productMap}" />
+						<p:inputText id="productMap" required="true">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<h:commandButton id="browseMap" value="#{general.buttonBrowse}" styleClass="button_browse"/>
+						<br />
+						<h:outputLabel value="#{general.mandatoryField}"/>
+						<br />
+						
+						
+						<h:commandButton id="putSell" value="#{general.buttonPutSell}" styleClass="button_classic"/>
+					
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</html>

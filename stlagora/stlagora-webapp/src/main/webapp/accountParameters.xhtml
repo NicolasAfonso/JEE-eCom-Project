@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:body>
+		<h:form>
+			<div id="pagecontent">
+				<div class="gray_background">
+					<h1>
+						#{general.myAccount}
+					</h1>
+<!-- 				<h:outputLabel styleClass="small bold" value="#{general.myAccount}" /> -->
+				</div>
+				<br />
+				
+				<h:outputLabel styleClass="bold" value="#{general.accountParameters}" />
+				<br />
+				<div class="form_container">
+					<p:commandLink id="modifParameters">
+						<h:outputText styleClass="hyperlink_classic" value="#{general.modifParameters}" />
+					</p:commandLink>
+					<br />
+					<h:outputLabel styleClass="small gray" value="#{general.linkParameters}" />
+					<br />
+					<p:commandLink id="passwordForget">
+						<h:outputText styleClass="hyperlink_classic" value="#{general.linkPassword}" />
+					</p:commandLink>
+				</div>
+				<br />
+		
+				<h:outputLabel styleClass="bold" value="#{general.accountCommands}" />
+				<div class="form_container">
+					<p:commandLink id="linkHistoSell">
+						<h:outputText styleClass="hyperlink_classic" value="#{general.linkHistoSell}" />
+					</p:commandLink>
+					<br />
+					<p:commandLink id="linkHistoPurchase">
+						<h:outputText styleClass="hyperlink_classic" value="#{general.linkHistoPurchase}" />
+					</p:commandLink>
+					<br />
+					<p:commandLink id="linkProducts">
+						<h:outputText styleClass="hyperlink_classic" value="#{general.linkProducts}" />
+					</p:commandLink>
+				</div>
+					
+			</div>
+		</h:form>
+	</h:body>
+</html>
