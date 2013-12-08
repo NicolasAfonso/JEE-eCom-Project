@@ -9,6 +9,8 @@ public interface GenericDao<T> extends Serializable{
 	
 	public void create(T newObject);
 	
+	public void createByEm(T newObject);
+	
 	public T findById(long objectId);
 	
 	public List<T> findAll();

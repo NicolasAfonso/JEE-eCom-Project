@@ -38,6 +38,15 @@ public class GenericDaoImpl<T> implements GenericDao<T>,Serializable {
 
     }
 	public void create(T newObject) {
+		try {
+			em.persist(newObject);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void createByEm(T newObject) {
 		em.getTransaction().begin();
 		try {
 			em.persist(newObject);
