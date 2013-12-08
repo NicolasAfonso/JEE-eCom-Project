@@ -17,8 +17,9 @@
 			<ui:include src="/resources/templates/header.xhtml" />
 		</ui:insert>
 	
-		<h:form>
-			<div id="pagecontent">
+		
+		<div id="pagecontent">
+			<h:form>
 				<div class="form_container">
 					
 					<h:outputLabel styleClass="bold" value="#{general.contactDetails}" />
@@ -35,59 +36,42 @@
 					
 						<h:outputLabel styleClass="bold" value="#{general.fieldName}" />
 						<br />
-						<p:inputText id="name_contact" required="true">
+						<p:inputText id="name_contact" required="true" value="#{manageProfileController.surname}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
-						<h:outputLabel styleClass="bold" value="#{general.fieldSurname}" />
+						<h:outputLabel styleClass="bold" value="#{general.fieldFirstname}" />
 						<br />
-						<p:inputText id="surname_contact" required="true">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<br />
-						
-						<h:outputLabel styleClass="bold" value="#{general.fieldLogin}" />
-						<br />
-						<p:inputText id="login_contact" required="true">
+						<p:inputText id="firstname_contact" required="true" value="#{manageProfileController.firstname}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						
 						<h:outputLabel styleClass="bold" value="#{general.fieldPhone}" />
 						<br />
-						<p:inputText id="phoneNumber1" required="true" style="width: 20px;">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<h:outputLabel value="-" />
-						<p:inputText id="phoneNumber2" required="true" style="width: 20px;">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<h:outputLabel value="-" />
-						<p:inputText id="phoneNumber3" required="true" style="width: 20px;">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<h:outputLabel value="-" />
-						<p:inputText id="phoneNumber4" required="true" style="width: 20px;">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<h:outputLabel value="-" />
-						<p:inputText id="phoneNumber5" required="true" style="width: 20px;">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<br />								
+						<p:inputText id="phoneNumber" required="true" value="#{manageProfileController.phoneNumber}">
+							<f:validateLength minimum="10" />
+						</p:inputText>							
 						
 					</div>
 					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
 						
-					<h:commandButton id="button_create" value="#{general.buttonCreate}" styleClass="button_classic"/>
+					<h:commandButton id="button_create" value="#{general.buttonCreate}" styleClass="button_classic" action="#{manageProfileController.createUser}"/>
 					<br />
-					<h:commandButton id="button_backRegis" value="#{general.backIdent}" styleClass="button_back"/>
+					
 				</div>
-			</div>
-		</h:form>
-		
+			
+				<p:inputText value="#{manageProfileController.email}" type="hidden"/>
+				<p:inputText value="#{manageProfileController.password}" type="hidden"/>
+				<p:inputText value="#{manageProfileController.accountType}" type="hidden"/>
+			</h:form>
+			
+			<h:form>
+				<h:commandButton id="button_backRegis" value="#{general.backIdent}" styleClass="button_back" action="/login"/>
+			</h:form>
+		</div>
 		<ui:insert name="footer">
 			<ui:include src="/resources/templates/footer.xhtml" />
 		</ui:insert>

@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
@@ -25,7 +28,7 @@ import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 @ManagedBean(name = "manageProfileController")
-@RequestScoped
+@SessionScoped
 public class ManageProfileController implements Serializable {
 
 	/**
@@ -43,16 +46,15 @@ public class ManageProfileController implements Serializable {
 	 * Subscription variable
 	 */
 	private String login ;
-	private String surname ;
-	private String firstname ; 
+	private String surname ="";
+	private String firstname =""; 
 	private String email ;
 	private String password ;
-	private String phoneNumber ;
-	private String siret;
-	private String rib;
-	private String companyName;
+	private String phoneNumber ="";
+	private String siret ="";
+	private String rib ="";
+	private String companyName ="";
 	private ACCOUNT_TYPE accountType;
-
 	
 	private List<Transaction> transactionBuy = new ArrayList<Transaction>() ;
 	private List<Transaction> transactionSold = new ArrayList<Transaction>();
@@ -62,17 +64,18 @@ public class ManageProfileController implements Serializable {
 	}
 	
 	public String createUser(){
-		User u = new User(login,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,accountType,ROLE.MEMBER);
+		log.debug(email);
+		User u = new User(email,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,accountType,ROLE.MEMBER);
 		userDao.create(u);
         SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
 		try{
-		User userCreate = userDao.findByLogin(login);
+		User userCreate = userDao.findByLogin(email);
 		sessionUser.setUser(userCreate);
 		}catch(Exception e){
 			log.error("User not found");
 		}
-		return "/profile/myProfile?faces-redirect=true";
+		return "/profile/accountParameters?faces-redirect=true";
 	}
 	
 	public String update()
@@ -100,7 +103,22 @@ public class ManageProfileController implements Serializable {
 		userDao.update(u);
 		sessionUser.setUser(null);
 		sessionUser.setLoggedIn(false);
-		return "home?faces-redirect=true";
+		return "/home?faces-redirect=true";
+	}
+	
+	public ACCOUNT_TYPE[] getAccountTypes() {
+		return ACCOUNT_TYPE.values();
+	}
+	
+	public String subscription(){
+		switch (accountType) {
+		case PRIVATE:
+			return "/usercreate/createAccount";
+		case PRO:
+			return "/usercreate/createAccountPro";
+		default:
+			return "/global/error?faces-redirect=true";
+		}
 	}
 	
 
@@ -271,6 +289,21 @@ public class ManageProfileController implements Serializable {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+
+	/**
+	 * @return the accountType
+	 */
+	public ACCOUNT_TYPE getAccountType() {
+		return accountType;
+	}
+
+	/**
+	 * @param accountType the accountType to set
+	 */
+	public void setAccountType(ACCOUNT_TYPE accountType) {
+		this.accountType = accountType;
+	}
+	
 	
 	
 }

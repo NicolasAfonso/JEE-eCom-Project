@@ -29,7 +29,7 @@ public class LoginController implements Serializable {
 	@EJB
 	private UserDao userDao;
 
-	private String login;  
+	private String loginUser;  
     private String password;  
 
    
@@ -41,17 +41,17 @@ public class LoginController implements Serializable {
 		if(user==null)
 		{
 			try{
-				user = userDao.findByLogin(login);	
+				user = userDao.findByLogin(loginUser);	
 			}catch(Exception e){
-				log.error("User "+login+ "not found ");
+				log.error("User "+loginUser+ "not found ");
 			}
 			
 			if(user == null)
 			{
 				try{
-				user = userDao.findByEmail(login);
+				user = userDao.findByEmail(loginUser);
 			}catch(Exception e){
-				log.error("User "+login+ "not found ");
+				log.error("User "+loginUser+ "not found ");
 			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
 			     FacesContext.getCurrentInstance().addMessage(null, msg);  
 			}
@@ -109,12 +109,12 @@ public class LoginController implements Serializable {
 	 * 
 	 * @return
 	 */
-	 public String getLogin() {  
-	        return login;  
+	 public String getLoginUser() {  
+	        return loginUser;  
 	    }  
 	  
-	    public void setLogin(String login) {  
-	        this.login = login;  
+	    public void setLoginUser(String loginUser) {  
+	        this.loginUser = loginUser;  
 	    }  
 	  
 	    public String getPassword() {  
