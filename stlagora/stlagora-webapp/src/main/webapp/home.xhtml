@@ -4,116 +4,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:tp="http://java.sun.com/jsf/composite/components"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>JSF tutorial</title>
-	<h:outputStylesheet name="./css/global.css"></h:outputStylesheet>
-	<style type="text/css">
-.auto-style1 {
-	width: 100%;
-}
-</style>
+	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<h:outputStylesheet library="css" name="global.css" />
+	<h:outputStylesheet library="css" name="agile_carousel.css" />
+	<h:outputScript library="js" name="jquery-1.10.2.min.js" />
+	<h:outputScript library="js" name="agile_carousel.alpha.js" />
 </h:head>
-<h:body>
-<h:form>
 
-	<div id="header">
-		<table class="auto-style1">
-			<tr>
-				<td id="menu_logo">
-				<p:commandLink action="home">
-						<h:graphicImage name="#{images.logo}" />
-				</p:commandLink>
-				</td>
-				<h:form>
-				<td id="menu_search"><h:inputText styleClass="search" value="#{homeController.search}"></h:inputText>
-								<h:commandButton action="#{homeController.moveToSearch}"  style="display: none" value="" />
-				</td>
-				</h:form>
-				<td class="menu_shortcuts">
-				<p:commandLink action="#{homeController.moveToSell}" styleClass="hyperlink_header_titles">
-						<h:graphicImage name="#{images.sell}" />
-						#{general.sellLabel}
-				</p:commandLink>
-				</td>
-				<td class="menu_shortcuts">
-				<div id="username">
-	    		<p:commandLink rendered="#{sessionUser.loggedIn == false}" styleClass="hyperlink_header_titles" action="#{homeController.moveToMyProfile}">
-						<h:graphicImage name="#{images.account}" />
-						#{general.myProfile}
-				</p:commandLink>
-	
-				<p:commandLink rendered="#{sessionUser.loggedIn == true}" action="#{homeController.moveToMyProfile}">
-						#{sessionUser.user.login}
-						<h:graphicImage name="#{images.profile_arrow}" /> 
-				</p:commandLink>
-					</div></td>
-				<td class="menu_shortcuts">
-				<p:commandLink styleClass="hyperlink_header_titles" action="#{homeController.moveToCart}">
-						<h:graphicImage name="#{images.cart}"> </h:graphicImage>		
-						#{general.myCart}
-<!-- 						- #{cart.numberArticle} -->
-				</p:commandLink>
-				<br />
-				<p:commandLink styleClass="hyperlink_header_subtitles" action="#{homeController.moveToCart}">	
-						#{cart.numberArticle} article(s)
-				</p:commandLink>
-				</td>
-			</tr>
-		</table>
-		<div id="menu">menu</div>
-	</div>
-	
-	<div id="page">
-		<div id="pagecontent">
-			<h3>
-				#{general.welcomeMessage}
-			</h3>
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="pagecontent">
+		<h3>#{general.welcomeMessage}</h3>
+		<h:form>
 			<h:commandButton action="#{homeController.moveToMyProfile}"
 				value="Profile" />
 			<h:commandButton action="#{homeController.moveToSearch}"
 				value="Search" />
-	
-			<h:commandButton styleClass="button_classic" action="#{homeController.moveToCart}" value="Cart" /> 
-			<h:commandButton styleClass="button_back" action="#{homeController.moveToSell}" value="Sell" />
-			<h:commandButton styleClass="button_delete" action="#{loginController.logout}" value="logout" />
-			<h:commandButton styleClass="button_browse" action="#{homeController.initBDD}" value="initBDD" />
-			<br />
-			<p:commandLink styleClass="hyperlink_page" action="#{homeController.moveToCart}">
-				toto
-			</p:commandLink>
-			
-			<div class="form_border">
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-			</div>
-			
-			<div class="gray_background">
-				<h1>Vendez vos produits</h1>
-<!-- 				<h2>Et me faites pas chier</h2> -->
-			</div>
-		</div>
+
+			<h:commandButton styleClass="" action="#{homeController.moveToCart}"
+				value="Cart" />
+			<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
+			<h:commandButton action="#{loginController.logout}" value="logout" />
+			<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
+		</h:form>
 	</div>
-		
-	<div id="footer">
-	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">À propos</p:commandLink>
-	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">Plan du site</p:commandLink>
-	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">Informations légales</p:commandLink>
-	    <p:commandLink styleClass="hyperlink_classic" action="#{homeController.moveToCart}">Protection des données</p:commandLink>
-	    <br />
-	    Copyright STL-AGora all rights reserved
-    </div>
-</h:form>
+	
+	<div class="slideshow" id="flavor_2"></div>
+	
+	<ui:insert name="footer">
+		<ui:include src="resources/templates/footer.xhtml" />
+	</ui:insert>
+
 </h:body>
 </html>

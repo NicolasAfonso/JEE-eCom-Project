@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tp="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+<body>
+
+	<ui:composition>
+		<div id="header">
+			<h:form>
+				<table class="full_width">
+					<tr>
+						<td id="menu_logo"><p:commandLink action="homeeeee">
+								<h:graphicImage title="test" alt="test" library="images" name="logo.png" />
+							</p:commandLink></td>
+						<h:form>
+						<h:selectOneListbox>
+						<f:selectItem itemLabel="Cat 1"/>
+						<f:selectItem itemLabel="Cat 2"/>
+						<f:selectItem itemLabel="Cat 3"/>
+						<f:selectItem itemLabel="Cat 4"/>
+						<f:selectItem itemLabel="Cat 5"/>
+						</h:selectOneListbox>
+						
+							<td id="menu_search"><h:inputText styleClass="search"
+									value="#{homeController.search}"></h:inputText> <h:commandButton
+									action="#{homeController.moveToSearch}" style="display: none"
+									value="" /></td>
+						</h:form>
+						
+						<td class="menu_shortcuts"><p:commandLink
+								action="#{homeController.moveToSell}"
+								styleClass="hyperlink_title">
+								<h:graphicImage name="#{images.sell}" />
+						#{general.sellLabel}
+				</p:commandLink></td>
+						<td class="menu_shortcuts">
+							<div id="username">
+								<p:commandLink rendered="#{sessionUser.loggedIn == false}"
+									styleClass="hyperlink_title"
+									action="#{homeController.moveToMyProfile}">
+									<h:graphicImage name="#{images.account}" />
+						#{general.myProfile}
+				</p:commandLink>
+
+								<p:commandLink rendered="#{sessionUser.loggedIn == true}"
+									action="#{homeController.moveToMyProfile}">
+						#{sessionUser.user.login}
+						<h:graphicImage name="#{images.profile_arrow}" />
+								</p:commandLink>
+							</div>
+						</td>
+						<td class="menu_shortcuts"><p:commandLink
+								styleClass="hyperlink_title"
+								action="#{homeController.moveToCart}">
+								<h:graphicImage name="#{images.cart}">
+								</h:graphicImage>		
+						#{general.myCart}
+<!-- 						- #{cart.numberArticle} -->
+							</p:commandLink> <br /> <p:commandLink styleClass="hyperlink"
+								action="#{homeController.moveToCart}">	
+						#{cart.numberArticle} article(s)
+				</p:commandLink></td>
+					</tr>
+				</table>
+			</h:form>
+			<div id="menu"><h:form>
+ <p:breadCrumb>
+	<p:menuitem value="Categories" url="index.xhtml" />
+	<p:menuitem value="Gadgets" url="bienvenue.xhtml?cat=gadgets" />
+	<p:menuitem value="Pièces de rechange" url="bienvenue.xhtml?cat=Pièces de rechange" />
+	<p:menuitem value="Art et Déco" url="bienvenue.xhtml?cat=Art et Déco" />
+	<p:menuitem value="Outils" url="bienvenue.xhtml?cat=Outils" />
+	<p:menuitem value="Objets du quotidien" url="bienvenue.xhtml?cat=Objets du quotidien" />
+	<p:menuitem value="Jouets" url="bienvenue.xhtml?cat=Jouets" />
+</p:breadCrumb>
+</h:form></div>
+		</div>
+
+<f:verbatim>
+<script>
+
+    // Code used for "Flavor 2" example (above)
+    
+    $.getJSON("#{resource['js/agile_carousel_data.php']}", function(data) {
+        $(document).ready(function(){
+            $("#flavor_2").agile_carousel({
+                
+                // required settings
+                
+                carousel_data: data,
+                carousel_outer_height: 330,
+                carousel_height: 230,
+                slide_height: 230,
+                carousel_outer_width: 480,
+                slide_width: 480,
+                                                
+                // end required settings
+                                                
+                transition_type: "fade",
+                transition_time: 600,
+                timer: 3000,
+                continuous_scrolling: true,
+                control_set_1: "numbered_buttons,previous_button,pause_button,next_button",
+                control_set_2: "content_buttons",
+                change_on_hover: "content_buttons"
+            });
+        });
+    });
+ </script>
+ 
+</f:verbatim>
+	</ui:composition>
+
+</body>
+
+</html>

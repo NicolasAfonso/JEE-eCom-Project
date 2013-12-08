@@ -81,6 +81,11 @@ form
 	text-decoration: underline;
 }
 
+.full_width {
+	
+	width:100%;
+}
+
 h1
 {
 	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
