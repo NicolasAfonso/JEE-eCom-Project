@@ -581,8 +581,6 @@ width:16%;
 
 .fancyNav a.homeIcon{
     background:url("#{resource['images/home.png']}") no-repeat center center;
-   /* display: block;
-    overflow: hidden;*/
     padding-left: 12px;
     padding-right: 12px;
     text-indent: -9999px;
@@ -591,5 +589,5 @@ width:16%;
 
 #home{
 	
-	width:3.5% !important;
+	width:3% !important;
 }
