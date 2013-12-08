@@ -289,6 +289,7 @@ h2
 
 .button_classic
 {
+	font-family: "EurostileT";
 	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
 	background-image: -webkit-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
@@ -301,6 +302,7 @@ h2
 
 .button_classic:hover
 {
+	font-family: "EurostileT";
 	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #C2FF81 0%, #74C14A 100%);
 	background-image: -webkit-linear-gradient(bottom, #C2FF81 0%, #74C14A 100%);
@@ -313,6 +315,7 @@ h2
 
 .button_back
 {
+	font-family: "EurostileT";
 	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
 	background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
@@ -325,6 +328,7 @@ h2
 
 .button_back:hover
 {
+	font-family: "EurostileT";
 	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
 	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
@@ -337,6 +341,7 @@ h2
 
 .button_delete
 {
+	font-family: "EurostileT";
 	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #dc0800 0%, #f19c99 100%);
 	background-image: -webkit-linear-gradient(bottom, #dc0800 0%, #f19c99 100%);
@@ -350,6 +355,7 @@ h2
 
 .button_delete:hover
 {
+	font-family: "EurostileT";
 	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #f19c99 0%, #dc0800 100%);
 	background-image: -webkit-linear-gradient(bottom, #f19c99 0%, #dc0800 100%);
@@ -363,6 +369,7 @@ h2
 
 .button_browse
 {
+	font-family: "EurostileT";
 	background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
 	background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
 	-webkit-border-radius: 5px;
@@ -373,6 +380,7 @@ h2
 
 .button_browse:hover
 {
+	font-family: "EurostileT";
 	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
 	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
 	-webkit-border-radius: 5px;
