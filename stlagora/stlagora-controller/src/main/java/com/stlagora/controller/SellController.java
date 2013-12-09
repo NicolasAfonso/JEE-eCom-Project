@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import com.stlagora.beans.SessionUser;
@@ -84,12 +87,8 @@ public class SellController implements Serializable {
 				File fplan = new File("C:/FILER/"+p.getId()+"/"+plan.getFileName());
 				fimage.createNewFile();
 				fplan.createNewFile();
-				FileOutputStream fos = new FileOutputStream(fplan);
-				fos.write(plan.getContents());
-			    fos.close();
-				FileOutputStream fosI = new FileOutputStream(fimage);
-				fosI.write(image.getContents());
-			    fosI.close();
+				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
+				saveFile(image.getInputstream(),new FileOutputStream(fimage));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -99,6 +98,23 @@ public class SellController implements Serializable {
 			
 		}
 		return "/sell/validationUpload";
+	}
+	
+	
+	private void saveFile(InputStream inputStream, OutputStream out){
+		try {
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = inputStream.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            inputStream.close();
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
 	public String confirmSell(){
@@ -112,7 +128,30 @@ public class SellController implements Serializable {
 		return "/sell/confirmSell";
 	}
 
-	
+	public void handleFileUpload(FileUploadEvent event) {
+        try {
+            File targetFolder = new File("C:/FILER/");
+            InputStream inputStream = event.getFile().getInputstream();
+            OutputStream out = new FileOutputStream(new File(targetFolder,
+                    event.getFile().getFileName()));
+            int read = 0;
+            byte[] bytes = new byte[1024];
+            log.debug( event.getFile().getFileName());
+
+            while ((read = inputStream.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            inputStream.close();
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	/**
+	 * 
+	 * GETTER ET SETTER
+	 */
 
 	public UploadedFile getFile() {  
 		return plan;  

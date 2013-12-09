@@ -37,47 +37,38 @@
 					</p:selectOneMenu>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productName}" />
-					<p:inputText id="name_product" required="true" value="#{sellController.name}">
+					<p:inputText id="name_product" required="true"
+						value="#{sellController.name}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productCaract}" />
-					<p:inputText id="productCaract" required="true" value="#{sellController.description}">
+					<p:inputText id="productCaract" required="true"
+						value="#{sellController.description}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productPrice}" />
-					<p:inputText id="productPrice" required="true" value="#{sellController.price}">
+					<p:inputText id="productPrice" required="true" 
+						value="#{sellController.price}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<h:outputLabel value=" euros" />
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productImage}" />
-					<p:fileUpload value="#{sellController.image}" mode="simple" required="true"/>
-					<!-- <h:outputLabel styleClass="bold" value="#{general.productImage}" />
-						<p:inputText id="productImage" required="true">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<h:commandButton id="browseImg" value="#{general.buttonBrowse}" styleClass="button_browse"/>
-						<br /> -->
+					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true" />
+
 					<h2>#{general.downloadProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productMap}" />
-					<p:fileUpload value="#{sellController.plan}" mode="simple" />
-					<!-- 						<h:outputLabel styleClass="bold" value="#{general.productMap}" />
-						<p:inputText id="productMap" required="true">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<h:commandButton id="browseMap" value="#{general.buttonBrowse}" styleClass="button_browse"/> -->
+					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true"  />
 					<br />
 					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
 
-
 					<h:commandButton id="putSell" value="#{general.buttonPutSell}"
 						styleClass="button_classic"
 						action="#{sellController.validateSell}" />
-
 				</div>
 			</h:form>
 		</div>
