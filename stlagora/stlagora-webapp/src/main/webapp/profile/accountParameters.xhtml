@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
+<h:head> 
 	<title>Bienvenue sur STL Agora - Accueil -</title>
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
@@ -31,13 +31,13 @@
 				<br />
 				<div class="form_container">
 				<div class="form_border">
-					<p:commandLink id="modifParameters"  styleClass="hyperlink_classic">
+					<p:commandLink id="modifParameters"  styleClass="hyperlink_classic" action="#{manageProfileController.goToModificationProfile}">
 						<h:outputText value="#{general.modifParameters}" />
 					</p:commandLink>
 					<br />
 					<h:outputLabel styleClass="small gray" value="#{general.linkParameters}" />
 					<br />
-					<p:commandLink id="passwordForget"  styleClass="hyperlink_classic">
+					<p:commandLink id="passwordForget"  styleClass="hyperlink_classic" action="#{manageProfileController.goToForgetPassword}">
 						<h:outputText value="#{general.linkPassword}" />
 					</p:commandLink>
 				</div>
@@ -47,15 +47,15 @@
 				<h:outputLabel styleClass="bold" value="#{general.accountCommands}" />
 				<div class="form_container">
 				<div class="form_border">
-					<p:commandLink id="linkHistoSell" styleClass="hyperlink_classic">
+					<p:commandLink id="linkHistoSell" styleClass="hyperlink_classic" action="#{manageProfileController.goToHistorySell}">
 						<h:outputText value="#{general.linkHistoSell}" />
 					</p:commandLink>
 					<br />
-					<p:commandLink id="linkHistoPurchase"  styleClass="hyperlink_classic">
+					<p:commandLink id="linkHistoPurchase"  styleClass="hyperlink_classic" action="#{manageProfileController.goToHistoryPurchase}">
 						<h:outputText value="#{general.linkHistoPurchase}" />
 					</p:commandLink>
 					<br />
-					<p:commandLink id="linkProducts" styleClass="hyperlink_classic">
+					<p:commandLink id="linkProducts" styleClass="hyperlink_classic" action="#{manageProfileController.goToForSale}">
 						<h:outputText value="#{general.linkProducts}" />
 					</p:commandLink>
 				</div>

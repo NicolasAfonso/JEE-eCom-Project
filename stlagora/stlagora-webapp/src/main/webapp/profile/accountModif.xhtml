@@ -27,19 +27,19 @@
 				<div class="form_container">
 					<h:outputLabel styleClass="bold" value="#{general.fieldNameP}" />
 					<h:outputLabel value="Durand" />
-					<p:commandLink id="modif1">
+					<p:commandLink id="modif1" action="#{manageProfileController.changeName}">
 						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
 					</p:commandLink>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.fieldSurnameP}" />
 					<h:outputLabel value="Martin" />
-					<p:commandLink id="modif2">
+					<p:commandLink id="modif2" action="#{manageProfileController.changeName}">
 						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
 					</p:commandLink>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.fieldEmailP}" />
 					<h:outputLabel value="durand.martin@gmail.com" />
-					<p:commandLink id="modif3">
+					<p:commandLink id="modif3" action="#{manageProfileController.changeEmail}">
 						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
 					</p:commandLink>
 					<br />

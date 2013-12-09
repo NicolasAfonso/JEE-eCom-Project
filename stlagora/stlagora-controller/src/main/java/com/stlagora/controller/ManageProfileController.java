@@ -121,6 +121,34 @@ public class ManageProfileController implements Serializable {
 		}
 	}
 	
+	public String goToModificationProfile(){
+		return "/profile/accountModif?faces-redirect=true";
+	}
+	
+	public String goToForgetPassword(){
+		return "/profile/forgetPassword?faces-redirect=true";
+	}
+	
+	public String goToHistoryPurchase(){
+		return "/profile/historyPurchase?faces-redirect=true";
+	}
+	
+	public String goToHistorySell(){
+		return "/profile/historySell?faces-redirect=true";
+	}
+	
+	public String goToForSale(){
+		return "/profile/forSale?faces-redirect=true";
+	}
+	
+	public String changeName(){
+		return "/profile/newName?faces-redirect=true";
+	}
+	
+	public String changeEmail(){
+		return "/profile/newEmail?faces-redirect=true";
+	}
+
 
 	/**
 	 * GETTER ET SETTER
