@@ -70,7 +70,7 @@ public class HomeController implements Serializable {
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();  
         flash.put("search", search); 
         flash.put("category", category);  
-		return "/search/resultSearch?faces-redirect=true";
+		return "/search/search?faces-redirect=true";
 	}
 	
 	public void initBDD(){
