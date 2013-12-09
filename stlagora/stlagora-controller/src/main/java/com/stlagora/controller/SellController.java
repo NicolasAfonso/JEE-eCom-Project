@@ -58,7 +58,10 @@ public class SellController implements Serializable {
 	private Float price;
 	private String productCategory ; 
 	private PRODUCT_STATUS productStatus;
-
+	
+	private Product productUpload;
+	
+ 
 	public String validateSell(){
 		if(plan != null && image !=null) {    
 			log.debug(plan.getFileName());
@@ -67,6 +70,13 @@ public class SellController implements Serializable {
 			if(sessionUser==null)
 			{
 				return "/home?faces-redirect=true";
+			}
+			else if(sessionUser.getUser().getAccountType() == ACCOUNT_TYPE.PRIVATE)
+			{
+				if(productDao.findBySeller(sessionUser.getUser()).size()>=10)
+				{
+					return "/sell/error_private?faces-redirect=true";
+				}
 			}
 			Category c = categoryDao.findByName(productCategory);
 			Product p = new Product(name, description, "NULL", "NULL",c,TYPE_FICHIER.STL,productStatus, price, sessionUser.getUser(), new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
@@ -106,6 +116,7 @@ public class SellController implements Serializable {
 			}
 			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
 			FacesContext.getCurrentInstance().addMessage(null, msg);
+			productUpload = p;
 		}
 		return "/sell/validationUpload";
 	}
@@ -247,6 +258,22 @@ public class SellController implements Serializable {
 	 */
 	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
+	}
+
+
+	/**
+	 * @return the productUpload
+	 */
+	public Product getProductUpload() {
+		return productUpload;
+	}
+
+
+	/**
+	 * @param productUpload the productUpload to set
+	 */
+	public void setProductUpload(Product productUpload) {
+		this.productUpload = productUpload;
 	}
 	
 	
