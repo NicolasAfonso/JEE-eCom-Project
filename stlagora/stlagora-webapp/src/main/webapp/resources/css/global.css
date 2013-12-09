@@ -422,7 +422,7 @@ h2
     height: 10%;
     width: 100%;
     display: table;
-    background-color: lightblue;
+/*     background-color: lightblue; */
 }
 
 #footercontent
@@ -591,3 +591,26 @@ width:16%;
 	
 	width:3% !important;
 }
+
+.agile_carousel{
+	margin:auto;
+}
+
+#footer{
+	border-top: dashed gray 2px;
+	text-align:center;
+	}
+	
+
+#footercontent ul{
+	padding:0;
+ margin:0;
+ list-style-type:none;
+	
+}
+
+#footercontent li{
+	margin-left:2px;
+	display:inline;
+
+	}
