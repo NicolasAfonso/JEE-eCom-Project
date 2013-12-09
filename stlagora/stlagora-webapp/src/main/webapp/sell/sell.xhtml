@@ -30,11 +30,11 @@
 					<h2>#{general.informationsProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productCategory}" />
-					<p:selectOneMenu id="category">
-						<f:selectItem itemLabel="#{general.gadgets}" />
-						<f:selectItem itemLabel="#{general.artDeco}" />
-						<f:selectItem itemLabel="#{general.utils}" />
-					</p:selectOneMenu>
+					<p:selectOneMenu styleClass="small" id="onemenu_category"
+							value="#{sellController.productCategory}" required="true">
+							<f:selectItems value="#{sellController.categories}"
+								var="cat" itemValue="#{cat.categoryName}" itemLabel="#{cat.categoryName}" />
+						</p:selectOneMenu>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{general.productName}" />
 					<p:inputText id="name_product" required="true"
@@ -63,12 +63,19 @@
 					<h:outputLabel styleClass="bold" value="#{general.productMap}" />
 					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true"  />
 					<br />
-					<h:outputLabel value="#{general.mandatoryField}" />
+					<h:outputLabel styleClass="bold" value="#{general.productMap}" />
+					<p:selectOneMenu styleClass="small" id="onemenu_status"
+							value="#{sellController.productStatus}" required="true">
+							<f:selectItems value="#{sellController.allProductStatus}"
+								var="type" itemValue="#{type}" itemLabel="#{type}" />
+						</p:selectOneMenu>
 					<br />
-
 					<h:commandButton id="putSell" value="#{general.buttonPutSell}"
 						styleClass="button_classic"
 						action="#{sellController.validateSell}" />
+					<h:outputLabel value="#{general.mandatoryField}" />
+					<br />
+
 				</div>
 			</h:form>
 		</div>

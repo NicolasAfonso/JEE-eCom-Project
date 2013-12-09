@@ -67,19 +67,19 @@ public class GenericDaoImpl<T> implements GenericDao<T>,Serializable {
 	}
 
 	public void update(T object) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		em.merge(object);
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 	}
 
 	public void delete(T object) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		try {
 			em.remove(object);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 	}
 	
 

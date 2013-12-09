@@ -30,10 +30,11 @@ import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.ProductDaoImpl;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Category;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
-@ManagedBean(name = "sellController", eager = true)
+@ManagedBean(name = "sellController")
 @RequestScoped
 public class SellController implements Serializable {
 
@@ -55,17 +56,20 @@ public class SellController implements Serializable {
 	private String name ;
 	private String description ;
 	private Float price;
-	private Category productCategory ; 
+	private String productCategory ; 
+	private PRODUCT_STATUS productStatus;
 
 	public String validateSell(){
-		if(plan != null && image !=null) {  
-			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
-			FacesContext.getCurrentInstance().addMessage(null, msg);  
+		if(plan != null && image !=null) {    
 			log.debug(plan.getFileName());
 			log.debug(image.getFileName());
-			this.productCategory = categoryDao.findByName("Test");
 			SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-			Product p = new Product(name, description, "", "",productCategory,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, price, sessionUser.getUser(), new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+			if(sessionUser==null)
+			{
+				return "/home?faces-redirect=true";
+			}
+			Category c = categoryDao.findByName(productCategory);
+			Product p = new Product(name, description, "NULL", "NULL",c,TYPE_FICHIER.STL,productStatus, price, sessionUser.getUser(), new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
 			try{
 				productDao.create(p);
 			}catch (Exception e)
@@ -79,87 +83,56 @@ public class SellController implements Serializable {
 		            new File("C:/FILER/"+p.getId()+"/").mkdirs();
 		 
 		        }
-			
-			p.setPlan("C:/FILER/"+p.getId()+"/"+plan.getFileName());
-			p.setPlan("C:/FILER/"+p.getId()+"/"+image.getFileName());
+
 			try {
 				File fimage = new File("C:/FILER/"+p.getId()+"/"+image.getFileName());
 				File fplan = new File("C:/FILER/"+p.getId()+"/"+plan.getFileName());
 				fimage.createNewFile();
 				fplan.createNewFile();
 				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
-				saveFile(image.getInputstream(),new FileOutputStream(fimage));
+				saveFile(image.getInputstream(),new FileOutputStream(fimage));	
+				p.setPlan("/"+p.getId()+"/"+plan.getFileName());
+				p.setImages("/"+p.getId()+"/"+image.getFileName());
+				productDao.update(p);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
+				productDao.delete(p);
 			} catch (IOException e) {
 				log.error("File creation Problem");
 				e.printStackTrace();
+				productDao.delete(p);
+				FacesMessage msg = new FacesMessage("Error", "Creation failed uploaded.");  
+				FacesContext.getCurrentInstance().addMessage(null, msg);
 			}
-			
+			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
+			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
 		return "/sell/validationUpload";
 	}
 	
 	
-	private void saveFile(InputStream inputStream, OutputStream out){
-		try {
+	private void saveFile(InputStream inputStream, OutputStream out) throws IOException{
             int read = 0;
             byte[] bytes = new byte[1024];
-
             while ((read = inputStream.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
             inputStream.close();
             out.flush();
             out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+	}
+
+	public PRODUCT_STATUS[] getAllProductStatus() {
+		return PRODUCT_STATUS.values();
 	}
 	
-	public String confirmSell(){
-		
-		//TODO A SUPPRIMER
-		this.productCategory = categoryDao.findByName("Test");
-		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		Product p = new Product(
-				name, description, image.getFileName(), plan.getFileName(),productCategory,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, price, sessionUser.getUser(), new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-		productDao.create(p);
-		return "/sell/confirmSell";
-	}
-
-	public void handleFileUpload(FileUploadEvent event) {
-        try {
-            File targetFolder = new File("C:/FILER/");
-            InputStream inputStream = event.getFile().getInputstream();
-            OutputStream out = new FileOutputStream(new File(targetFolder,
-                    event.getFile().getFileName()));
-            int read = 0;
-            byte[] bytes = new byte[1024];
-            log.debug( event.getFile().getFileName());
-
-            while ((read = inputStream.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-            inputStream.close();
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 	/**
 	 * 
 	 * GETTER ET SETTER
 	 */
-
-	public UploadedFile getFile() {  
-		return plan;  
-	}  
-
-	public void setFile(UploadedFile file) {  
-		this.plan = file;  
-	}  
+	
+	
 	
 	/**
 	 * @return the categories
@@ -169,12 +142,28 @@ public class SellController implements Serializable {
 		return categories;
 	}
 
+
 	/**
 	 * @param categories the categories to set
 	 */
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+	
+	/**
+	 * @param productStatus the productStatus to set
+	 */
+	public void setProductStatus(PRODUCT_STATUS productStatus) {
+		this.productStatus = productStatus;
+	}
+
+	/**
+	 * @return the productStatus
+	 */
+	public PRODUCT_STATUS getProductStatus() {
+		return productStatus;
+	}
+
 
 	/**
 	 * @return the name
@@ -249,14 +238,14 @@ public class SellController implements Serializable {
 	/**
 	 * @return the productCategory
 	 */
-	public Category getProductCategory() {
+	public String getProductCategory() {
 		return productCategory;
 	}
 
 	/**
 	 * @param productCategory the productCategory to set
 	 */
-	public void setProductCategory(Category productCategory) {
+	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
 	}
 	
