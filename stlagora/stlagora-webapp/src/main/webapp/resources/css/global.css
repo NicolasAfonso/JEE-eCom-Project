@@ -146,7 +146,7 @@ h2
 .search {
 	width: 95%;
  	background: url("#{resource['images/search.png']}") no-repeat 10px 6px #fcfcfc;
-    border: 1px solid #d1d1d1;
+ 	border: 1px solid #d1d1d1;
     color: #bebebe;
     padding: 6px 15px 6px 35px;
     -webkit-border-radius: 20px;
@@ -185,12 +185,12 @@ h2
 
 #page
 {
-    min-height: 90%;
     background-color: white;
 }
 
 #pagecontent
 {
+	min-height: 90%;
     padding: 135px 20px 20px 20px;
 }
 
