@@ -19,8 +19,8 @@
 						<td id="menu_logo">
 						<p:commandLink 
 								action="#{homeController.moveToHome}" >
-								<h:graphicImage title="#{general.homeTitle}"
-									alt="{general.homeTitle}" library="images" name="logo.png" />
+								<h:graphicImage title="#{general.homeTitleIcon}"
+									alt="#{general.homeTitleIcon}" library="images" name="logo.png" style="width:175px" />
 									</p:commandLink>
 							</td>
 						<h:form>
@@ -35,12 +35,12 @@
 								action="#{homeController.moveToSell}"
 								styleClass="hyperlink_header_titles">
 							#{general.sellLabel}
-							</p:commandLink> <h:graphicImage alt="" title="" library="images" name="sell.png" />
+							</p:commandLink> <h:graphicImage alt="#{general.sellTitleIcon}" title="#{general.sellTitleIcon}" library="images" name="sell.png" />
 						</td>
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToMyProfile}">
-								<h:graphicImage library="images" alt="" title="" name="account.png" />
+								<h:graphicImage library="images" alt="#{general.myAccountTitleIcon}" title="#{general.myAccountTitleIcon}" name="account.png" />
 						#{general.myProfile}
 				</p:commandLink>
 
@@ -50,18 +50,18 @@
 									action="#{homeController.moveToMyProfile}">
 						#{sessionUser.user.login}
 						<h:graphicImage rendered="#{sessionUser.loggedIn == true}"
-										library="images" name="profile_arrow" alt="" title="" />
+										library="images" name="profile_arrow.png" alt="#{general.AccountdropDownList}" title="#{general.AccountdropDownList}" />
 								</p:commandLink>
 							</div></td>
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToCart}">
-								<h:graphicImage library="images" alt="" titre="" name="cart.png" />
+								<h:graphicImage library="images" alt="#{general.cartTitleIcon}" titre="#{general.cartTitleIcon}" name="cart.png" />
 			
 						#{general.myCart}
 							</p:commandLink> <br /> <p:commandLink styleClass="hyperlink_header_subtitles"
 								action="#{homeController.moveToCart}">	
-						#{cart.numberArticle} article(s)<!-- propertiser -->
+						#{cart.numberArticle} #{general.article}
 				</p:commandLink></td>
 					</tr>
 				</table>
@@ -71,7 +71,7 @@
 			<div id="menu">
 				<nav>
 				<ul class="fancyNav">
-					<li id="home"><a href="/stlagora/home.xhtml" class="homeIcon">Home</a></li>
+					<li id="home"><a href="/stlagora/home.xhtml" class="homeIcon" title="#{general.homeTitleIcon}">Home</a></li>
 					<li><a href="#news">Gadgets</a></li>
 					<li><a href="#about">Pièces de rechange</a></li>
 					<li><a href="#services">Art &amp; Déco</a></li>
