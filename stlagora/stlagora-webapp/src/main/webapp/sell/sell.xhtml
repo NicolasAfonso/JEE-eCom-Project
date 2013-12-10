@@ -25,7 +25,7 @@
 					<h1>#{sell.sellProducts}</h1>
 				</div>
 				<br />
-
+				<p:messages id="messages" showDetail="false" autoUpdate="true" />
 				<div>
 					<h2>#{sell.informationsProduct}</h2>
 					<br />
@@ -56,12 +56,16 @@
 					<h:outputLabel value=" euros" />
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
-					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true" />
-
+					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true">
+						<f:validator validatorId="fileUploadValidatorImage"/>
+					 </p:fileUpload>
 					<h2>#{sell.downloadProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
-					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true">
+						<f:validator validatorId="fileUploadValidatorPlan"/>
+					</p:fileUpload>
+
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.dispo}" />
 					<p:selectOneMenu styleClass="small" id="onemenu_status"

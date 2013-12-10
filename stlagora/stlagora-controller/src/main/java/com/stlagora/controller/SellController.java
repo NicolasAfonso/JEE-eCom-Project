@@ -42,7 +42,7 @@ public class SellController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Logger log = Logger.getLogger(SessionUser.class.getName());
+	private Logger log = Logger.getLogger(SellController.class.getName());
 	private UploadedFile plan;  
 	private UploadedFile image;
 	@EJB
@@ -89,7 +89,7 @@ public class SellController implements Serializable {
 			p = productDao.findByName(name);
 			   if(!new File("C:/FILER/"+p.getId()+"/").exists())
 		        {
-		            // Créer le dossier avec tous ses parents
+		            // Crï¿½er le dossier avec tous ses parents
 		            new File("C:/FILER/"+p.getId()+"/").mkdirs();
 		 
 		        }

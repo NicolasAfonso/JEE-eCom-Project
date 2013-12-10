@@ -24,7 +24,7 @@
 			<base-name>messages.login.login_messages</base-name>
 			<var>login</var>
 		</resource-bundle>
-				<resource-bundle>
+		<resource-bundle>
 			<base-name>messages.sell.sell_messages</base-name>
 			<var>sell</var>
 		</resource-bundle>

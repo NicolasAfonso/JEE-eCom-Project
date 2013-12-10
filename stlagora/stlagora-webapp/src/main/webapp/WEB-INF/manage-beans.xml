@@ -44,5 +44,12 @@
 		<managed-bean-class>com.stlagora.beans.SessionUser</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-
+	<validator>
+		<validator-id>fileUploadValidatorImage</validator-id>
+		<validator-class>com.stlagora.validator.FileUploadValidatorImage</validator-class>
+	</validator>
+	<validator>
+		<validator-id>fileUploadValidatorPlan</validator-id>
+		<validator-class>com.stlagora.validator.FileUploadValidatorPlan</validator-class>
+	</validator>
 </faces-config>
