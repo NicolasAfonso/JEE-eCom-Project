@@ -22,49 +22,91 @@
 	
 		<h:form>
 			<div id="pagecontent">
-				<h:outputLabel styleClass="bold" value="#{general.accountParameters}" />
-				<br />
+
 				<div class="form_container">
-					<h:outputLabel styleClass="bold" value="#{general.fieldNameP}" />
-					<h:outputLabel value="Durand" />
-					<p:commandLink id="modif1" action="#{manageProfileController.changeName}">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
-					</p:commandLink>
+				
+					<div class="gray_background">
+						<h1>
+							#{profile.accountParameters}
+						</h1>				
+					</div>
 					<br />
-					<h:outputLabel styleClass="bold" value="#{general.fieldSurnameP}" />
-					<h:outputLabel value="Martin" />
-					<p:commandLink id="modif2" action="#{manageProfileController.changeName}">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
-					</p:commandLink>
-					<br />
-					<h:outputLabel styleClass="bold" value="#{general.fieldEmailP}" />
-					<h:outputLabel value="durand.martin@gmail.com" />
-					<p:commandLink id="modif3" action="#{manageProfileController.changeEmail}">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
-					</p:commandLink>
-					<br />
-					<h:outputLabel styleClass="bold" value="#{general.fieldPasswordP}" />
-					<h:outputLabel value="********" />
-					<p:commandLink id="modif4">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
-					</p:commandLink>
-					<br />
-					<h:outputLabel styleClass="bold" value="#{general.fieldPhoneP}" />
-					<h:outputLabel value="06.12.34.56.78" />
-					<p:commandLink id="modif5">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
-					</p:commandLink>
-					<br />
-					<h:outputLabel styleClass="bold" value="#{general.statut}" />
-					<h:outputLabel value="Professionnel" />
-					<p:commandLink id="modif6">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.modif}" />
-					</p:commandLink>
+				
+					<div>
+						<h2>#{profile.identify}</h2>
+						<br />
+						<h:outputLabel styleClass=" bold" value="#{profile.fieldEmail}" />
+						
+						<p:inputText id="email_creat" required="true"
+							value="#{sessionUser.user.email}"
+							match="password_confirm">
+							<f:validateLength minimum="8" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass=" bold" value="#{profile.fieldEmailConfirm}" />
+						
+						<p:inputText id="email_confirm" required="true" 
+							value="#{sessionUser.user.email}">
+							<f:validateLength minimum="8" />
+						</p:inputText>
+						<br />
+						
+						
+<!-- 					TODO : verifier longueur -->
+						<h:outputLabel styleClass=" bold" value="#{profile.fieldPassword}" />
+						
+						<p:password id="password_creat" required="false"
+							value="#{sessionUser.user.password}"
+							match="password_confirm">
+						</p:password>
+						<br />
+	
+						<h:outputLabel styleClass=" bold"
+							value="#{profile.fieldPasswordConfirm}" />
+						
+						<p:password id="password_confirm" required="false"
+							value="#{sessionUser.user.password}">
+						</p:password>
+						<br />
+						
+						<h2>#{profile.details}</h2>
+						<br />
+						<h:outputLabel styleClass=" bold" value="#{profile.fieldSurname}" />
+						
+						<p:inputText  required="true"
+							value="#{sessionUser.user.surname}">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass=" bold" value="#{profile.fieldFirstname}" />
+						
+						<p:inputText  required="true"
+							value="#{sessionUser.user.firstname}">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputLabel styleClass=" bold" value="#{profile.fieldPhone}" />
+						
+						<p:inputText  required="true"
+							value="#{sessionUser.user.phoneNumber}">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<br />
+						<h:outputText styleClass="bold" value="#{profile.fieldStatut}" />
+						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+							<p:selectOneRadio styleClass="small" id="radioBox_statut"
+								value="#{sessionUser.user.accountType}" required="true">
+								<f:selectItems value="#{manageProfileController.accountTypes}"
+									var="type" itemValue="#{type}" itemLabel="#{type}" />
+							</p:selectOneRadio>
+						</h:panelGrid>
+					</div>
 				</div>
 				<br />
-				<h:commandButton id="button_record" styleClass="button_classic" value="#{general.button_record}" />
+				<h:commandButton value="#{profile.backModif}" styleClass="button_back" action="/profile/accountParameters"/>
+				<h:commandButton id="button_record" styleClass="button_classic" value="#{profile.button_record}" action="#{manageProfileController.update}"/>
+				
 			</div> 
-			<h:commandButton id="button_backRegis" value="#{general.backIdent}" styleClass="button_back" action="/profile/accountParameters"/>
 		</h:form>
 		
 		<ui:insert name="footer">

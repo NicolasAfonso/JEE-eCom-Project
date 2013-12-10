@@ -21,42 +21,42 @@
 			<div id="pagecontent">
 				<div class="gray_background">
 					<h1>
-						#{general.myAccount}
+						#{profile.myAccount}
 					</h1>
 <!-- 				<h:outputLabel styleClass="small bold" value="#{general.myAccount}" /> -->
 				</div>
 				<br />
 				
-				<h:outputLabel styleClass="bold" value="#{general.accountParameters}" />
+				<h:outputLabel styleClass="bold" value="#{profile.accountParameters}" />
 				<br />
 				<div class="form_container">
 				<div class="form_border">
 					<p:commandLink id="modifParameters"  styleClass="hyperlink_classic" action="#{manageProfileController.goToModificationProfile}">
-						<h:outputText value="#{general.modifParameters}" />
+						<h:outputText value="#{profile.modifParameters}" />
 					</p:commandLink>
 					<br />
-					<h:outputLabel styleClass="small gray" value="#{general.linkParameters}" />
+					<h:outputLabel styleClass="small gray" value="#{profile.linkParameters}" />
 					<br />
 					<p:commandLink id="passwordForget"  styleClass="hyperlink_classic" action="#{manageProfileController.goToForgetPassword}">
-						<h:outputText value="#{general.linkPassword}" />
+						<h:outputText value="#{profile.linkPassword}" />
 					</p:commandLink>
 				</div>
 				</div>
 				<br />
 		
-				<h:outputLabel styleClass="bold" value="#{general.accountCommands}" />
+				<h:outputLabel styleClass="bold" value="#{profile.accountCommands}" />
 				<div class="form_container">
 				<div class="form_border">
 					<p:commandLink id="linkHistoSell" styleClass="hyperlink_classic" action="#{manageProfileController.goToHistorySell}">
-						<h:outputText value="#{general.linkHistoSell}" />
+						<h:outputText value="#{profile.linkHistoSell}" />
 					</p:commandLink>
 					<br />
 					<p:commandLink id="linkHistoPurchase"  styleClass="hyperlink_classic" action="#{manageProfileController.goToHistoryPurchase}">
-						<h:outputText value="#{general.linkHistoPurchase}" />
+						<h:outputText value="#{profile.linkHistoPurchase}" />
 					</p:commandLink>
 					<br />
 					<p:commandLink id="linkProducts" styleClass="hyperlink_classic" action="#{manageProfileController.goToForSale}">
-						<h:outputText value="#{general.linkProducts}" />
+						<h:outputText value="#{profile.linkProducts}" />
 					</p:commandLink>
 				</div>
 				</div>
