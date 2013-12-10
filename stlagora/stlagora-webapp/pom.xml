@@ -19,7 +19,7 @@
 					<webResources>
 						<resource>
 							<!-- this is relative to the pom.xml directory -->
-							<directory>src/main/resources</directory>
+							<directory>src/main/webapp/resources</directory>
 						</resource>
 					</webResources>
 				</configuration>

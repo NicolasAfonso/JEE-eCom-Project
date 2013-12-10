@@ -17,6 +17,7 @@
 	</repositories>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.11</junit.version>
 		<jsf-api.version>2.1.7</jsf-api.version>
 		<jsf-impl.version>2.1.7</jsf-impl.version>
@@ -109,11 +110,11 @@
 				<version>${servlet-api.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			  <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>jstl</artifactId>
-        <version>${jstl.version}</version>
-    </dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>
