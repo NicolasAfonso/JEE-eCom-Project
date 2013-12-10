@@ -36,7 +36,7 @@
 						<h:outputLabel styleClass="bold" value="#{general.fieldSiret}" />
 						<br />
 						<p:inputText id="siret" required="true" value="#{manageProfileController.siret}">
-							<f:validateLength minimum="2" />
+							<f:validateRegex pattern="^[0-9]{3} ?[0-9]{3} ?[0-9]{3} ?[0-9]{5}$" />
 						</p:inputText>
 						<br />
 						
@@ -45,7 +45,7 @@
 						<h:outputLabel styleClass="small gray" value="#{general.comments}" />
 						<br />
 						<p:inputText id="iban" required="true" value="#{manageProfileController.rib}">
-							<f:validateLength minimum="2" />
+							<f:validateRegex pattern="^FR[0-9]{2} [0-9]{5} [0-9]{5} [0-9]{11} [0-9]{2}$" />
 						</p:inputText>
 						<br />													
 					</div>
