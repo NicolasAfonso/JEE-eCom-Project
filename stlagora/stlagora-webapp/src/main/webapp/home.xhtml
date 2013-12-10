@@ -9,39 +9,27 @@
 <h:head>
 	<title>Bienvenue sur STL Agora - Accueil -</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-	<h:outputStylesheet library="css" name="global.css" />
 	<h:outputStylesheet library="css" name="agile_carousel.css" />
+	<h:outputStylesheet library="css" name="global.css" />
+	
 	
 	<h:outputScript library="js" name="agile_carousel.alpha.js" />
 </h:head>
 
 <h:body>
-
-	<ui:insert name="header">
-		<ui:include src="resources/templates/header.xhtml" />
-	</ui:insert>
-
-	<div id="pagecontent">
-		<h3>#{general.welcomeMessage}</h3>
-		<h:form>
-			<h:commandButton action="#{homeController.moveToMyProfile}"
-				value="Profile" />
-			<h:commandButton action="#{homeController.moveToSearch}"
-				value="Search" />
-
-			<h:commandButton styleClass="" action="#{homeController.moveToCart}"
-				value="Cart" />
-			<h:commandButton action="#{homeController.moveToSell}" value="Sell" />
-			<h:commandButton action="#{loginController.logout}" value="logout" />
-			<h:commandButton action="#{homeController.initBDD}" value="initBDD" />
-		</h:form>
-		
-		<div class="slideshow" id="flavor_2"></div>
-	</div>
-
-	<ui:insert name="footer">
-		<ui:include src="resources/templates/footer.xhtml" />
-	</ui:insert>
-
+		<ui:insert name="header">
+			<ui:include src="resources/templates/header.xhtml" />
+		</ui:insert>
+	
+		<div id="page">
+			<div id="pagecontent">
+				prout	
+		<!-- 		<div class="slideshow" id="flavor_2"></div> -->
+			</div>
+		</div>
+	
+		<ui:insert name="footer">
+			<ui:include src="resources/templates/footer.xhtml" />
+		</ui:insert>
 </h:body>
 </html>

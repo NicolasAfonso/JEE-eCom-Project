@@ -6,15 +6,23 @@
     src: url("#{resource['fonts/Eurostile_LT_Medium.ttf']}") format('truetype');
 }
 
+html
+{
+	height: 100%;
+}
+
 body
 {
-	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
-	font-size: 1.0em;
 	height: 100%;
     width: 95%;
+	background-color: #e1e1e1;
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.0em;
     min-width: 1000px;
     margin: auto;
     padding: 0;
+    box-shadow: 0px 0px 20px 3px gray;
+    
 }
 
 /* BASICS */
@@ -106,21 +114,20 @@ h2
 #header
 {
     position: fixed;
-    height: 135px;
+    height: 105px;
     width: inherit;
-    display: block;
-    min-width: 1000px;
-    background-color: white;
+    background-color: #50505a;
+    z-index: 3;
 }
 
 #menu
 {
     text-align: center;
-   
 }
 
 #menu_logo
 {
+	text-align: center;
     min-width: 165px;
     width: 15%;
 }
@@ -135,7 +142,7 @@ h2
 	width: 95%;
  	background: url("#{resource['images/search.png']}") no-repeat 10px 6px #fcfcfc;
  	border: 1px solid #d1d1d1;
-    color: #bebebe;
+    color: darkgray;
     padding: 6px 15px 6px 35px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -150,10 +157,20 @@ h2
     transition: all 0.7s ease 0s;
 }
 
-#username
+.username
 {
+	padding:3px 10px ;
     border: 1px solid lightgray;
     border-radius: 5px;
+    font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 13px;
+	color: #a7c2ff;
+	text-decoration: none;
+}
+
+#username:after
+{
+    content: url("#{resource['images/profile_arrow.png']}");
 }
 
 .menu_shortcuts
@@ -171,11 +188,16 @@ h2
 
 /* BODY */
 
-#pagecontent
+#page
 {
 	background-color: white;
 	min-height: 90%;
-    padding: 135px 0px 0px 0px;
+	box-shadow: 0px 0px 20px 3px gray;
+}
+
+#pagecontent
+{
+    padding: 130px 25px 25px 25px;
 }
 
 /* HYPERLINKS */
@@ -184,16 +206,15 @@ h2
 {
 	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 	font-size: 14px;
-	color: black;
+	color: white;
 	text-decoration: none;
-	font-weight: bold;
 }
 
 .hyperlink_header_subtitles
 {
 	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 	font-size: 14px;
-	color: #0079db;
+	color: #a7c2ff;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -400,36 +421,19 @@ h2
 	max-width: 350px;
 }
 
-/* FOOTER */
-
-#footer
-{
-    height: 10%;
-    width: 100%;
-    display: table;
-/*     background-color: lightblue; */
-}
-
-#footercontent
-{
-    display: table-cell;
-    vertical-align: middle;
-    font-size: small;
-    text-align: center;
-}
-
 /*fuck*/
 
 
 .fancyNav{
 	width: 100%;
+	display: table;
 	padding: 0px;
 	margin-left: auto;
 	margin-right: auto;
 	
     /* Affects the UL element */
     overflow: hidden;
-    display: inline-block;
+/*     display: inline-block; */
 
     border-radius: 4px;
     -moz-border-radius: 4px;
@@ -438,12 +442,17 @@ h2
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
     -moz-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
     -webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
-    margin-top:0px;
+    margin-top: 0px;
 }
 
 .fancyNav li{
     /* Specifying a fallback color and we define CSS3 gradients for the major browsers: */
+    padding: 0;
+    margin: 0;
+    
+    height: 25px;
 	width: 16%;
+	
     background-color: #f0f0f0;
     background-image: -webkit-gradient(linear,left top, left bottom,from(#fefefe), color-stop(0.5,#f0f0f0), color-stop(0.51, #e6e6e6));
     background-image: -moz-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
@@ -461,9 +470,12 @@ h2
 
     position:relative;
 
-    float: left;
+/*     float: left; */
     list-style: none;
+    
+    display: table-cell;
 }
+
 
 .fancyNav li:after{
 
@@ -524,7 +536,8 @@ h2
 /* Treating the last LI and li:after elements separately */
 
 .fancyNav li:last-child:after,
-.fancyNav li.selected:last-child:after{
+.fancyNav li.selected:last-child:after
+{
     box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
     -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
     -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
@@ -537,6 +550,10 @@ h2
 .fancyNav li:target:after{
     /* This property triggers the CSS3 transition */
     opacity:1;
+    background-image: -moz-linear-gradient(#c2ff81 50%,#74c14a 100%);
+    background-image: -o-linear-gradient(#c2ff81 50%, #74c14a 100%);
+    background-image: -ms-linear-gradient(#c2ff81 50%, #74c14a 100%);
+    background-image: linear-gradient(#c2ff81 50%, #74c14a 100%);
 }
 
 .fancyNav:hover li.selected:after,
@@ -547,16 +564,17 @@ h2
 
 .fancyNav li.selected:hover:after,
 .fancyNav li:target:hover:after{
-    opacity:1 !important;
+    opacity:1;
 }
 
 /* Styling the anchor elements */
 
 .fancyNav li a{
-    color: #5d5d5d;
+	color: #676767;
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
     display: inline-block;
-    font: 20px/1 Lobster,Arial,sans-serif;
-    padding: 12px 35px 14px;
     position: relative;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
     z-index:2;
@@ -573,29 +591,59 @@ h2
 }
 
 #home{
-	
-	width:3% !important;
+	width: 3%;
 }
 
 .agile_carousel{
 	margin:auto;
 }
 
-#footer{
-	border-top: dashed gray 2px;
-	text-align:center;
-	}
-	
+/* FOOTER */
 
-#footercontent ul{
-	padding:0;
- margin:0;
- list-style-type:none;
-	
+#footer
+{
+	position: absolute;
+	bottom: 0;
+    height: 10%;
+    width: 95%;
+   	background-color: #50505a;
+	border-top: dashed white 1.5px;
+/* 	box-shadow: 0px 0px 20px 3px gray; */
 }
 
-#footercontent li{
-	margin-left:2px;
-	display:inline;
+#footercontent
+{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-size: small;
+	text-align: center;
+}
 
-	}
+#footercontent ul
+{
+	margin: 0;
+	list-style-type: none;
+	padding: 0px;
+}
+
+#footercontent li
+{
+	color: white;
+	margin-left: 2px;
+	display: inline;
+}
+
+#footercontent li a
+{
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	color: white;
+	text-decoration: none;
+}
+
+/* .control_set{ */
+/* 	display:none; */
+/* } */
+
+.content_button_inner{
+	display:none;
+}

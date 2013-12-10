@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:tp="http://java.sun.com/jsf/composite/components"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
@@ -17,9 +16,9 @@
 			<h:form>
 				<table class="full_width">
 					<tr>
-						<td id="menu_logo"><p:commandLink action="homeeeee">
-								<h:graphicImage title="test" alt="test" library="images" name="logo.png" />
-							</p:commandLink></td>
+						<td id="menu_logo"><h:link outcome="home">
+								<h:graphicImage title="#{general.homeTitle}" alt="{general.homeTitle}" library="images" name="logo.png" />
+							</h:link></td>
 						<h:form> 
 <!-- 						<h:selectOneListbox> -->
 <!-- 						<f:selectItem itemLabel="Cat 1"/> -->
@@ -35,52 +34,54 @@
 									value="" /></td>
 						</h:form>
 						
-						<td class="menu_shortcuts"><p:commandLink
-								action="#{homeController.moveToSell}"
-								styleClass="hyperlink_title">
-								<h:graphicImage name="#{images.sell}" />
-						#{general.sellLabel}
-				</p:commandLink></td>
 						<td class="menu_shortcuts">
-							<div id="username">
-								<p:commandLink rendered="#{sessionUser.loggedIn == false}"
-									styleClass="hyperlink_title"
+							<p:commandLink action="#{homeController.moveToSell}" styleClass="hyperlink_header_titles">
+							#{general.sellLabel}
+							</p:commandLink>
+							<h:graphicImage name="#{images.sell}" />
+						</td>
+						<td class="menu_shortcuts">
+							
+								<p:commandLink 
+									styleClass="hyperlink_header_titles"
 									action="#{homeController.moveToMyProfile}">
 									<h:graphicImage name="#{images.account}" />
 						#{general.myProfile}
 				</p:commandLink>
-
-								<p:commandLink rendered="#{sessionUser.loggedIn == true}"
+<div >
+								<p:commandLink styleClass="username" rendered="#{sessionUser.loggedIn == true}"
 									action="#{homeController.moveToMyProfile}">
 						#{sessionUser.user.login}
-						<h:graphicImage name="#{images.profile_arrow}" />
+						<h:graphicImage rendered="#{sessionUser.loggedIn == true}" name="#{images.profile_arrow}" />
 								</p:commandLink>
 							</div>
 						</td>
 						<td class="menu_shortcuts"><p:commandLink
-								styleClass="hyperlink_title"
+								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToCart}">
 								<h:graphicImage name="#{images.cart}">
 								</h:graphicImage>		
 						#{general.myCart}
 <!-- 						- #{cart.numberArticle} -->
-							</p:commandLink> <br /> <p:commandLink styleClass="hyperlink"
+							</p:commandLink> <br /> <p:commandLink styleClass="hyperlink_header_subtitles"
 								action="#{homeController.moveToCart}">	
 						#{cart.numberArticle} article(s)
 				</p:commandLink></td>
 					</tr>
 				</table>
 			</h:form>
+			
+			<!-- MENU -->
 			<div id="menu">
 			<nav>
             <ul class="fancyNav">
                 <li id="home"><a href="#home" class="homeIcon">Home</a></li>
-                <li id="news"><a href="#news">News</a></li>
-                <li id="about"><a href="#about">About us</a></li>
-                <li id="services"><a href="#services">Services</a></li>
-                <li id="contact"><a href="#contact">Contact us</a></li>
-                 <li id="contact"><a href="#contact">Contact us</a></li>
-                  <li id="contact"><a href="#contact">Contact us</a></li>
+                <li ><a href="#news">Gadgets</a></li>
+                <li ><a href="#about">Pièces de rechange</a></li>
+                <li ><a href="#services">Art &amp; Déco</a></li>
+                <li ><a href="#contact">Outils</a></li>
+                <li ><a href="#contact">Objets du quotidien</a></li>
+                <li ><a href="#contact">Jouets</a></li>
             </ul>
         </nav>
 			
@@ -99,7 +100,7 @@
                 // required settings
                 
                 carousel_data: data,
-                carousel_outer_height: 768,
+                carousel_outer_height: 455,
                 carousel_height: 568,
                 slide_height: 568,
                 carousel_outer_width: 1024,
