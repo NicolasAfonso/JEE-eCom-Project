@@ -68,7 +68,7 @@ public class LoginController implements Serializable {
 				sessionUser.setUser(user);
 	            FacesMessage msg = new FacesMessage("Succesful","Welcome");  
 	            FacesContext.getCurrentInstance().addMessage(null, msg); 
-	            return sessionUser.getUrl();
+	            return sessionUser.getUrl()+"?faces-redirect=false";
 			}
 			else
 			{
