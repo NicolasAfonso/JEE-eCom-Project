@@ -28,17 +28,25 @@
 					</div>
 					<br />
 					
-					<div class="history_sell">
-						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						
-						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
-						
-						<h:outputLabel value="Acheté par "/>
-						<p:commandLink id="buyer">
-							<h:outputText styleClass="hyperlink_classic" value="#{general.buyer}" />
-						</p:commandLink>
-						<h:outputLabel value=" le #{general.dateBought}"/>
-						
+					<div>
+					
+						<h:dataTable value="#{manageProfileController.transactionSold}" var="ts"
+	    					styleClass="history_sell"
+			    			headerClass="order-table-header"
+			    			rowClasses="order-table-odd-row,order-table-even-row">
+	 
+			    			<h:column>
+				    			<h:graphicImage styleClass="product_search_image" name="nom de l'image" />
+								<h:outputLabel styleClass="bold" value=" #{ts.product.name} - #{ts.product.description}" />
+								<h:outputLabel value="Acheté par "/>
+								<p:commandLink id="buyer">
+									<h:outputText styleClass="hyperlink_classic" value="#{ts.buyer.surname} #{ts.buyer.firstname}" />
+								</p:commandLink>
+								<h:outputLabel value=" le #{ts.date}"/>
+			    			</h:column>
+	 
+	    				</h:dataTable>
+					
 					</div>
 				</div>
 				<h:commandButton styleClass="button_back" action="/profile/accountParameters" value="#{profile.backModif}"/>

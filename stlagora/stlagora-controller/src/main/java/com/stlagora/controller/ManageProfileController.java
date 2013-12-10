@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -82,6 +83,11 @@ public class ManageProfileController implements Serializable {
 	{
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		User u = sessionUser.getUser();
+		if(password.length() < 8){
+			userDao.update(u);
+			return "/profile/accountParameters?faces-redirect=true";
+		}
+		u.setPassword(password);
 		userDao.update(u);
 		return "/profile/accountParameters?faces-redirect=true";
 		

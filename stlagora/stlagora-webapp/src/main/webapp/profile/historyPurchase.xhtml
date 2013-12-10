@@ -30,31 +30,28 @@
 					
 					<div>
 					
-					<h:dataTable value="#{manageProfileController.transactionBuy}" var="t"
-    			styleClass="history_purchase"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-    		>
- 
-    			<h:column>
-    				<h:graphicImage styleClass="product_search_image" name="nom de l'image" />
-						
-						<h:outputLabel styleClass="bold" value="#{t.product.name} - #{t.product.description}" />
-						<br />
-						<h:outputLabel value="#{profile.labelVendu}"/>
-						<h:outputLabel value="#{t.seller.surname} #{t.seller.firstname}"/>
-						
-						<h:outputLabel styleClass="gray italic" value="#{profile.labelBought} #{t.date}"/>
-						<h:outputLabel styleClass="bold gray italic" value="(#{t.amount} euros)" />
-						
-						<h:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" styleClass="button_classic"/>
-    			</h:column>
- 
-    		</h:dataTable>
+						<h:dataTable value="#{manageProfileController.transactionBuy}" var="t"
+	    					styleClass="history_purchase"
+			    			headerClass="order-table-header"
+			    			rowClasses="order-table-odd-row,order-table-even-row">
+	 
+			    			<h:column>
+			    				<h:graphicImage styleClass="product_search_image" name="nom de l'image" />
+									
+									<h:outputLabel styleClass="bold" value=" #{t.product.name} - #{t.product.description}" />
+									<br />
+									<h:outputLabel value="#{profile.labelVendu}"/>
+									<h:outputLabel value="#{t.seller.surname} #{t.seller.firstname}"/>
+									
+									<h:outputLabel styleClass="gray italic" value="#{profile.labelBought} #{t.date}"/>
+									<h:outputLabel styleClass="bold gray italic" value="(#{t.amount} euros)" />
+									
+									<h:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" styleClass="button_classic"/>
+			    			</h:column>
+	 
+	    				</h:dataTable>
 					
 					</div>
-					
-					
 					
 					<h:commandButton styleClass="button_back" action="/profile/accountParameters" value="#{profile.backModif}"/>
 				</div>

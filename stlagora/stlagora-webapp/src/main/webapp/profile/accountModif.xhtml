@@ -56,8 +56,8 @@
 						<h:outputLabel styleClass=" bold" value="#{profile.fieldPassword}" />
 						
 						<p:password id="password_creat" required="false"
-							value="#{sessionUser.user.password}"
-							match="password_confirm">
+							value="#{manageProfileController.password}"
+							match="password_confirm"> 
 						</p:password>
 						<br />
 	
@@ -65,7 +65,7 @@
 							value="#{profile.fieldPasswordConfirm}" />
 						
 						<p:password id="password_confirm" required="false"
-							value="#{sessionUser.user.password}">
+							value="#{manageProfileController.password}">
 						</p:password>
 						<br />
 						

@@ -56,14 +56,14 @@
 					<h:outputLabel value=" euros" />
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
-					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true">
-						<f:validator validatorId="fileUploadValidatorImage"/>
+					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true" styleClass="button_browse">
+						<f:validator validatorId="fileUploadValidatorImage" />
 					 </p:fileUpload>
 					<h2>#{sell.downloadProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
-					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true">
-						<f:validator validatorId="fileUploadValidatorPlan"/>
+					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true" styleClass="button_browse">
+						<f:validator validatorId="fileUploadValidatorPlan" />
 					</p:fileUpload>
 
 					<br />
