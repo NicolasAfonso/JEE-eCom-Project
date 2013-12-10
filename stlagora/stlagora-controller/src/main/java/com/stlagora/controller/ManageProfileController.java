@@ -82,17 +82,8 @@ public class ManageProfileController implements Serializable {
 	{
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		User u = sessionUser.getUser();
-		u.setFirstname(firstname);
-		u.setSurname(surname);
-		u.setEmail(email);
-		u.setPassword(password);
-		u.setPhoneNumber(phoneNumber);
-		u.setSiret(siret);
-		u.setCompanyName(companyName);
-		u.setRib(rib);
-		u.setAccountType(accountType);
 		userDao.update(u);
-		return "/profile/myProfile?faces-redirect=true";
+		return "/profile/accountParameters?faces-redirect=true";
 		
 	}
 	
@@ -121,12 +112,16 @@ public class ManageProfileController implements Serializable {
 		}
 	}
 	
+	public String comeBackIdent(){
+		return "/login?faces-redirect=true";
+	}
+	
 	public String goToModificationProfile(){
 		return "/profile/accountModif?faces-redirect=true";
 	}
 	
 	public String goToForgetPassword(){
-		return "/profile/forgetPassword?faces-redirect=true";
+		return "/global/forgetPassword?faces-redirect=true";
 	}
 	
 	public String goToHistoryPurchase(){
