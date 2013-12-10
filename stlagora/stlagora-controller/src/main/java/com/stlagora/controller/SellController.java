@@ -61,7 +61,7 @@ public class SellController implements Serializable {
 	
 	private Product productUpload;
 	
- 
+	
 	public String validateSell(){
 		if(plan != null && image !=null) {    
 			log.debug(plan.getFileName());

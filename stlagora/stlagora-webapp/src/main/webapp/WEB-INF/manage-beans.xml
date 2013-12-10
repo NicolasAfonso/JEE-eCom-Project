@@ -61,4 +61,8 @@
 		<validator-id>emailValidator</validator-id>
 		<validator-class>com.stlagora.validator.EmailValidator</validator-class>
 	</validator>
+	<validator>
+		<validator-id>cbValidator</validator-id>
+		<validator-class>com.stlagora.validator.CBValidator</validator-class>
+	</validator>
 </faces-config>

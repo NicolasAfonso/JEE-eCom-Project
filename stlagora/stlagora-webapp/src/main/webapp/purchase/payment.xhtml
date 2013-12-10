@@ -42,8 +42,7 @@
 						<h:outputLabel styleClass="bold" value="#{general.numberCard}" />
 						
 						<p:inputText id="numberCard" required="true">
-<!-- 						nombre pour carte de crédit -->
-							<f:validateLength minimum="2" />
+							<f:validator validatorId="cbValidator" />
 						</p:inputText>
 						<br />
 						<h:outputLabel styleClass="bold" value="#{general.expiryDate}" />

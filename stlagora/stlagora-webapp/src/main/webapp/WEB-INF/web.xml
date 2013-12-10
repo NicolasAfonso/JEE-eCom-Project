@@ -34,7 +34,16 @@
 		<url-pattern>/purchase/*</url-pattern>
 		<url-pattern>/sell/*</url-pattern>
 	</filter-mapping>
-	
+		<filter>
+		<filter-name>SellFilter</filter-name>
+		<filter-class>com.stlagora.filters.SellFilter</filter-class>
+	</filter>
+	<!-- Set the login filter to secure all the pages in the /secured/* path 
+		of the application -->
+	<filter-mapping>
+		<filter-name>SellFilter</filter-name>
+		<url-pattern>/sell/sell.xhtml</url-pattern>
+	</filter-mapping>
 <persistence-context-ref>
     <persistence-context-ref-name>STLAGORA_PU</persistence-context-ref-name>
     <persistence-unit-name>STLAGORA_PU</persistence-unit-name>
