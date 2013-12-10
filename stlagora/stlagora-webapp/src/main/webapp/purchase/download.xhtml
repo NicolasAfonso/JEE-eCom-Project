@@ -23,18 +23,26 @@
 				
 					<div class="gray_background">
 						<h1>
-							#{general.download}
+							#{product.download}
 						</h1>				
 					</div>
 					<br />
 					
 					<div class="item">
-						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
-						<h:outputLabel value="#{general.labelVendu}"/>
-						<h:outputLabel value="#{general.nameVendeur}"/>
-						<h:outputLabel styleClass="gray italic" value="#{general.labelBought} #{general.dateBought}"/>
-						<h:outputLabel styleClass="bold gray italic" value="(#{general.price})" />
+						<h:dataTable value="#{cart.products}" var="pl"
+	    					styleClass="product"
+			    			headerClass="order-table-header"
+			    			rowClasses="order-table-odd-row,order-table-even-row">
+
+			    			<h:column>
+			    				<h:graphicImage styleClass="product_search_image" title="product_card_image" alt="product_card_image" library="images" name="logo.png" />
+								<h:outputLabel styleClass="bold" value="#{pl.name}" />
+								<h:outputLabel value="#{product.labelVendu}"/>
+								<h:outputLabel value="#{pl.seller.firstname} #{pl.seller.firstname}"/>
+								<h:outputLabel styleClass="bold gray" value="#{pl.price}€" />
+								<h:outputLabel styleClass="gray italic" value="(#{product.labelSell})" />
+			    			</h:column>
+	    				</h:dataTable>
 					</div>
 					<br />
 					

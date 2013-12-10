@@ -60,6 +60,10 @@ public class HomeController implements Serializable {
 		
 	}
 	
+	public String moveToHome() {
+		return "/home.xhtml?faces-redirect=true";
+	}
+	
 	public String moveToMyProfile()
 	{
 		return "/profile/accountParameters?faces-redirect=true";

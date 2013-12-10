@@ -126,8 +126,8 @@ h2
 #menu_logo
 {
 	text-align: center;
-    min-width: 165px;
-    width: 15%;
+/*     min-width: 130px; */
+    width: 20%;
 }
 
 #menu_search

@@ -6,40 +6,52 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+
 <h:head>
 	<title>Bienvenue sur STL Agora - Accueil -</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
 	<h:outputStylesheet library="css" name="agile_carousel.css" />
 	<h:outputStylesheet library="css" name="global.css" />
-	
-	
 	<h:outputScript library="js" name="agile_carousel.alpha.js" />
 </h:head>
 
 <h:body>
-		<ui:insert name="header">
-			<ui:include src="resources/templates/header.xhtml" />
-		</ui:insert>
+	<f:verbatim>
+		<script>
+			// Code used for carousel
+			$.getJSON("#{resource['js/agile_carousel_data.php']}",
+				function(data) {$(document).ready(
+					function() {$("#flavor_2").agile_carousel(
+						{
+						carousel_data : data,
+						carousel_outer_height : 455,
+						carousel_height : 568,
+						slide_height : 568,
+						carousel_outer_width : 1024,
+						slide_width : 1024,
+						timer : 5000,
+						control_set_1 : "numbered_buttons,previous_button,pause_button,next_button",
+						control_set_2 : "content_buttons",
+						change_on_hover : "content_buttons"
+						});
+					});
+				});
+			</script>
+	</f:verbatim>
 	
-		<div id="page">
-			<div id="pagecontent">
-				<div class="slideshow" id="flavor_2"></div>
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-				toto<br />
-			</div>
+	<ui:insert name="header">
+		<ui:include src="resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
+		<div id="pagecontent">
+			<div class="slideshow" id="flavor_2"></div>
 		</div>
-	
-		<ui:insert name="footer">
-			<ui:include src="resources/templates/footer.xhtml" />
-		</ui:insert>
+	</div>
+
+	<ui:insert name="footer">
+		<ui:include src="resources/templates/footer.xhtml" />
+	</ui:insert>
 </h:body>
 </html>

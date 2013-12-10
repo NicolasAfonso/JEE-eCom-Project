@@ -16,110 +16,75 @@
 			<h:form>
 				<table class="full_width">
 					<tr>
-						<td id="menu_logo"><h:link outcome="home">
-								<h:graphicImage title="#{general.homeTitle}" alt="{general.homeTitle}" library="images" name="logo.png" />
-							</h:link></td>
-						<h:form> 
-<!-- 						<h:selectOneListbox> -->
-<!-- 						<f:selectItem itemLabel="Cat 1"/> -->
-<!-- 						<f:selectItem itemLabel="Cat 2"/> -->
-<!-- 						<f:selectItem itemLabel="Cat 3"/> -->
-<!-- 						<f:selectItem itemLabel="Cat 4"/> -->
-<!-- 						<f:selectItem itemLabel="Cat 5"/> -->
-<!-- 						</h:selectOneListbox> -->
-						
+						<td id="menu_logo">
+						<p:commandLink 
+								action="#{homeController.moveToHome}" >
+								<h:graphicImage title="#{general.homeTitle}"
+									alt="{general.homeTitle}" library="images" name="logo.png" />
+									</p:commandLink>
+							</td>
+						<h:form>
+
 							<td id="menu_search"><h:inputText styleClass="search"
 									value="#{homeController.search}"></h:inputText> <h:commandButton
 									action="#{homeController.moveToSearch}" style="display: none"
 									value="" /></td>
 						</h:form>
-						
-						<td class="menu_shortcuts">
-							<p:commandLink action="#{homeController.moveToSell}" styleClass="hyperlink_header_titles">
+
+						<td class="menu_shortcuts"><p:commandLink
+								action="#{homeController.moveToSell}"
+								styleClass="hyperlink_header_titles">
 							#{general.sellLabel}
-							</p:commandLink>
-							<h:graphicImage name="#{images.sell}" />
-						</td>
-						<td class="menu_shortcuts">
-							
-								<p:commandLink 
-									styleClass="hyperlink_header_titles"
-									action="#{homeController.moveToMyProfile}">
-									<h:graphicImage name="#{images.account}" />
-						#{general.myProfile}
-				</p:commandLink>
-<div >
-								<p:commandLink styleClass="username" rendered="#{sessionUser.loggedIn == true}"
-									action="#{homeController.moveToMyProfile}">
-						#{sessionUser.user.login}
-						<h:graphicImage rendered="#{sessionUser.loggedIn == true}" name="#{images.profile_arrow}" />
-								</p:commandLink>
-							</div>
+							</p:commandLink> <h:graphicImage alt="" title="" library="images" name="sell.png" />
 						</td>
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
+								action="#{homeController.moveToMyProfile}">
+								<h:graphicImage library="images" alt="" title="" name="account.png" />
+						#{general.myProfile}
+				</p:commandLink>
+
+							<div>
+								<p:commandLink styleClass="username"
+									rendered="#{sessionUser.loggedIn == true}"
+									action="#{homeController.moveToMyProfile}">
+						#{sessionUser.user.login}
+						<h:graphicImage rendered="#{sessionUser.loggedIn == true}"
+										library="images" name="profile_arrow" alt="" title="" />
+								</p:commandLink>
+							</div></td>
+						<td class="menu_shortcuts"><p:commandLink
+								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToCart}">
-								<h:graphicImage name="#{images.cart}">
-								</h:graphicImage>		
+								<h:graphicImage library="images" alt="" titre="" name="cart.png" />
+			
 						#{general.myCart}
-<!-- 						- #{cart.numberArticle} -->
 							</p:commandLink> <br /> <p:commandLink styleClass="hyperlink_header_subtitles"
 								action="#{homeController.moveToCart}">	
-						#{cart.numberArticle} article(s)
+						#{cart.numberArticle} article(s)<!-- propertiser -->
 				</p:commandLink></td>
 					</tr>
 				</table>
 			</h:form>
-			
+
 			<!-- MENU -->
 			<div id="menu">
-			<nav>
-            <ul class="fancyNav">
-                <li id="home"><a href="#home" class="homeIcon">Home</a></li>
-                <li ><a href="#news">Gadgets</a></li>
-                <li ><a href="#about">Pièces de rechange</a></li>
-                <li ><a href="#services">Art &amp; Déco</a></li>
-                <li ><a href="#contact">Outils</a></li>
-                <li ><a href="#contact">Objets du quotidien</a></li>
-                <li ><a href="#contact">Jouets</a></li>
-            </ul>
-        </nav>
-			
+				<nav>
+				<ul class="fancyNav">
+					<li id="home"><a href="/stlagora/home.xhtml" class="homeIcon">Home</a></li>
+					<li><a href="#news">Gadgets</a></li>
+					<li><a href="#about">Pièces de rechange</a></li>
+					<li><a href="#services">Art &amp; Déco</a></li>
+					<li><a href="#contact">Outils</a></li>
+					<li><a href="#contact">Objets du quotidien</a></li>
+					<li><a href="#contact">Jouets</a></li>
+				</ul>
+				</nav>
+
 			</div>
 		</div>
-
-<f:verbatim>
-<script>
-
-    // Code used for "Flavor 2" example (above)
-    
-    $.getJSON("#{resource['js/agile_carousel_data.php']}", function(data) {
-        $(document).ready(function(){
-            $("#flavor_2").agile_carousel({
-                
-                // required settings
-                
-                carousel_data: data,
-                carousel_outer_height: 455,
-                carousel_height: 568,
-                slide_height: 568,
-                carousel_outer_width: 1024,
-                slide_width: 1024,
-                                                
-                // end required settings
-                                                
-              	timer:5000,
-                control_set_1: "numbered_buttons,previous_button,pause_button,next_button",
-                control_set_2: "content_buttons",
-                change_on_hover: "content_buttons"
-            });
-        });
-    });
- </script>
- 
-</f:verbatim>
+		
 	</ui:composition>
 
 </body>
-
 </html>
