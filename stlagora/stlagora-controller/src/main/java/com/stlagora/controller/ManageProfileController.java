@@ -37,62 +37,92 @@ public class ManageProfileController implements Serializable {
 	 */
 	private Logger log = Logger.getLogger(ManageProfileController.class.getName());
 	private static final long serialVersionUID = 1L;
-	
+
 	@EJB
 	private UserDao userDao;
 	@EJB
 	private TransactionDao transactionDao;
-	
+
 	/**
 	 * Subscription variable
 	 */
 	private String login ;
-	private String surname ="";
-	private String firstname =""; 
+	private String surname ;
+	private String firstname ; 
 	private String email ;
 	private String password ;
-	private String phoneNumber ="";
-	private String siret ="";
-	private String rib ="";
-	private String companyName ="";
+	private String phoneNumber ;
+	private String siret ;
+	private String rib ;
+	private String companyName ;
 	private ACCOUNT_TYPE accountType;
-	
+
 	private List<Transaction> transactionBuy = new ArrayList<Transaction>() ;
 	private List<Transaction> transactionSold = new ArrayList<Transaction>();
-	
+
 	public ManageProfileController(){
-		
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		if(sessionUser.getUser() !=null)
+		{surname = sessionUser.getUser().getSurname() ;
+		firstname = sessionUser.getUser().getFirstname();	 
+		email = sessionUser.getUser().getEmail();
+		phoneNumber =sessionUser.getUser().getPhoneNumber() ;
+		rib = sessionUser.getUser().getRib(); 
+		companyName = sessionUser.getUser().getCompanyName();
+		accountType = sessionUser.getUser().getAccountType() ;
+		}
+		else
+		{
+			surname = "";
+			firstname = "";
+			phoneNumber="";
+		}
 	}
-	
+
 	public String createUser(){
 		log.debug(email);
 		User u = new User(email,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,accountType,ROLE.MEMBER);
 		userDao.create(u);
-        SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
 		try{
-		User userCreate = userDao.findByLogin(email);
-		sessionUser.setUser(userCreate);
+			User userCreate = userDao.findByLogin(email);
+			sessionUser.setUser(userCreate);
 		}catch(Exception e){
 			log.error("User not found");
 		}
 		return "/profile/accountParameters?faces-redirect=true";
 	}
-	
+
 	public String update()
 	{
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		User u = sessionUser.getUser();
-		if(password.length() < 8){
+		if(password.length() < 8 && password.equals("")){
 			userDao.update(u);
 			return "/profile/accountParameters?faces-redirect=true";
 		}
+
+		if(password.length() <8 && !password.equals(""))
+		{
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Mot de passe trop court","");  
+			FacesContext.getCurrentInstance().addMessage(null, msg);  
+			return "/profile/accountModif";
+		}
+		u.setFirstname(firstname);
+		u.setSurname(surname);
+		u.setEmail(email);
 		u.setPassword(password);
+		u.setPhoneNumber(phoneNumber);
+		u.setSiret(siret);
+		u.setCompanyName(companyName);
+		u.setRib(rib);
+		u.setAccountType(accountType);
 		userDao.update(u);
 		return "/profile/accountParameters?faces-redirect=true";
-		
+
 	}
-	
+
 	public String remove(){
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		User u = sessionUser.getUser();
@@ -102,11 +132,11 @@ public class ManageProfileController implements Serializable {
 		sessionUser.setLoggedIn(false);
 		return "/home?faces-redirect=true";
 	}
-	
+
 	public ACCOUNT_TYPE[] getAccountTypes() {
 		return ACCOUNT_TYPE.values();
 	}
-	
+
 	public String subscription(){
 		switch (accountType) {
 		case PRIVATE:
@@ -117,35 +147,35 @@ public class ManageProfileController implements Serializable {
 			return "/global/error?faces-redirect=true";
 		}
 	}
-	
+
 	public String comeBackIdent(){
 		return "/login?faces-redirect=true";
 	}
-	
+
 	public String goToModificationProfile(){
 		return "/profile/accountModif?faces-redirect=true";
 	}
-	
+
 	public String goToForgetPassword(){
 		return "/global/forgetPassword?faces-redirect=true";
 	}
-	
+
 	public String goToHistoryPurchase(){
 		return "/profile/historyPurchase?faces-redirect=true";
 	}
-	
+
 	public String goToHistorySell(){
 		return "/profile/historySell?faces-redirect=true";
 	}
-	
+
 	public String goToForSale(){
 		return "/profile/forSale?faces-redirect=true";
 	}
-	
+
 	public String changeName(){
 		return "/profile/newName?faces-redirect=true";
 	}
-	
+
 	public String changeEmail(){
 		return "/profile/newEmail?faces-redirect=true";
 	}
@@ -154,7 +184,7 @@ public class ManageProfileController implements Serializable {
 	/**
 	 * GETTER ET SETTER
 	 */
-	
+
 	/**
 	 * @return the username
 	 */
@@ -243,11 +273,11 @@ public class ManageProfileController implements Serializable {
 	 * @return the transactionBuy
 	 */
 	public List<Transaction> getTransactionBuy() {
-		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		 if(sessionUser != null)
-		 {
-			 transactionBuy =  transactionDao.findByBuyer(sessionUser.getUser());
-		 }
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		if(sessionUser != null)
+		{
+			transactionBuy =  transactionDao.findByBuyer(sessionUser.getUser());
+		}
 		return transactionBuy;
 	}
 
@@ -262,11 +292,11 @@ public class ManageProfileController implements Serializable {
 	 * @return the transactionSold
 	 */
 	public List<Transaction> getTransactionSold() {
-		 SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		 if(sessionUser != null)
-		 {
-			 transactionSold = transactionDao.findBySeller(sessionUser.getUser());
-		 }
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		if(sessionUser != null)
+		{
+			transactionSold = transactionDao.findBySeller(sessionUser.getUser());
+		}
 		return transactionSold;
 	}
 
@@ -332,7 +362,7 @@ public class ManageProfileController implements Serializable {
 	public void setAccountType(ACCOUNT_TYPE accountType) {
 		this.accountType = accountType;
 	}
-	
-	
-	
+
+
+
 }

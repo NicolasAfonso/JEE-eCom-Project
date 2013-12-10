@@ -24,21 +24,22 @@
 			<div id="pagecontent">
 
 				<div class="form_container">
-				
+
 					<div class="gray_background">
 						<h1>
 							#{profile.accountParameters}
 						</h1>				
 					</div>
+					<p:messages id="messages" showDetail="false" autoUpdate="true" />
 					<br />
-				
+					
 					<div>
 						<h2>#{profile.identify}</h2>
 						<br />
 						<h:outputLabel styleClass=" bold" value="#{profile.fieldEmail}" />
 						
 						<p:inputText id="email_creat" required="true"
-							value="#{sessionUser.user.email}"
+							value="#{manageProfileController.email}"
 							match="password_confirm">
 							<f:validateLength minimum="8" />
 						</p:inputText>
@@ -46,7 +47,7 @@
 						<h:outputLabel styleClass=" bold" value="#{profile.fieldEmailConfirm}" />
 						
 						<p:inputText id="email_confirm" required="true" 
-							value="#{sessionUser.user.email}">
+							value="#{manageProfileController.email}">
 							<f:validateLength minimum="8" />
 						</p:inputText>
 						<br />
@@ -74,28 +75,28 @@
 						<h:outputLabel styleClass=" bold" value="#{profile.fieldSurname}" />
 						
 						<p:inputText  required="true"
-							value="#{sessionUser.user.surname}">
+							value="#{manageProfileController.surname}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						<h:outputLabel styleClass=" bold" value="#{profile.fieldFirstname}" />
 						
 						<p:inputText  required="true"
-							value="#{sessionUser.user.firstname}">
+							value="#{manageProfileController.firstname}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						<h:outputLabel styleClass=" bold" value="#{profile.fieldPhone}" />
 						
 						<p:inputText  required="true"
-							value="#{sessionUser.user.phoneNumber}">
+							value="#{manageProfileController.phoneNumber}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
 						<h:outputText styleClass="bold" value="#{profile.fieldStatut}" />
 						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 							<p:selectOneRadio styleClass="small" id="radioBox_statut"
-								value="#{sessionUser.user.accountType}" required="true">
+								value="#{manageProfileController.accountType}" required="true">
 								<f:selectItems value="#{manageProfileController.accountTypes}"
 									var="type" itemValue="#{type}" itemLabel="#{type}" />
 							</p:selectOneRadio>
