@@ -133,15 +133,16 @@ h2
 #menu_search
 {
     text-align: center;
-    max-width: 55%;
+    max-width: 40%;
 }
 
 .search {
-	width: 95%;
+	width: 90%;
  	background: url("#{resource['images/search.png']}") no-repeat 10px 6px #fcfcfc;
  	border: 1px solid #d1d1d1;
     color: darkgray;
-    padding: 6px 15px 6px 35px;
+    padding: 6px 0px;
+    padding-left: 10%;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
