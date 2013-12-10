@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -25,7 +26,8 @@ public class PurchaseController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(SessionUser.class.getName());
-	private TransactionDao transactionDao = new TransactionDaoImpl();
+	@EJB
+	private TransactionDao transactionDao;
 	
 	private boolean validate = false ; 
 	
@@ -43,10 +45,7 @@ public class PurchaseController implements Serializable {
 				 productList.add(product);
 				}
 			
-			 return "/purchase/payementView?faces-redirect=true";
-		 
-		
-		
+			 return "/purchase/payment?faces-redirect=true";
 	}
 	
 	public String payCart()
@@ -63,7 +62,7 @@ public class PurchaseController implements Serializable {
 			cart.clean();
 			productList.clear();
 			validate = false;
-			return "/purchase/validationPayement?faces-redirect=true";
+			return "/purchase/download?faces-redirect=true";
 		}
 		else
 		{
@@ -72,6 +71,9 @@ public class PurchaseController implements Serializable {
 		
 	}
 
+	public String goPay(){
+		return "/purchase/payment?faces-redirect=true";
+	}
 	
 	/**
 	 * GETTER/SETTER
