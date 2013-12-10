@@ -16,81 +16,88 @@
 		<ui:insert name="header">
 			<ui:include src="/resources/templates/header.xhtml" />
 		</ui:insert>
+		
+		<f:metadata>
+			<f:viewParam name="id" value="#{productController.id}" ></f:viewParam>
+		</f:metadata>	
 	
 		<h:form>
-			<div id="infoProduct">
-				<div id="imageProd">
-					<h:graphicImage styleClass="product_card_image" name="#{general.nameImage}" />
+			<div id="pagecontent">
+			    <div id="imageProd">
+					<h:graphicImage styleClass="product_card_image" title="product_card_image" alt="product_card_image" library="images" name="logo.png" />
 				</div>
+				
+				
 				<div id= "info">
 					<div id="infoGeneral">
 						<h1> 
-							Salut!!
-							#{general.productInfo}
+							#{productController.product.name} 
 						</h1>
 						<br />
 						<h:outputLabel value="de " />
 						<p:commandLink styleClass="hyperlink_classic" id="nameVendeur">
-							<h:outputText  value="#{general.nameVendeur}" />
+							<h:outputText  value="#{productController.product.seller.firstname} #{productController.product.seller.surname}" />
 						</p:commandLink>
 						<br />
+						<h:outputLabel value="#{productController.product.globalMark}" />
 						<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
 						<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
 						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
 						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
 						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
 						<p:commandLink id="linkOpinion">
-							<h:outputText styleClass="hyperlink_classic underlined" value="#{general.linkOpinion}" />
+							<h:outputText styleClass="hyperlink_classic underlined" value=" (#{productController.nbOpinion} #{product.opinions})" />
 						</p:commandLink>
 						<br />
-						<h:outputLabel styleClass="price" value="#{general.price}" />
-						<h:commandButton id="buttonAdd" image="/resources/images/button_add.png"/>
+						<h:outputLabel styleClass="price" value="#{productController.product.price}€" />
+<!-- 						TODO : add to cart  -->
+						<h:commandButton id="buttonAdd" image="/resources/images/button_add.png" action="#{cart.add(productController.product)}"/> 
 					</div>
 					<br />
 					<div id="features">
 						<div class="gray_background">
-							<h:outputLabel styleClass="bold" value="Informations produit" />
+							<h:outputLabel styleClass="bold" value="#{product.titleInfo}" />
 						</div>
 						<br />
-						<h:outputLabel value="Largeur : " />
-						<h:outputLabel styleClass="bold" value="#{general.largeur}" />
-						<br />
-						<h:outputLabel value="Hauteur : " />
-						<h:outputLabel styleClass="bold" value="#{general.hauteur}" />
-						<br />
-						<h:outputLabel value="Profondeur : " />
-						<h:outputLabel styleClass="bold" value="#{general.profondeur}" />
-						<br />
-						<h:outputLabel value="Poids : " />
-						<h:outputLabel styleClass="bold" value="#{general.poids}" />
+						<h:outputLabel value="#{productController.product.description}" />
 						<br />
 					</div>
 				</div>
 			</div>
 			<div id="opinions">
 				<div class="gray_background">
-					<h:outputLabel styleClass="bold" value="Consulter les " />
-					<h:outputLabel styleClass="hyperlink_classic bold" value="#{general.numberOpinions} pour " />
-					<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
+					<h:outputLabel styleClass="bold" value="#{product.sentenceOpinion1}" />
+					<h:outputLabel styleClass="bold" value="#{productController.nbOpinion}" />
+					<h:outputLabel styleClass="bold" value=" #{product.sentenceOpinion2}" />
+					<h:outputLabel styleClass="bold" value=" #{productController.product.name}" />
 				</div>
-				<div class="opinion">
-					<h:outputLabel value="#{general.labelNote}"/>
-					<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
-						<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
-						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
-						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
-						<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
-					<br />
-					<h:outputLabel value="Par :"/>
-					<p:commandLink id="nameSeller">
-						<h:outputText styleClass="hyperlink_classic underlined" value="#{general.linkSeller}" />
-					</p:commandLink>
-					<br />
-					
-					<h:outputLabel styleClass="bold gray" value="#{general.commentTitle}"/>
-					<br />
-					<h:outputLabel value="#{general.comment}"/>
-					<br />
+				<div>
+					<h:dataTable value="#{productController.product.opinions}" var="op"
+    					styleClass="opinion"
+		    			headerClass="order-table-header"
+		    			rowClasses="order-table-odd-row,order-table-even-row">
+ 
+		    			<h:column>
+		    				<h:outputLabel value="#{product.labelMark} #{op.mark}"/>
+							<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
+							<h:graphicImage title="star" alt="star" library="images" name="star.png" styleClass="star" />
+							<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
+							<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
+							<h:graphicImage title="star" alt="star" library="images" name="star_empty.png" styleClass="star" />
+							<br />
+							<h:outputLabel value="Par :"/>
+							<p:commandLink id="nameBuyer">
+								<h:outputText styleClass="hyperlink_classic underlined" value="#{op.writer.firstname} #{op.writer.surname}" />
+							</p:commandLink>
+							<br />
+							
+							<h:outputLabel styleClass="bold gray" value="Titre du commentaire"/>
+							<br />
+							<h:outputLabel value="#{op.comment}"/>
+							<br />
+		    			</h:column>
+ 
+    				</h:dataTable>
 				</div>
 			</div>
 		</h:form>

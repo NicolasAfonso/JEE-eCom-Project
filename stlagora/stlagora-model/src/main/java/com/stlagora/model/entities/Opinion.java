@@ -13,7 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
+//TODO : ajouter titre aux commentaires
+ 
 @Entity
 @Table(name="opinions")
 public class Opinion implements Serializable {

@@ -25,7 +25,7 @@ public class Cart implements Serializable {
 	private int numberArticle = 0 ;
 
 	public void add(Product product) {
-    	if(!products.contains(product)){
+    	if(!containsProduct(products, product)){
             products.add(product);
             amount += product.getPrice();
             numberArticle +=1 ; 
@@ -41,6 +41,15 @@ public class Cart implements Serializable {
 
     public List<Product> getProducts() {
         return products;
+    }
+    
+    private boolean containsProduct(List<Product> lp, Product p){
+    	for (Product product : lp) {
+			if(product.getName().equals(p.getName())){
+				return true;
+			}
+		}
+    	return false;
     }
     
 	

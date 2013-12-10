@@ -49,20 +49,21 @@
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productPrice}" />
-					<p:inputText id="productPrice" required="true" 
+					<p:inputText id="productPrice" required="true"
 						value="#{sellController.price}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<h:outputLabel value=" euros" />
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
-					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true" styleClass="button_browse">
+<!-- 					TODO : voir pour le style css -->
+					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true">
 						<f:validator validatorId="fileUploadValidatorImage" />
 					 </p:fileUpload>
 					<h2>#{sell.downloadProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
-					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true" styleClass="button_browse">
+					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true">
 						<f:validator validatorId="fileUploadValidatorPlan" />
 					</p:fileUpload>
 
