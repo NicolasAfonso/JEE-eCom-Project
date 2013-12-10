@@ -12,9 +12,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
 import com.stlagora.beans.SessionUser;
+import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 
 @ManagedBean(name = "loginController")
 @RequestScoped
@@ -28,7 +30,10 @@ public class LoginController implements Serializable {
 	private Logger log = Logger.getLogger(LoginController.class.getName());
 	@EJB
 	private UserDao userDao;
-
+	
+	@EJB 
+	private ProductDao productDao;
+	
 	private String loginUser;  
     private String password;  
 
@@ -68,6 +73,7 @@ public class LoginController implements Serializable {
 				sessionUser.setUser(user);
 	            FacesMessage msg = new FacesMessage("Succesful","Welcome");  
 	            FacesContext.getCurrentInstance().addMessage(null, msg); 
+	            log.debug(sessionUser.getUrl());
 	            return sessionUser.getUrl()+"?faces-redirect=true";
 			}
 			else

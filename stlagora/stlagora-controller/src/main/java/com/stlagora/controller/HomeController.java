@@ -75,7 +75,7 @@ public class HomeController implements Serializable {
 	}
 	
 	public String moveToSell(){
-		return "/sell/sell?faces-redirect=true";
+		return "/profile/forSale?faces-redirect=true";
 	}
 	
 	public String moveToSearch(){
