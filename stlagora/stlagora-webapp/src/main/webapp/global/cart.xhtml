@@ -21,14 +21,16 @@
 		<div id="pagecontent">
 			<h:form>
 				<div class="form_container">
-
-					<div class="gray_background">
-						<h1>
-							#{general.recap}
+					<div
+						style="display: table; width: 100%; background-color: #f1f1f1;">
+						<h1
+							style="display: table-cell; vertical-align: middle; text-align: left; padding-left: 5px">#{general.recap}</h1>
+						<div
+							style="display: table-cell; vertical-align: middle; text-align: right">
 							<h:graphicImage title="#{general.nameImageSecure}"
 								alt="#{general.nameImageSecure}" library="images"
 								name="paiementSecu.png" />
-						</h1>
+						</div>
 					</div>
 					<br />
 
@@ -58,7 +60,7 @@
 										</p:commandLink>
 									</form>
 								</div>
-								<div class="table_cell_middle">
+								<div class="table_cell_middle" style="text-align: right">
 									<h:outputLabel styleClass="bold" value="#{p.price}€" />
 								</div>
 							</div>
