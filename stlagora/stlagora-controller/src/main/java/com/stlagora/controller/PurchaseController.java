@@ -28,53 +28,56 @@ public class PurchaseController implements Serializable {
 	private Logger log = Logger.getLogger(SessionUser.class.getName());
 	@EJB
 	private TransactionDao transactionDao;
-	
-	private boolean validate = false ; 
-	
+
+	private boolean validate = false;
+
 	@ManagedProperty("productList")
 	private List<Product> productList = new ArrayList<Product>();
-	
+
 	public PurchaseController() {
-		
-	}
-	
-	public String validateCart(){
-			 validate = true ;
-			 Cart cart = (Cart) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cart");
-			 for (Product product : cart.getProducts() ) {
-				 productList.add(product);
-				}
-			
-			 return "/purchase/payment?faces-redirect=true";
-	}
-	
-	public String payCart()
-	{
-		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 
-		if(validate && sessionUser.isLoggedIn())
-		{
-			for (Product product : productList) {
-				transactionDao.create(new Transaction(product.getSeller(), sessionUser.getUser(), product.getPrice(),new Date(System.currentTimeMillis()) , product));
-			}
-			//Purchase validate, clean cart
-			Cart cart = (Cart) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cart");
-			cart.clean();
-			productList.clear();
-			validate = false;
-			return "/purchase/download?faces-redirect=true";
-		}
-		else
-		{
-			return "/purchase/cartView?faces-redirect=true";
-		}
-		
 	}
 
-	public String goPay(){
+	public String validateCart() {
+		productList.clear();
+		validate = true;
+		Cart cart = (Cart) FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get("cart");
+		for (Product product : cart.getProducts()) {
+			productList.add(product);
+		}
+
 		return "/purchase/payment?faces-redirect=true";
 	}
-	
+
+	public String payCart() {
+		SessionUser sessionUser = (SessionUser) FacesContext
+				.getCurrentInstance().getExternalContext().getSessionMap()
+				.get("sessionUser");
+
+		if (validate && sessionUser.isLoggedIn()) {
+			for (Product product : productList) {
+				transactionDao.create(new Transaction(product.getSeller(),
+						sessionUser.getUser(), product.getPrice(), new Date(
+								System.currentTimeMillis()), product));
+			}
+			// Purchase validate, clean cart
+			Cart cart = (Cart) FacesContext.getCurrentInstance()
+					.getExternalContext().getSessionMap().get("cart");
+			cart.clean();
+
+			validate = false;
+			return "/purchase/download?faces-redirect=true";
+		} else {
+			return "/purchase/cartView?faces-redirect=true";
+		}
+
+	}
+
+	public String goPay() {
+		return "/purchase/payment?faces-redirect=true";
+	}
+
 	/**
 	 * GETTER/SETTER
 	 */
@@ -87,10 +90,11 @@ public class PurchaseController implements Serializable {
 	}
 
 	/**
-	 * @param productList the productList to set
+	 * @param productList
+	 *            the productList to set
 	 */
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
-	
+
 }
