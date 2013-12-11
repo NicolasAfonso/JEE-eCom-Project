@@ -138,6 +138,16 @@ public class SellController implements Serializable {
 		return PRODUCT_STATUS.values();
 	}
 	
+
+	
+	public String goToSell(){
+		return "/sell/sell?faces-redirect=true";
+	}
+	
+	public String goToSellModif(){
+		return "/sell/sellModif?faces-redirect=true";
+	}
+	
 	/**
 	 * 
 	 * GETTER ET SETTER

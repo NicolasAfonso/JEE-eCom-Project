@@ -1,12 +1,16 @@
 package com.stlagora.controller;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
 
+import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.entities.Product;
@@ -22,6 +26,8 @@ public class ProductController {
 	private int nbOpinion;
 	@EJB
 	private ProductDao productDao;
+	
+	private List<Product> products;
 	
 	/**
 	 * @return the product
@@ -71,5 +77,26 @@ public class ProductController {
 	public void setNbOpinion(int nbOpinion) {
 		this.nbOpinion = nbOpinion;
 	}
+
+	/**
+	 * @return the products
+	 */
+	public List<Product> getProducts() {
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		if(sessionUser != null)
+		{
+			products = productDao.findBySeller(sessionUser.getUser());
+		}
+		return products;
+	}
+
+	/**
+	 * @param products the products to set
+	 */
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
+	
 	
 }

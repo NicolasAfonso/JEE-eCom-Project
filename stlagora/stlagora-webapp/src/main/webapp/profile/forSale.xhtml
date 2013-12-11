@@ -29,18 +29,27 @@
 					<br />
 					
 					<div class="for_sale">
-						<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
-						
-						<h:outputLabel styleClass="bold" value="#{general.productInfo}" />
-						
-						<p:commandLink id="modifProduct">
-							<h:outputText styleClass="hyperlink_classic" value="#{profile.modif}" />
-						</p:commandLink>
-						
-						<h:commandButton id="delete" value="#{general.buttonDelete}" styleClass="button_delete"/>
+					
+						<h:dataTable value="#{productController.products}" var="lp"
+	    					styleClass="for_sale"
+			    			headerClass="order-table-header"
+			    			rowClasses="order-table-odd-row,order-table-even-row">
+	 
+			    			<h:column>
+			    				<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+								<h:outputLabel styleClass="bold" value="#{lp.name}" />
+								<p:commandLink id="modifProduct" action="#{sellController.goToSellModif}">
+									<h:outputText styleClass="hyperlink_classic" value="#{profile.modif}" />
+								</p:commandLink>
+								<h:commandButton id="delete" value="#{general.buttonDelete}" styleClass="button_delete"/>
+			    			</h:column>
+	 
+	    				</h:dataTable>
+					
 					</div>
 				</div>
-				<h:commandButton styleClass="button_back" action="/profile/accountParameters" value="#{profile.backModif}"/>
+				<h:commandButton styleClass="button_back" value="#{profile.backModif}" action="/profile/accountParameters?faces-redirect=true" />
+				<h:commandButton styleClass="button_classic" value="#{product.addProductSell}" action="#{sellController.goToSell}"/>
 			</div>
 		</h:form>
 		
