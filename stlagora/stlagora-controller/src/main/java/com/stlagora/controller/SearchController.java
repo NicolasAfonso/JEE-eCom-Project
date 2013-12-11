@@ -39,6 +39,7 @@ public class SearchController implements Serializable {
 
 	private String search;
 	private Category categorySearch;
+	private int nbResults;
 	
 	public List<Product> getProducts(){
 		return productDao.findAll();
@@ -60,6 +61,7 @@ public class SearchController implements Serializable {
 		{
 			this.setResults(productDao.findBySearchCategory(search, categorySearch));
 		}
+		nbResults = results.size();
 		return results;
 	}
 
@@ -96,6 +98,18 @@ public class SearchController implements Serializable {
 	 */
 	public void setCategorySearch(Category categorySearch) {
 		this.categorySearch = categorySearch;
+	}
+	/**
+	 * @return the nbResults
+	 */
+	public int getNbResults() {
+		return nbResults;
+	}
+	/**
+	 * @param nbResults the nbResults to set
+	 */
+	public void setNbResults(int nbResults) {
+		this.nbResults = nbResults;
 	}
 	
 	
