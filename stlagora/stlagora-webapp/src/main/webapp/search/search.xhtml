@@ -15,94 +15,101 @@
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
 
-	<h:form>
+	<div id="page">
 		<div id="pagecontent">
-			<div class="form_container">
+			<h:form>
+				<div class="form_container">
 
-				<div class="gray_background">
-					<!-- 						TODO : primefaces : tri, nombre de resultats -->
-					<h:outputLabel styleClass="bold"
-						value="#{general.search1} #{searchController.nbResults} #{general.search2}" />
+					<div class="gray_background">
+						<!-- 						TODO : primefaces : tri, nombre de resultats -->
+						<h:outputLabel styleClass="bold"
+							value="#{general.search1} #{searchController.nbResults} #{general.search2}" />
+						<br />
+						<h:outputText value="#{general.selecting}" />
+						<p:selectOneMenu id="selectionSorting">
+							<f:selectItem itemLabel="#{general.increasingPriceSelecting}"
+								itemValue="1" />
+							<f:selectItem itemLabel="#{general.decreasingPriceSelecting}"
+								itemValue="2" />
+							<f:selectItem itemLabel="#{general.sellerSelecting}"
+								itemValue="3" />
+						</p:selectOneMenu>
+					</div>
 					<br />
-					<h:outputText value="#{general.selecting}" />
-					<p:selectOneMenu id="selectionSorting">
-						<f:selectItem itemLabel="#{general.increasingPriceSelecting}"
-							itemValue="1" />
-						<f:selectItem itemLabel="#{general.decreasingPriceSelecting}"
-							itemValue="2" />
-						<f:selectItem itemLabel="#{general.sellerSelecting}" itemValue="3" />
-					</p:selectOneMenu>
+
+					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page">
+						<h:outputText value="#{general.linkPrevous}" />
+
+						<h:outputText value="#{general.linkNumberPage}" />
+
+						<h:outputText value="#{general.linkNext}" />
+					</p:commandLink>
+
+					<div class="product_search">
+
+						<h:dataTable value="#{searchController.results}" var="s"
+							styleClass="history_purchase" headerClass="order-table-header"
+							rowClasses="order-table-odd-row,order-table-even-row"
+							rendered="#{not empty manageProfileController.transactionBuy}">
+
+							<h:column>
+								<h:graphicImage title="#{general.nameImage}"
+									alt="#{general.nameImage}" library="images"
+									name="#{general.nameImage}" />
+								<br />
+								<h:outputLabel styleClass="bold" value="#{s.name}" />
+								<br />
+								<h:outputLabel styleClass="price" value="#{s.price}" />
+								<br />
+								<h:commandButton id="buttonAdd"
+									image="/resources/images/button_add.png"
+									action="#{cart.add(productController.product)}" />
+								<br />
+								<h:outputLabel styleClass="bold" value="#{general.labelVendeur}" />
+								<h:outputLabel value="#{s.seller.firstname} #{s.seller.surname}" />
+								<br />
+								<h:outputLabel styleClass="bold"
+									value="#{product.labelMark} #{s.globalMark}" />
+								<h:graphicImage title="star" alt="star" library="images"
+									name="star.png" styleClass="star" />
+								<h:graphicImage title="star" alt="star" library="images"
+									name="star.png" styleClass="star" />
+								<h:graphicImage title="star" alt="star" library="images"
+									name="star_empty.png" styleClass="star" />
+								<h:graphicImage title="star" alt="star" library="images"
+									name="star_empty.png" styleClass="star" />
+								<h:graphicImage title="star" alt="star" library="images"
+									name="star_empty.png" styleClass="star" />
+								<br />
+								<p:commandLink id="linkOpinion">
+									<h:outputText styleClass="hyperlink_classic underlined"
+										value="(#{productController.nbOpinion} #{product.opinions})" />
+								</p:commandLink>
+							</h:column>
+						</h:dataTable>
+
+						<h:outputLabel styleClass="bold gray"
+							value="#{general.labelSearchNull}"
+							rendered="#{empty manageProfileController.transactionBuy}" />
+
+					</div>
+					<br />
+
+					<p:commandLink id="linkPagesDown" styleClass="hyperlink_page">
+						<h:outputText styleClass="hyperlink_page"
+							value="#{general.linkPrevous}" />
+
+						<h:outputText styleClass="hyperlink_page"
+							value="#{general.linkNumberPage}" />
+
+						<h:outputText styleClass="hyperlink_page"
+							value="#{general.linkNext}" />
+					</p:commandLink>
+
 				</div>
-				<br />
-
-				<p:commandLink id="linkPagesUp" styleClass="hyperlink_page">
-					<h:outputText value="#{general.linkPrevous}" />
-
-					<h:outputText value="#{general.linkNumberPage}" />
-
-					<h:outputText value="#{general.linkNext}" />
-				</p:commandLink>
-
-				<div class="product_search">
-
-					<h:dataTable value="#{searchController.results}"
-						var="s" styleClass="history_purchase"
-						headerClass="order-table-header"
-						rowClasses="order-table-odd-row,order-table-even-row"
-						rendered="#{not empty manageProfileController.transactionBuy}">
-
-						<h:column>
-							<h:graphicImage title="#{general.nameImage}"
-								alt="#{general.nameImage}" library="images"
-								name="#{general.nameImage}" />
-							<br />
-							<h:outputLabel styleClass="bold" value="#{s.name}" />
-							<br />
-							<h:outputLabel styleClass="price" value="#{s.price}" />
-							<br />
-							<h:commandButton id="buttonAdd" image="/resources/images/button_add.png" action="#{cart.add(productController.product)}" />
-							<br />
-							<h:outputLabel styleClass="bold" value="#{general.labelVendeur}" />
-							<h:outputLabel value="#{s.seller.firstname} #{s.seller.surname}" />
-							<br />
-							<h:outputLabel styleClass="bold" value="#{product.labelMark} #{s.globalMark}" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star_empty.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star_empty.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star_empty.png" styleClass="star" />
-							<br />
-							<p:commandLink id="linkOpinion">
-								<h:outputText styleClass="hyperlink_classic underlined"
-									value="(#{productController.nbOpinion} #{product.opinions})" />
-							</p:commandLink>
-						</h:column>
-					</h:dataTable>
-					
-					<h:outputLabel styleClass="bold gray" value="#{general.labelSearchNull}" rendered="#{empty manageProfileController.transactionBuy}" />
-					
-				</div>
-				<br />
-
-				<p:commandLink id="linkPagesDown" styleClass="hyperlink_page">
-					<h:outputText styleClass="hyperlink_page"
-						value="#{general.linkPrevous}" />
-
-					<h:outputText styleClass="hyperlink_page"
-						value="#{general.linkNumberPage}" />
-
-					<h:outputText styleClass="hyperlink_page"
-						value="#{general.linkNext}" />
-				</p:commandLink>
-
-			</div>
+			</h:form>
 		</div>
-	</h:form>
+	</div>
 
 	<ui:insert name="footer">
 		<ui:include src="/resources/templates/footer.xhtml" />

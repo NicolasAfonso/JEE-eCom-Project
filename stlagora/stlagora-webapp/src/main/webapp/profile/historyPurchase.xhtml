@@ -11,60 +11,69 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
-	<h:body>
-	
-		<ui:insert name="header">
-			<ui:include src="/resources/templates/header.xhtml" />
-		</ui:insert>
-	
-		<h:form>
-			<div id="pagecontent">
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
+		<div id="pagecontent">
+			<h:form>
+
 				<div class="form_container">
-				
+
 					<div class="gray_background">
-						<h1>
-							#{profile.linkHistoPurchase}
-						</h1>						
+						<h1>#{profile.linkHistoPurchase}</h1>
 					</div>
 					<br />
-					
+
 					<div>
-					
-						<h:dataTable value="#{manageProfileController.transactionBuy}" var="t"
-	    					styleClass="history_purchase"
-			    			headerClass="order-table-header"
-			    			rowClasses="order-table-odd-row,order-table-even-row"
-			    			rendered="#{not empty manageProfileController.transactionBuy}">
-	 
-			    			<h:column>
-			    				<h:graphicImage styleClass="product_search_image" name="nom de l'image" />
-									
-									<h:outputLabel styleClass="bold" value=" #{t.product.name} - #{t.product.description}" />
-									<br />
-									<h:outputLabel value="#{profile.labelVendu}"/>
-									<h:outputLabel value="#{t.seller.surname} #{t.seller.firstname}"/>
-									
-									<h:outputLabel styleClass="gray italic" value="#{profile.labelBought} #{t.date}"/>
-									<h:outputLabel styleClass="bold gray italic" value="(#{t.amount} euros)" />
-									
-									<h:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" styleClass="button_classic"/>
-			    			</h:column>
-	 
-	    				</h:dataTable>
-	    				
-	    				<h:outputLabel value="#{profile.historyPurchaseNull}" rendered="#{empty manageProfileController.transactionBuy}"/>	
-					
+
+						<h:dataTable value="#{manageProfileController.transactionBuy}"
+							var="t" styleClass="history_purchase"
+							headerClass="order-table-header"
+							rowClasses="order-table-odd-row,order-table-even-row"
+							rendered="#{not empty manageProfileController.transactionBuy}">
+
+							<h:column>
+								<h:graphicImage styleClass="product_search_image"
+									name="nom de l'image" />
+
+								<h:outputLabel styleClass="bold"
+									value=" #{t.product.name} - #{t.product.description}" />
+								<br />
+								<h:outputLabel value="#{profile.labelVendu}" />
+								<h:outputLabel value="#{t.seller.surname} #{t.seller.firstname}" />
+
+								<h:outputLabel styleClass="gray italic"
+									value="#{profile.labelBought} #{t.date}" />
+								<h:outputLabel styleClass="bold gray italic"
+									value="(#{t.amount} euros)" />
+
+								<h:commandButton id="downloadFile1"
+									value="#{profile.buttonDownloadFile}"
+									styleClass="button_classic" />
+							</h:column>
+
+						</h:dataTable>
+
+						<h:outputLabel value="#{profile.historyPurchaseNull}"
+							rendered="#{empty manageProfileController.transactionBuy}" />
+
 					</div>
-					
-					<h:commandButton styleClass="button_back" action="/profile/accountParameters" value="#{profile.backModif}"/>
+
+					<h:commandButton styleClass="button_back"
+						action="/profile/accountParameters" value="#{profile.backModif}" />
 				</div>
-			</div>
-		</h:form>
-		
-		
-		<ui:insert name="footer">
-			<ui:include src="/resources/templates/footer.xhtml" />
-		</ui:insert>
-		
-	</h:body>
+
+			</h:form>
+		</div>
+	</div>
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
 </html>

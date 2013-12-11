@@ -11,62 +11,73 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
-	<h:body>
-	
-		<ui:insert name="header">
-			<ui:include src="/resources/templates/header.xhtml" />
-		</ui:insert>
-	
-		
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
 		<div id="pagecontent">
 			<h:form>
 				<div class="form_container">
-					
+
 					<h:outputLabel styleClass="bold" value="#{general.contactDetails}" />
 					<br />
 					<div class="form_border">
-					
+
 						<h:outputLabel styleClass="bold" value="#{general.fieldNameFirm}" />
 						<br />
-						<p:inputText id="name_firm" required="true" value="#{manageProfileController.companyName}">
+						<p:inputText id="name_firm" required="true"
+							value="#{manageProfileController.companyName}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						
+
 						<h:outputLabel styleClass="bold" value="#{general.fieldSiret}" />
 						<br />
-						<p:inputText id="siret" required="true" value="#{manageProfileController.siret}">
-							<f:validateRegex pattern="^[0-9]{3} ?[0-9]{3} ?[0-9]{3} ?[0-9]{5}$" />
+						<p:inputText id="siret" required="true"
+							value="#{manageProfileController.siret}">
+							<f:validateRegex
+								pattern="^[0-9]{3} ?[0-9]{3} ?[0-9]{3} ?[0-9]{5}$" />
 						</p:inputText>
 						<br />
-						
+
 						<h:outputLabel styleClass="bold" value="#{general.fieldIban}" />
 						<br />
 						<h:outputLabel styleClass="small gray" value="#{general.comments}" />
 						<br />
-						<p:inputText id="iban" required="true" value="#{manageProfileController.rib}">
-							<f:validateRegex pattern="^FR[0-9]{2} [0-9]{5} [0-9]{5} [0-9]{11} [0-9]{2}$" />
+						<p:inputText id="iban" required="true"
+							value="#{manageProfileController.rib}">
+							<f:validateRegex
+								pattern="^FR[0-9]{2} [0-9]{5} [0-9]{5} [0-9]{11} [0-9]{2}$" />
 						</p:inputText>
-						<br />													
+						<br />
 					</div>
 					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
-						
-					<h:commandButton id="button_create" value="#{general.buttonCreate}" styleClass="button_classic" action="#{manageProfileController.createUser}"/>
+
+					<h:commandButton id="button_create" value="#{general.buttonCreate}"
+						styleClass="button_classic"
+						action="#{manageProfileController.createUser}" />
 					<br />
 				</div>
-				<p:inputText value="#{manageProfileController.email}" type="hidden"/>
-				<p:inputText value="#{manageProfileController.password}" type="hidden"/>
-				<p:inputText value="#{manageProfileController.accountType}" type="hidden"/>
+				<p:inputText value="#{manageProfileController.email}" type="hidden" />
+				<p:inputText value="#{manageProfileController.password}"
+					type="hidden" />
+				<p:inputText value="#{manageProfileController.accountType}"
+					type="hidden" />
 			</h:form>
 			<h:form>
-				<h:commandButton id="button_backRegis" value="#{general.backIdent}" styleClass="button_back" action="/login"/>
+				<h:commandButton id="button_backRegis" value="#{general.backIdent}"
+					styleClass="button_back" action="/login" />
 			</h:form>
 		</div>
-		
-		<ui:insert name="footer">
-			<ui:include src="/resources/templates/footer.xhtml" />
-		</ui:insert>
-		
-	</h:body>
+	</div>
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
 </html>

@@ -11,75 +11,78 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
-	<h:body>
-	
-		<ui:insert name="header">
-			<ui:include src="/resources/templates/header.xhtml" />
-		</ui:insert>
-	
-		<h:form>
-			<div id="pagecontent">
-				<div class="form_container">
-					
-					<h:outputLabel styleClass="bold" value="#{general.creditCard}" />
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
+		<div id="pagecontent">
+			<h:form>
+				<h:outputLabel styleClass="bold" value="#{general.creditCard}" />
+				<br />
+				<div class="form_border">
+
+					<h2>#{general.bankInformations}</h2>
 					<br />
-					<div class="form_border">
-					
-						<h2>
-							#{general.bankInformations}
-						</h2>
-						<br />
-						<h:outputLabel styleClass="bold" value="#{general.typeCard}" />
-						
-						<h:graphicImage title="cartes" alt="type_cartes" library="images" name="cartes.png" />
-						<br />
-						<h:outputLabel styleClass="bold" value="#{general.cardHolder}" />
-						
-						<p:inputText id="name_cardHolder" required="true">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<br />
-						<h:outputLabel styleClass="bold" value="#{general.numberCard}" />
-						
-						<p:inputText id="numberCard" required="true">
-							<f:validator validatorId="cbValidator" />
-						</p:inputText>
-						<br />
-						<h:outputLabel styleClass="bold" value="#{general.expiryDate}" />
-						
-						<p:selectOneMenu id="expiryMonth">  
-				            <f:selectItem itemLabel="#{general.expiryMonth}" />  
-				        </p:selectOneMenu> 
-				        
-				        <p:selectOneMenu id="expiryYear">  
-				            <f:selectItem itemLabel="#{general.expiryYear}" />  
-				        </p:selectOneMenu> 
-				        <br />
-				        
-						<h:outputLabel styleClass="bold" value="#{general.codeControl}" />
-						
-						<p:inputText id="codeControl" required="true">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<br />
-						
-						<h:outputLabel styleClass="small gray" value="#{general.indicationCodeControl}" />
-						<br />
-						<h:graphicImage title="cbHelper" alt="cbHelper" library="images" name="cb_helper.gif" />
-						<br />
-						
-					</div>
-					<h:outputLabel value="#{general.mandatoryField}" />
+					<h:outputLabel styleClass="bold" value="#{general.typeCard}" />
+
+					<h:graphicImage title="cartes" alt="type_cartes" library="images"
+						name="cartes.png" />
 					<br />
-						
-					<h:commandButton id="download" value="#{general.buttonDownload}" styleClass="button_classic" action="#{purchaseController.payCart}"/>
+					<h:outputLabel styleClass="bold" value="#{general.cardHolder}" />
+
+					<p:inputText id="name_cardHolder" required="true">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.numberCard}" />
+
+					<p:inputText id="numberCard" required="true">
+						<f:validator validatorId="cbValidator" />
+					</p:inputText>
+					<br />
+					<h:outputLabel styleClass="bold" value="#{general.expiryDate}" />
+
+					<p:selectOneMenu id="expiryMonth">
+						<f:selectItem itemLabel="#{general.expiryMonth}" />
+					</p:selectOneMenu>
+
+					<p:selectOneMenu id="expiryYear">
+						<f:selectItem itemLabel="#{general.expiryYear}" />
+					</p:selectOneMenu>
+					<br />
+
+					<h:outputLabel styleClass="bold" value="#{general.codeControl}" />
+
+					<p:inputText id="codeControl" required="true">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<br />
+
+					<h:outputLabel styleClass="small gray"
+						value="#{general.indicationCodeControl}" />
+					<br />
+					<h:graphicImage title="cbHelper" alt="cbHelper" library="images"
+						name="cb_helper.gif" />
+					<br />
+
 				</div>
-			</div>
-		</h:form>
-		
-		<ui:insert name="footer">
-			<ui:include src="/resources/templates/footer.xhtml" />
-		</ui:insert>
-		
-	</h:body>
+				<h:outputLabel value="#{general.mandatoryField}" />
+				<br />
+
+				<div style="text-align: right">
+					<h:commandButton id="download" value="#{general.buttonDownload}"
+						styleClass="button_classic" action="#{purchaseController.payCart}" />
+				</div>
+			</h:form>
+		</div>
+	</div>
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
 </html>

@@ -11,18 +11,22 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
-<h:body> 
+<h:body>
 
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
 
-	<h1>Premier exemple JSF 2.0 - Page 1</h1>
-	<p> ERROR</p>
-	
+	<div id="page">
+		<div id="pagecontent">
+			<h1>Premier exemple JSF 2.0 - Page 1</h1>
+			<p>ERROR</p>
+		</div>
+	</div>
+
 	<ui:insert name="footer">
 		<ui:include src="/resources/templates/footer.xhtml" />
 	</ui:insert>
-	
+
 </h:body>
 </html>

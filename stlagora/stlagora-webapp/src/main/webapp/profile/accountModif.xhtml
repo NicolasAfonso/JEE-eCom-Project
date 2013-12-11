@@ -14,87 +14,88 @@
 	<h:outputScript library="js" name="agile_carousel.alpha.js" />
 </h:head>
 
-	<h:body>
-	
-		<ui:insert name="header">
-			<ui:include src="/resources/templates/header.xhtml" />
-		</ui:insert>
-	
-		<h:form>
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<h:form>
+		<div id="page">
 			<div id="pagecontent">
 
 				<div class="form_container">
 
 					<div class="gray_background">
-						<h1>
-							#{profile.accountParameters}
-						</h1>				
+						<h1>#{profile.accountParameters}</h1>
 					</div>
 					<p:messages id="messages" showDetail="false" autoUpdate="true" />
 					<br />
-					
+
 					<div>
 						<h2>#{profile.identify}</h2>
 						<br />
-						<h:outputLabel styleClass=" bold" value="#{profile.fieldEmail}" />
-						
+						<h:outputLabel styleClass="label bold" value="#{profile.fieldEmail}" />
+
 						<p:inputText id="email_creat" required="true"
-							value="#{manageProfileController.email}"
-							match="password_confirm">
+							value="#{manageProfileController.email}" match="password_confirm">
 							<f:validateLength minimum="8" />
 						</p:inputText>
 						<br />
-						<h:outputLabel styleClass=" bold" value="#{profile.fieldEmailConfirm}" />
-						
-						<p:inputText id="email_confirm" required="true" 
+						<h:outputLabel styleClass="label bold"
+							value="#{profile.fieldEmailConfirm}" />
+
+						<p:inputText id="email_confirm" required="true"
 							value="#{manageProfileController.email}">
 							<f:validateLength minimum="8" />
 						</p:inputText>
 						<br />
-						
-						
-<!-- 					TODO : verifier longueur -->
-						<h:outputLabel styleClass=" bold" value="#{profile.fieldPassword}" />
-						
+
+
+						<!-- 					TODO : verifier longueur -->
+						<h:outputLabel styleClass="label bold" value="#{profile.fieldPassword}" />
+
 						<p:password id="password_creat" required="false"
 							value="#{manageProfileController.password}"
-							match="password_confirm"> 
+							match="password_confirm">
 						</p:password>
 						<br />
-	
-						<h:outputLabel styleClass=" bold"
+
+						<h:outputLabel styleClass="label bold"
 							value="#{profile.fieldPasswordConfirm}" />
-						
+
 						<p:password id="password_confirm" required="false"
 							value="#{manageProfileController.password}">
 						</p:password>
 						<br />
-						
+
 						<h2>#{profile.details}</h2>
 						<br />
-						<h:outputLabel styleClass=" bold" value="#{profile.fieldSurname}" />
-						
-						<p:inputText  required="true"
+						<h:outputLabel styleClass="label bold" value="#{profile.fieldSurname}" />
+
+						<p:inputText required="true"
 							value="#{manageProfileController.surname}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						<h:outputLabel styleClass=" bold" value="#{profile.fieldFirstname}" />
-						
-						<p:inputText  required="true"
+						<h:outputLabel styleClass="label bold"
+							value="#{profile.fieldFirstname}" />
+
+						<p:inputText required="true"
 							value="#{manageProfileController.firstname}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						<h:outputLabel styleClass=" bold" value="#{profile.fieldPhone}" />
-						
-						<p:inputText  required="true"
+						<h:outputLabel styleClass="label bold" value="#{profile.fieldPhone}" />
+
+						<p:inputText required="true"
 							value="#{manageProfileController.phoneNumber}">
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<br />
-						<h:outputText styleClass="bold" value="#{profile.fieldStatut}" />
-						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						<h:outputText styleClass="label bold" value="#{profile.fieldStatut}" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
 							<p:selectOneRadio styleClass="small" id="radioBox_statut"
 								value="#{manageProfileController.accountType}" required="true">
 								<f:selectItems value="#{manageProfileController.accountTypes}"
@@ -104,15 +105,19 @@
 					</div>
 				</div>
 				<br />
-				<h:commandButton value="#{profile.backModif}" styleClass="button_back" action="/profile/accountParameters"/>
-				<h:commandButton id="button_record" styleClass="button_classic" value="#{profile.button_record}" action="#{manageProfileController.update}"/>
-				
-			</div> 
-		</h:form>
-		
-		<ui:insert name="footer">
-			<ui:include src="/resources/templates/footer.xhtml" />
-		</ui:insert>
-		
-	</h:body>
+				<h:commandButton value="#{profile.backModif}"
+					styleClass="button_back" action="/profile/accountParameters" />
+				<h:commandButton id="button_record" styleClass="button_classic"
+					value="#{profile.button_record}"
+					action="#{manageProfileController.update}" />
+
+			</div>
+		</div>
+	</h:form>
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
 </html>

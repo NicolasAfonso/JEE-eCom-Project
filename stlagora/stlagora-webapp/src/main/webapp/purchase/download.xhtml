@@ -11,50 +11,54 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
-	<h:body>
-	
-		<ui:insert name="header">
-			<ui:include src="/resources/templates/header.xhtml" />
-		</ui:insert>
-	
-		<h:form>
-			<div id="pagecontent">
-				<div class="form_container">
-				
-					<div class="gray_background">
-						<h1>
-							#{product.download}
-						</h1>				
-					</div> 
-					<br />
-					
-					<div class="item">
-						<h:dataTable value="#{purchaseController.productList}" var="pl"
-	    					styleClass="product"
-			    			headerClass="order-table-header"
-			    			rowClasses="order-table-odd-row,order-table-even-row">
+<h:body>
 
-			    			<h:column>
-			    				<h:graphicImage styleClass="product_search_image" title="product_card_image" alt="product_card_image" library="images" name="logo.png" />
-								<h:outputLabel styleClass="bold" value="#{pl.name}" />
-								<h:outputLabel value="#{product.labelVendu}"/>
-								<h:outputLabel value="#{pl.seller.firstname} #{pl.seller.firstname}"/>
-								<h:outputLabel styleClass="bold gray" value="#{pl.price}€" />
-								<h:outputLabel styleClass="gray italic" value="(#{product.labelSell})" />
-			    			</h:column>
-	    				</h:dataTable>
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+	
+	<div id="page">
+		<div id="pagecontent">
+			<h:form>
+				<div class="form_container">
+
+					<div class="gray_background">
+						<h1>#{product.download}</h1>
 					</div>
 					<br />
-					
-					<h:commandButton id="downloadFile" value="#{general.buttonDownloadFile}" styleClass="button_classic"/>
-					
+
+					<div class="item">
+						<h:dataTable value="#{purchaseController.productList}" var="pl"
+							styleClass="product" headerClass="order-table-header"
+							rowClasses="order-table-odd-row,order-table-even-row">
+
+							<h:column>
+								<h:graphicImage styleClass="product_search_image"
+									title="product_card_image" alt="product_card_image"
+									library="images" name="logo.png" />
+								<h:outputLabel styleClass="bold" value="#{pl.name}" />
+								<h:outputLabel value="#{product.labelVendu}" />
+								<h:outputLabel
+									value="#{pl.seller.firstname} #{pl.seller.firstname}" />
+								<h:outputLabel styleClass="bold gray" value="#{pl.price}€" />
+								<h:outputLabel styleClass="gray italic"
+									value="(#{product.labelSell})" />
+							</h:column>
+						</h:dataTable>
+					</div>
+					<br />
+
+					<h:commandButton id="downloadFile"
+						value="#{general.buttonDownloadFile}" styleClass="button_classic" />
+
 				</div>
-			</div>
-		</h:form>
-		
-		<ui:insert name="footer">
-			<ui:include src="/resources/templates/footer.xhtml" />
-		</ui:insert>
-		
-	</h:body>
+
+			</h:form>
+		</div>
+	</div>
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
 </html>
