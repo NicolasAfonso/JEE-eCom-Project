@@ -33,7 +33,8 @@
 						<h:dataTable value="#{manageProfileController.transactionSold}" var="ts"
 	    					styleClass="history_sell"
 			    			headerClass="order-table-header"
-			    			rowClasses="order-table-odd-row,order-table-even-row">
+			    			rowClasses="order-table-odd-row,order-table-even-row"
+			    			rendered="#{not empty manageProfileController.transactionSold}">
 	 
 			    			<h:column>
 				    			<h:graphicImage styleClass="product_search_image" name="nom de l'image" />
@@ -46,12 +47,14 @@
 			    			</h:column>
 	 
 	    				</h:dataTable>
-					
+	    				
+	    				<h:outputLabel value="#{profile.historyPurchaseNull}" rendered="#{empty manageProfileController.transactionSold}"/>			
+						
 					</div>
 				</div>
 				<h:commandButton styleClass="button_back" action="/profile/accountParameters" value="#{profile.backModif}"/>
 			</div>
-		</h:form>
+		</h:form> 
 		
 		<ui:insert name="footer">
 			<ui:include src="/resources/templates/footer.xhtml" />
