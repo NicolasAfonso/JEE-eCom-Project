@@ -10,6 +10,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
+import org.apache.log4j.Logger;
+
 import com.stlagora.model.dao.CategoryDao;
 import com.stlagora.model.dao.CategoryDaoImpl;
 import com.stlagora.model.dao.ProductDao;
@@ -27,7 +29,7 @@ public class SearchController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6448263727822874238L;
-
+	private Logger log = Logger.getLogger(SearchController.class.getName());
 	@EJB
 	ProductDao productDao;
 	
@@ -52,6 +54,8 @@ public class SearchController implements Serializable {
 		Flash flash =  FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		search = (String)flash.get("search");
 		categorySearch = (Category) flash.get("category");
+		log.debug(search);
+		log.debug(categorySearch);
 //		categorySearch = categoryDao.findByName("Test");		
 		if(categorySearch==null)
 		{
