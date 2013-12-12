@@ -13,6 +13,7 @@
 
 	<ui:composition>
 		<div id="header">
+		
 			<h:form>
 				<table class="full_width">
 					<tr>
@@ -43,16 +44,35 @@
 								<h:graphicImage library="images" alt="#{general.myAccountTitleIcon}" title="#{general.myAccountTitleIcon}" name="account.png" />
 						#{general.myProfile}
 				</p:commandLink>
+				
+				
 
-							<div>
+							
+							
+							
 								<p:commandLink styleClass="username"
 									rendered="#{sessionUser.loggedIn == true}"
 									action="#{homeController.moveToMyProfile}">
 						#{sessionUser.user.login}
-						<h:graphicImage rendered="#{sessionUser.loggedIn == true}"
-										library="images" name="profile_arrow.png" alt="#{general.AccountdropDownList}" title="#{general.AccountdropDownList}" />
+						
 								</p:commandLink>
-							</div></td>
+						
+						<div class="test">
+							<ul>
+							<li class="top">		
+							<h:graphicImage rendered="#{sessionUser.loggedIn == true}"
+										library="images" name="profile_arrow.png" alt="#{general.AccountdropDownList}" title="#{general.AccountdropDownList}" />
+					
+					<ul>
+						<li>#{general.myProfile}</li>
+						<li>#{general.commands}</li>
+						<li>#{general.sells}</li>
+						<li><p:commandLink value="#{general.logOut}" action="#{loginController.logout}" styleClass="hyperlink_header_titles" /></li>
+							</ul></li></ul>
+							</div>	
+							</td> 
+
+							
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToCart}">
