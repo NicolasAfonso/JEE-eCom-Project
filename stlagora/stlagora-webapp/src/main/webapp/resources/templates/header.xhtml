@@ -13,17 +13,16 @@
 
 	<ui:composition>
 		<div id="header">
-		
+
 			<h:form>
 				<table class="full_width">
 					<tr>
-						<td id="menu_logo">
-						<p:commandLink 
-								action="#{homeController.moveToHome}" >
+						<td id="menu_logo"><p:commandLink
+								action="#{homeController.moveToHome}">
 								<h:graphicImage title="#{general.homeTitleIcon}"
-									alt="#{general.homeTitleIcon}" library="images" name="logo.png" style="width:175px" />
-									</p:commandLink>
-							</td>
+									alt="#{general.homeTitleIcon}" library="images" name="logo.png"
+									style="width:175px" />
+							</p:commandLink></td>
 						<h:form>
 
 							<td id="menu_search"><h:inputText styleClass="search"
@@ -36,47 +35,49 @@
 								action="#{homeController.moveToSell}"
 								styleClass="hyperlink_header_titles">
 							#{general.sellLabel}
-							</p:commandLink> <h:graphicImage alt="#{general.sellTitleIcon}" title="#{general.sellTitleIcon}" library="images" name="sell.png" />
-						</td>
+							</p:commandLink> <h:graphicImage alt="#{general.sellTitleIcon}"
+								title="#{general.sellTitleIcon}" library="images"
+								name="sell.png" /></td>
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToMyProfile}">
-								<h:graphicImage library="images" alt="#{general.myAccountTitleIcon}" title="#{general.myAccountTitleIcon}" name="account.png" />
+								<h:graphicImage library="images"
+									alt="#{general.myAccountTitleIcon}"
+									title="#{general.myAccountTitleIcon}" name="account.png" />
 						#{general.myProfile}
-				</p:commandLink>
-				
-				
+				</p:commandLink> <h:panelGroup layout="block" styleClass="test"
+								rendered="#{sessionUser.loggedIn}">
 
-							
-							
-							
-								<p:commandLink styleClass="username"
-									rendered="#{sessionUser.loggedIn == true}"
-									action="#{homeController.moveToMyProfile}">
-						#{sessionUser.user.login}
-						
-								</p:commandLink>
-						
-						<div class="test">
-							<ul>
-							<li class="top">		
-							<h:graphicImage rendered="#{sessionUser.loggedIn == true}"
-										library="images" name="profile_arrow.png" alt="#{general.AccountdropDownList}" title="#{general.AccountdropDownList}" />
-					
-					<ul>
-						<li>#{general.myProfile}</li>
-						<li>#{general.commands}</li>
-						<li>#{general.sells}</li>
-						<li><p:commandLink value="#{general.logOut}" action="#{loginController.logout}" styleClass="hyperlink_header_titles" /></li>
-							</ul></li></ul>
-							</div>	
-							</td> 
 
-							
+								<ul>
+									<li class="username"><h:graphicImage
+											rendered="#{sessionUser.loggedIn == true}" library="images"
+											name="profile_arrow.png" alt="#{general.AccountdropDownList}"
+											title="#{general.AccountdropDownList}">#{sessionUser.user.login}    </h:graphicImage>
+
+										<ul class="test">
+											<li><p:commandLink value="#{general.myProfile}"
+													action="#{homeController.moveToMyProfile}"
+													styleClass="hyperlink_header_titles" /></li>
+											<li><p:commandLink value="#{general.myProfile}"
+													action="#{homeController.moveToMyProfile}"
+													styleClass="hyperlink_header_titles" /></li>
+											<li><p:commandLink value="#{general.sells}"
+													action="#{homeController.moveToMyProfile}"
+													styleClass="hyperlink_header_titles" /></li>
+											<li><p:commandLink value="#{general.logOut}"
+													action="#{loginController.logout}"
+													styleClass="hyperlink_header_titles" /></li>
+										</ul></li>
+								</ul>
+							</h:panelGroup></td>
+
+
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToCart}">
-								<h:graphicImage library="images" alt="#{general.cartTitleIcon}" titre="#{general.cartTitleIcon}" name="cart.png" />
+								<h:graphicImage library="images" alt="#{general.cartTitleIcon}"
+									titre="#{general.cartTitleIcon}" name="cart.png" />
 			
 						#{general.myCart}
 							</p:commandLink> <br /> <p:commandLink styleClass="hyperlink_header_subtitles"
@@ -91,7 +92,8 @@
 			<div id="menu">
 				<nav>
 				<ul class="fancyNav">
-					<li id="home"><a href="/stlagora/home.xhtml" class="homeIcon" title="#{general.homeTitleIcon}">Home</a></li>
+					<li id="home"><a href="/stlagora/home.xhtml" class="homeIcon"
+						title="#{general.homeTitleIcon}">Home</a></li>
 					<li><a href="#news">Gadgets</a></li>
 					<li><a href="#about">Pièces de rechange</a></li>
 					<li><a href="#services">Art &amp; Déco</a></li>
@@ -103,7 +105,7 @@
 
 			</div>
 		</div>
-		
+
 	</ui:composition>
 
 </body>
