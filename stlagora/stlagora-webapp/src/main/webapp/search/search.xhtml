@@ -50,7 +50,7 @@
 						<h:dataTable value="#{searchController.results}" var="s"
 							styleClass="history_purchase" headerClass="order-table-header"
 							rowClasses="order-table-odd-row,order-table-even-row"
-							rendered="#{not empty manageProfileController.transactionBuy}">
+							rendered="#{not empty searchController.results}">
 
 							<h:column>
 								<h:graphicImage title="#{general.nameImage}"
@@ -90,7 +90,7 @@
 
 						<h:outputLabel styleClass="bold gray"
 							value="#{general.labelSearchNull}"
-							rendered="#{empty manageProfileController.transactionBuy}" />
+							rendered="#{empty searchController.results}" />
 
 					</div>
 					<br />

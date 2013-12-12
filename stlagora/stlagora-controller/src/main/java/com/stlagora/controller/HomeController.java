@@ -55,6 +55,8 @@ public class HomeController implements Serializable {
 	private TransactionDao transactionDao;
 	@EJB
 	private ProductDao productDao;
+	@EJB
+	private CategoryDao categoryDao;
 	
 	public HomeController(){
 		
@@ -95,18 +97,18 @@ public class HomeController implements Serializable {
 //		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 //		userDao.create(new User("toto", "toto", "toto", "toto@tata.com","test", new Date(0), "22222222","","","",ACCOUNT_TYPE.PRIVATE, ROLE.ADMIN));
 //		categoryDao.create(new Category("Test","test-desc"));
-//		Category c = categoryDao.findByName("Test");
+		Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tata@tata.com");
 		User u2 = userDao.findByEmail("tutu@tata.com");
 
-		Product p = productDao.findById(1);
-		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
-		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
-		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
+//		Product p = productDao.findById(1);
+//		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
+//		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
+//		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
 		
-//		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
-//		productDao.create(new Product("p2", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u1 ,new Date(0), new Date(0)));  
-//		productDao.create(new Product("p3", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u2 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p2", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u1 ,new Date(0), new Date(0)));  
+		productDao.create(new Product("p3", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u2 ,new Date(0), new Date(0)));  
 		
 	}
 
