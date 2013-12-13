@@ -163,7 +163,7 @@ public class DatabaseCreator {
 
 				Element productTable_category = doc.createElement("category");
 				productTable_row.appendChild(productTable_category);
-				productTable_category.appendChild(doc.createTextNode(categoryname[random.nextInt(productStatus.length)]));
+				productTable_category.appendChild(doc.createTextNode(categoryname[random.nextInt(categoryname.length)]));
 
 
 				Element productTable_lastupdate = doc.createElement("lastupdate");
