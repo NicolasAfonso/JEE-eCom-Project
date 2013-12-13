@@ -41,7 +41,7 @@ public class DatabaseCreator {
 	public static String[] imgPath = {"pathImg1","pathImg2","pathImg3","pathImg4","pathImg5", ""};
 	public static String[] planPath = {"pathPlan1","pathPlan2","pathPlan3","pathPlan4","pathPlan5"};
 	public static String[] productStatus = {"Available", "Not Available"};
-	public static String[] categoryname={"Jouets","Gadgets", "Pièces de rechange", "Art & Déco", "Outils", "Objets du quotidien" };
+	public static String[] categoryname={"Jouets","Gadgets", "Piï¿½ces de rechange", "Art & Dï¿½co", "Outils", "Objets du quotidien" };
 	public static String[] planType = {"STL"};
 	public static String[] sellerlist = {"tutu","tata","toto"};
 
@@ -174,9 +174,17 @@ public class DatabaseCreator {
 				productTable_row.appendChild(productTable_availabledate);
 				productTable_availabledate.appendChild(doc.createTextNode(createRandomDate()));
 
+				
 				Element productTable_globalmark = doc.createElement("globalmark");
+				d1 = random.nextInt(6);
+				if (d1 != 5)
+					d2 = random.nextInt(100);
+				else
+					d2 = 0;
+				str = String.valueOf(d1)+"."+String.valueOf(d2)+"f";
+				
 				productTable_row.appendChild(productTable_globalmark);
-				productTable_globalmark.appendChild(doc.createTextNode(String.valueOf(random.nextInt(6))));
+				productTable_globalmark.appendChild(doc.createTextNode(str));
 
 
 			}
@@ -236,25 +244,16 @@ public class DatabaseCreator {
 
 				SimpleDateFormat dateformatter = new SimpleDateFormat("d/M/y");
 
-				System.out.println("DATE FORMATTER");
-
 				
 				try {
 					//System.out.println(element.getAttribute("name"));
 					date = new Date(dateformatter.parse(element.getElementsByTagName("availabledate").item(0).getTextContent()).getTime());
 					currentProduct.setAvailableDate(date);
-					System.out.println(date);
 				} catch (Exception e) {
 					//System.out.println(e);
 					System.out.println(e.getMessage());
 				}
 
-
-
-				
-
-				//currentProduct.setAvailableDate(date);
-				System.out.println("IN BOUCLE");
 
 
 				Category category = categoryDao.findByName(element.getElementsByTagName("category").item(0).getTextContent());
@@ -280,7 +279,7 @@ public class DatabaseCreator {
 
 				User user = userDao.findByLogin(element.getElementsByTagName("seller").item(0).getTextContent());
 				
-				//TODO si user est null problème
+				//TODO si user est null problï¿½me
 				currentProduct.setSeller(user);
 
 				String st= element.getElementsByTagName("status").item(0).getTextContent();
@@ -295,20 +294,7 @@ public class DatabaseCreator {
 			}
 
 			Product test = productList.get(0);
-			System.out.println("Name "+ test.getName());
-			System.out.println("Description "+test.getDescription());
-			System.out.println("Image "+test.getImages());
-			System.out.println("Plan "+ test.getPlan());
-			System.out.println("lastupdate "+ test.getLastUpdate());
-			System.out.println("type "+test.getType());
-			System.out.println("status "+test.getStatus());
-			System.out.println("seller "+test.getSeller());
-			System.out.println("price "+test.getPrice());
-			System.out.println("mark "+test.getGlobalMark());
-			System.out.println("availabledate "+test.getAvailableDate());
-			System.out.println("id "+test.getId());
-			System.out.println("opinions "+test.getOpinions());
-			
+		
 			
 			//Iterator<Product> iterator = productList.iterator();
 			ProductDaoImpl productDao = new ProductDaoImpl("STLAGORA_PU_SHELL");

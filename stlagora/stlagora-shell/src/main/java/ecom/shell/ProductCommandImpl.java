@@ -2,6 +2,7 @@ package ecom.shell;
 
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.ProductDaoImpl;
 import com.stlagora.model.entities.Product;
 
+import ecom.shell.database.DatabaseCreator;
 import shell.ShellCommand;
 import shell.ShellContext;
 
@@ -30,7 +32,7 @@ public class ProductCommandImpl implements ShellCommand, EcomShellConstantes {
 	}
 
 	public String getUsage() {
-		return("product [-add|-remove|-list]");
+		return("product [-add|-remove|-list|-addRandom]");
 	}
 
 	public String getShortDescription() {
@@ -47,7 +49,7 @@ public class ProductCommandImpl implements ShellCommand, EcomShellConstantes {
 		}
 		else{
 			String  format = st.nextToken();
-			if(!format.equals("-add") && !format.equals("-remove") &&  !format.equals("-list"))
+			if(!format.equals("-add") && !format.equals("-remove") &&  !format.equals("-list") && !format.equals("-addRandom"))
 			{
 				err.print("\""+cmdline+"\" : ");
 				if(context_language.equals("EN")) err.println(ERROR_UNKNOWN_OR_UNSUPPORTED_ARGS_EN);
@@ -77,7 +79,18 @@ public class ProductCommandImpl implements ShellCommand, EcomShellConstantes {
 								" seller: " + tmp.getSeller().getLogin());
 					}
 				}
-			}else
+			}else if(format.equals("-addRandom")){
+			
+				Scanner sc = new Scanner(System.in);
+				System.out.println("How many product do you want to be randomly inserted into your database ?");
+				int nbProduct = Integer.parseInt(sc.nextLine());
+				
+				DatabaseCreator dbcreator = new DatabaseCreator();
+				dbcreator.create(nbProduct);
+				dbcreator.FillDatabase();
+				
+			}
+			else
 			{
 				System.out.println("No product in database");
 			}
