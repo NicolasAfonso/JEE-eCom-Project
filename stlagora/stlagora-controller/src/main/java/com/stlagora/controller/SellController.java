@@ -87,16 +87,22 @@ public class SellController implements Serializable {
 				log.error("Product Already Exist");
 			}
 			p = productDao.findByName(name);
-			   if(!new File("C:/FILER/"+p.getId()+"/").exists())
+			   if(!new File("C:/FILER/private/"+p.getId()+"/").exists())
 		        {
 		            // Cr�er le dossier avec tous ses parents
-		            new File("C:/FILER/"+p.getId()+"/").mkdirs();
+		            new File("C:/FILER/private/"+p.getId()+"/").mkdirs();
+		 
+		        }
+			   if(!new File("C:/FILER/public/"+p.getId()+"/").exists())
+		        {
+		            // Cr�er le dossier avec tous ses parents
+		            new File("C:/FILER/public/"+p.getId()+"/").mkdirs();
 		 
 		        }
 
 			try {
-				File fimage = new File("C:/FILER/"+p.getId()+"/"+image.getFileName());
-				File fplan = new File("C:/FILER/"+p.getId()+"/"+plan.getFileName());
+				File fimage = new File("C:/FILER/public/"+p.getId()+"/"+image.getFileName());
+				File fplan = new File("C:/FILER/private/"+p.getId()+"/"+plan.getFileName());
 				fimage.createNewFile();
 				fplan.createNewFile();
 				saveFile(plan.getInputstream(),new FileOutputStream(fplan));

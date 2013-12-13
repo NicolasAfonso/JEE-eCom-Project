@@ -74,6 +74,7 @@ public class GenericDaoImpl<T> implements GenericDao<T>,Serializable {
 
 	public void delete(T object) {
 //		em.getTransaction().begin();
+		object = em.merge(object);
 		try {
 			em.remove(object);
 		} catch (Exception e) {

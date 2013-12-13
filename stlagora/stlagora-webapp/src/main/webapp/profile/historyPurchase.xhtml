@@ -49,11 +49,11 @@
 								<h:outputLabel styleClass="gray italic"
 									value="#{profile.labelBought} #{t.date}" />
 								<h:outputLabel styleClass="bold gray italic"
-									value="(#{t.amount} euros)" />
-
-								<h:commandButton id="downloadFile1"
-									value="#{profile.buttonDownloadFile}"
-									styleClass="button_classic" />
+									value="(#{t.amount} euros)" />							
+																	
+								<p:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" ajax="false" styleClass="button_classic">
+								    <p:fileDownload value="#{productController.file}" />
+								</p:commandButton>
 							</h:column>
 
 						</h:dataTable>

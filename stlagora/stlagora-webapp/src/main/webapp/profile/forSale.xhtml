@@ -41,7 +41,7 @@
 								<p:commandLink id="modifProduct" action="#{sellController.goToSellModif}">
 									<h:outputText styleClass="hyperlink_classic" value="#{profile.modif}" />
 								</p:commandLink>
-								<h:commandButton id="delete" value="#{general.buttonDelete}" styleClass="button_delete"/>
+								<h:commandButton id="delete" value="#{general.buttonDelete}" action="#{productController.removeProduct(lp)}" styleClass="button_delete"/>
 			    			</h:column>
 	 
 	    				</h:dataTable>
