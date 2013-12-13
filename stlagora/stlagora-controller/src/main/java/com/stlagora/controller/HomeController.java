@@ -81,9 +81,23 @@ public class HomeController implements Serializable {
 	}
 	
 	public String moveToSearch(){
-		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();  
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash(); 
         flash.put("search", search); 
-        flash.put("category", category);  
+        flash.put("categorySearch", category);  
+		return "/search/search?faces-redirect=true";
+	}
+	
+	public String moveToSearch(String search, String category){
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash(); 
+        flash.put("search", search); 
+        flash.put("categorySearch", category);  
+		return "/search/search?faces-redirect=true";
+	}
+	
+	
+	public String moveToSearchFromMenu(String category){
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.put("categorySearch", category);
 		return "/search/search?faces-redirect=true";
 	}
 	

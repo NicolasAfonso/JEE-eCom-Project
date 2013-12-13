@@ -17,27 +17,28 @@
 			<h:form>
 				<table class="full_width">
 					<tr>
-						<td id="menu_logo"><p:commandLink
-								action="#{homeController.moveToHome}">
+						<td id="menu_logo"><a href="/stlagora/home.xhtml"
+						title="#{general.homeTitleIcon}">
 								<h:graphicImage title="#{general.homeTitleIcon}"
 									alt="#{general.homeTitleIcon}" library="images" name="logo.png"
 									style="width:175px" />
-							</p:commandLink></td>
+							</a></td>
 						<h:form>
 
 							<td id="menu_search"><h:inputText styleClass="search"
-									value="#{homeController.search}"></h:inputText> <h:commandButton
-									action="#{homeController.moveToSearch}" style="display: none"
-									value="" /></td>
+									value="#{homeController.search}">
+								</h:inputText>
+								<h:commandButton action="#{homeController.moveToSearch}"
+									value="" style="display:none" /></td>
 						</h:form>
 
-						<td class="menu_shortcuts"><p:commandLink
+						<td class="menu_shortcuts"><h:graphicImage
+								alt="#{general.sellTitleIcon}" title="#{general.sellTitleIcon}"
+								library="images" name="sell.png" /> <p:commandLink
 								action="#{homeController.moveToSell}"
 								styleClass="hyperlink_header_titles">
 							#{general.sellLabel}
-							</p:commandLink> <h:graphicImage alt="#{general.sellTitleIcon}"
-								title="#{general.sellTitleIcon}" library="images"
-								name="sell.png" /></td>
+							</p:commandLink></td>
 						<td class="menu_shortcuts"><p:commandLink
 								styleClass="hyperlink_header_titles"
 								action="#{homeController.moveToMyProfile}">
@@ -59,8 +60,8 @@
 											<li><p:commandLink value="#{general.myProfile}"
 													action="#{homeController.moveToMyProfile}"
 													styleClass="hyperlink_header_titles" /></li>
-											<li><p:commandLink value="#{general.myProfile}"
-													action="#{homeController.moveToMyProfile}"
+											<li><p:commandLink value="#{general.commands}"
+													action="#{homeController.moveToCart}"
 													styleClass="hyperlink_header_titles" /></li>
 											<li><p:commandLink value="#{general.sells}"
 													action="#{homeController.moveToMyProfile}"
@@ -90,18 +91,34 @@
 
 			<!-- MENU -->
 			<div id="menu">
-				<nav>
+				
 				<ul class="fancyNav">
 					<li id="home"><a href="/stlagora/home.xhtml" class="homeIcon"
-						title="#{general.homeTitleIcon}">Home</a></li>
-					<li><a href="#news">Gadgets</a></li>
-					<li><a href="#about">Pièces de rechange</a></li>
-					<li><a href="#services">Art &amp; Déco</a></li>
-					<li><a href="#contact">Outils</a></li>
-					<li><a href="#contact">Objets du quotidien</a></li>
-					<li><a href="#contact">Jouets</a></li>
+						title="#{general.homeTitleIcon}">#{general.home}</a></li>
+					<li><p:commandLink
+							action="#{homeController.moveToSearchFromMenu('Gadgets')}"	
+						value="#{general.cat1}"/>
+						</li>
+					<li><p:commandLink
+							action="#{homeController.moveToSearchFromMenu('Pièces de rechange')}"	
+						value="#{general.cat2}"/></li>
+					<li><p:commandLink
+							action="#{homeController.moveToSearchFromMenu('Art \\& Déco')}"	
+						value="#{general.cat3}">
+						<f:param value="#{general.cat3}" />
+						</p:commandLink>
+						</li>
+					<li><p:commandLink
+							action="#{homeController.moveToSearchFromMenu('Outils')}"	
+						value="#{general.cat4}"/></li>
+					<li><p:commandLink
+							action="#{homeController.moveToSearchFromMenu('Objets du quotidien')}"	
+						value="#{general.cat5}"/></li>
+					<li><p:commandLink
+							action="#{homeController.moveToSearchFromMenu('Jouets')}"	
+						value="#{general.cat6}"/></li>
 				</ul>
-				</nav>
+				
 
 			</div>
 		</div>

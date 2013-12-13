@@ -7,14 +7,15 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<title>STL Agora - Résultat de votre recherche -</title>
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
+
 <h:body>
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
-
+	
 	<div id="page">
 		<div id="pagecontent">
 			<h:form>
@@ -23,7 +24,7 @@
 					<div class="gray_background">
 						<!-- 						TODO : primefaces : tri, nombre de resultats -->
 						<h:outputLabel styleClass="bold"
-							value="#{general.search1} #{searchController.nbResults} #{general.search2}" />
+							value="#{general.search1} #{searchController.results.size()} #{general.search2}" />
 						<br />
 						<h:outputText value="#{general.selecting}" />
 						<p:selectOneMenu id="selectionSorting">
@@ -37,6 +38,7 @@
 					</div>
 					<br />
 
+<!-- Navigation between search results -->
 					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page">
 						<h:outputText value="#{general.linkPrevous}" />
 
@@ -45,42 +47,46 @@
 						<h:outputText value="#{general.linkNext}" />
 					</p:commandLink>
 
-					<div class="product_search">
+<!-- Search results -->
+<div class="product_search">
 
-						<h:dataTable value="#{searchController.results}" var="s"
+						<h:dataTable rows="5" first="0"  value="#{searchController.results}" var="s"
 							styleClass="history_purchase" headerClass="order-table-header"
 							rowClasses="order-table-odd-row,order-table-even-row"
-							rendered="#{not empty searchController.results}">
+							rendered="true">
 
 							<h:column>
+<!-- 							to adapt later with real images -->
 								<h:graphicImage title="#{general.nameImage}"
 									alt="#{general.nameImage}" library="images"
-									name="#{general.nameImage}" />
+									name="#{general.nameImage}" rendered="false"/>
+									
+							</h:column>
+							
 								<br />
+								<h:column>	
 								<h:outputLabel styleClass="bold" value="#{s.name}" />
 								<br />
-								<h:outputLabel styleClass="price" value="#{s.price}" />
+								<h:outputLabel styleClass="price" value="#{s.price} #{general.currency}" />
 								<br />
 								<h:commandButton id="buttonAdd"
-									image="/resources/images/button_add.png"
-									action="#{cart.add(productController.product)}" />
+								image="/resources/images/button_add.png"
+								action="#{cart.add(s)}" />
+							</h:column>	
 								<br />
+							<h:column>	
 								<h:outputLabel styleClass="bold" value="#{general.labelVendeur}" />
 								<h:outputLabel value="#{s.seller.firstname} #{s.seller.surname}" />
+								<br/>
+								<h:outputLabel styleClass="bold" value="#{product.labelMark} #{s.globalMark}" /> 
+								
+<!-- 								Primefaces rating -->
+ 
+<p:rating value="#{productController.getGlobalMarkInt(s)}" readonly="true" />  
 								<br />
-								<h:outputLabel styleClass="bold"
-									value="#{product.labelMark} #{s.globalMark}" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star_empty.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star_empty.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star_empty.png" styleClass="star" />
-								<br />
+								
+								
+								
 								<p:commandLink id="linkOpinion">
 									<h:outputText styleClass="hyperlink_classic underlined"
 										value="(#{productController.nbOpinion} #{product.opinions})" />
@@ -90,7 +96,7 @@
 
 						<h:outputLabel styleClass="bold gray"
 							value="#{general.labelSearchNull}"
-							rendered="#{empty searchController.results}" />
+							rendered="#{empty manageProfileController.transactionBuy}" />
 
 					</div>
 					<br />

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
@@ -30,8 +31,12 @@ public class SearchController implements Serializable {
 	 */
 	private static final long serialVersionUID = 6448263727822874238L;
 	private Logger log = Logger.getLogger(SearchController.class.getName());
+	
 	@EJB
 	ProductDao productDao;
+	
+	@EJB
+	CategoryDao categoryDao;
 	
 	@EJB
 	UserDao userDao = new UserDaoImpl();
@@ -43,6 +48,8 @@ public class SearchController implements Serializable {
 	private Category categorySearch;
 	private int nbResults;
 	
+	private int page;
+	
 	public List<Product> getProducts(){
 		return productDao.findAll();
 	}
@@ -52,22 +59,41 @@ public class SearchController implements Serializable {
 	public List<Product> getResults() {
 		
 		Flash flash =  FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		//System.out.println("FLASH SIZE "+( flash.values()));
 		search = (String)flash.get("search");
-		categorySearch = (Category) flash.get("category");
+		
+		String cat = (String) flash.get("categorySearch");
+		//setCategorySearch();
+		
 		log.debug(search);
 		log.debug(categorySearch);
-//		categorySearch = categoryDao.findByName("Test");		
-		if(categorySearch==null)
+////		categorySearch = categoryDao.findByName("Test");		
+		if(cat==null && search != null)
 		{
 			this.setResults(productDao.findBySearch(search));
 		}
-		else
-		{
+		else if(cat !=null && search == null)
+		{categorySearch = categoryDao.findByName(cat);
+			this.setResults(productDao.findByCategory(categorySearch));
+			//this.setResults(productDao.findAll());
+		}else if(search != null && cat != null) {
+			categorySearch = categoryDao.findByName(cat);
 			this.setResults(productDao.findBySearchCategory(search, categorySearch));
 		}
-		nbResults = results.size();
+		
+		
+		setNbResults(results.size()) ;
+		log.info("NbResults : " +results.size());
 		return results;
 	}
+	
+	public String moveToSearch(String cat){
+		this.categorySearch = categoryDao.findByName(cat);
+		//System.out.println(this.categorySearch);
+		//System.out.println(this.categorySearch.getCategoryName());
+		return "/search/search?faces-redirect=true";
+	}
+	
 
 	/**
 	 * @param t the t to set
@@ -87,6 +113,7 @@ public class SearchController implements Serializable {
 	 * @param search the search to set
 	 */
 	public void setSearch(String search) {
+		log.info("SEARCH SETTE : " +search);
 		this.search = search;
 	}
 

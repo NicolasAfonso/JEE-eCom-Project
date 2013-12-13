@@ -42,20 +42,11 @@
 							</p:commandLink>
 							<br />
 							<h:outputLabel value="#{productController.product.globalMark}" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star_empty.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star_empty.png" styleClass="star" />
-							<h:graphicImage title="star" alt="star" library="images"
-								name="star_empty.png" styleClass="star" />
-							<p:commandLink id="linkOpinion">
+							
+<p:rating value="#{productController.getGlobalMarkInt()}" readonly="true" />  
 								<h:outputText styleClass="hyperlink_classic underlined"
 									value=" (#{productController.nbOpinion} #{product.opinions})" />
-							</p:commandLink>
+							
 							<br />
 							<h:outputLabel styleClass="price"
 								value="#{productController.product.price}€" />

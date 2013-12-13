@@ -98,5 +98,14 @@ public class ProductController {
 	}
 	
 	
+	public int getGlobalMarkInt(Product product){
+		return Math.round(product.getGlobalMark());
+	}
+	
+	public int getGlobalMarkInt(){
+		return Math.round(this.product.getGlobalMark());
+	}
+	
+	
 	
 }
