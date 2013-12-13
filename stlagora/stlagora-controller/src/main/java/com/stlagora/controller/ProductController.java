@@ -1,5 +1,6 @@
 package com.stlagora.controller;
 
+import java.io.InputStream;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -7,8 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.ProductDao;
@@ -24,6 +28,7 @@ public class ProductController {
 	private Product product;
 	private String id;
 	private int nbOpinion;
+	private StreamedContent file; 
 	@EJB
 	private ProductDao productDao;
 	
@@ -106,6 +111,21 @@ public class ProductController {
 		return Math.round(this.product.getGlobalMark());
 	}
 	
+	/**
+	 * @return the file
+	 */
+	public StreamedContent getFile() {
+		InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/home.png");  
+        file = new DefaultStreamedContent(stream, "image/png", "home.png");  
+		return file;
+	}
+
+	/**
+	 * @param file the file to set
+	 */
+	public void setFile(StreamedContent file) {
+		this.file = file;
+	}
 	
 	
 }
