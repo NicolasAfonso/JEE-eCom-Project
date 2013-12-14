@@ -24,6 +24,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 import com.stlagora.model.dao.CategoryDao;
 import com.stlagora.model.dao.CategoryDaoImpl;
@@ -109,15 +110,15 @@ public class HomeController implements Serializable {
 	}
 	
 	public void initBDD(){
-		UserDaoImpl userDao = new UserDaoImpl();
-		
-		CategoryDaoImpl categoryDao = new CategoryDaoImpl();
+//		UserDaoImpl userDao = new UserDaoImpl();
+//		
+//		CategoryDaoImpl categoryDao = new CategoryDaoImpl();
 //		ProductDaoImpl productDao = new ProductDaoImpl();	
 		
 //		Create minimum User
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0),"00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("toto", "toto", "toto", "toto@tata.com","test", new Date(0), "22222222","","","",ACCOUNT_TYPE.PRIVATE, ROLE.ADMIN));
+		userDao.create(new User("tutu",TITLE.Mr ,"tutu", "tutu", "tutu@tata.com","test", new Date(0),"00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.create(new User("tata",TITLE.Mr ,"tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.create(new User("toto",TITLE.Mr ,"toto", "toto", "toto@tata.com","test", new Date(0), "22222222","","","",ACCOUNT_TYPE.PRIVATE, ROLE.ADMIN));
 
 		//Create minimum 
 		categoryDao.create(new Category("Test","test-desc"));
