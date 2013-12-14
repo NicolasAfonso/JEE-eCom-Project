@@ -67,19 +67,37 @@
 						value="#{general.expiryDate}" />
 
 					<p:selectOneMenu id="expiryMonth">
-						<f:selectItem itemLabel="#{general.expiryMonth}" />
+						<f:selectItem itemLabel="#{general.jan}" />
+						<f:selectItem itemLabel="#{general.feb}" />
+						<f:selectItem itemLabel="#{general.mar}" />
+						<f:selectItem itemLabel="#{general.apr}" />
+						<f:selectItem itemLabel="#{general.may}" />
+						<f:selectItem itemLabel="#{general.jun}" />
+						<f:selectItem itemLabel="#{general.jul}" />
+						<f:selectItem itemLabel="#{general.aug}" />
+						<f:selectItem itemLabel="#{general.sep}" />
+						<f:selectItem itemLabel="#{general.oct}" />
+						<f:selectItem itemLabel="#{general.nov}" />
+						<f:selectItem itemLabel="#{general.dec}" />
 					</p:selectOneMenu>
 
+
 					<p:selectOneMenu id="expiryYear">
-						<f:selectItem itemLabel="#{general.expiryYear}" />
+						<f:selectItem itemLabel="2013" />
+						<f:selectItem itemLabel="2014" />
+						<f:selectItem itemLabel="2015" />
+						<f:selectItem itemLabel="2016" />
+						<f:selectItem itemLabel="2017" />
 					</p:selectOneMenu>
+					
+					
 					<br />
 
 					<h:outputLabel styleClass="bold label"
 						value="#{general.codeControl}" />
 
 					<p:inputText id="codeControl" required="true">
-						<f:validateLength minimum="2" />
+						<f:validateLength minimum="3" maximum="3"/>
 					</p:inputText>
 					<br />
 

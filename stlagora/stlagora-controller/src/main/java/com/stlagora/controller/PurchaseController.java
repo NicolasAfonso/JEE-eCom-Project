@@ -3,6 +3,7 @@ package com.stlagora.controller;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -33,6 +34,11 @@ public class PurchaseController implements Serializable {
 
 	@ManagedProperty("productList")
 	private List<Product> productList = new ArrayList<Product>();
+	
+	private final List<String> years = Arrays.asList("1990",
+	        "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
+	        "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
+	        "2007", "2008", "2009", "2010", "2011", "2012", "2013");
 
 	public PurchaseController() {
 
@@ -96,5 +102,9 @@ public class PurchaseController implements Serializable {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
+	
+	public List<String> getYears() {
+        return years;
+    }
 
 }
