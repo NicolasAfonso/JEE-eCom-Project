@@ -15,6 +15,15 @@
 		<div id="header">
 
 			<h:form>
+				<h:inputText styleClass="searchInputText" value="#{homeController.search}" style="width: 30%"></h:inputText>
+				<div id="catMenu">
+					<select id="basic" name="basic" class="catDropDownList">
+						<option value="0">Select One</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select>
+				</div>
 				<table class="full_width">
 					<tr>
 						<td id="menu_logo"><a href="/stlagora/home.xhtml"
@@ -22,12 +31,14 @@
 									title="#{general.homeTitleIcon}" alt="#{general.homeTitleIcon}"
 									library="images" name="logo.png" style="width:175px" />
 						</a></td>
+						
 						<h:form>
-
-							<td id="menu_search"><h:inputText styleClass="search"
-									value="#{homeController.search}">
-								</h:inputText> <h:commandButton action="#{homeController.moveToSearch}"
-									value="" style="display:none" /></td>
+							<td id="menu_search">
+								<div id="searchLayout"></div>
+								
+								<h:commandButton action="#{homeController.moveToSearch}" value="" style="display:none" />
+								
+							</td>
 						</h:form>
 
 						<td class="menu_shortcuts"><h:graphicImage
