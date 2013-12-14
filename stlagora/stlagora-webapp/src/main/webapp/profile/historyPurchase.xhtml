@@ -19,6 +19,7 @@
 
 	<div id="page">
 		<div id="pagecontent">
+		<p:messages id="messages" showDetail="false" autoUpdate="true" />
 			<h:form>
 
 				<div class="form_container">
@@ -53,6 +54,7 @@
 																	
 								<p:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" ajax="false" styleClass="button_classic">
 								    <p:fileDownload value="#{productController.file}" />
+								    <f:param name="productDownload" value="#{t.product.id}" />
 								</p:commandButton>
 							</h:column>
 
