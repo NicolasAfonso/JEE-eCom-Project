@@ -41,7 +41,7 @@ public class DatabaseCreator {
 	public static String[] imgPath = {"pathImg1","pathImg2","pathImg3","pathImg4","pathImg5", ""};
 	public static String[] planPath = {"pathPlan1","pathPlan2","pathPlan3","pathPlan4","pathPlan5"};
 	public static String[] productStatus = {"Available", "Not Available"};
-	public static String[] categoryname={"Jouets","Gadgets", "Pi�ces de rechange", "Art & D�co", "Outils", "Objets du quotidien" };
+	public static String[] categoryname={"Jouets","Gadgets", "Pièces de rechange", "Art & Déco", "Outils", "Objets du quotidien" };
 	public static String[] planType = {"STL"};
 	public static String[] sellerlist = {"tutu","tata","toto"};
 
@@ -181,6 +181,7 @@ public class DatabaseCreator {
 					d2 = random.nextInt(100);
 				else
 					d2 = 0;
+				
 				str = String.valueOf(d1)+"."+String.valueOf(d2)+"f";
 				
 				productTable_row.appendChild(productTable_globalmark);
