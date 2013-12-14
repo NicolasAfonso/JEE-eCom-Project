@@ -129,7 +129,7 @@ public class HomeController implements Serializable {
 		categoryDao.create(new Category("Outils", "Outils desc"));
 		categoryDao.create(new Category("Objets du quotidien", "Objets du quotidien desc"));
 		
-		Category c = categoryDao.findByName("Test");
+		Category c = categoryDao.findByName("Jouet");
 		User u1 = userDao.findByEmail("tata@tata.com");
 //		User u2 = userDao.findByEmail("tutu@tata.com");
 

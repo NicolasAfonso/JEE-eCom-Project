@@ -19,6 +19,23 @@
 
 	<div id="page">
 		<div id="pagecontent">
+
+			<div id="menu">
+				<h:panelGroup layout="block">
+					<ul class="purchaseMenu">
+						<li class="menustepoff"><h:outputLabel
+								value="#{general.panier}" /> <h:outputLabel value=" &#10003;"
+								styleClass="checkIcon" /></li>
+						<li class="menustepon"><h:outputLabel
+								value="#{general.paiement}" /> <h:outputLabel value=" &#10003;"
+								styleClass="checkIcon" /></li>
+						<li class="menustepcoming"><h:outputLabel
+								value="#{general.telechargement}" /> <h:outputLabel
+								value=" &#10003;" styleClass="checkIcon" /></li>
+					</ul>
+				</h:panelGroup>
+			</div>
+
 			<p:messages id="messages" showDetail="false" autoUpdate="true" />
 			<h:form>
 				<h:outputLabel styleClass="bold" value="#{general.creditCard}" />
@@ -32,19 +49,22 @@
 					<h:graphicImage title="cartes" alt="type_cartes" library="images"
 						name="cartes.png" />
 					<br />
-					<h:outputLabel styleClass="bold label" value="#{general.cardHolder}" />
+					<h:outputLabel styleClass="bold label"
+						value="#{general.cardHolder}" />
 
 					<p:inputText id="name_cardHolder" required="true">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<br />
-					<h:outputLabel styleClass="bold label" value="#{general.numberCard}" />
+					<h:outputLabel styleClass="bold label"
+						value="#{general.numberCard}" />
 
 					<p:inputText id="numberCard" required="true">
 						<f:validator validatorId="cbValidator" />
 					</p:inputText>
 					<br />
-					<h:outputLabel styleClass="bold label" value="#{general.expiryDate}" />
+					<h:outputLabel styleClass="bold label"
+						value="#{general.expiryDate}" />
 
 					<p:selectOneMenu id="expiryMonth">
 						<f:selectItem itemLabel="#{general.expiryMonth}" />
@@ -55,7 +75,8 @@
 					</p:selectOneMenu>
 					<br />
 
-					<h:outputLabel styleClass="bold label" value="#{general.codeControl}" />
+					<h:outputLabel styleClass="bold label"
+						value="#{general.codeControl}" />
 
 					<p:inputText id="codeControl" required="true">
 						<f:validateLength minimum="2" />

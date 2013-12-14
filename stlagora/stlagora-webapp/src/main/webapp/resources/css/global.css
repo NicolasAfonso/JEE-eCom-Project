@@ -800,7 +800,7 @@ img
 	color: #b4b4b4 !important;
 }
 
-.menustepon
+.menustepon, .menustepoff
 {
 	background-color: #f0f0f0;
     background-image: -moz-linear-gradient(#c2ff81 50%,#74c14a 100%) !important;
