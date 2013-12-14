@@ -70,7 +70,14 @@ public class HomeController implements Serializable {
 	{
 		return "/profile/accountParameters?faces-redirect=true";
 	}
-
+	
+	public String moveToHistSell() {
+		return "/profile/historySell.xhtml?faces-redirect=true";
+	}
+	
+	public String moveToHistPurchase() {
+		return "/profile/historyPurchase.xhtml?faces-redirect=true";
+	}
 	
 	public String moveToCart(){
 		return "/global/cart?faces-redirect=true";
