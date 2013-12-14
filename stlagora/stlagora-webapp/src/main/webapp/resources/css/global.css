@@ -304,6 +304,11 @@ h2
 	border: 1px solid #92d050;
 }
 
+.logintable tr
+{
+	width: 100%;
+}
+
 /* SPECIAL DIVS */
 
 .product_search_title
