@@ -11,52 +11,62 @@
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
-	<h:body>
-	
-		<ui:insert name="header">
-			<ui:include src="/resources/templates/header.xhtml" />
-		</ui:insert>
-	
-		<h:form>
-			<div id="pagecontent">
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+
+	<div id="page">
+		<div id="pagecontent">
+			<h:form>
 				<p:messages id="messages" showDetail="false" autoUpdate="true" />
 				<div class="form_container">
-				
+
 					<div class="gray_background">
-						<h1>
-							#{general.productsSell}
-						</h1>						
+						<h1>#{general.productsSell}</h1>
 					</div>
 					<br />
-					
+
 					<div class="for_sale">
-					
+
 						<h:dataTable value="#{productController.products}" var="lp"
-	    					styleClass="for_sale"
-			    			headerClass="order-table-header"
-			    			rowClasses="order-table-odd-row,order-table-even-row">
-	 
-			    			<h:column>
-			    				<h:graphicImage styleClass="product_search_image" name="#{general.nameImage}" />
+							styleClass="for_sale" headerClass="order-table-header"
+							rowClasses="order-table-odd-row,order-table-even-row">
+
+							<h:column>
+								<h:graphicImage styleClass="product_search_image"
+									name="#{general.nameImage}" />
 								<h:outputLabel styleClass="bold" value="#{lp.name}" />
-								<p:commandLink id="modifProduct" action="#{sellController.goToSellModif}">
-									<h:outputText styleClass="hyperlink_classic" value="#{profile.modif}" />
+								<p:commandLink id="modifProduct"
+									action="#{sellController.goToSellModif}">
+									<h:outputText styleClass="hyperlink_classic"
+										value="#{profile.modif}" />
 								</p:commandLink>
-								<h:commandButton id="delete" value="#{general.buttonDelete}" action="#{productController.removeProduct(lp)}" styleClass="button_delete"/>
-			    			</h:column>
-	 
-	    				</h:dataTable>
-					
+								<h:commandButton id="delete" value="#{general.buttonDelete}"
+									action="#{productController.removeProduct(lp)}"
+									styleClass="button_delete" />
+							</h:column>
+
+						</h:dataTable>
+
 					</div>
 				</div>
-				<h:commandButton styleClass="button_back" value="#{profile.backModif}" action="/profile/accountParameters?faces-redirect=true" />
-				<h:commandButton styleClass="button_classic" value="#{product.addProductSell}" action="#{sellController.goToSell}"/>
-			</div>
-		</h:form>
-		
-		<ui:insert name="footer">
-			<ui:include src="/resources/templates/footer.xhtml" />
-		</ui:insert>
-		
-	</h:body>
+				<h:commandButton styleClass="button_back"
+					value="#{profile.backModif}"
+					action="/profile/accountParameters?faces-redirect=true" style="float: left"/>
+				<h:commandButton styleClass="button_classic"
+					value="#{product.addProductSell}"
+					action="#{sellController.goToSell}" style="float: right"/>
+			</h:form>
+		</div>
+	</div>
+
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
 </html>
