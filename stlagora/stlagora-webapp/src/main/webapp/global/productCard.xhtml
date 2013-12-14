@@ -43,7 +43,7 @@
 							<br />
 							<h:outputLabel value="#{productController.product.globalMark}" />
 							
-<p:rating value="#{productController.getGlobalMarkInt()}" readonly="true" /> 
+							<p:rating value="#{productController.getGlobalMarkInt()}" readonly="true" /> 
 <!-- 							<h:link styleClass="hyperlink_classic underlined" id="op" value="Opinions" fragment="opinions" />  -->
 <!-- 								<h:commandLink styleClass="hyperlink_classic underlined" -->
 <!-- 									value=" (#{productController.nbOpinion} #{product.opinions})" -->
@@ -88,16 +88,7 @@
 
 							<h:column>
 								<h:outputLabel value="#{product.labelMark} #{op.mark}" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star_empty.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star_empty.png" styleClass="star" />
-								<h:graphicImage title="star" alt="star" library="images"
-									name="star_empty.png" styleClass="star" />
+<!-- 								<p:rating value="#{op.mark}" readonly="true" />  -->
 								<br />
 								<h:outputLabel value="Par :" />
 								<p:commandLink id="nameBuyer">
@@ -107,7 +98,7 @@
 								<br />
 
 								<h:outputLabel styleClass="bold gray"
-									value="Titre du commentaire" />
+									value="#{product.coment}" />
 								<br />
 								<h:outputLabel value="#{op.comment}" />
 								<br />
