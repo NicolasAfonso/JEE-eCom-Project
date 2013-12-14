@@ -73,9 +73,21 @@ public class SellController implements Serializable {
 			}
 			else if(sessionUser.getUser().getAccountType() == ACCOUNT_TYPE.PRIVATE)
 			{
-				if(productDao.findBySeller(sessionUser.getUser()).size()>=10)
+				List<Product> listProduct = productDao.findBySeller(sessionUser.getUser());
+				if(listProduct.size()>=10)
 				{
-					return "/sell/error_private?faces-redirect=true";
+//					int inc = 0;
+//					for (Product p: listProduct) {
+//						if(!p.isDeleted())
+//						{
+//							inc ++;
+//						}
+//					}
+//					
+//					if(inc>=10)
+//					{
+						return "/sell/error_private?faces-redirect=true";
+//					}
 				}
 			}
 			Category c = categoryDao.findByName(productCategory);

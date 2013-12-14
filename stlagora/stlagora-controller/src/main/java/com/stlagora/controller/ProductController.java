@@ -133,5 +133,9 @@ public class ProductController {
 		this.file = file;
 	}
 	
+	public void removeProduct(Product p){
+		p.setDeleted(true);
+		productDao.update(p);
+	}
 	
 }
