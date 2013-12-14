@@ -20,35 +20,35 @@
 	<div id="page">
 		<div id="pagecontent">
 			<h:form>
-			
+
 				<div id="menu">
 					<h:panelGroup layout="block" rendered="#{!(sessionUser.loggedIn)}">
 						<ul class="purchaseMenu">
 							<li class="menustepon"><h:outputLabel
-									value="#{general.panier}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.panier}" /> <h:outputLabel value=" &#10003;"
+									styleClass="checkIcon" /></li>
 							<li class="menustepcoming"><h:outputLabel
-									value="#{general.identification}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.identification}" /> <h:outputLabel
+									value=" &#10003;" styleClass="checkIcon" /></li>
 							<li class="menustepcoming"><h:outputLabel
-									value="#{general.paiement}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.paiement}" /> <h:outputLabel
+									value=" &#10003;" styleClass="checkIcon" /></li>
 							<li class="menustepcoming"><h:outputLabel
-									value="#{general.telechargement}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.telechargement}" /> <h:outputLabel
+									value=" &#10003;" styleClass="checkIcon" /></li>
 						</ul>
 					</h:panelGroup>
 					<h:panelGroup layout="block" rendered="#{sessionUser.loggedIn}">
 						<ul class="purchaseMenu">
 							<li class="menustepon"><h:outputLabel
-									value="#{general.panier}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.panier}" /> <h:outputLabel value=" &#10003;"
+									styleClass="checkIcon" /></li>
 							<li class="menustepcoming"><h:outputLabel
-									value="#{general.paiement}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.paiement}" /> <h:outputLabel
+									value=" &#10003;" styleClass="checkIcon" /></li>
 							<li class="menustepcoming"><h:outputLabel
-									value="#{general.telechargement}" />
-								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+									value="#{general.telechargement}" /> <h:outputLabel
+									value=" &#10003;" styleClass="checkIcon" /></li>
 						</ul>
 					</h:panelGroup>
 				</div>
@@ -100,6 +100,10 @@
 						</h:column>
 
 					</h:dataTable>
+					
+					<h:outputLabel value="#{general.noneProd}"
+							rendered="#{empty cart.products}" />
+					
 					<br />
 
 					<div class="gray_background" style="text-align: right">
@@ -114,6 +118,7 @@
 							action="/home?faces-redirect=true" />
 						<h:commandButton styleClass="button_classic"
 							value="#{product.validateCommand}"
+							rendered="#{not empty cart.products}"
 							action="#{purchaseController.validateCart}" />
 					</div>
 
