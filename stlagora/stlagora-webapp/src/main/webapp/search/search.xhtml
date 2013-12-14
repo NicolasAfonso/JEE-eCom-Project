@@ -121,49 +121,42 @@
 			
 			<h:form id="form">
 
-    <p:dataTable var="s" value="#{searchController.results}" paginator="true" rows="5"
+    <p:dataTable var="s" value="#{searchController.results}" paginator="true" rows="5" rowKey="#{s.name}"
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}"  id="carTable" lazy="true">
+                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{searchController.selectedProduct}"  id="productTable" >
+ 
+        <p:ajax event="rowSelect"  listener="#{searchController.onRowSelect}" update=":form:display" oncomplete="PF('productDialog').show()" />
 
-        <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display" oncomplete="PF('carDialog').show()" />
-
-        <p:column headerText="Model" sortBy="model" filterBy="#{car.model}">
-            <h:outputText value="#{car.model}" />
+        <p:column headerText="Nom" sortBy="name" filterBy="#{s.name}">
+            <h:outputText value="#{s.name}" />
         </p:column>
 
-        <p:column headerText="Year" sortBy="year" filterBy="#{car.year}">
-            <h:outputText value="#{car.year}" />
+        <p:column headerText="Price" sortBy="price" filterBy="#{s.price}">
+            <h:outputText value="#{s.price}" />
         </p:column>
 
-        <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="#{car.manufacturer}">
-            <h:outputText value="#{car.manufacturer}" />
+        <p:column headerText="Seller" sortBy="seller" filterBy="#{s.seller}">
+            <h:outputText value="#{s.seller}" />
         </p:column>
 
-        <p:column headerText="Color" sortBy="color" filterBy="#{car.color}">
-            <h:outputText value="#{car.color}" />
+        <p:column headerText="globalMark" sortBy="globalMark" filterBy="#{s.globalMark}">
+            <h:outputText value="#{s.globalMark}" />
         </p:column>
     </p:dataTable>
 
-    <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+    <p:dialog header="Product Detail" widgetVar="productDialog" resizable="false"
               showEffect="explode" hideEffect="explode">
 
         <h:panelGrid id="display" columns="2" cellpadding="4">
 
             <f:facet name="header">
-                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                <p:graphicImage library="images" alt="#{searchController.selectedProduct.name}" value="no-image.png" />
             </f:facet>
 
-            <h:outputText value="Model:" />
-            <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+            <h:outputText value="Nom:" />
+            <h:outputText value="#{searchController.selectedProduct.name}" style="font-weight:bold"/>
 
-            <h:outputText value="Year:" />
-            <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
-
-            <h:outputText value="Manufacturer:" />
-            <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
-
-            <h:outputText value="Color:" />
-            <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+           
         </h:panelGrid>
     </p:dialog>
 

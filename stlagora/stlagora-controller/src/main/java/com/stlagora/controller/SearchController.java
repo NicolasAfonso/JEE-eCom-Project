@@ -34,13 +34,13 @@ public class SearchController implements Serializable {
 	private Logger log = Logger.getLogger(SearchController.class.getName());
 	
 	@EJB
-	ProductDao productDao;
+	private ProductDao productDao;
 	
 	@EJB
-	CategoryDao categoryDao;
+	private CategoryDao categoryDao;
 	
 	@EJB
-	UserDao userDao = new UserDaoImpl();
+	private UserDao userDao;
 	
 
 	private List<Product> results = new ArrayList<Product>();
@@ -52,7 +52,50 @@ public class SearchController implements Serializable {
 	
 	private int page;
 	
+	private Product selectedProduct;
+	
+	private boolean notInit = true;
+	
+	public SearchController() {
+	
+		
+	}
+	
+	
+	private void init(){
+		String cat = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("categorySearch");
+		String name = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("search");
+		
+		System.out.println(name);
+		System.out.println(cat);
+		
+//		if (cat.equals("null"))
+//			cat=null;
+//		if (name.equals("null"))
+//			name=null;
+		
+		
+		if (cat == null && name != null) {
+			results= productDao.findBySearch(name);
+			notInit = false;
+		}
+		
+		else if (cat != null && name == null) {
+			categorySearch = categoryDao.findByName(cat);
+			results=productDao.findByCategory(categorySearch);
+			notInit =false;
+		}
+		else if (cat != null && name != null){
+			categorySearch = categoryDao.findByName(cat);
+			results = productDao.findBySearchCategory(name, categorySearch);
+			notInit = false;
+		}
+	
+	}
+	
+	
 	public List<Product> getProducts(){
+		
 		return productDao.findAll();
 	}
 	/**
@@ -60,32 +103,37 @@ public class SearchController implements Serializable {
 	 */
 	public List<Product> getResults() {
 		
-		Flash flash =  FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		//System.out.println("FLASH SIZE "+( flash.values()));
-		search = (String)flash.get("search");
-		
-		String cat = (String) flash.get("categorySearch");
-		//setCategorySearch();
-		
-		log.debug(search);
-		log.debug(categorySearch);
-////		categorySearch = categoryDao.findByName("Test");		
-		if(cat==null && search != null)
-		{
-			this.setResults(productDao.findBySearch(search));
-		}
-		else if(cat !=null && search == null)
-		{categorySearch = categoryDao.findByName(cat);
-			this.setResults(productDao.findByCategory(categorySearch));
-			//this.setResults(productDao.findAll());
-		}else if(search != null && cat != null) {
-			categorySearch = categoryDao.findByName(cat);
-			this.setResults(productDao.findBySearchCategory(search, categorySearch));
-		}
+	
+		if (notInit)
+			init();
 		
 		
-		setNbResults(results.size()) ;
-		log.info("NbResults : " +results.size());
+//		Flash flash =  FacesContext.getCurrentInstance().getExternalContext().getFlash();
+//		//System.out.println("FLASH SIZE "+( flash.values()));
+//		search = (String)flash.get("search");
+//		
+//		String cat = (String) flash.get("categorySearch");
+//		//setCategorySearch();
+//		
+//		log.debug(search);
+//		log.debug(categorySearch);
+//////		categorySearch = categoryDao.findByName("Test");		
+//		if(cat==null && search != null)
+//		{
+//			this.setResults(productDao.findBySearch(search));
+//		}
+//		else if(cat !=null && search == null)
+//		{categorySearch = categoryDao.findByName(cat);
+//			this.setResults(productDao.findByCategory(categorySearch));
+//			//this.setResults(productDao.findAll());
+//		}else if(search != null && cat != null) {
+//			categorySearch = categoryDao.findByName(cat);
+//			this.setResults(productDao.findBySearchCategory(search, categorySearch));
+//		}
+//		
+//		
+//		setNbResults(results.size()) ;
+//		log.info("NbResults : " +results.size());
 		return results;
 	}
 	
@@ -163,6 +211,12 @@ public class SearchController implements Serializable {
 	 */
 	public void setProdId(int prodId) {
 		this.prodId = prodId;
+	}
+	public Product getSelectedProduct() {
+		return selectedProduct;
+	}
+	public void setSelectedProduct(Product selectedProduct) {
+		this.selectedProduct = selectedProduct;
 	}
 	
 	
