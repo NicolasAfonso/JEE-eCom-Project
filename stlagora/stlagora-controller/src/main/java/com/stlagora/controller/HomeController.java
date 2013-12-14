@@ -88,25 +88,20 @@ public class HomeController implements Serializable {
 		return "/profile/forSale?faces-redirect=true";
 	}
 	
-	public String moveToSearch(){
-		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash(); 
-        flash.put("search", search); 
-        flash.put("categorySearch", category);  
-		return "/search/search?faces-redirect=true";
-	}
+//	public String moveToSearch(){
+//		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash(); 
+//        flash.put("search", search); 
+//        flash.put("categorySearch", category);  
+//		return "/search/search?faces-redirect=true";
+//	}
 	
-	public String moveToSearch(String search, String category){
-		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash(); 
-        flash.put("search", search); 
-        flash.put("categorySearch", category);  
-		return "/search/search?faces-redirect=true";
+	public String moveToSearch(){
+		return "/search/search?faces-redirect=true&categorySearch="+category+"&search="+search;
 	}
 	
 	
 	public String moveToSearchFromMenu(String category){
-		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.put("categorySearch", category);
-		return "/search/search?faces-redirect=true";
+		return "/search/search?categorySearch="+category+"&faces-redirect=true";
 	}
 	
 	public void initBDD(){
@@ -114,7 +109,6 @@ public class HomeController implements Serializable {
 //		
 //		CategoryDaoImpl categoryDao = new CategoryDaoImpl();
 //		ProductDaoImpl productDao = new ProductDaoImpl();	
-		System.out.println("INIT");
 //		Create minimum User
 		userDao.create(new User("tutu",TITLE.Mr ,"tutu", "tutu", "tutu@tata.com","test", new Date(0),"00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		userDao.create(new User("tata",TITLE.Mr ,"tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
@@ -124,8 +118,8 @@ public class HomeController implements Serializable {
 		categoryDao.create(new Category("Test","test-desc"));
 		categoryDao.create(new Category("Jouets", "Jouets desc"));
 		categoryDao.create(new Category("Gadgets", "Gadgets desc"));
-		categoryDao.create(new Category("Pièces de rechange", "Pièces de rechange desc"));
-		categoryDao.create(new Category("Art &amp; Déco", "Art & Déco desc"));
+		categoryDao.create(new Category("Pieces de rechange", "Pièces de rechange desc"));
+		categoryDao.create(new Category("Art et Deco", "Art & Déco desc"));
 		categoryDao.create(new Category("Outils", "Outils desc"));
 		categoryDao.create(new Category("Objets du quotidien", "Objets du quotidien desc"));
 		

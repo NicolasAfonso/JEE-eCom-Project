@@ -87,10 +87,10 @@
 								</div>
 								<div class="table_cell_middle">
 									<form>
-										<p:commandLink styleClass="gray" id="delete"
+										<h:commandLink styleClass="gray" id="delete"
 											action="#{cart.remove(p)}">
 											<h:outputText value="#{product.labelDelete}" />
-										</p:commandLink>
+										</h:commandLink>
 									</form>
 								</div>
 								<div class="table_cell_middle" style="text-align: right">
@@ -98,29 +98,26 @@
 								</div>
 							</div>
 						</h:column>
-
 					</h:dataTable>
 					
 					<h:outputLabel value="#{general.noneProd}"
 							rendered="#{empty cart.products}" />
 					
 					<br />
-
+					<br />
 					<div class="gray_background" style="text-align: right">
 						<h:outputLabel styleClass="price"
 							value="#{product.totalPrice} #{cart.amount}€" />
 					</div>
 
 					<br />
-					<div style="text-align: right">
 						<h:commandButton id="button_backShopping"
 							value="#{product.backShopping}" styleClass="button_back"
-							action="/home?faces-redirect=true" />
+							action="/home?faces-redirect=true" style="float: left"/>
 						<h:commandButton styleClass="button_classic"
 							value="#{product.validateCommand}"
 							rendered="#{not empty cart.products}"
-							action="#{purchaseController.validateCart}" />
-					</div>
+							action="#{purchaseController.validateCart}" style="float: right" />
 
 				</div>
 			</h:form>

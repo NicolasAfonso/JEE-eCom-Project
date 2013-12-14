@@ -58,7 +58,8 @@
 								</div>
 							</h:column>
 						</h:dataTable>
-
+						<h:outputLabel value="#{sell.noneProdSell}"
+							rendered="#{empty productController.products}" />
 					</div>
 				</div>
 				<br />
