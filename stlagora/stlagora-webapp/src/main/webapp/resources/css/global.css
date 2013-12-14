@@ -285,7 +285,7 @@ h2
 
 /* FORMS */
 
-#form_container
+.form_container
 {
 	display: table;
 	width: 100%;

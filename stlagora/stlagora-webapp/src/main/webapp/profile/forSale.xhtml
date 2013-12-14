@@ -34,31 +34,41 @@
 						<h:dataTable value="#{productController.products}" var="lp"
 							styleClass="for_sale" headerClass="order-table-header"
 							rowClasses="order-table-odd-row,order-table-even-row">
-
 							<h:column>
-								<h:graphicImage styleClass="product_search_image"
-									name="#{general.nameImage}" />
-								<h:outputLabel styleClass="bold" value="#{lp.name}" />
-								<p:commandLink id="modifProduct"
-									action="#{sellController.goToSellModif}">
-									<h:outputText styleClass="hyperlink_classic"
-										value="#{profile.modif}" />
-								</p:commandLink>
-								<h:commandButton id="delete" value="#{general.buttonDelete}"
-									action="#{productController.removeProduct(lp)}"
-									styleClass="button_delete" />
+								<div id="div_container">
+									<div class="table_cell_middle" style="width: 250px">
+										<h:graphicImage styleClass="product_search_image"
+											name="#{general.nameImage}" />
+									</div>
+									<div class="table_cell_middle" style="width: 50%">
+										<h:outputLabel styleClass="bold" value="#{lp.name}" />
+									</div>
+									<div class="table_cell_middle">
+										<p:commandLink id="modifProduct"
+											action="#{sellController.goToSellModif}">
+											<h:outputText styleClass="hyperlink_classic"
+												value="#{profile.modif}" />
+										</p:commandLink>
+									</div>
+									<div class="table_cell_middle" style="text-align: right">
+										<h:commandButton id="delete" value="#{general.buttonDelete}"
+											action="#{productController.removeProduct(lp)}"
+											styleClass="button_delete" />
+									</div>
+								</div>
 							</h:column>
-
 						</h:dataTable>
 
 					</div>
 				</div>
+				<br />
 				<h:commandButton styleClass="button_back"
 					value="#{profile.backModif}"
-					action="/profile/accountParameters?faces-redirect=true" style="float: left"/>
+					action="/profile/accountParameters?faces-redirect=true"
+					style="float: left" />
 				<h:commandButton styleClass="button_classic"
 					value="#{product.addProductSell}"
-					action="#{sellController.goToSell}" style="float: right"/>
+					action="#{sellController.goToSell}" style="float: right" />
 			</h:form>
 		</div>
 	</div>

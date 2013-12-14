@@ -16,44 +16,54 @@
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
-	<div id="pagecontent">
-		<p:messages id="messages" showDetail="false" autoUpdate="true" />
-		<div class="gray_background">
-		<h1>#{sell.confirmsellProducts}</h1>
-		</div>
-		<h2>#{sell.informationsProductConfirm}</h2>
-		<div class="form_container">
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productName}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.name}" />
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productCategory}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.category.categoryName}" />
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productCaract}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.description}" />
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productPrice}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.price}" />
-					<h:outputLabel value=" euros" />
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.images}" />
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.plan}" />
-					<br />
-					<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
-					<h:outputLabel styleClass="bold" value="#{sellController.productUpload.status}" />
-					<br />
-					<br />
-					<br />
-					<h:form>
-						<h:commandButton id="button_backRegis" value="#{sell.home}" styleClass="button_back" action="/home"/>
-					</h:form>
-					<br />
+
+	<div id="page">
+		<div id="pagecontent">
+			<p:messages id="messages" showDetail="false" autoUpdate="true" />
+			<div class="gray_background">
+				<h1>#{sell.confirmsellProducts}</h1>
+			</div>
+			<h2>#{sell.informationsProductConfirm}</h2>
+			<div class="form_container">
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productName}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.name}" />
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productCategory}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.category.categoryName}" />
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productCaract}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.description}" />
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productPrice}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.price}" />
+				<h:outputLabel value=" euros" />
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.images}" />
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.plan}" />
+				<br />
+				<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
+				<h:outputLabel styleClass="bold"
+					value="#{sellController.productUpload.status}" />
+				<br /> <br /> <br />
+				<h:form>
+					<h:commandButton id="button_backRegis" value="#{sell.forsale}"
+						styleClass="button_back" action="/profile/forSale" />
+				</h:form>
+				<br />
+			</div>
 		</div>
 	</div>
+
 	<ui:insert name="footer">
 		<ui:include src="/resources/templates/footer.xhtml" />
 	</ui:insert>
