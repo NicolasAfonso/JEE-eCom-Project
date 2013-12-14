@@ -14,6 +14,7 @@ import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 
 import shell.ShellCommand;
 import shell.ShellContext;
@@ -85,7 +86,7 @@ public class UserCommandImpl implements ShellCommand, EcomShellConstantes {
 			System.out.println("accountType : ");
 			String accountType = sc.nextLine();
 		
-			User u = new User(login,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,ACCOUNT_TYPE.PRIVATE,ROLE.MEMBER);
+			User u = new User(login,TITLE.Mr, surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,ACCOUNT_TYPE.PRIVATE,ROLE.MEMBER);
 			try{
 				userDao.create(u);
 			}catch(Exception e)

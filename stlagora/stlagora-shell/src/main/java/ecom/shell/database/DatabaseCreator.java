@@ -41,9 +41,10 @@ public class DatabaseCreator {
 	public static String[] imgPath = {"pathImg1","pathImg2","pathImg3","pathImg4","pathImg5", ""};
 	public static String[] planPath = {"pathPlan1","pathPlan2","pathPlan3","pathPlan4","pathPlan5"};
 	public static String[] productStatus = {"Available", "Not Available"};
-	public static String[] categoryname={"Jouets","Gadgets", "Pièces de rechange", "Art &amp; Déco", "Outils", "Objets du quotidien" };
+	public static String[] categoryname={"Jouets","Gadgets", "Pièces de rechange", "Art & Déco", "Outils", "Objets du quotidien" };
 	public static String[] planType = {"STL"};
 	public static String[] sellerlist = {"tutu","tata","toto"};
+	
 
 	/**
 	 * 
@@ -228,6 +229,8 @@ public class DatabaseCreator {
 			UserDaoImpl userDao = new UserDaoImpl("STLAGORA_PU_SHELL");
 			CategoryDaoImpl categoryDao = new CategoryDaoImpl("STLAGORA_PU_SHELL");
 			Date date;
+			
+//			System.out.println("Taille "+nList.getLength());
 
 			for (int tmp = 0; tmp < nList.getLength(); tmp++) {
 
@@ -254,12 +257,15 @@ public class DatabaseCreator {
 					//System.out.println(e);
 					System.out.println(e.getMessage());
 				}
-
-
-
+				
 				Category category = categoryDao.findByName(element.getElementsByTagName("category").item(0).getTextContent());
 				//category.(element.getElementsByTagName("category").item(0).getTextContent());
+				
+				
 				currentProduct.setCategory(category);
+				
+				
+				
 
 				currentProduct.setDescription(element.getElementsByTagName("description").item(0).getTextContent());
 
