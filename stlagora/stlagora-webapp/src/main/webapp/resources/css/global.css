@@ -329,7 +329,7 @@ h2
 .button_classic
 {
 	font-family: "EurostileT";
-	padding: 5px 15px;
+	padding: 5px 15px !important;
 	background-image: -moz-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
 	background-image: -webkit-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
 	-webkit-border-radius: 5px;

@@ -19,7 +19,7 @@
 
 	<div id="page">
 		<div id="pagecontent">
-		<p:messages id="messages" showDetail="false" autoUpdate="true" />
+			<p:messages id="messages" showDetail="false" autoUpdate="true" />
 			<h:form>
 
 				<div class="form_container">
@@ -36,35 +36,42 @@
 							headerClass="order-table-header"
 							rowClasses="order-table-odd-row,order-table-even-row"
 							rendered="#{not empty manageProfileController.transactionBuy}">
-
 							<h:column>
-								<h:graphicImage styleClass="product_search_image"
-									name="nom de l'image" />
-
-								<h:outputLabel styleClass="bold"
-									value=" #{t.product.name} - #{t.product.description}" />
-								<br />
-								<h:outputLabel value="#{profile.labelVendu}" />
-								<h:outputLabel value="#{t.seller.surname} #{t.seller.firstname}" />
-
-								<h:outputLabel styleClass="gray italic"
-									value="#{profile.labelBought} #{t.date}" />
-								<h:outputLabel styleClass="bold gray italic"
-									value="(#{t.amount} euros)" />							
-																	
-								<p:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" ajax="false" styleClass="button_classic">
-								    <p:fileDownload value="#{productController.file}" />
-								    <f:param name="productDownload" value="#{t.product.id}" />
-								</p:commandButton>
+								<div id="div_container">
+									<div class="table_cell_middle" style="width: 250px">
+										<h:graphicImage styleClass="product_search_image"
+											name="nom de l'image" />
+									</div>
+									<div class="table_cell_middle" style="width: 50%">
+										<h:outputLabel styleClass="bold"
+											value=" #{t.product.name} - #{t.product.description}" />
+										<h:outputLabel value="#{profile.labelVendu}" />
+										<h:outputLabel
+											value="#{t.seller.surname} #{t.seller.firstname}" />
+									</div>
+									<div class="table_cell_middle">
+										<h:outputLabel styleClass="gray italic"
+											value="#{profile.labelBought} #{t.date}" />
+										<h:outputLabel styleClass="bold gray italic"
+											value="(#{t.amount} euros)" />
+									</div>
+									<div class="table_cell_middle" style="text-align: right">
+										<p:commandButton id="downloadFile1"
+											value="#{profile.buttonDownloadFile}" ajax="false"
+											styleClass="button_classic">
+											<p:fileDownload value="#{productController.file}" />
+											<f:param name="productDownload" value="#{t.product.id}" />
+										</p:commandButton>
+									</div>
+								</div>
 							</h:column>
-
 						</h:dataTable>
 
 						<h:outputLabel value="#{profile.historyPurchaseNull}"
 							rendered="#{empty manageProfileController.transactionBuy}" />
 
 					</div>
-
+					<br />
 					<h:commandButton styleClass="button_back"
 						action="/profile/accountParameters" value="#{profile.backModif}" />
 				</div>
