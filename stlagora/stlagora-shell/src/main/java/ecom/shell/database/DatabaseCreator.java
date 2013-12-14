@@ -41,7 +41,7 @@ public class DatabaseCreator {
 	public static String[] imgPath = {"pathImg1","pathImg2","pathImg3","pathImg4","pathImg5", ""};
 	public static String[] planPath = {"pathPlan1","pathPlan2","pathPlan3","pathPlan4","pathPlan5"};
 	public static String[] productStatus = {"Available", "Not Available"};
-	public static String[] categoryname={"Jouets","Gadgets", "Pièces de rechange", "Art & Déco", "Outils", "Objets du quotidien" };
+	public static String[] categoryname={"Jouets","Gadgets", "Pièces de rechange", "Art &amp; Déco", "Outils", "Objets du quotidien" };
 	public static String[] planType = {"STL"};
 	public static String[] sellerlist = {"tutu","tata","toto"};
 

@@ -20,6 +20,39 @@
 	<div id="page">
 		<div id="pagecontent">
 			<h:form>
+			
+				<div id="menu">
+					<h:panelGroup layout="block" rendered="#{!(sessionUser.loggedIn)}">
+						<ul class="purchaseMenu">
+							<li class="menustepon"><h:outputLabel
+									value="#{general.panier}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.identification}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.paiement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.telechargement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+						</ul>
+					</h:panelGroup>
+					<h:panelGroup layout="block" rendered="#{sessionUser.loggedIn}">
+						<ul class="purchaseMenu">
+							<li class="menustepon"><h:outputLabel
+									value="#{general.panier}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.paiement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.telechargement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+						</ul>
+					</h:panelGroup>
+				</div>
+
 				<div class="form_container">
 					<div
 						style="display: table; width: 100%; background-color: #f1f1f1;">
@@ -54,10 +87,10 @@
 								</div>
 								<div class="table_cell_middle">
 									<form>
-										<h:commandLink styleClass="gray" id="delete"
+										<p:commandLink styleClass="gray" id="delete"
 											action="#{cart.remove(p)}">
 											<h:outputText value="#{product.labelDelete}" />
-										</h:commandLink>
+										</p:commandLink>
 									</form>
 								</div>
 								<div class="table_cell_middle" style="text-align: right">
