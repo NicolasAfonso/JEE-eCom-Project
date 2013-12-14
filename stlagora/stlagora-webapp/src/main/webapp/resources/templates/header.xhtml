@@ -15,7 +15,7 @@
 		<div id="header">
 
 			<h:form>
-				<h:inputText styleClass="searchInputText" value="#{homeController.search}" style="width: 30%"></h:inputText>
+				<h:inputText styleClass="searchInputText" value="#{homeController.search}" style="width: 32%"></h:inputText>
 				<div id="catMenu">
 					<select id="basic" name="basic" class="catDropDownList">
 						<option value="0">Gadgets</option>
@@ -43,11 +43,11 @@
 							</td>
 						</h:form>
 
-						<td class="menu_shortcuts"><h:graphicImage
-								alt="#{general.sellTitleIcon}" title="#{general.sellTitleIcon}"
-								library="images" name="sell.png" /> <p:commandLink
+						<td class="menu_shortcuts"> <p:commandLink
 								action="#{homeController.moveToSell}"
-								styleClass="hyperlink_header_titles">
+								styleClass="hyperlink_header_titles"><h:graphicImage
+								alt="#{general.sellTitleIcon}" title="#{general.sellTitleIcon}"
+								library="images" name="sell.png" />
 							#{general.sellLabel}
 							</p:commandLink></td>
 						<td class="menu_shortcuts"><p:commandLink
