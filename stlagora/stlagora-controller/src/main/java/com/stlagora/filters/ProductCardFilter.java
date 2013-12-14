@@ -37,16 +37,31 @@ public class ProductCardFilter implements Filter {
 		SessionUser sessionUser = (SessionUser) req.getSession().getAttribute("sessionUser");
 		String id = (String) req.getParameter("id");
 		sessionUser.setUrl(req.getRequestURI().replace("/stlagora",""));
-		Product p = productDao.findById(Long.parseLong(id));
-		log.debug("Product controller");
-		if(p == null || p.isDeleted()||p.getStatus() == PRODUCT_STATUS.NOTAVAILABLE)
+		Long idL = null;
+		try{
+		idL = Long.parseLong(id);
+		}catch(Exception e)
 		{
-			String contextPath = ((HttpServletRequest)request).getContextPath();
-			((HttpServletResponse)response).sendRedirect(contextPath + "/error/errorProduct.xhtml?faces-redirect=true");
+			chain.doFilter(request, response);
+		}
+		
+		if(idL==null)
+		{
+			chain.doFilter(request, response);
+		}else
+		{
+			Product p = productDao.findById(idL);
+			log.debug("Product controller");
+			if(p == null || p.isDeleted()||p.getStatus() == PRODUCT_STATUS.NOTAVAILABLE)
+			{
+				String contextPath = ((HttpServletRequest)request).getContextPath();
+				((HttpServletResponse)response).sendRedirect(contextPath + "/error/errorProduct.xhtml?faces-redirect=true");
+
+			}
+				chain.doFilter(request, response);
 
 		}
-			chain.doFilter(request, response);
-
+		
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
