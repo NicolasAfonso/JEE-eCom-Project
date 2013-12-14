@@ -16,10 +16,27 @@
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
-	
+
 	<div id="page">
 		<div id="pagecontent">
-		<p:messages id="messages" showDetail="false" autoUpdate="true" />
+
+			<div id="menu">
+				<h:panelGroup layout="block">
+					<ul class="purchaseMenu">
+						<li class="menustepoff"><h:outputLabel
+								value="#{general.panier}" /> <h:outputLabel value=" &#10003;"
+								styleClass="checkIcon" /></li>
+						<li class="menustepoff"><h:outputLabel
+								value="#{general.paiement}" /> <h:outputLabel value=" &#10003;"
+								styleClass="checkIcon" /></li>
+						<li class="menustepon"><h:outputLabel
+								value="#{general.telechargement}" /> <h:outputLabel
+								value=" &#10003;" styleClass="checkIcon" /></li>
+					</ul>
+				</h:panelGroup>
+			</div>
+
+			<p:messages id="messages" showDetail="false" autoUpdate="true" />
 			<h:form>
 				<div class="form_container">
 
@@ -44,7 +61,9 @@
 								<h:outputLabel styleClass="bold gray" value="#{pl.price}€" />
 								<h:outputLabel styleClass="gray italic"
 									value="(#{product.labelSell})" />
-								<p:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" ajax="false" styleClass="button_classic">
+								<p:commandButton id="downloadFile1"
+									value="#{profile.buttonDownloadFile}" ajax="false"
+									styleClass="button_classic">
 									<p:fileDownload value="#{productController.file}" />
 									<f:param name="productDownload" value="#{pl.id}" />
 								</p:commandButton>
