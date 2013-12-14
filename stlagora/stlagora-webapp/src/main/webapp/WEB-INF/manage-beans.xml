@@ -27,7 +27,7 @@
 	<managed-bean>
 		<managed-bean-name>searchController</managed-bean-name>
 		<managed-bean-class>com.stlagora.controller.SearchController</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>sellController</managed-bean-name>

@@ -61,16 +61,17 @@
 								<p:commandLink action="#{searchController.moveToProdCard(s.id)}">
 									<h:graphicImage title="#{general.nameImage}"
 										alt="#{general.nameImage}" library="images"
-										name="#{general.nameImage}" rendered="false" />
+										name="no-image.png" rendered="true" />
 								</p:commandLink>
 
 							</h:column>
 
 							<br />
+							
 							<h:column> 
-								<h:commandLink action="cart.xhtml" value="#{s.name}">
-<!-- 									<f:param name="prodId" value="#{s.id}"/>  -->
-								</h:commandLink>
+								<h:outputLink value="/stlagora/global/productCard.xhtml">	<h:outputText value="#{s.name}" />
+	<f:param name="id" value="#{s.id}" />
+</h:outputLink>
 								<br />
 								<h:outputLabel styleClass="price"
 									value="#{s.price} #{general.currency}" />

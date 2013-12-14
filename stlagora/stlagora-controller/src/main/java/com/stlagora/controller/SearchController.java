@@ -24,7 +24,7 @@ import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 
 @ManagedBean(name = "searchController")
-@RequestScoped
+@SessionScoped
 public class SearchController implements Serializable {
 
 	/**
@@ -77,6 +77,8 @@ public class SearchController implements Serializable {
 		
 		if (cat == null && name != null) {
 			results= productDao.findBySearch(name);
+			if (results.size()==0)
+				moveToError();
 			notInit = false;
 		}
 		
@@ -90,6 +92,7 @@ public class SearchController implements Serializable {
 			results = productDao.findBySearchCategory(name, categorySearch);
 			notInit = false;
 		}
+			
 	
 	}
 	
@@ -102,9 +105,9 @@ public class SearchController implements Serializable {
 	 * @return the t
 	 */
 	public List<Product> getResults() {
-		
+		System.out.println("INIT");
 	
-		if (notInit)
+		//if (notInit)
 			init();
 		
 		
@@ -144,12 +147,17 @@ public class SearchController implements Serializable {
 		return "/search/search?faces-redirect=true";
 	}
 	
-	public String moveToProdCard(){
-		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		String s = params.get("prodId");
-		System.out.println("PROD ID"+s);
-		String tmp = "/global/productCard?id="+s;
-		return tmp;
+	public String moveToProdCard(int id){
+		//Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		//String s = params.get("prodId");
+		//System.out.println("PROD ID"+s);
+		//String tmp = "/global/productCard?id="+s;
+		System.out.println("MOVE ID" +id);
+		return "/global/productCard?faces-redirect=true&id="+id;
+	}
+	
+	public String moveToError(){
+		return "/global/error.xhtml?faces-redirect=true";
 	}
 	
 
