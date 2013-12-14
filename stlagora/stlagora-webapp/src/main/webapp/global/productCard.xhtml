@@ -43,10 +43,14 @@
 							<br />
 							<h:outputLabel value="#{productController.product.globalMark}" />
 							
-<p:rating value="#{productController.getGlobalMarkInt()}" readonly="true" />  
-								<h:outputText styleClass="hyperlink_classic underlined"
-									value=" (#{productController.nbOpinion} #{product.opinions})" />
+<p:rating value="#{productController.getGlobalMarkInt()}" readonly="true" /> 
+<!-- 							<h:link styleClass="hyperlink_classic underlined" id="op" value="Opinions" fragment="opinions" />  -->
+<!-- 								<h:commandLink styleClass="hyperlink_classic underlined" -->
+<!-- 									value=" (#{productController.nbOpinion} #{product.opinions})" -->
+<!-- 									/> -->
 							
+<!-- 							<h:link outcome="opinions" value="avis"/> -->
+							<a href="#opinions">(#{productController.nbOpinion} #{product.opinions})</a>
 							<br />
 							<h:outputLabel styleClass="price"
 								value="#{productController.product.price}€" />
