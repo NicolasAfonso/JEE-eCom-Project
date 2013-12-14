@@ -15,7 +15,7 @@
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
-	
+
 	<div id="page">
 		<div id="pagecontent">
 			<h:form>
@@ -38,7 +38,7 @@
 					</div>
 					<br />
 
-<!-- Navigation between search results -->
+					<!-- Navigation between search results -->
 					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page">
 						<h:outputText value="#{general.linkPrevous}" />
 
@@ -47,47 +47,51 @@
 						<h:outputText value="#{general.linkNext}" />
 					</p:commandLink>
 
-<!-- Search results -->
-<div class="product_search">
+					<!-- Search results -->
+					<div class="product_search">
 
-						<h:dataTable rows="5" first="0"  value="#{searchController.results}" var="s"
+						<h:dataTable rows="5" first="0"
+							value="#{searchController.results}" var="s"
 							styleClass="history_purchase" headerClass="order-table-header"
 							rowClasses="order-table-odd-row,order-table-even-row"
 							rendered="true">
 
 							<h:column>
-<!-- 							to adapt later with real images -->
-								<h:graphicImage title="#{general.nameImage}"
-									alt="#{general.nameImage}" library="images"
-									name="#{general.nameImage}" rendered="false"/>
-									
+								<!-- 							to adapt later with real images -->
+								<p:commandLink action="#{searchController.moveToProdCard(s.id)}">
+									<h:graphicImage title="#{general.nameImage}"
+										alt="#{general.nameImage}" library="images"
+										name="#{general.nameImage}" rendered="false" />
+								</p:commandLink>
+
 							</h:column>
-							
+
+							<br />
+							<h:column> 
+								<h:commandLink action="cart.xhtml" value="#{s.name}">
+<!-- 									<f:param name="prodId" value="#{s.id}"/>  -->
+								</h:commandLink>
 								<br />
-								<h:column>	
-								<h:outputLabel styleClass="bold" value="#{s.name}" />
-								<br />
-								<h:outputLabel styleClass="price" value="#{s.price} #{general.currency}" />
-								<br />
-								<h:commandButton id="buttonAdd"
-								image="/resources/images/button_add.png"
-								action="#{cart.add(s)}" />
-							</h:column>	
-								<br />
-							<h:column>	
+								<h:outputLabel styleClass="price"
+									value="#{s.price} #{general.currency}" />
+							</h:column>
+							<br />
+							<h:column>
 								<h:outputLabel styleClass="bold" value="#{general.labelVendeur}" />
 								<h:outputLabel value="#{s.seller.firstname} #{s.seller.surname}" />
-								<br/>
-								<h:outputLabel styleClass="bold" value="#{product.labelMark} #{s.globalMark}" /> 
-								
-<!-- 								Primefaces rating -->
- 
-<p:rating value="#{productController.getGlobalMarkInt(s)}" readonly="true" />  
 								<br />
-								
-								
-								
-								<p:commandLink id="linkOpinion">
+								<h:outputLabel styleClass="bold"
+									value="#{product.labelMark} #{s.globalMark}" />
+
+								<!-- 								Primefaces rating -->
+
+								<p:rating value="#{productController.getGlobalMarkInt(s)}"
+									readonly="true" />
+								<br />
+
+
+
+								<p:commandLink id="linkOpinion" action="cart.xhtml" >
 									<h:outputText styleClass="hyperlink_classic underlined"
 										value="(#{productController.nbOpinion} #{product.opinions})" />
 								</p:commandLink>

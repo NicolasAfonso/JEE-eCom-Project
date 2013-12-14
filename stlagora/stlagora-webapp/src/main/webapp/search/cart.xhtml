@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<h:outputStylesheet library="css" name="global.css" />
+</h:head>
+
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
+		<div id="pagecontent">
+			<h:form>
+			
+				<div id="menu">
+					<h:panelGroup layout="block" rendered="#{!(sessionUser.loggedIn)}">
+						<ul class="purchaseMenu">
+							<li class="menustepon"><h:outputLabel
+									value="#{general.panier}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.identification}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.paiement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.telechargement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+						</ul>
+					</h:panelGroup>
+					<h:panelGroup layout="block" rendered="#{sessionUser.loggedIn}">
+						<ul class="purchaseMenu">
+							<li class="menustepon"><h:outputLabel
+									value="#{general.panier}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.paiement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+							<li class="menustepcoming"><h:outputLabel
+									value="#{general.telechargement}" />
+								<h:outputLabel value=" &#10003;" styleClass="checkIcon" /></li>
+						</ul>
+					</h:panelGroup>
+				</div>
+
+				<div class="form_container">
+					<div
+						style="display: table; width: 100%; background-color: #f1f1f1;">
+						<h1
+							style="display: table-cell; vertical-align: middle; text-align: left; padding-left: 5px">#{general.recap}</h1>
+						<div
+							style="display: table-cell; vertical-align: middle; text-align: right">
+							<h:graphicImage title="#{general.nameImageSecure}"
+								alt="#{general.nameImageSecure}" library="images"
+								name="paiementSecu.png" />
+						</div>
+					</div>
+					<br />
+
+					<h:dataTable value="#{cart.products}" var="p" styleClass="product"
+						headerClass="order-table-header"
+						rowClasses="order-table-odd-row,order-table-even-row">
+
+						<h:column>
+							<div id="div_container">
+								<div class="table_cell_middle" style="width: 250px">
+									<h:graphicImage styleClass="product_search_image"
+										title="#{general.nameImageSecure}"
+										alt="#{general.nameImageSecure}" library="images"
+										name="logo.png" />
+								</div>
+								<div class="table_cell_middle" style="width: 50%">
+									<h:outputLabel styleClass="bold" value="#{p.name} - " />
+									<h:outputLabel value="#{product.labelVendu}" />
+									<h:outputLabel
+										value="#{p.seller.firstname} #{p.seller.surname}" />
+								</div>
+								<div class="table_cell_middle">
+									<form>
+										<p:commandLink styleClass="gray" id="delete"
+											action="#{cart.remove(p)}">
+											<h:outputText value="#{product.labelDelete}" />
+										</p:commandLink>
+									</form>
+								</div>
+								<div class="table_cell_middle" style="text-align: right">
+									<h:outputLabel styleClass="bold" value="#{p.price}€" />
+								</div>
+							</div>
+						</h:column>
+
+					</h:dataTable>
+					<br />
+
+					<div class="gray_background" style="text-align: right">
+						<h:outputLabel styleClass="price"
+							value="#{product.totalPrice} #{cart.amount}€" />
+					</div>
+
+					<br />
+					<div style="text-align: right">
+						<h:commandButton id="button_backShopping"
+							value="#{product.backShopping}" styleClass="button_back"
+							action="/home?faces-redirect=true" />
+						<h:commandButton styleClass="button_classic"
+							value="#{product.validateCommand}"
+							action="#{purchaseController.validateCart}" />
+					</div>
+
+				</div>
+			</h:form>
+		</div>
+	</div>
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
+</html>

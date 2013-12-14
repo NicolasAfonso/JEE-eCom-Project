@@ -3,6 +3,7 @@ package com.stlagora.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -43,6 +44,7 @@ public class SearchController implements Serializable {
 	
 
 	private List<Product> results = new ArrayList<Product>();
+	private int prodId;
 
 	private String search;
 	private Category categorySearch;
@@ -94,6 +96,14 @@ public class SearchController implements Serializable {
 		return "/search/search?faces-redirect=true";
 	}
 	
+	public String moveToProdCard(){
+		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String s = params.get("prodId");
+		System.out.println("PROD ID"+s);
+		String tmp = "/global/productCard?id="+s;
+		return tmp;
+	}
+	
 
 	/**
 	 * @param t the t to set
@@ -141,6 +151,18 @@ public class SearchController implements Serializable {
 	 */
 	public void setNbResults(int nbResults) {
 		this.nbResults = nbResults;
+	}
+	/**
+	 * @return the prodId
+	 */
+	public int getProdId() {
+		return prodId;
+	}
+	/**
+	 * @param prodId the prodId to set
+	 */
+	public void setProdId(int prodId) {
+		this.prodId = prodId;
 	}
 	
 	
