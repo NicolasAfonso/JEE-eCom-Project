@@ -1,10 +1,12 @@
 package com.stlagora.controller;
 
 import java.io.InputStream;
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -16,8 +18,10 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import com.stlagora.beans.SessionUser;
+import com.stlagora.model.dao.OpinionDao;
 import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.UserDao;
+import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 
 @ManagedBean(name = "productController")
@@ -30,10 +34,16 @@ public class ProductController {
 	private String id;
 	private int nbOpinion;
 	private StreamedContent file; 
+
 	@EJB
 	private ProductDao productDao;
 	
 	private List<Product> products;
+	
+	public void removeProduct(Product p){
+		p.setDeleted(true);
+		productDao.update(p);
+	}
 	
 	/**
 	 * @return the product
@@ -95,7 +105,7 @@ public class ProductController {
 		}
 		return products;
 	}
-
+	
 	/**
 	 * @param products the products to set
 	 */
@@ -103,7 +113,7 @@ public class ProductController {
 		this.products = products;
 	}
 	
-	
+
 	public int getGlobalMarkInt(Product product){
 		return Math.round(product.getGlobalMark());
 	}
@@ -131,11 +141,6 @@ public class ProductController {
 	 */
 	public void setFile(StreamedContent file) {
 		this.file = file;
-	}
-	
-	public void removeProduct(Product p){
-		p.setDeleted(true);
-		productDao.update(p);
 	}
 	
 }

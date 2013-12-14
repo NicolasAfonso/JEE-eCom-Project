@@ -54,6 +54,10 @@
 											value="#{profile.labelBought} #{t.date}" />
 										<h:outputLabel styleClass="bold gray italic"
 											value="(#{t.amount} euros)" />
+										<h:commandLink id="opinion" action="#{opinionController.moveToOpinion(t.product)}">
+											<h:outputText styleClass="hyperlink_classic"
+												value="#{profile.giveOpinion}" />
+										</h:commandLink>
 									</div>
 									<div class="table_cell_middle" style="text-align: right">
 										<p:commandButton id="downloadFile1"

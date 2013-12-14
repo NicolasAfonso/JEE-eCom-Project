@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>STL Agora - #{sell.sellProducts}-</title>
+	<h:outputStylesheet library="css" name="global.css" />
+</h:head>
+
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
+		<div id="pagecontent">
+			<div class="form_container">
+				<h:form enctype="multipart/form-data">
+					<div class="gray_background">
+						<h1>#{profile.opinionProd}</h1>
+					</div>
+					<br />
+					<p:messages id="messages" showDetail="false" autoUpdate="true" />
+					<div>
+						<h2>#{profile.opinionProduct} #{opinionController.product.name}</h2>
+						<br />
+						<h:outputLabel styleClass="label bold" value="#{profile.markProduct}" />
+						<p:rating value="#{opinionController.opinionMark}" stars="5" cancel="false"/>
+						<br />
+						<h:outputLabel styleClass="label bold" value="#{profile.comentProduct}" />
+						<p:inputTextarea id="commentProduct" required="true"
+							value="#{opinionController.opinionComment}">
+						</p:inputTextarea> 
+						<br />
+						<h:commandButton id="createOpinion" value="#{profile.addOpinion}"
+							styleClass="button_classic"
+							action="#{opinionController.createOpinion}" style="float: right"/>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
+</html>
