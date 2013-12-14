@@ -54,7 +54,7 @@
 						value="#{sellController.price}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
-					<h:outputLabel value=" euros" />
+					<h:outputLabel value=" #{profile.money}" />
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
 <!-- 					TODO : voir pour le style css -->

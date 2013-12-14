@@ -53,7 +53,7 @@
 										<h:outputLabel styleClass="gray italic"
 											value="#{profile.labelBought} #{t.date}" />
 										<h:outputLabel styleClass="bold gray italic"
-											value="(#{t.amount} euros)" />
+											value="(#{t.amount} #{profile.money})" />
 										<h:commandLink id="opinion" action="#{opinionController.moveToOpinion(t.product)}">
 											<h:outputText styleClass="hyperlink_classic"
 												value="#{profile.giveOpinion}" />
