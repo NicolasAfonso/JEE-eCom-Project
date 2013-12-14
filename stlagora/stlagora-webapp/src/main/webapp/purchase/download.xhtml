@@ -19,6 +19,7 @@
 	
 	<div id="page">
 		<div id="pagecontent">
+		<p:messages id="messages" showDetail="false" autoUpdate="true" />
 			<h:form>
 				<div class="form_container">
 
@@ -43,13 +44,16 @@
 								<h:outputLabel styleClass="bold gray" value="#{pl.price}€" />
 								<h:outputLabel styleClass="gray italic"
 									value="(#{product.labelSell})" />
+								<p:commandButton id="downloadFile1" value="#{profile.buttonDownloadFile}" ajax="false" styleClass="button_classic">
+									<p:fileDownload value="#{productController.file}" />
+									<f:param name="productDownload" value="#{pl.id}" />
+								</p:commandButton>
 							</h:column>
 						</h:dataTable>
 					</div>
 					<br />
 
-					<h:commandButton id="downloadFile"
-						value="#{general.buttonDownloadFile}" styleClass="button_classic" />
+
 
 				</div>
 

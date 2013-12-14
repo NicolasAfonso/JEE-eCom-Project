@@ -2,6 +2,7 @@ package com.stlagora.controller;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -115,6 +116,11 @@ public class ProductController {
 	 * @return the file
 	 */
 	public StreamedContent getFile() {
+		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String s = params.get("productDownload");
+		Product productDownload = productDao.findById(Long.parseLong(s));
+		log.debug(productDownload.getId());
+		//TODO Récupérer le vrai chemin du fichier
 		InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/home.png");  
         file = new DefaultStreamedContent(stream, "image/png", "home.png");  
 		return file;
