@@ -24,6 +24,7 @@ import javax.persistence.Table;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
+import com.stlagora.model.entities.enumerate.TITLE;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 @Entity
@@ -75,6 +76,9 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private ACCOUNT_TYPE accountType; 
 	
+	@Enumerated(EnumType.STRING)
+	private TITLE title; 
+	
 	@OneToMany(mappedBy = "usermarked", cascade=CascadeType.ALL)
 	private List<Opinion> opinions = new ArrayList<Opinion>(); 
 	
@@ -97,9 +101,10 @@ public class User implements Serializable {
 	 * @param accountType
 	 * @param role
 	 */
-	public User(String login, String surname, String firstname, String email, String password,Date subscriptionDate, String phoneNumber,String siret,String companyName,String rib,ACCOUNT_TYPE accountType, ROLE role) {
+	public User(String login, TITLE civility,String surname, String firstname, String email, String password,Date subscriptionDate, String phoneNumber,String siret,String companyName,String rib,ACCOUNT_TYPE accountType, ROLE role) {
 		super();
 		this.login = login;
+		this.title = civility;
 		this.surname = surname;
 		this.firstname = firstname;
 		this.email = email;
@@ -310,6 +315,20 @@ public class User implements Serializable {
 	 */
 	public void setAccountType(ACCOUNT_TYPE accountType) {
 		this.accountType = accountType;
+	}
+
+	/**
+	 * @return the civility
+	 */
+	public TITLE getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param civility the civility to set
+	 */
+	public void setTitle(TITLE civility) {
+		this.title = civility;
 	} 
 	
 	

@@ -69,13 +69,17 @@ public class Product implements Serializable {
 	
 	@Column(name = "globalMark", nullable = true)
 	private Float globalMark;
-
+	
+	@Column(name = "isDeleted", nullable = false)
+	private boolean isDeleted;
+	
 	@OneToMany(mappedBy = "product", cascade=CascadeType.ALL)
 	private List<Opinion> opinions = new ArrayList<Opinion>(); 
 
 	@ManyToOne
 	@JoinColumn(name = "category_id",nullable = false)
 	private Category category;
+	
 	
 	
 	/**
@@ -106,6 +110,7 @@ public class Product implements Serializable {
 		this.lastUpdate = lastUpdate;
 		this.globalMark = 3f;
 		this.category = category;
+		this.isDeleted = false;
 	}
 	
 	public Product(){
@@ -312,6 +317,20 @@ public class Product implements Serializable {
 	 */
 	public void setStatus(PRODUCT_STATUS status) {
 		this.status = status;
+	}
+
+	/**
+	 * @return the isDeleted
+	 */
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	/**
+	 * @param isDeleted the isDeleted to set
+	 */
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	
 	

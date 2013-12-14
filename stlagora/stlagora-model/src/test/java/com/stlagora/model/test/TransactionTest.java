@@ -26,6 +26,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class TransactionTest {
@@ -44,25 +45,25 @@ public class TransactionTest {
 		transactionDao = new TransactionDaoImpl(persistanceUnit);
 		
 
-		categoryDao.create(new Category("Test","test-desc"));
+		categoryDao.createByEm(new Category("Test","test-desc"));
 
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tutu",TITLE.Mr, "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tata",TITLE.Mr, "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		
 		Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tata@tata.com");
 		User u2 = userDao.findByEmail("tutu@tata.com");
 		
 		
-		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
-		productDao.create(new Product("p2", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u1 ,new Date(0), new Date(0)));  
-		productDao.create(new Product("p3", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u2 ,new Date(0), new Date(0)));  
+		productDao.createByEm(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
+		productDao.createByEm(new Product("p2", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u1 ,new Date(0), new Date(0)));  
+		productDao.createByEm(new Product("p3", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u2 ,new Date(0), new Date(0)));  
 		
 		Product p = productDao.findByName("p1");
-		transactionDao.create(new Transaction(p.getSeller(),userDao.findByEmail("tutu@tata.com"),p.getPrice(),new Date(0),p));
+		transactionDao.createByEm(new Transaction(p.getSeller(),userDao.findByEmail("tutu@tata.com"),p.getPrice(),new Date(0),p));
 		Product p2 = productDao.findByName("p2");
-		transactionDao.create(new Transaction(p2.getSeller(),userDao.findByEmail("tutu@tata.com"),p2.getPrice(),new Date(0),p2));
+		transactionDao.createByEm(new Transaction(p2.getSeller(),userDao.findByEmail("tutu@tata.com"),p2.getPrice(),new Date(0),p2));
 
 	}
 

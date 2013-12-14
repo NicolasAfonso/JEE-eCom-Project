@@ -27,6 +27,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class ProductTest {
@@ -45,14 +46,14 @@ public class ProductTest {
 		categoryDao = new CategoryDaoImpl(persistanceUnit);
 		opinionDao = new OpinionDaoImpl(persistanceUnit);
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("toto", "toto", "toto", "toto", "test",new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tutu",TITLE.Mr, "tutu", "tutu", "tutu","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("toto", TITLE.Mr,"toto", "toto", "toto", "test",new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		
 		//Create Category for test
-		categoryDao.create(new Category("Test","TestObj"));
+		categoryDao.createByEm(new Category("Test","TestObj"));
 		User u1 = userDao.findByEmail("tutu");
-		productDao.create(new Product("p1", "toto", "toto", "toto", categoryDao.findByName("Test"),TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE,1f , u1,new Date(0), new Date(0)));
-		opinionDao.create(new Opinion(u1,new Date(0),1f,"tutu",productDao.findByName("p1"),null));
+		productDao.createByEm(new Product("p1", "toto", "toto", "toto", categoryDao.findByName("Test"),TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE,1f , u1,new Date(0), new Date(0)));
+		opinionDao.createByEm(new Opinion(u1,new Date(0),1f,"tutu",productDao.findByName("p1"),null));
 	}
 
 	 /**
@@ -73,7 +74,7 @@ public class ProductTest {
     @Test
 	public void testCreateProduct() {
 		  User u1 = userDao.findByEmail("tutu");
-		  productDao.create(new Product("p2", "tato", "toto", "toto", categoryDao.findByName("Test"),TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));
+		  productDao.createByEm(new Product("p2", "tato", "toto", "toto", categoryDao.findByName("Test"),TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));
 	  }
     
     @Test 

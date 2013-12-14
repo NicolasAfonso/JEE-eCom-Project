@@ -22,6 +22,7 @@ import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 
 public class UserTest {
 
@@ -39,13 +40,13 @@ public class UserTest {
 		userDao = new UserDaoImpl(persistanceUnit);
 
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com", "test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("toto", "toto", "toto", "toto@tata.com","test", new Date(0), "22222222","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tutu",TITLE.Mr, "tutu", "tutu", "tutu@tata.com", "test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tata",TITLE.Mr, "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("toto",TITLE.Mr, "toto", "toto", "toto@tata.com","test", new Date(0), "22222222","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		
 		opinionDao = new OpinionDaoImpl(persistanceUnit);
 		
-		opinionDao.create(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",null,userDao.findByEmail("tata@tata.com")));
+		opinionDao.createByEm(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",null,userDao.findByEmail("tata@tata.com")));
 		
 	}
 

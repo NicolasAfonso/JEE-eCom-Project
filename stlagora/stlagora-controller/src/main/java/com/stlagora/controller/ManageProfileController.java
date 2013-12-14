@@ -27,6 +27,7 @@ import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 
 @ManagedBean(name = "manageProfileController")
 @SessionScoped
@@ -56,6 +57,7 @@ public class ManageProfileController implements Serializable {
 	private String rib ;
 	private String companyName ;
 	private ACCOUNT_TYPE accountType;
+	private TITLE title;
 
 	private List<Transaction> transactionBuy = new ArrayList<Transaction>() ;
 	private List<Transaction> transactionSold = new ArrayList<Transaction>();
@@ -81,7 +83,7 @@ public class ManageProfileController implements Serializable {
 
 	public String createUser(){
 		log.debug(email);
-		User u = new User(email,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,accountType,ROLE.MEMBER);
+		User u = new User(email,title,surname,firstname,email,password,new Date(System.currentTimeMillis()),phoneNumber,siret,companyName,rib,accountType,ROLE.MEMBER);
 		userDao.create(u);
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
@@ -136,7 +138,10 @@ public class ManageProfileController implements Serializable {
 	public ACCOUNT_TYPE[] getAccountTypes() {
 		return ACCOUNT_TYPE.values();
 	}
-
+	
+	public TITLE[] getTitles() {
+		return TITLE.values();
+	}
 	public String subscription(){
 		switch (accountType) {
 		case PRIVATE:
@@ -363,6 +368,21 @@ public class ManageProfileController implements Serializable {
 		this.accountType = accountType;
 	}
 
+	/**
+	 * @return the title
+	 */
+	public TITLE getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(TITLE title) {
+		this.title = title;
+	}
+	
+	
 
 
 }

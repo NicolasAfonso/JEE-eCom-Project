@@ -30,10 +30,10 @@
 						<h:outputText styleClass="bold" value="#{general.civility}" />
 						<h:panelGrid columns="2" style="margin-bottom:10px"
 							cellpadding="5">
-							<p:selectOneRadio id="radioBox_details">
-								<f:selectItem itemLabel="Mme" itemValue="1" />
-								<f:selectItem itemLabel="M." itemValue="2" />
-							</p:selectOneRadio>
+							<p:selectOneRadio id="radioBox_details" value="#{manageProfileController.title}" required="true">
+									<f:selectItems value="#{manageProfileController.titles}"
+										var="type" itemValue="#{type}" itemLabel="#{type}" />
+								</p:selectOneRadio>
 						</h:panelGrid>
 
 						<h:outputLabel styleClass="bold" value="#{general.fieldName}" />

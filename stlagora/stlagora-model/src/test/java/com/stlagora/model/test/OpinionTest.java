@@ -24,6 +24,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class OpinionTest {
@@ -40,19 +41,19 @@ public class OpinionTest {
 		categoryDao = new CategoryDaoImpl(persistanceUnit);
 		productDao = new ProductDaoImpl(persistanceUnit);	
 		userDao = new UserDaoImpl(persistanceUnit);
-		categoryDao.create(new Category("Test","test-desc"));
+		categoryDao.createByEm(new Category("Test","test-desc"));
 
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
-		userDao.create(new User("tata", "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tutu",TITLE.Mr, "tutu", "tutu", "tutu@tata.com","test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tata",TITLE.Mr, "tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		
 		Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tata@tata.com");
-		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
+		productDao.createByEm(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
 		
 		opinionDao = new OpinionDaoImpl(persistanceUnit);
-		opinionDao.create(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",null,userDao.findByEmail("tata@tata.com")));
-		opinionDao.create(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",productDao.findByName("p1"),null));
+		opinionDao.createByEm(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",null,userDao.findByEmail("tata@tata.com")));
+		opinionDao.createByEm(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",productDao.findByName("p1"),null));
 
 	}
 
@@ -74,7 +75,7 @@ public class OpinionTest {
 
 	@Test 
 	public void testCreate(){
-		opinionDao.create(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",productDao.findByName("p1"),null));
+		opinionDao.createByEm(new Opinion(userDao.findByEmail("tutu@tata.com"),new Date(0),1f,"tutu",productDao.findByName("p1"),null));
 	}
 	
 	@Test

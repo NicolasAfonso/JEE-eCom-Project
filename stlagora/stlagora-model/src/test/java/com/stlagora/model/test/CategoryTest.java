@@ -23,6 +23,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.ROLE;
+import com.stlagora.model.entities.enumerate.TITLE;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 public class CategoryTest {
@@ -37,13 +38,13 @@ public class CategoryTest {
 		categoryDao = new CategoryDaoImpl(persistanceUnit);
 		productDao = new ProductDaoImpl(persistanceUnit);	
 		userDao = new UserDaoImpl(persistanceUnit);
-		categoryDao.create(new Category("Test","test-desc"));
+		categoryDao.createByEm(new Category("Test","test-desc"));
 		
 		//Create Users test
-		userDao.create(new User("tutu", "tutu", "tutu", "tutu", "test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
+		userDao.createByEm(new User("tutu",TITLE.Mr , "tutu", "tutu", "tutu", "test", new Date(0), "00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
     	Category c = categoryDao.findByName("Test");
 		User u1 = userDao.findByEmail("tutu");
-    	productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
+    	productDao.createByEm(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
 
        	
 	}
