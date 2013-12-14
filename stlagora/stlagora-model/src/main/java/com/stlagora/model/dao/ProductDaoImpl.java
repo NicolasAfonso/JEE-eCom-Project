@@ -34,6 +34,13 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 		return (Product) q.getSingleResult();
 		
 	}
+	
+	public Product findByNameAll(String name) {
+		Query q = em.createQuery("SELECT p FROM Product p WHERE p.name=:name",Product.class);
+		q.setParameter("name",name);
+		return (Product) q.getSingleResult();
+		
+	}
 
 	public List<Product> findByPrice(Float price) {
 		Query q = em.createQuery("SELECT p FROM Product p WHERE p.price=:price and p.isDeleted=0",Product.class);

@@ -65,4 +65,8 @@
 		<validator-id>cbValidator</validator-id>
 		<validator-class>com.stlagora.validator.CBValidator</validator-class>
 	</validator>
+		<validator>
+		<validator-id>productValidator</validator-id>
+		<validator-class>com.stlagora.validator.ProductValidator</validator-class>
+	</validator>
 </faces-config>

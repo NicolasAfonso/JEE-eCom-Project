@@ -39,7 +39,7 @@
 						<h:outputLabel styleClass="label bold" value="#{sell.productName}" />
 						<p:inputText id="name_product" required="true"
 							value="#{sellController.name}">
-							<f:validateLength minimum="2" />
+							<f:validator validatorId="productValidator" />
 						</p:inputText>
 						<br />
 						<h:outputLabel styleClass="label bold" value="#{sell.productCaract}" />

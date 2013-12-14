@@ -21,7 +21,7 @@ public class FileUploadValidatorPlan implements Validator {
         log.debug(file.getContentType());
         log.debug(file.getFileName());
         log.debug(file.getSize());
-        if(!file.getContentType().equals("application/vnd.ms-pki.stl") )
+        if(!file.getContentType().equals("application/vnd.ms-pki.stl")&&!file.getContentType().equals("application/octet-stream") )
         {
            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: File type is invalid !!","");
            throw new ValidatorException(message);
