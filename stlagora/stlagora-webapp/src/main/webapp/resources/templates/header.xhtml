@@ -17,15 +17,19 @@
 			<h:form>
 				<h:inputText styleClass="searchInputText" value="#{homeController.search}" style="width: 30%"></h:inputText>
 				<div id="catMenu">
-					<select id="basic" name="basic" class="catDropDownList">
-						<option value="0">Gadgets</option>
-						<option value="1">Pièces de rechange</option>
-						<option value="2">Art &amp; Déco</option>
+				<div class="catDropDownList">
+					<select id="basic" name="#{homeController.category}">
+						<option value="Gadgets">Toutes</option>
+						<option value="Gadgets">Gadgets</option>
+						<option value="Gadgets">Pièces de rechange</option>
+						<option value="Gadgets">Art &amp; Déco</option>
 						<option value="3">Outils</option>
 						<option value="3">Objets du quotidien</option>
 						<option value="3">Jouets</option>
 					</select>
+					</div>
 				</div>
+				
 				<table class="full_width">
 					<tr>
 						<td id="menu_logo"><a href="/stlagora/home.xhtml"
