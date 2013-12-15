@@ -359,7 +359,7 @@ h2
 .button_classic
 {
 	font-family: "EurostileT";
-	padding: 5px 15px !important;
+	padding: 5px 15px;
 	background-image: -moz-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
 	background-image: -webkit-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
 	-webkit-border-radius: 5px;
@@ -464,6 +464,11 @@ h2
 	width: 120px;
 }
 
+.button_download, .button_download:hover
+{
+	padding: 0;
+}
+
 /* IMAGES */
 
 .star
@@ -488,6 +493,7 @@ h2
 
 
 .fancyNav{
+	position: relative;
 	width: 100%;
 	display: table;
 	padding: 0px;
@@ -510,6 +516,7 @@ h2
 
 .fancyNav li{
     /* Specifying a fallback color and we define CSS3 gradients for the major browsers: */
+    position: relative !important;
     padding: 0;
     margin: 0;
     
@@ -531,9 +538,6 @@ h2
     -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
     -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
 
-    position:relative;
-
-/*     float: left; */
     list-style: none;
     
     display: table-cell;
@@ -609,6 +613,7 @@ h2
     border-radius:0 4px 4px 0;
 }
 
+.fancyNav li:hover,
 .fancyNav li:hover:after,
 .fancyNav li.selected:after,
 .fancyNav li:target:after{

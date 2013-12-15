@@ -58,6 +58,7 @@
 								</div>
 								<div class="table_cell_middle" style="width: 50%">
 									<h:outputLabel styleClass="bold" value="#{pl.name}" />
+									<br />
 									<h:outputLabel value="#{product.labelVendu}" />
 									<h:outputLabel
 										value="#{pl.seller.firstname} #{pl.seller.firstname}" />
@@ -65,12 +66,12 @@
 								<div class="table_cell_middle">
 									<h:outputLabel styleClass="bold gray" value="#{pl.price}€" />
 									<h:outputLabel styleClass="gray italic"
-										value="(#{product.labelSell})" />
+										value=" (#{product.labelSell})" />
 								</div>
 								<div class="table_cell_middle" style="text-align: right">
 									<p:commandButton id="downloadFile1"
 										value="#{profile.buttonDownloadFile}" ajax="false"
-										styleClass="button_classic">
+										styleClass="button_classic button_download">
 										<p:fileDownload value="#{productController.file}" />
 										<f:param name="productDownload" value="#{pl.id}" />
 									</p:commandButton>
