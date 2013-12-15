@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -38,8 +39,10 @@ public class ManageProfileController implements Serializable {
 	/**
 	 * 
 	 */
+	public static char[] charsExtended = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,;:. ".toCharArray();
 	private Logger log = Logger.getLogger(ManageProfileController.class.getName());
 	private static final long serialVersionUID = 1L;
+	private String emailPassword;
 
 	@EJB
 	private UserDao userDao;
@@ -129,6 +132,21 @@ public class ManageProfileController implements Serializable {
 		return "/profile/accountParameters?faces-redirect=true";
 
 	}
+	
+	public String passwordForget(){
+		User user = userDao.findByEmail(emailPassword);
+		if(user!=null){
+			String new_pass = createRandomString(8);
+			user.setPassword(new_pass);
+			userDao.update(user);
+			SendMail mail = new SendMail();
+			String msg = "Bonjour "+user.getFirstname()+" "+user.getSurname()+",\n\n"+"Voici votre nouveau mot de passe : \n"+ new_pass +". \n\nA très bientôt.\n\nL'équipe Stl-Agora.";
+			mail.sendMessage("Réinitialisation du mot de passe", msg, user.getEmail(), "stl-agora@outlook.com");
+		    FacesMessage msgFaces = new FacesMessage(FacesMessage.SEVERITY_WARN,"Un nouveau mot de passe vous a été envoyé par mail.","");  
+		    FacesContext.getCurrentInstance().addMessage(null, msgFaces);    
+		}
+		return "/login?faces-redirect=true";
+	}
 
 	public String remove(){
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
@@ -138,6 +156,17 @@ public class ManageProfileController implements Serializable {
 		sessionUser.setUser(null);
 		sessionUser.setLoggedIn(false);
 		return "/home?faces-redirect=true";
+	}
+	
+	private String createRandomString(int length){
+		char[] table = charsExtended;
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+		for (int i = 0; i < length; i++) {
+			char c = table[random.nextInt(table.length)];
+			sb.append(c);
+		} 
+		return sb.toString();
 	}
 
 	public ACCOUNT_TYPE[] getAccountTypes() {
@@ -395,8 +424,20 @@ public class ManageProfileController implements Serializable {
 	public void setTitle(TITLE title) {
 		this.title = title;
 	}
-	
-	
+
+	/**
+	 * @return the emailPassword
+	 */
+	public String getEmailPassword() {
+		return emailPassword;
+	}
+
+	/**
+	 * @param emailPassword the emailPassword to set
+	 */
+	public void setEmailPassword(String emailPassword) {
+		this.emailPassword = emailPassword;
+	}
 
 
 }
