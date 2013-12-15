@@ -142,7 +142,6 @@ h2
 
 #menu_search
 {
-/*     text-align: center; */
     max-width: 40%;
 }
 
@@ -160,11 +159,8 @@ h2
 
 .searchInputText
 {
- 	width: 100%;
-/* 	display: inline-block; */
+ 	width: 98%;
 	border: none;
-/* 	margin-top: 16px; */
-/* 	z-index: 5; */
 	background: none;
     color: darkgray;
     padding: 3px 0px;
