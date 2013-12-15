@@ -50,6 +50,7 @@
 				
 
 					<p:column headerText="Produit">
+					<div class="table_cell_middle" style="width: 100px">
 						<h:column>
 							<p:commandLink action="#{searchController.moveToProdCard(s.id)}">
 								<h:graphicImage title="#{general.nameImage}"
@@ -57,8 +58,9 @@
 									rendered="true" />
 							</p:commandLink>
 						</h:column>
+					</div>
+					<div class="table_cell_middle">
 						<h:column>
-
 							<h:outputLink value="/stlagora/global/productCard.xhtml">
 								<h:outputText value="#{s.name}" />
 								<f:param name="id" value="#{s.id}" />
@@ -66,12 +68,10 @@
 						</h:column>
 						<br />
 						<h:column>
-
-
 							<h:outputText styleClass="hyperlink_classic underlined"
 								value="(#{s.opinions.size()} #{product.opinions})" />
-								
 						</h:column>
+					</div>
 					</p:column>
 
 					<p:column headerText="Prix" sortBy="price">
