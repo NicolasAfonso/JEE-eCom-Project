@@ -21,7 +21,7 @@ import com.stlagora.model.dao.TransactionDaoImpl;
 import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
-import com.stlagora.model.mail.SendMail;
+import com.stlagora.utils.SendMail;
 
 @ManagedBean(name = "purchaseController", eager = true)
 @RequestScoped

@@ -29,6 +29,7 @@ import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 import com.stlagora.model.entities.enumerate.TITLE;
+import com.stlagora.utils.SendMail;
 
 @ManagedBean(name = "manageProfileController")
 @SessionScoped
@@ -94,6 +95,9 @@ public class ManageProfileController implements Serializable {
 		}catch(Exception e){
 			log.error("User not found");
 		}
+		SendMail mail = new SendMail();
+		String msg = "Bonjour "+sessionUser.getUser().getFirstname()+" "+sessionUser.getUser().getSurname()+",\n\n"+"Merci de votre inscription sur le site de Stl-Agora, vous pouvez désormais vous connecter sur notre site. \n\nA très bientôt.\n\nL'équipe Stl-Agora.";
+		mail.sendMessage("Confirmation d'inscription", msg, sessionUser.getUser().getEmail(), "stl-agora@outlook.com");
 		return sessionUser.getUrl()+"?faces-redirect=true";
 	}
 
