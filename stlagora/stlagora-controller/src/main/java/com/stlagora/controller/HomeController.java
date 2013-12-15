@@ -38,7 +38,7 @@ import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.dao.UserDaoImpl;
 
 
-@ManagedBean(name = "homeController", eager = true)
+@ManagedBean(name = "homeController")
 @RequestScoped
 public class HomeController implements Serializable {
 	/**
@@ -48,7 +48,7 @@ public class HomeController implements Serializable {
 	private Logger log = Logger.getLogger(HomeController.class.getName());
 	
 	private String search;
-	private Category category;
+	private String category;
 	
 	@EJB
 	private UserDao userDao;
@@ -150,6 +150,14 @@ productDao.create(new Product("Satria Neo 2000","Voiture miniature plus vraie qu
 	 */
 	public void setSearch(String search) {
 		this.search = search;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	
