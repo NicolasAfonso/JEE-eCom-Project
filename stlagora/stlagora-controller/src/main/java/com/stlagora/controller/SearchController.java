@@ -65,7 +65,7 @@ public class SearchController implements Serializable {
 	private void init(){
 		String cat = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("categorySearch");
 		String name = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("search");
-		
+	
 		System.out.println(name);
 		System.out.println(cat);
 		
@@ -73,7 +73,6 @@ public class SearchController implements Serializable {
 //			cat=null;
 //		if (name.equals("null"))
 //			name=null;
-		
 		
 		if (cat == null && name != null) {
 			results= productDao.findBySearch(name);
@@ -88,10 +87,19 @@ public class SearchController implements Serializable {
 			notInit =false;
 		}
 		else if (cat != null && name != null){
-			categorySearch = categoryDao.findByName(cat);
+			
+			if (cat.equals("All")) {
+				results=productDao.findBySearch(name);}
+			
+			else {categorySearch = categoryDao.findByName(cat);
 			results = productDao.findBySearchCategory(name, categorySearch);
 			notInit = false;
+			}
 		}
+		
+		
+			
+		
 			
 	
 	}
@@ -105,7 +113,6 @@ public class SearchController implements Serializable {
 	 * @return the t
 	 */
 	public List<Product> getResults() {
-		System.out.println("INIT");
 	
 		//if (notInit)
 			init();

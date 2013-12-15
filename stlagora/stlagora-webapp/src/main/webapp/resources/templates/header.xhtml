@@ -18,15 +18,20 @@
 				<h:inputText styleClass="searchInputText" value="#{homeController.search}" style="width: 30%"></h:inputText>
 				<div id="catMenu">
 				<div class="catDropDownList">
-					<select id="basic" name="#{homeController.category}">
-						<option value="Gadgets">Toutes</option>
-						<option value="Gadgets">Gadgets</option>
-						<option value="Gadgets">Pièces de rechange</option>
-						<option value="Gadgets">Art &amp; Déco</option>
-						<option value="3">Outils</option>
-						<option value="3">Objets du quotidien</option>
-						<option value="3">Jouets</option>
-					</select>
+				
+				<h:selectOneListbox size="1" value="#{homeController.category}" >
+				<f:selectItem itemLabel="Toutes Catégories" itemValue="All"></f:selectItem>
+				<f:selectItem itemLabel="Gadgets" itemValue="Gadgets"></f:selectItem>
+				<f:selectItem itemLabel="Pièces de rechange" itemValue="Pieces de rechange"></f:selectItem>
+				<f:selectItem itemLabel="Art &amp; Déco" itemValue="Art et Déco"></f:selectItem>
+				<f:selectItem itemLabel="Outils" itemValue="Outils"></f:selectItem>
+				<f:selectItem itemLabel="Objets du quotidien" itemValue="Objets du quotidien"></f:selectItem>
+				<f:selectItem itemLabel="Jouets" itemValue="Jouets"></f:selectItem>
+				</h:selectOneListbox>
+				
+				
+				
+					
 					</div>
 				</div>
 				

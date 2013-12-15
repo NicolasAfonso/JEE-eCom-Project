@@ -157,6 +157,7 @@ productDao.create(new Product("Satria Neo 2000","Voiture miniature plus vraie qu
 	}
 
 	public void setCategory(String category) {
+		log.info("CAT SET");
 		this.category = category;
 	}
 	
