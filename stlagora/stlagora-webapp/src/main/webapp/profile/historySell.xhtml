@@ -38,16 +38,22 @@
 							rendered="#{not empty manageProfileController.transactionSold}">
 
 							<h:column>
+							<div id="div_container">
+							<div class="table_cell_middle" style="text-align: left">
 								<h:graphicImage styleClass="product_search_image"
 									name="nom de l'image" />
 								<h:outputLabel styleClass="bold"
-									value=" #{ts.product.name} - #{ts.product.description}" />
+								value=" #{ts.product.name} - #{ts.product.description}" />
+							</div>
+							<div class="table_cell_middle" style="text-align: right">
 								<h:outputLabel value="Acheté par " />
 								<p:commandLink id="buyer">
 									<h:outputText styleClass="hyperlink_classic"
 										value="#{ts.buyer.surname} #{ts.buyer.firstname}" />
 								</p:commandLink>
 								<h:outputLabel value=" le #{ts.date}" />
+							</div>
+							</div>
 							</h:column>
 
 						</h:dataTable>
