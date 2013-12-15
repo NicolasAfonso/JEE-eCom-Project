@@ -52,8 +52,8 @@
 					<h:outputLabel styleClass="bold label"
 						value="#{general.cardHolder}" />
 
-					<p:inputText id="name_cardHolder" required="true">
-						<f:validateLength minimum="2" />
+					<p:inputText id="name_cardHolder" required="true" >
+						<f:validateRegex pattern="[a-zA-Z]*" />
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold label"
@@ -65,30 +65,19 @@
 					<br />
 					<h:outputLabel styleClass="bold label"
 						value="#{general.expiryDate}" />
-
-					<p:selectOneMenu id="expiryMonth">
-						<f:selectItem itemLabel="#{general.jan}" />
-						<f:selectItem itemLabel="#{general.feb}" />
-						<f:selectItem itemLabel="#{general.mar}" />
-						<f:selectItem itemLabel="#{general.apr}" />
-						<f:selectItem itemLabel="#{general.may}" />
-						<f:selectItem itemLabel="#{general.jun}" />
-						<f:selectItem itemLabel="#{general.jul}" />
-						<f:selectItem itemLabel="#{general.aug}" />
-						<f:selectItem itemLabel="#{general.sep}" />
-						<f:selectItem itemLabel="#{general.oct}" />
-						<f:selectItem itemLabel="#{general.nov}" />
-						<f:selectItem itemLabel="#{general.dec}" />
-					</p:selectOneMenu>
-
-
-					<p:selectOneMenu id="expiryYear">
-						<f:selectItem itemLabel="2013" />
-						<f:selectItem itemLabel="2014" />
-						<f:selectItem itemLabel="2015" />
-						<f:selectItem itemLabel="2016" />
-						<f:selectItem itemLabel="2017" />
-					</p:selectOneMenu>
+						
+						
+					<p:selectOneMenu styleClass="small" id="expiryMonth" 
+						value="#{purchaseController.month}" required="true">
+						<f:selectItems value="#{purchaseController.months}"
+							var="m" itemValue="#{m}" itemLabel="#{m}" />
+					</p:selectOneMenu> 
+						
+					<p:selectOneMenu styleClass="small" id="expiryYear" 
+						value="#{purchaseController.year}" required="true">
+						<f:selectItems value="#{purchaseController.years}"
+							var="y" itemValue="#{y}" itemLabel="#{y}" />
+					</p:selectOneMenu> 
 					
 					
 					<br />

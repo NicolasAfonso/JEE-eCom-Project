@@ -33,10 +33,10 @@
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productCategory}" />
 					<p:selectOneMenu styleClass="small" id="onemenu_category" 
-							value="#{productController.product.category}" required="true">
-							<f:selectItems value="#{productController.categories}"
-								var="cat" itemValue="#{cat.categoryName}" itemLabel="#{cat.categoryName}" />
-						</p:selectOneMenu> 
+						value="#{productController.product.category}" required="true">
+						<f:selectItems value="#{productController.categories}"
+							var="cat" itemValue="#{cat.categoryName}" itemLabel="#{cat.categoryName}" />
+					</p:selectOneMenu> 
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productName}" />
 					<p:inputText id="name_product" required="true"

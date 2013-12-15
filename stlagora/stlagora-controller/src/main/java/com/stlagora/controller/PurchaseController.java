@@ -18,6 +18,7 @@ import com.stlagora.beans.Cart;
 import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.TransactionDao;
 import com.stlagora.model.dao.TransactionDaoImpl;
+import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.mail.SendMail;
@@ -32,14 +33,14 @@ public class PurchaseController implements Serializable {
 	private TransactionDao transactionDao;
 
 	private boolean validate = false;
+	private String month;
+	private String year;
 
 	@ManagedProperty("productList")
 	private List<Product> productList = new ArrayList<Product>();
+	private List<String> months = Arrays.asList("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
+	private List<String> years = Arrays.asList("2013","2014","2015","2016","2017");
 	
-	private final List<String> years = Arrays.asList("1990",
-	        "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
-	        "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
-	        "2007", "2008", "2009", "2010", "2011", "2012", "2013");
 
 	public PurchaseController() {
 
@@ -106,9 +107,63 @@ public class PurchaseController implements Serializable {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
+
+	/**
+	 * @return the month
+	 */
+	public String getMonth() {
+		return month;
+	}
+
+	/**
+	 * @param month the month to set
+	 */
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
 	
+	/**
+	 * @return the months
+	 */
+	public List<String> getMonths() {
+		return months;
+	}
+
+	/**
+	 * @param months the months to set
+	 */
+	public void setMonths(List<String> months) {
+		this.months = months;
+	}
+
+	/**
+	 * @return the years
+	 */
 	public List<String> getYears() {
-        return years;
-    }
+		return years;
+	}
+
+	/**
+	 * @param years the years to set
+	 */
+	public void setYears(List<String> years) {
+		this.years = years;
+	}
+	
+	
 
 }
