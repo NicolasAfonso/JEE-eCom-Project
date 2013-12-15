@@ -60,6 +60,7 @@ public class SellController implements Serializable {
 	private PRODUCT_STATUS productStatus;
 	
 	private Product productUpload;
+
 	
 	
 	public String validateSell(){
@@ -162,9 +163,6 @@ public class SellController implements Serializable {
 		return "/sell/sell?faces-redirect=true";
 	}
 	
-	public String goToSellModif(){
-		return "/sell/sellModif?faces-redirect=true";
-	}
 	
 	/**
 	 * 

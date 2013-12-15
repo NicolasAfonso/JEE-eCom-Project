@@ -16,8 +16,9 @@
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
-
-
+	<f:metadata>
+		<f:viewParam name="id" value="#{productController.id}"></f:viewParam>
+	</f:metadata>
 	<div id="pagecontent">
 		<p:messages id="messages" showDetail="false" autoUpdate="true" />
 		<div class="form_container">
@@ -31,57 +32,56 @@
 					<h2>#{sell.informationsProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productCategory}" />
-					<p:selectOneMenu styleClass="small" id="onemenu_category"
-							value="#{sellController.productCategory}" required="true">
-							<f:selectItems value="#{sellController.categories}"
+					<p:selectOneMenu styleClass="small" id="onemenu_category" 
+							value="#{productController.product.category}" required="true">
+							<f:selectItems value="#{productController.categories}"
 								var="cat" itemValue="#{cat.categoryName}" itemLabel="#{cat.categoryName}" />
-						</p:selectOneMenu>
+						</p:selectOneMenu> 
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productName}" />
 					<p:inputText id="name_product" required="true"
-						value="hjk #{sellController.productUpload.name}">
+						value="#{productController.product.name}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productCaract}" />
 					<p:inputText id="productCaract" required="true"
-						value="#{sellController.description}">
+						value="#{productController.product.description}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productPrice}" />
 					<p:inputText id="productPrice" required="true"
-						value="#{sellController.price}">
+						value="#{productController.product.price}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<h:outputLabel value=" #{profile.money}" />
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productImage}" />
 <!-- 					TODO : voir pour le style css -->
-					<p:fileUpload value="#{sellController.image}" mode="simple"	required="true">
+					<p:fileUpload value="#{productController.image}" mode="simple"	required="true">
 						<f:validator validatorId="fileUploadValidatorImage" />
 					 </p:fileUpload>
 					<h2>#{sell.downloadProduct}</h2>
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.productMap}" />
-					<p:fileUpload value="#{sellController.plan}" mode="simple" required="true">
+					<p:fileUpload value="#{productController.plan}" mode="simple" required="true">
 						<f:validator validatorId="fileUploadValidatorPlan" />
 					</p:fileUpload>
 
 					<br />
 					<h:outputLabel styleClass="bold" value="#{sell.dispo}" />
 					<p:selectOneMenu styleClass="small" id="onemenu_status"
-							value="#{sellController.productStatus}" required="true">
-							<f:selectItems value="#{sellController.allProductStatus}"
+							value="#{productController.product.status}" required="true">
+							<f:selectItems value="#{productController.allProductStatus}"
 								var="type" itemValue="#{type}" itemLabel="#{type}" />
 						</p:selectOneMenu>
 					<br />
 					<h:commandButton id="putSell" value="#{sell.buttonPutSell}"
 						styleClass="button_classic"
-						action="#{sellController.validateSell}" />
+						action="#{productController.validateSellModif}" />
 					<h:outputLabel value="#{general.mandatoryField}" />
 					<br />
-
 				</div>
 			</h:form>
 		</div>

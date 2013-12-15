@@ -1,7 +1,13 @@
 package com.stlagora.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,13 +22,19 @@ import javax.servlet.ServletContext;
 import org.apache.log4j.Logger;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 import com.stlagora.beans.SessionUser;
+import com.stlagora.model.dao.CategoryDao;
 import com.stlagora.model.dao.OpinionDao;
 import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.UserDao;
+import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
+import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
+import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 @ManagedBean(name = "productController")
 @RequestScoped
@@ -34,15 +46,76 @@ public class ProductController {
 	private String id;
 	private int nbOpinion;
 	private StreamedContent file; 
+	private UploadedFile plan;  
+	private UploadedFile image;
+	private List<Category> categories = new ArrayList<Category>();
+	private List<Product> products;
+	
 
 	@EJB
 	private ProductDao productDao;
+	@EJB
+	private CategoryDao categoryDao ;
 	
-	private List<Product> products;
+	
+	public String validateSellModif(){
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		log.debug("ici :)");
+		try{
+			productDao.update(product);
+		}catch (Exception e)
+		{
+			log.error("Product Update failed");
+		}
+		if(image != null)
+			
+			try {
+				File fimage = new File("C:/FILER/public/"+product.getImages());
+				File fplan = new File("C:/FILER/private/"+product.getPlan());
+				fimage.createNewFile();
+				fplan.createNewFile();
+				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
+				saveFile(image.getInputstream(),new FileOutputStream(fimage));	
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				log.error("File creation Problem");
+				e.printStackTrace();
+				FacesMessage msg = new FacesMessage("Error", "Creation failed uploaded.");  
+				FacesContext.getCurrentInstance().addMessage(null, msg);
+			}
+			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			log.debug("en bas");
+		return "/home";
+	}
+	
+	
+	private void saveFile(InputStream inputStream, OutputStream out) throws IOException{
+            int read = 0;
+            byte[] bytes = new byte[1024];
+            while ((read = inputStream.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            inputStream.close();
+            out.flush();
+            out.close();
+
+	}
+	
+	
+	public PRODUCT_STATUS[] getAllProductStatus() {
+		return PRODUCT_STATUS.values();
+	}
 	
 	public void removeProduct(Product p){
 		p.setDeleted(true);
 		productDao.update(p);
+	}
+	
+	public String goToSellModif(Product p){
+		product = p;
+		return "/sell/sellModif?faces-redirect=true&id="+p.getId();
 	}
 	
 	/**
@@ -141,6 +214,50 @@ public class ProductController {
 	 */
 	public void setFile(StreamedContent file) {
 		this.file = file;
+	}
+	
+	/**
+	 * @return the images
+	 */
+	public UploadedFile getImage() {
+		return image;
+	}
+
+	/**
+	 * @param images the images to set
+	 */
+	public void setImage(UploadedFile image) {
+		this.image = image;
+	}
+
+	/**
+	 * @return the plan
+	 */
+	public UploadedFile getPlan() {
+		return plan;
+	}
+
+	/**
+	 * @param plan the plan to set
+	 */
+	public void setPlan(UploadedFile plan) {
+		this.plan = plan;
+	}
+	
+	/**
+	 * @return the categories
+	 */
+	public List<Category> getCategories() {
+		categories =  categoryDao.findAll();
+		return categories;
+	}
+
+
+	/**
+	 * @param categories the categories to set
+	 */
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 	
 }
