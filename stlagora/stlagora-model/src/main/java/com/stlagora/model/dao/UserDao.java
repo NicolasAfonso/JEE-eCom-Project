@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.PersistenceContext;
 
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 public interface UserDao extends GenericDao<User>  {
@@ -21,4 +22,5 @@ public interface UserDao extends GenericDao<User>  {
 	public List<User> findBySubscriptionDate(Date subscriptionDate);
 	public List<User> findByPhoneNumber(String phoneNumber);
 	public List<User> findByRole(ROLE role);
+	public List<User> findByAccountType(ACCOUNT_TYPE accountType);
 }

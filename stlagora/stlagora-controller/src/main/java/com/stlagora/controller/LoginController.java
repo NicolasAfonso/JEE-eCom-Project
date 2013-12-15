@@ -17,6 +17,7 @@ import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
+import com.stlagora.model.entities.enumerate.ROLE;
 
 @ManagedBean(name = "loginController")
 @RequestScoped
@@ -74,6 +75,12 @@ public class LoginController implements Serializable {
 	            FacesMessage msg = new FacesMessage("Succesful","Welcome");  
 	            FacesContext.getCurrentInstance().addMessage(null, msg); 
 	            log.debug(sessionUser.getUrl());
+	            if(user.getRole()==ROLE.ADMIN){
+	            	sessionUser.setAdminCo(true);
+	            }
+	            else{
+	            	sessionUser.setAdminCo(false);
+	            }
 	            return sessionUser.getUrl()+"?faces-redirect=true";
 			}
 			else

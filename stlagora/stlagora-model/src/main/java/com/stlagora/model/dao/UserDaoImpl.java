@@ -13,6 +13,7 @@ import javax.persistence.Query;
 
 import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.User;
+import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 @Stateless
 public class UserDaoImpl extends GenericDaoImpl< User > implements UserDao{
@@ -80,7 +81,12 @@ public class UserDaoImpl extends GenericDaoImpl< User > implements UserDao{
 	}
 
 	
-
+	public List<User> findByAccountType(ACCOUNT_TYPE accountType){
+		Query q = em.createQuery("SELECT u FROM User u WHERE u.accountType =:accountType");
+		q.setParameter("accountType", accountType);
+		List<User> results = q.getResultList();
+		return results;
+	}
 	
 
 }
