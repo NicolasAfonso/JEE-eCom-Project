@@ -26,41 +26,12 @@
 						<h:outputLabel styleClass="bold"
 							value="#{general.search1} #{searchController.results.size()} #{general.search2}" />
 						<br />
-						<!-- 						<h:outputText value="#{general.selecting}" /> -->
-						<!-- 						<p:selectOneMenu id="selectionSorting"> -->
-						<!-- 							<f:selectItem itemLabel="#{general.increasingPriceSelecting}" -->
-						<!-- 								itemValue="1" /> -->
-						<!-- 							<f:selectItem itemLabel="#{general.decreasingPriceSelecting}" -->
-						<!-- 								itemValue="2" /> -->
-						<!-- 							<f:selectItem itemLabel="#{general.sellerSelecting}" -->
-						<!-- 								itemValue="3" /> -->
-						<!-- 						</p:selectOneMenu> -->
+						
 					</div>
 					<br />
 
-					<!-- 					Navigation between search results -->
-					<!-- 					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page"> -->
-					<!-- 						<h:outputText value="#{general.linkPrevous}" /> -->
-
-					<!-- 						<h:outputText value="#{general.linkNumberPage}" /> -->
-
-					<!-- 						<h:outputText value="#{general.linkNext}" /> -->
-					<!-- 					</p:commandLink> -->
-
-					<!-- Search results -->
 					<div class="product_search"></div>
 					<br />
-
-					<!-- 					<p:commandLink id="linkPagesDown" styleClass="hyperlink_page"> -->
-					<!-- 						<h:outputText styleClass="hyperlink_page" -->
-					<!-- 							value="#{general.linkPrevous}" /> -->
-
-					<!-- 						<h:outputText styleClass="hyperlink_page" -->
-					<!-- 							value="#{general.linkNumberPage}" /> -->
-
-					<!-- 						<h:outputText styleClass="hyperlink_page" -->
-					<!-- 							value="#{general.linkNext}" /> -->
-					<!-- 					</p:commandLink> -->
 
 				</div>
 			</h:form>
@@ -73,13 +44,10 @@
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
 					selection="#{searchController.selectedProduct}" id="productTable">
 
-<<<<<<< HEAD
-					<p:ajax event="rowSelect" update=":form:display" oncomplete="productDialog.show()" />
-<p:remoteCommand > </p:remoteCommand>
-=======
+
 					<p:ajax event="rowSelect" update=":form:display"
-						oncomplete="#{searchController.selectedProduct.name}" />
->>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
+						oncomplete="productDialog.show()" />
+				
 
 					<p:column headerText="Produit">
 						<h:column>
@@ -98,17 +66,11 @@
 						</h:column>
 						<br />
 						<h:column>
-<<<<<<< HEAD
-							
-								<h:outputText styleClass="hyperlink_classic underlined"
-									value="(#{s.opinions.size()} #{product.opinions})" />
-						
-=======
-							<p:commandLink id="linkOpinion" action="cart.xhtml">
-								<h:outputText styleClass="hyperlink_classic underlined"
-									value="(#{s.opinions.size()} #{product.opinions})" />
-							</p:commandLink>
->>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
+
+
+							<h:outputText styleClass="hyperlink_classic underlined"
+								value="(#{s.opinions.size()} #{product.opinions})" />
+								
 						</h:column>
 					</p:column>
 
@@ -133,50 +95,37 @@
 					</p:column>
 				</p:dataTable>
 
-<<<<<<< HEAD
-				<p:dialog header="Votre produit sélectionné" widgetVar="productDialog"
-=======
-				<p:dialog header="Product Detail" widgetVar="productDialog"
->>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
-					resizable="false" showEffect="explode" hideEffect="explode">
+
+				<p:dialog header="Votre produit sélectionné" widgetVar="productDialog" resizable="false" showEffect="explode" hideEffect="explode">
 
 					<h:panelGrid id="display" columns="2" cellpadding="4">
 
-<<<<<<< HEAD
+						
+						
 <h:outputLink value="/stlagora/global/productCard.xhtml">
-								<h:outputText value="#{searchController.selectedProduct.name}" />
-								<f:param name="id" value="#{searchController.selectedProduct.id}" />
-								<br/> (Cliquez sur le lien pour accéder à la fiche produit détaillée)
-							</h:outputLink>
-							
-=======
+							<h:outputText value="#{searchController.selectedProduct.name}" />
+							<f:param name="id" value="#{searchController.selectedProduct.id}" /></h:outputLink>
+							<br />
+
 						<f:facet name="header">
-							<p:graphicImage library="images"
-								alt="#{searchController.selectedProduct.name}"
-								value="no-image.png" />
+								
+								
 						</f:facet>
 
->>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
-						<h:outputText value="id:" />
-						<h:outputText value="#{searchController.selectedProduct.id}"
-							style="font-weight:bold"></h:outputText>
 
+						<h:outputText value="Description du produit:" style="font-weight:bold"/>
+						#{searchController.selectedProduct.description}
 
 					</h:panelGrid>
 				</p:dialog>
 
 			</h:form>
 
-
-
-
-
 		</div>
 	</div>
 
 	<ui:insert name="footer">
-		<ui:include src="/resources/templates/footer.xhtml" />
-	</ui:insert>
-
+							<ui:include src="/resources/templates/footer.xhtml" />
+							</ui:insert>
 </h:body>
 </html>
