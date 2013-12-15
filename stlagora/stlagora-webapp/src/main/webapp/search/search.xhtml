@@ -69,11 +69,11 @@
 			
 			<h:form id="form">
 
-    <p:dataTable var="s" value="#{searchController.results}" paginator="true" rows="5" rowKey="#{s.name}"
+    <p:dataTable var="s" value="#{searchController.results}" paginator="true" rows="5" rowKey="#{s.name}" first="0" 
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{searchController.selectedProduct}"  id="productTable" >
  
-        <p:ajax event="rowSelect"  listener="#{searchController.onRowSelect}" update=":form:display" oncomplete="PF('productDialog').show()" />
+        <p:ajax event="rowSelect" update=":form:display" oncomplete="#{searchController.selectedProduct.name}" />
 
         <p:column headerText="Produit" >
         <h:column>
@@ -83,17 +83,18 @@
 										name="no-image.png" rendered="true" />
 								</p:commandLink></h:column>
 								<h:column> 
-								<br/>
+								
 								<h:outputLink value="/stlagora/global/productCard.xhtml">	<h:outputText value="#{s.name}" />
 	<f:param name="id" value="#{s.id}" />
 </h:outputLink>
            </h:column>
            <br/>
-           <p:commandLink id="linkOpinion" action="cart.xhtml" > -->
+           <h:column>
+           <p:commandLink id="linkOpinion" action="cart.xhtml" > 
 									<h:outputText styleClass="hyperlink_classic underlined"
-										value="(#{productController.nbOpinion} #{product.opinions})" />
+										value="(#{s.opinions.size()} #{product.opinions})" />
 								</p:commandLink>
-           
+           </h:column>
         </p:column>
 
         <p:column headerText="Prix" sortBy="price" >
@@ -111,8 +112,6 @@
             <h:outputLabel styleClass="bold"
 									value="#{product.labelMark} #{s.globalMark}" />
 
-								<!-- 								Primefaces rating -->
-
 								<p:rating value="#{productController.getGlobalMarkInt(s)}"
 									readonly="true" />
         </p:column>
@@ -127,14 +126,14 @@
                 <p:graphicImage library="images" alt="#{searchController.selectedProduct.name}" value="no-image.png" />
             </f:facet>
 
-            <h:outputText value="Nom:" />
-            <h:outputText value="#{searchController.selectedProduct.name}" style="font-weight:bold"/>
+            <h:outputText value="id:" />
+            <h:outputText value="#{searchController.selectedProduct.id}" style="font-weight:bold"></h:outputText>
 
            
         </h:panelGrid>
     </p:dialog>
 
-</h:form>
+</h:form>	
                     
 			
 			

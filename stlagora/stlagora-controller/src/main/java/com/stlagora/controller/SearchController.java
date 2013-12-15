@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
@@ -23,6 +24,7 @@ import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 
+@ViewScoped
 @ManagedBean(name = "searchController")
 @SessionScoped
 public class SearchController implements Serializable {
@@ -158,13 +160,15 @@ public class SearchController implements Serializable {
 		return "/search/search?faces-redirect=true";
 	}
 	
-	public String moveToProdCard(int id){
+	public String moveToProdCard(){
 		//Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		//String s = params.get("prodId");
 		//System.out.println("PROD ID"+s);
 		//String tmp = "/global/productCard?id="+s;
-		System.out.println("MOVE ID" +id);
-		return "/global/productCard?faces-redirect=true&id="+id;
+		//System.out.println("MOVE ID" +id);
+		
+		String tmp = selectedProduct.getId().toString();
+		return "/global/productCard?faces-redirect=true&id="+tmp;
 	}
 	
 	public String moveToError(){
@@ -232,6 +236,8 @@ public class SearchController implements Serializable {
 		this.prodId = prodId;
 	}
 	public Product getSelectedProduct() {
+		System.out.println("GET PRODUCT");
+		//System.out.println(selectedProduct.getId());
 		return selectedProduct;
 	}
 	public void setSelectedProduct(Product selectedProduct) {
