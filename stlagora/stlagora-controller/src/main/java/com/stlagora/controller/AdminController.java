@@ -6,6 +6,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 import com.stlagora.model.dao.ProductDao;
@@ -27,7 +29,35 @@ public class AdminController {
 	private ProductDao productDao;
 	
 	private PieChartModel pieModelMember;
-
+	private CartesianChartModel categoryModel;  
+	
+	
+	private void createCategoryModel() {  
+        categoryModel = new CartesianChartModel();  
+  
+        ChartSeries boys = new ChartSeries();  
+        boys.setLabel("Boys");  
+  
+        boys.set("2004", 120);  
+        boys.set("2005", 100);  
+        boys.set("2006", 44);  
+        boys.set("2007", 150);  
+        boys.set("2008", 25);  
+  
+        ChartSeries girls = new ChartSeries();  
+        girls.setLabel("Girls");  
+  
+        girls.set("2004", 52);  
+        girls.set("2005", 60);  
+        girls.set("2006", 110);  
+        girls.set("2007", 135);  
+        girls.set("2008", 120);  
+  
+        categoryModel.addSeries(boys);  
+        categoryModel.addSeries(girls);  
+    } 
+	
+	
 	public void createPieModelMember() {  
 		pieModelMember = new PieChartModel();  
 		
@@ -118,6 +148,22 @@ public class AdminController {
 	public void setNbProduct(int nbProduct) {
 		this.nbProduct = nbProduct;
 	}
+
+	/**
+	 * @return the categoryModel
+	 */
+	public CartesianChartModel getCategoryModel() {
+		createCategoryModel();
+		return categoryModel;
+	}
+
+	/**
+	 * @param categoryModel the categoryModel to set
+	 */
+	public void setCategoryModel(CartesianChartModel categoryModel) {
+		this.categoryModel = categoryModel;
+	}
+	
 	
 	
 }

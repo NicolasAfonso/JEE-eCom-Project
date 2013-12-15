@@ -26,7 +26,7 @@
 				</div>
 				<br /> 
  
-				<h:outputLabel styleClass="bold" value="#{profile.statMembers} #{adminController.nbMember}" />
+				<h:outputLabel styleClass="bold" value="#{profile.statMembers}" />
 				<div class="form_container">
 					<div class="form_border"> 
 						<h:outputLabel styleClass="bold" value="Nombre de membres inscrits : " /> 
@@ -43,7 +43,8 @@
 				<h:outputLabel styleClass="bold" value="#{profile.statProd}" />
 				<div class="form_container">
 					<div class="form_border">
-						
+						 <p:pieChart id="sample" value="#{adminController.pieModelMember}" legendPosition="w"  
+                title="Sample Pie Chart" style="width:400px;height:300px" diameter="150" />  
 					</div>
 				</div>
 				<br/>
@@ -51,13 +52,14 @@
 				
 				
 			</h:form>
+ 
 		</div>
 	</div>
 
 
 	<ui:insert name="footer">
 		<ui:include src="/resources/templates/footer.xhtml" />
-	</ui:insert>
+	</ui:insert> 
 
 </h:body>
 </html>
