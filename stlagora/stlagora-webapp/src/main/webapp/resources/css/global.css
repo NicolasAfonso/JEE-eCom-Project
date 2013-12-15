@@ -184,10 +184,11 @@ h2
 
 .catDropDownList
 {
+	height: 27px;
 	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 	color: #676767;
 	margin-left: 10px;
-	margin-top: 20px;
+	margin-top: 17px;
 	width: 70%;
 }
 
@@ -466,6 +467,9 @@ h2
 
 .button_download, .button_download:hover
 {
+	font-family: "EurostileT";
+	font-size: 14px;
+	color: black;
 	padding: 0;
 }
 
@@ -613,16 +617,17 @@ h2
     border-radius:0 4px 4px 0;
 }
 
-.fancyNav li:hover,
-.fancyNav li:hover:after,
-.fancyNav li.selected:after,
-.fancyNav li:target:after{
-    /* This property triggers the CSS3 transition */
-    opacity:1;
-    background-image: -moz-linear-gradient(#c2ff81 50%,#74c14a 100%);
-    background-image: -o-linear-gradient(#c2ff81 50%, #74c14a 100%);
-    background-image: -ms-linear-gradient(#c2ff81 50%, #74c14a 100%);
-    background-image: linear-gradient(#c2ff81 50%, #74c14a 100%);
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.fancyNav li:hover:after,
+	.fancyNav li.selected:after,
+	.fancyNav li:target:after{
+	    /* This property triggers the CSS3 transition */
+	    opacity:1;
+	    background-image: -moz-linear-gradient(#c2ff81 50%,#74c14a 100%);
+	    background-image: -o-linear-gradient(#c2ff81 50%, #74c14a 100%);
+	    background-image: -ms-linear-gradient(#c2ff81 50%, #74c14a 100%);
+	    background-image: linear-gradient(#c2ff81 50%, #74c14a 100%);
+	}
 }
 
 .fancyNav:hover li.selected:after,
