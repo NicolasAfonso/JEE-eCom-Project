@@ -176,6 +176,10 @@ public class ManageProfileController implements Serializable {
 	public String goToForSale(){
 		return "/profile/forSale?faces-redirect=true";
 	}
+	
+	public String goToStat(){
+		return "/profile/accountAdmin?faces-redirect=true";
+	}
 
 	public String changeName(){
 		return "/profile/newName?faces-redirect=true";

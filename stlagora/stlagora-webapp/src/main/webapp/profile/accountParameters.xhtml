@@ -68,8 +68,21 @@
 						</p:commandLink>
 					</div>
 				</div>
-				<h:outputText value="#{profile.unsub}" />
-				<a href="mailto:stl-agora@outlook.com">stl-agora@outlook.com</a>
+				
+				<h:panelGroup layout="block" rendered="#{!sessionUser.adminCo}">
+					<h:outputText value="#{profile.unsub}"/>
+					<a href="mailto:stl-agora@outlook.com">stl-agora@outlook.com</a>
+				</h:panelGroup>
+				
+				<h:outputText styleClass="bold" value="#{profile.admin}" rendered="#{sessionUser.adminCo}"/>
+				<h:panelGroup class="form_container" layout="block" rendered="#{sessionUser.adminCo}">
+					<div class="form_border">
+						<p:commandLink id="linkStat" styleClass="hyperlink_classic"
+							action="#{manageProfileController.goToStat}">
+							<h:outputText value="#{profile.linkStat}" />
+						</p:commandLink>
+					</div>
+				</h:panelGroup>
 			</h:form>
 		</div>
 	</div>

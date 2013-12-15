@@ -30,10 +30,15 @@ public class SessionUser implements Serializable{
 	
 	
 	boolean loggedIn = false; 
+	boolean adminCo = false;
 	private User user = null; 
     private String url ; 
 	public SessionUser(){
 		
+	}
+	
+	public boolean isAdminCo(){
+		return adminCo;
 	}
 
 	/**
@@ -77,4 +82,13 @@ public class SessionUser implements Serializable{
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	/**
+	 * @param adminCo the adminCo to set
+	 */
+	public void setAdminCo(boolean adminCo) {
+		this.adminCo = adminCo;
+	}
+	
+	
 }	
