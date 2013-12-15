@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 
 @Entity
+@Cacheable(false)
 @Table(name="products")
 public class Product implements Serializable {
 	/**
