@@ -1,6 +1,7 @@
 package com.stlagora.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
@@ -37,7 +39,7 @@ import com.stlagora.model.entities.enumerate.PRODUCT_STATUS;
 import com.stlagora.model.entities.enumerate.TYPE_FICHIER;
 
 @ManagedBean(name = "productController")
-@RequestScoped
+@SessionScoped
 public class ProductController {
 	
 	private Logger log = Logger.getLogger(ProductController.class.getName());
@@ -51,16 +53,56 @@ public class ProductController {
 	private List<Category> categories = new ArrayList<Category>();
 	private List<Product> products;
 	
+	private String productCategory ;
+	
+	//
+	private String name, description, images, plann;
+	private Category category;
+	private PRODUCT_STATUS status;
+	private Float price;
+	private static String FILER = "C:/filer";
 
 	@EJB
 	private ProductDao productDao;
 	@EJB
 	private CategoryDao categoryDao ;
 	
+	private boolean modif = false;
 	
-	public String validateSellModif(){
+	public ProductController(){
+
+	}
+	
+	private void init()
+	{
+		log.debug("ici :)");
+		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		if(id != null )
+		{
+			modif = true ; 
+			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+			flash.put("modif", true);
+			product = productDao.findById(Long.parseLong(id));
+			this.name = product.getName();
+			this.category = product.getCategory();
+			this.description = product.getDescription();
+			this.status = product.getStatus();
+			this.price = product.getPrice();
+
+		}
+	}
+	public String validateSellModif(String id){
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		log.debug("ici :)");
+		//product = productDao.findById(Long.parseLong(id));
+		modif = false ; 
+		product.setName(name);
+		Category cat = categoryDao.findByName(productCategory);
+		product.setCategory(cat);
+		product.setDescription(description);
+		product.setPrice(price);
+		product.setStatus(status);
+		
 		try{
 			productDao.update(product);
 		}catch (Exception e)
@@ -70,22 +112,29 @@ public class ProductController {
 		if(image != null)
 			
 			try {
-				File fimage = new File("C:/FILER/public/"+product.getImages());
-				File fplan = new File("C:/FILER/private/"+product.getPlan());
+				File fimage = new File(FILER+"/public/"+product.getImages());
 				fimage.createNewFile();
-				fplan.createNewFile();
-				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
 				saveFile(image.getInputstream(),new FileOutputStream(fimage));	
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				log.error("File creation Problem");
 				e.printStackTrace();
-				FacesMessage msg = new FacesMessage("Error", "Creation failed uploaded.");  
-				FacesContext.getCurrentInstance().addMessage(null, msg);
 			}
-			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
-			FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+		if(plan != null)
+		{
+			try{
+				File fplan = new File(FILER+"/private/"+product.getPlan());
+				fplan.createNewFile();
+				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
+			}catch(Exception e)
+			{
+				log.error("File creation Problem");
+			}
+		}
+//			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
+//			FacesContext.getCurrentInstance().addMessage(null, msg);
 			log.debug("en bas");
 		return "/home";
 	}
@@ -113,10 +162,6 @@ public class ProductController {
 		productDao.update(p);
 	}
 	
-	public String goToSellModif(Product p){
-		product = p;
-		return "/sell/sellModif?faces-redirect=true&id="+p.getId();
-	}
 	
 	/**
 	 * @return the product
@@ -202,10 +247,18 @@ public class ProductController {
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String s = params.get("productDownload");
 		Product productDownload = productDao.findById(Long.parseLong(s));
-		log.debug(productDownload.getId());
+		log.debug("Product ID : "+productDownload.getId());
+		log.debug(FILER+"/private/"+productDownload.getPlan());
 		//TODO Récupérer le vrai chemin du fichier
-		InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/home.png");  
-        file = new DefaultStreamedContent(stream, "image/png", "home.png");  
+		File f = new File(FILER+"/private/"+productDownload.getPlan());
+		InputStream stream;
+		try {
+			stream = new FileInputStream(f);
+	        file = new DefaultStreamedContent(stream, "image/png", f.getName());  
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream(FILER+"/private/"+productDownload.getPlan());  
 		return file;
 	}
 
@@ -259,5 +312,148 @@ public class ProductController {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		init();
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the images
+	 */
+	public String getImages() {
+		return images;
+	}
+
+	/**
+	 * @param images the images to set
+	 */
+	public void setImages(String images) {
+		this.images = images;
+	}
+
+	/**
+	 * @return the plann
+	 */
+	public String getPlann() {
+		return plann;
+	}
+
+	/**
+	 * @param plann the plann to set
+	 */
+	public void setPlann(String plann) {
+		this.plann = plann;
+	}
+
+	/**
+	 * @return the category
+	 */
+	public Category getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public PRODUCT_STATUS getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(PRODUCT_STATUS status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the price
+	 */
+	public Float getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	/**
+	 * @return the productDao
+	 */
+	public ProductDao getProductDao() {
+		return productDao;
+	}
+
+	/**
+	 * @param productDao the productDao to set
+	 */
+	public void setProductDao(ProductDao productDao) {
+		this.productDao = productDao;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the productCategory
+	 */
+	public String getProductCategory() {
+		return productCategory;
+	}
+
+	/**
+	 * @param productCategory the productCategory to set
+	 */
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+	}
+
+	/**
+	 * @return the modif
+	 */
+	public boolean isModif() {
+		return modif;
+	}
+
+	/**
+	 * @param modif the modif to set
+	 */
+	public void setModif(boolean modif) {
+		this.modif = modif;
+	}
+	
+	
 	
 }

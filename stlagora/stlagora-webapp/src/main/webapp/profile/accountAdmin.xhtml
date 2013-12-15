@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<h:outputStylesheet library="css" name="global.css" />
+</h:head>
+
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/templates/header.xhtml" />
+	</ui:insert>
+
+	<div id="page">
+		<div id="pagecontent">
+			<p:messages id="messages" showDetail="false" autoUpdate="true" />
+			<h:form>
+				<div class="gray_background">
+					<h1>#{profile.linkStat}</h1>
+				</div>
+				<br /> 
+ 
+				<h:outputLabel styleClass="bold" value="#{profile.statMembers} #{adminController.nbMember}" />
+				<div class="form_container">
+					<div class="form_border"> 
+						<h:outputLabel styleClass="bold" value="Nombre de membres inscrits : " /> 
+						<h:outputLabel value="#{adminController.nbMember}" /> 
+						<br/>
+						<h:outputLabel styleClass="bold" value="Nombre de particuliers : " />
+						<h:outputLabel value="#{adminController.nbMemberPriv}" /> 
+						<br/>
+						<h:outputLabel styleClass="bold" value="Nombre de professionnels : " /> 
+						<h:outputLabel value="#{adminController.nbMemberPro}" /> 
+					</div>
+				</div>
+				<br />
+				<h:outputLabel styleClass="bold" value="#{profile.statProd}" />
+				<div class="form_container">
+					<div class="form_border">
+						
+					</div>
+				</div>
+				<br/>
+				
+				
+				
+			</h:form>
+		</div>
+	</div>
+
+
+	<ui:insert name="footer">
+		<ui:include src="/resources/templates/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
+</html>

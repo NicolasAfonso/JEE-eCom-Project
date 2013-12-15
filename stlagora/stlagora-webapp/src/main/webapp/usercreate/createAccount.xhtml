@@ -64,12 +64,6 @@
 					</div>
 				</div>
 				<h:outputLabel value="#{general.mandatoryField}" />
-
-				<p:inputText value="#{manageProfileController.email}" type="hidden" />
-				<p:inputText value="#{manageProfileController.password}"
-					type="hidden" />
-				<p:inputText value="#{manageProfileController.accountType}"
-					type="hidden" />
 			</h:form>
 			<br />
 			<br />
@@ -79,6 +73,11 @@
 				<h:commandButton id="button_create" value="#{general.buttonCreate}"
 						styleClass="button_classic"
 						action="#{manageProfileController.createUser}" style="float: right"/>
+				<p:inputText value="#{manageProfileController.email}" type="hidden" />
+				<p:inputText value="#{manageProfileController.password}"
+					type="hidden" />
+				<p:inputText value="#{manageProfileController.accountType}"
+					type="hidden" />
 			</h:form>
 		</div>
 	</div>

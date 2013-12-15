@@ -142,13 +142,12 @@ h2
 
 #menu_search
 {
-    text-align: center;
+/*     text-align: center; */
     max-width: 40%;
 }
 
-#searchLayout {
-	width: 100%;
-	height: 25px;
+#searchLayout
+{
  	background: url("#{resource['images/search.png']}") no-repeat 98.5% 50% #fcfcfc;
  	border: 1px solid #d1d1d1;
     -webkit-border-radius: 20px;
@@ -159,15 +158,16 @@ h2
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
 }
 
-.searchInputText {
+.searchInputText
+{
+ 	width: 100%;
+/* 	display: inline-block; */
 	border: none;
-	margin-top: 16px;
-	position: absolute;
-	z-index: 5;
-	margin-left: 33%;
+/* 	margin-top: 16px; */
+/* 	z-index: 5; */
 	background: none;
     color: darkgray;
-    padding: 6px 0px;
+    padding: 3px 0px;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.7s ease 0s;
     -moz-transition: all 0.7s ease 0s;
@@ -177,9 +177,7 @@ h2
 
 #catMenu
 {
-	position: absolute;
-	margin-left: 20%;
-	z-index: 4;
+	width: 25%;
 }
 
 .catDropDownList {
@@ -187,8 +185,6 @@ h2
 	overflow: hidden;
 	background: url("#{resource['images/green-arrow.png']}") no-repeat right;
 	border: none;
-	margin-left: 10px;
-	margin-top: 14px;
 }
 
 .catDropDownList select {
@@ -196,18 +192,17 @@ h2
 	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 	font-size: 12px;
 	color: #676767;
-	width: 100%;
 	padding: 5px;
 	line-height: 1;
 	border: 0;
 	border-radius: 0;
-	height: 34px;
 	-webkit-appearance: none;
 }
 
 .username
 {
-	 
+	max-width: 100%;
+	overflow: hidden;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
@@ -328,8 +323,6 @@ h2
 {
 	display: table;
 	width: 100%;
-	border-collapse: separate;
-/*   	border-spacing: 20px; */
 }
 
 .form_border

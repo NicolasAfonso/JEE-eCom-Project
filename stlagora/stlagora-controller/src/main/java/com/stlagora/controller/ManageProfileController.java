@@ -23,6 +23,7 @@ import com.stlagora.model.dao.TransactionDaoImpl;
 import com.stlagora.model.dao.UserDao;
 import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.Opinion;
+import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.model.entities.User;
 import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
@@ -152,6 +153,11 @@ public class ManageProfileController implements Serializable {
 			return "/global/error?faces-redirect=true";
 		}
 	}
+	
+	public String goToSellModif(Product p){
+		return "/sell/sellModif?faces-redirect=true&id="+p.getId();
+	}
+
 
 	public String comeBackIdent(){
 		return "/login?faces-redirect=true";
@@ -175,6 +181,10 @@ public class ManageProfileController implements Serializable {
 
 	public String goToForSale(){
 		return "/profile/forSale?faces-redirect=true";
+	}
+	
+	public String goToStat(){
+		return "/profile/accountAdmin?faces-redirect=true";
 	}
 
 	public String changeName(){

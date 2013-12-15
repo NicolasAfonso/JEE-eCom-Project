@@ -12,7 +12,7 @@
 	<managed-bean>
 		<managed-bean-name>productController</managed-bean-name>
 		<managed-bean-class>com.stlagora.controller.ProductController</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 		<managed-bean>
 		<managed-bean-name>opinionController</managed-bean-name>
@@ -28,6 +28,11 @@
 		<managed-bean-name>searchController</managed-bean-name>
 		<managed-bean-class>com.stlagora.controller.SearchController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.AdminController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>sellController</managed-bean-name>

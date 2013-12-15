@@ -61,7 +61,7 @@ public class SellController implements Serializable {
 	
 	private Product productUpload;
 
-	
+	private static String FILER = "C:/filer";
 	
 	public String validateSell(){
 		if(plan != null && image !=null) {    
@@ -100,22 +100,22 @@ public class SellController implements Serializable {
 				log.error("Product Already Exist");
 			}
 			p = productDao.findByName(name);
-			   if(!new File("C:/FILER/private/"+p.getId()+"/").exists())
+			   if(!new File(FILER+"/private/"+p.getId()+"/").exists())
 		        {
 		            // Cr�er le dossier avec tous ses parents
-		            new File("C:/FILER/private/"+p.getId()+"/").mkdirs();
+		            new File(FILER+"/private/"+p.getId()+"/").mkdirs();
 		 
 		        }
-			   if(!new File("C:/FILER/public/"+p.getId()+"/").exists())
+			   if(!new File(FILER+"/public/"+p.getId()+"/").exists())
 		        {
 		            // Cr�er le dossier avec tous ses parents
-		            new File("C:/FILER/public/"+p.getId()+"/").mkdirs();
+		            new File(FILER+"/public/"+p.getId()+"/").mkdirs();
 		 
 		        }
 
 			try {
-				File fimage = new File("C:/FILER/public/"+p.getId()+"/"+image.getFileName());
-				File fplan = new File("C:/FILER/private/"+p.getId()+"/"+plan.getFileName());
+				File fimage = new File(FILER+"/public/"+p.getId()+"/"+image.getFileName());
+				File fplan = new File(FILER+"/private/"+p.getId()+"/"+plan.getFileName());
 				fimage.createNewFile();
 				fplan.createNewFile();
 				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
@@ -130,11 +130,7 @@ public class SellController implements Serializable {
 				log.error("File creation Problem");
 				e.printStackTrace();
 				productDao.delete(p);
-				FacesMessage msg = new FacesMessage("Error", "Creation failed uploaded.");  
-				FacesContext.getCurrentInstance().addMessage(null, msg);
 			}
-			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
-			FacesContext.getCurrentInstance().addMessage(null, msg);
 			productUpload = p;
 		}
 		return "/sell/validationUpload";

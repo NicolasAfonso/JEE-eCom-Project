@@ -21,7 +21,7 @@
 		<div id="pagecontent">
 			<p:messages id="messages" showDetail="false" autoUpdate="true" />
 			<h:form>
-			<h:outputLabel styleClass="bold" value="#{general.contactDetails}" />
+				<h:outputLabel styleClass="bold" value="#{general.contactDetails}" />
 				<div class="form_container">
 					<div class="form_border">
 
@@ -55,22 +55,21 @@
 					</div>
 				</div>
 				<h:outputLabel value="#{general.mandatoryField}" />
-					<br />
-					
+				<br />
+			</h:form>
+			<br />
+			<h:form>
+				<h:commandButton id="button_backRegis" value="#{general.backIdent}"
+					styleClass="button_back" action="/login" style="float: left" />
+				<h:commandButton id="button_create" value="#{general.buttonCreate}"
+					styleClass="button_classic"
+					action="#{manageProfileController.createUser}" style="float: right" />
 				<p:inputText value="#{manageProfileController.email}" type="hidden" />
 				<p:inputText value="#{manageProfileController.password}"
 					type="hidden" />
 				<p:inputText value="#{manageProfileController.accountType}"
 					type="hidden" />
-			</h:form>
-			<br />
-			<h:form>
-				<h:commandButton id="button_backRegis" value="#{general.backIdent}"
-					styleClass="button_back" action="/login" style="float: left"/>
-									<h:commandButton id="button_create" value="#{general.buttonCreate}"
-						styleClass="button_classic"
-						action="#{manageProfileController.createUser}" style="float: right"/>
-					<br />
+				<br />
 			</h:form>
 		</div>
 	</div>
