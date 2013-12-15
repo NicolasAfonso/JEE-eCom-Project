@@ -26,96 +26,43 @@
 						<h:outputLabel styleClass="bold"
 							value="#{general.search1} #{searchController.results.size()} #{general.search2}" />
 						<br />
-						<h:outputText value="#{general.selecting}" />
-						<p:selectOneMenu id="selectionSorting">
-							<f:selectItem itemLabel="#{general.increasingPriceSelecting}"
-								itemValue="1" />
-							<f:selectItem itemLabel="#{general.decreasingPriceSelecting}"
-								itemValue="2" />
-							<f:selectItem itemLabel="#{general.sellerSelecting}"
-								itemValue="3" />
-						</p:selectOneMenu>
+<!-- 						<h:outputText value="#{general.selecting}" /> -->
+<!-- 						<p:selectOneMenu id="selectionSorting"> -->
+<!-- 							<f:selectItem itemLabel="#{general.increasingPriceSelecting}" -->
+<!-- 								itemValue="1" /> -->
+<!-- 							<f:selectItem itemLabel="#{general.decreasingPriceSelecting}" -->
+<!-- 								itemValue="2" /> -->
+<!-- 							<f:selectItem itemLabel="#{general.sellerSelecting}" -->
+<!-- 								itemValue="3" /> -->
+<!-- 						</p:selectOneMenu> -->
 					</div>
 					<br />
 
-					<!-- Navigation between search results -->
-					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page">
-						<h:outputText value="#{general.linkPrevous}" />
+<!-- 					Navigation between search results -->
+<!-- 					<p:commandLink id="linkPagesUp" styleClass="hyperlink_page"> -->
+<!-- 						<h:outputText value="#{general.linkPrevous}" /> -->
 
-						<h:outputText value="#{general.linkNumberPage}" />
+<!-- 						<h:outputText value="#{general.linkNumberPage}" /> -->
 
-						<h:outputText value="#{general.linkNext}" />
-					</p:commandLink>
+<!-- 						<h:outputText value="#{general.linkNext}" /> -->
+<!-- 					</p:commandLink> -->
 
 					<!-- Search results -->
 					<div class="product_search">
 
-						<h:dataTable rows="5" first="0"
-							value="#{searchController.results}" var="s"
-							styleClass="history_purchase" headerClass="order-table-header"
-							rowClasses="order-table-odd-row,order-table-even-row"
-							rendered="true">
-
-							<h:column>
-								<!-- 							to adapt later with real images -->
-								<p:commandLink action="#{searchController.moveToProdCard(s.id)}">
-									<h:graphicImage title="#{general.nameImage}"
-										alt="#{general.nameImage}" library="images"
-										name="no-image.png" rendered="true" />
-								</p:commandLink>
-
-							</h:column>
-
-							<br />
-							
-							<h:column> 
-								<h:outputLink value="/stlagora/global/productCard.xhtml">	<h:outputText value="#{s.name}" />
-	<f:param name="id" value="#{s.id}" />
-</h:outputLink>
-								<br />
-								<h:outputLabel styleClass="price"
-									value="#{s.price} #{general.currency}" />
-							</h:column>
-							<br />
-							<h:column>
-								<h:outputLabel styleClass="bold" value="#{general.labelVendeur}" />
-								<h:outputLabel value="#{s.seller.firstname} #{s.seller.surname}" />
-								<br />
-								<h:outputLabel styleClass="bold"
-									value="#{product.labelMark} #{s.globalMark}" />
-
-								<!-- 								Primefaces rating -->
-
-								<p:rating value="#{productController.getGlobalMarkInt(s)}"
-									readonly="true" />
-								<br />
-
-
-
-								<p:commandLink id="linkOpinion" action="cart.xhtml" >
-									<h:outputText styleClass="hyperlink_classic underlined"
-										value="(#{productController.nbOpinion} #{product.opinions})" />
-								</p:commandLink>
-							</h:column>
-						</h:dataTable>
-
-						<h:outputLabel styleClass="bold gray"
-							value="#{general.labelSearchNull}"
-							rendered="#{empty manageProfileController.transactionBuy}" />
-
 					</div>
 					<br />
 
-					<p:commandLink id="linkPagesDown" styleClass="hyperlink_page">
-						<h:outputText styleClass="hyperlink_page"
-							value="#{general.linkPrevous}" />
+<!-- 					<p:commandLink id="linkPagesDown" styleClass="hyperlink_page"> -->
+<!-- 						<h:outputText styleClass="hyperlink_page" -->
+<!-- 							value="#{general.linkPrevous}" /> -->
 
-						<h:outputText styleClass="hyperlink_page"
-							value="#{general.linkNumberPage}" />
+<!-- 						<h:outputText styleClass="hyperlink_page" -->
+<!-- 							value="#{general.linkNumberPage}" /> -->
 
-						<h:outputText styleClass="hyperlink_page"
-							value="#{general.linkNext}" />
-					</p:commandLink>
+<!-- 						<h:outputText styleClass="hyperlink_page" -->
+<!-- 							value="#{general.linkNext}" /> -->
+<!-- 					</p:commandLink> -->
 
 				</div>
 			</h:form>
@@ -128,20 +75,46 @@
  
         <p:ajax event="rowSelect"  listener="#{searchController.onRowSelect}" update=":form:display" oncomplete="PF('productDialog').show()" />
 
-        <p:column headerText="Nom" sortBy="name" filterBy="#{s.name}">
-            <h:outputText value="#{s.name}" />
+        <p:column headerText="Produit" >
+        <h:column>
+        <p:commandLink action="#{searchController.moveToProdCard(s.id)}">
+									<h:graphicImage title="#{general.nameImage}"
+										alt="#{general.nameImage}" library="images"
+										name="no-image.png" rendered="true" />
+								</p:commandLink></h:column>
+								<h:column> 
+								<br/>
+								<h:outputLink value="/stlagora/global/productCard.xhtml">	<h:outputText value="#{s.name}" />
+	<f:param name="id" value="#{s.id}" />
+</h:outputLink>
+           </h:column>
+           <br/>
+           <p:commandLink id="linkOpinion" action="cart.xhtml" > -->
+									<h:outputText styleClass="hyperlink_classic underlined"
+										value="(#{productController.nbOpinion} #{product.opinions})" />
+								</p:commandLink>
+           
         </p:column>
 
-        <p:column headerText="Price" sortBy="price" filterBy="#{s.price}">
-            <h:outputText value="#{s.price}" />
+        <p:column headerText="Prix" sortBy="price" >
+        
+            <h:outputLabel styleClass="price"
+									value="#{s.price} #{general.currency}" />
         </p:column>
 
-        <p:column headerText="Seller" sortBy="seller" filterBy="#{s.seller}">
-            <h:outputText value="#{s.seller}" />
+        <p:column headerText="Vendeur"  filterBy="#{s.seller.firstname} #{s.seller.surname}">
+           <h:outputLabel styleClass="bold"  />
+								<h:outputLabel value="#{s.seller.firstname} #{s.seller.surname}" />
         </p:column>
 
-        <p:column headerText="globalMark" sortBy="globalMark" filterBy="#{s.globalMark}">
-            <h:outputText value="#{s.globalMark}" />
+        <p:column headerText="Note Moyenne" sortBy="globalMark" >
+            <h:outputLabel styleClass="bold"
+									value="#{product.labelMark} #{s.globalMark}" />
+
+								<!-- 								Primefaces rating -->
+
+								<p:rating value="#{productController.getGlobalMarkInt(s)}"
+									readonly="true" />
         </p:column>
     </p:dataTable>
 

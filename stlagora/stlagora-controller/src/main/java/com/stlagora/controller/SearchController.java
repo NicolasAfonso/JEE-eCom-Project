@@ -82,9 +82,13 @@ public class SearchController implements Serializable {
 		}
 		
 		else if (cat != null && name == null) {
-			categorySearch = categoryDao.findByName(cat);
+			if (cat.equals("All")) {
+				results=productDao.findAll();}
+			
+			else{
+				categorySearch = categoryDao.findByName(cat);
 			results=productDao.findByCategory(categorySearch);
-			notInit =false;
+			notInit =false;}
 		}
 		else if (cat != null && name != null){
 			
@@ -234,6 +238,8 @@ public class SearchController implements Serializable {
 		this.selectedProduct = selectedProduct;
 	}
 	
-	
+	public boolean productListIsEmpty(){
+		return (results.size()==0);
+	}
 
 }
