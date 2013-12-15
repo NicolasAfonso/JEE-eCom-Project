@@ -20,6 +20,7 @@ import com.stlagora.model.dao.TransactionDao;
 import com.stlagora.model.dao.TransactionDaoImpl;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
+import com.stlagora.model.mail.SendMail;
 
 @ManagedBean(name = "purchaseController", eager = true)
 @RequestScoped
@@ -60,7 +61,8 @@ public class PurchaseController implements Serializable {
 		SessionUser sessionUser = (SessionUser) FacesContext
 				.getCurrentInstance().getExternalContext().getSessionMap()
 				.get("sessionUser");
-
+		SendMail mail = new SendMail();
+		String msg;
 		if (validate && sessionUser.isLoggedIn()) {
 			for (Product product : productList) {
 				transactionDao.create(new Transaction(product.getSeller(),
@@ -73,6 +75,8 @@ public class PurchaseController implements Serializable {
 			cart.clean();
 
 			validate = false;
+			msg = "Bonjour "+sessionUser.getUser().getFirstname()+" "+sessionUser.getUser().getSurname()+",\n\n"+"Merci de votre achat sur le site de Stl-Agora, vous pouvez désormais télécharger vos plans depuis le site. \n\nA très bientôt.\n\nL'équipe Stl-Agora.";
+			mail.sendMessage("Confirmation de commande", msg, sessionUser.getUser().getEmail(), "stl-agora@outlook.com");
 			return "/purchase/download?faces-redirect=true";
 		} else {
 			return "/purchase/cartView?faces-redirect=true";

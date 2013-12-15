@@ -93,7 +93,7 @@ public class ManageProfileController implements Serializable {
 		}catch(Exception e){
 			log.error("User not found");
 		}
-		return "/profile/accountParameters?faces-redirect=true";
+		return sessionUser.getUrl()+"?faces-redirect=true";
 	}
 
 	public String update()
