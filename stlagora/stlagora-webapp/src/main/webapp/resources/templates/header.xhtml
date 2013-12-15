@@ -15,26 +15,7 @@
 		<div id="header">
 
 			<h:form>
-				<h:inputText styleClass="searchInputText" value="#{homeController.search}" style="width: 30%"></h:inputText>
-				<div id="catMenu">
-				<div class="catDropDownList">
-				
-				<h:selectOneListbox size="1" value="#{homeController.category}" >
-				<f:selectItem itemLabel="Toutes Catégories" itemValue="All"></f:selectItem>
-				<f:selectItem itemLabel="Gadgets" itemValue="Gadgets"></f:selectItem>
-				<f:selectItem itemLabel="Pièces de rechange" itemValue="Pieces de rechange"></f:selectItem>
-				<f:selectItem itemLabel="Art &amp; Déco" itemValue="Art et Déco"></f:selectItem>
-				<f:selectItem itemLabel="Outils" itemValue="Outils"></f:selectItem>
-				<f:selectItem itemLabel="Objets du quotidien" itemValue="Objets du quotidien"></f:selectItem>
-				<f:selectItem itemLabel="Jouets" itemValue="Jouets"></f:selectItem>
-				</h:selectOneListbox>
-				
-				
-				
-					
-					</div>
-				</div>
-				
+
 				<table class="full_width">
 					<tr>
 						<td id="menu_logo"><a href="/stlagora/home.xhtml"
@@ -42,21 +23,54 @@
 									title="#{general.homeTitleIcon}" alt="#{general.homeTitleIcon}"
 									library="images" name="logo.png" style="width:175px" />
 						</a></td>
-						
+
 						<h:form>
 							<td id="menu_search">
-								<div id="searchLayout"></div>
-								
-								<h:commandButton action="#{homeController.moveToSearch}" value="" style="display:none" />
-								
+								<div class="form_container">
+									<div id="searchLayout">
+										<div id="catMenu" class="table_cell_middle">
+											<div class="catDropDownList">
+
+												<h:selectOneListbox size="1"
+													value="#{homeController.category}"
+													style="padding-right: 15px">
+													<f:selectItem itemLabel="Toutes Catégories" itemValue="All"></f:selectItem>
+													<f:selectItem itemLabel="Gadgets" itemValue="Gadgets"></f:selectItem>
+													<f:selectItem itemLabel="Pièces de rechange"
+														itemValue="Pieces de rechange"></f:selectItem>
+													<f:selectItem itemLabel="Art &amp; Déco"
+														itemValue="Art et Déco"></f:selectItem>
+													<f:selectItem itemLabel="Outils" itemValue="Outils"></f:selectItem>
+													<f:selectItem itemLabel="Objets du quotidien"
+														itemValue="Objets du quotidien"></f:selectItem>
+													<f:selectItem itemLabel="Jouets" itemValue="Jouets"></f:selectItem>
+												</h:selectOneListbox>
+
+											</div>
+										</div>
+
+										<div class="table_cell_middle" style="padding-right: 25px">
+											<h:inputText styleClass="searchInputText"
+												value="#{homeController.search}"></h:inputText>
+										</div>
+<!-- 										<div class="table_cell_middle"> -->
+<!-- 											<h:graphicImage -->
+<!-- 									title="#{general.homeTitleIcon}" alt="#{general.homeTitleIcon}" -->
+<!-- 									library="images" name="logo.png" style="width:175px" /> -->
+<!-- 										</div> -->
+										<h:commandButton action="#{homeController.moveToSearch}"
+											value="" style="display:none" />
+									</div>
+								</div>
 							</td>
 						</h:form>
 
-						<td class="menu_shortcuts"> <p:commandLink
+						<td class="menu_shortcuts"><p:commandLink
 								action="#{homeController.moveToSell}"
-								styleClass="hyperlink_header_titles"><h:graphicImage
-								alt="#{general.sellTitleIcon}" title="#{general.sellTitleIcon}"
-								library="images" name="sell.png" />
+								styleClass="hyperlink_header_titles">
+								<h:graphicImage alt="#{general.sellTitleIcon}"
+									title="#{general.sellTitleIcon}" library="images"
+									name="sell.png" />
 								
 							#{general.sellLabel}
 							</p:commandLink></td>
