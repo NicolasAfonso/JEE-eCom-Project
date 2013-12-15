@@ -39,11 +39,6 @@
 						<br />
 						<h:outputLabel styleClass="small gray"
 							value="#{profile.linkParameters}" />
-						<br />
-						<p:commandLink id="passwordForget" styleClass="hyperlink_classic"
-							action="#{manageProfileController.goToForgetPassword}">
-							<h:outputText value="#{profile.linkPassword}" />
-						</p:commandLink>
 					</div>
 				</div>
 				<br />
@@ -73,7 +68,7 @@
 					<h:outputText value="#{profile.unsub}"/>
 					<a href="mailto:stl-agora@outlook.com">stl-agora@outlook.com</a>
 				</h:panelGroup>
-				
+				<br/>
 				<h:outputText styleClass="bold" value="#{profile.admin}" rendered="#{sessionUser.adminCo}"/>
 				<h:panelGroup class="form_container" layout="block" rendered="#{sessionUser.adminCo}">
 					<div class="form_border">

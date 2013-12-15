@@ -73,8 +73,13 @@
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
 					selection="#{searchController.selectedProduct}" id="productTable">
 
+<<<<<<< HEAD
 					<p:ajax event="rowSelect" update=":form:display" oncomplete="productDialog.show()" />
 <p:remoteCommand > </p:remoteCommand>
+=======
+					<p:ajax event="rowSelect" update=":form:display"
+						oncomplete="#{searchController.selectedProduct.name}" />
+>>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
 
 					<p:column headerText="Produit">
 						<h:column>
@@ -93,10 +98,17 @@
 						</h:column>
 						<br />
 						<h:column>
+<<<<<<< HEAD
 							
 								<h:outputText styleClass="hyperlink_classic underlined"
 									value="(#{s.opinions.size()} #{product.opinions})" />
 						
+=======
+							<p:commandLink id="linkOpinion" action="cart.xhtml">
+								<h:outputText styleClass="hyperlink_classic underlined"
+									value="(#{s.opinions.size()} #{product.opinions})" />
+							</p:commandLink>
+>>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
 						</h:column>
 					</p:column>
 
@@ -121,17 +133,30 @@
 					</p:column>
 				</p:dataTable>
 
+<<<<<<< HEAD
 				<p:dialog header="Votre produit sélectionné" widgetVar="productDialog"
+=======
+				<p:dialog header="Product Detail" widgetVar="productDialog"
+>>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
 					resizable="false" showEffect="explode" hideEffect="explode">
 
 					<h:panelGrid id="display" columns="2" cellpadding="4">
 
+<<<<<<< HEAD
 <h:outputLink value="/stlagora/global/productCard.xhtml">
 								<h:outputText value="#{searchController.selectedProduct.name}" />
 								<f:param name="id" value="#{searchController.selectedProduct.id}" />
 								<br/> (Cliquez sur le lien pour accéder à la fiche produit détaillée)
 							</h:outputLink>
 							
+=======
+						<f:facet name="header">
+							<p:graphicImage library="images"
+								alt="#{searchController.selectedProduct.name}"
+								value="no-image.png" />
+						</f:facet>
+
+>>>>>>> branch 'master' of https://nicolas-afonso@bitbucket.org/ecomabmp/ecom-abmp.git
 						<h:outputText value="id:" />
 						<h:outputText value="#{searchController.selectedProduct.id}"
 							style="font-weight:bold"></h:outputText>

@@ -43,12 +43,15 @@
 											name="nom de l'image" />
 									</div>
 									<div class="table_cell_middle" style="width: 45%">
-										<h:outputLabel styleClass="bold"
-											value=" #{t.product.name} - #{t.product.description}" />
-										<br />
+									
+										<h:outputLink styleClass="blod" value="/stlagora/global/productCard.xhtml">
+											<h:outputText value="#{t.product.name} "/>
+											<f:param name="id" value="#{t.product.id} - "/>
+										</h:outputLink>
+										<h:outputText styleClass="blod" value="#{t.product.description}"/>
+										<br/>
 										<h:outputLabel value="#{profile.labelVendu}" />
-										<h:outputLabel
-											value="#{t.seller.surname} #{t.seller.firstname}" />
+										<h:outputLabel value="#{t.seller.surname} #{t.seller.firstname}" />
 									</div>
 									<div class="table_cell_middle">
 										<h:outputLabel styleClass="gray italic"

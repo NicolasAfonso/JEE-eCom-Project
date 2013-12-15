@@ -1,4 +1,4 @@
-package com.stlagora.model.mail;
+package com.stlagora.utils;
 
 import java.util.Properties;
 import javax.mail.Address;
@@ -80,6 +80,6 @@ public class SendMail {
 
 
 	public static void main(String[] args) {
-		sendMessage("Envoi de mail marche :)", "Bonjour, Je suis STL-Agora, un super site créé par de supers étudiant(e)s. En plus, je sais envoyer des mails tout seul comme un grand :)", "stl-agora@googlegroups.com", "afonso.nicolas@live.fr");
+		sendMessage("Envoi de mail marche :)", "Bonjour, Je suis STL-Agora, un super site crï¿½ï¿½ par de supers ï¿½tudiant(e)s. En plus, je sais envoyer des mails tout seul comme un grand :)", "stl-agora@googlegroups.com", "afonso.nicolas@live.fr");
 	}
 }

@@ -237,7 +237,10 @@ public class SearchController implements Serializable {
 	}
 	public Product getSelectedProduct() {
 		System.out.println("GET PRODUCT");
-		//System.out.println(selectedProduct.getId());
+		if (selectedProduct == null)
+			System.out.println("PRODUCT SELECTED IS NULL");
+		else
+			System.out.println(selectedProduct.getId());
 		return selectedProduct;
 	}
 	public void setSelectedProduct(Product selectedProduct) {

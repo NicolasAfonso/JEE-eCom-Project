@@ -58,7 +58,7 @@ public class LoginController implements Serializable {
 				user = userDao.findByEmail(loginUser);
 			}catch(Exception e){
 				log.error("User "+loginUser+ "not found ");
-			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
+			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Mauvais identifiant ou mot de passe","");  
 			     FacesContext.getCurrentInstance().addMessage(null, msg);  
 			}
 			}
@@ -85,13 +85,13 @@ public class LoginController implements Serializable {
 			}
 			else
 			{
-			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
+			     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Mauvais identifiant ou mot de passe","");  
 			     FacesContext.getCurrentInstance().addMessage(null, msg);  
 			     return "/login";
 			}
 		}
 		else{
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Bad credential","");  
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Mauvais identifiant ou mot de passe","");  
 		     FacesContext.getCurrentInstance().addMessage(null, msg);  
 		     return "/login";
 		}
