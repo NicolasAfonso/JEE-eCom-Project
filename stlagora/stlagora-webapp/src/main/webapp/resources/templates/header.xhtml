@@ -49,17 +49,15 @@
 											</div>
 										</div>
 
-										<div class="table_cell_middle" style="padding-right: 25px">
+										<div class="table_cell_middle">
 											<h:inputText styleClass="searchInputText"
 												value="#{homeController.search}"></h:inputText>
 										</div>
-<!-- 										<div class="table_cell_middle"> -->
-<!-- 											<h:graphicImage -->
-<!-- 									title="#{general.homeTitleIcon}" alt="#{general.homeTitleIcon}" -->
-<!-- 									library="images" name="logo.png" style="width:175px" /> -->
-<!-- 										</div> -->
-										<h:commandButton action="#{homeController.moveToSearch}"
-											value="" style="display:none" />
+										<div class="table_cell_middle" style="width:15px; padding-right: 10px">
+											<p:commandLink action="#{homeController.moveToSearch}"><h:graphicImage
+									title="#{general.homeTitleIcon}" alt="#{general.homeTitleIcon}"
+									library="images" name="search.png" /></p:commandLink>
+										</div>
 									</div>
 								</div>
 							</td>

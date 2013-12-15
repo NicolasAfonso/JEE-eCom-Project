@@ -148,7 +148,7 @@ h2
 
 #searchLayout
 {
- 	background: url("#{resource['images/search.png']}") no-repeat 98.5% 50% #fcfcfc;
+	background-color: #fcfcfc;
  	border: 1px solid #d1d1d1;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -201,8 +201,6 @@ h2
 
 .username
 {
-	max-width: 100%;
-	overflow: hidden;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
