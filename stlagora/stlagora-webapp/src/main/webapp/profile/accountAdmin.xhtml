@@ -8,7 +8,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Bienvenue sur STL Agora - Accueil -</title>
-	<h:outputStylesheet library="css" name="global.css" />
+	
 </h:head>
 
 <h:body>
@@ -37,20 +37,17 @@
 						<br/>
 						<h:outputLabel styleClass="bold" value="Nombre de professionnels : " /> 
 						<h:outputLabel value="#{adminController.nbMemberPro}" /> 
-					</div>
-				</div>
+					</div> 
+				</div> 
 				<br />
 				<h:outputLabel styleClass="bold" value="#{profile.statProd}" />
 				<div class="form_container">
 					<div class="form_border">
 						 <p:pieChart id="sample" value="#{adminController.pieModelMember}" legendPosition="w"  
                 title="Sample Pie Chart" style="width:400px;height:300px" diameter="150" />  
-					</div>
+					</div> 
 				</div>
-				<br/>
-				
-				
-				
+				<br/>    
 			</h:form>
  
 		</div>

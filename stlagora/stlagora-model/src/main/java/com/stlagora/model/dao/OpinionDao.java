@@ -15,5 +15,5 @@ public interface OpinionDao extends GenericDao<Opinion>{
 	public List<Opinion> findByWriterId(User user);
 	public List<Opinion> findByUserMarked(User user);
 	public List<Opinion> findByProduct(Product product);
-
+	public Opinion findByUserProduct(Product product, User user);
 }

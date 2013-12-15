@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.log4j.Logger;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
@@ -18,7 +19,7 @@ import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 @ManagedBean(name = "adminController")
 @SessionScoped
 public class AdminController {
-	
+	private Logger log = Logger.getLogger(AdminController.class.getName());
 	int nbMember;
 	int nbMemberPro;
 	int nbMemberPriv;

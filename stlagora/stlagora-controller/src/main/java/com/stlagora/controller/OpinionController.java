@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.OpinionDao;
+import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.entities.Opinion;
 import com.stlagora.model.entities.Product;
 
@@ -24,23 +25,48 @@ public class OpinionController {
 	private String opinionComment ;
 	private int opinionMark;
 	private long idProduct;
+	private Opinion opinion;
 	
 	@EJB
 	private OpinionDao opinionDao;
+	@EJB
+	private ProductDao productDao;
 	
 	public String moveToOpinion(Product prod){
 		product = prod;
 		log.debug(product.getId());
-		return "/profile/opinion?faces-redirect=true";
+		return "/profile/opinion";
 	}
 	
 	public String createOpinion(){
-		log.debug(product.getId());
-		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		Opinion opinion = new Opinion(sessionUser.getUser(), new Date(System.currentTimeMillis()), opinionMark, opinionComment, product, null);
-		opinionDao.create(opinion);
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Avis enregistré","");  
-		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		if(opinion != null){
+			opinion.setComment(opinionComment);
+			opinion.setMark(opinionMark);
+			opinionDao.update(opinion);
+			float new_global = (product.getGlobalMark()+opinionMark)/2;
+			product.setGlobalMark(new_global);
+			productDao.update(product);
+		}
+		else{
+			log.debug(product.getId());
+			SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+			opinion = new Opinion(sessionUser.getUser(), new Date(System.currentTimeMillis()), opinionMark, opinionComment, product, null);
+			
+			int jesuisbete = product.getOpinions().size();
+			log.debug(jesuisbete);
+			if(jesuisbete == 0){
+				float new_global = opinionMark;
+				product.setGlobalMark(new_global);
+			}
+			else{
+				float new_global = (product.getGlobalMark()+opinionMark)/2;
+				product.setGlobalMark(new_global);
+			}
+			opinionDao.create(opinion);
+			productDao.update(product);
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Avis enregistré","");  
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
 		return "/profile/historyPurchase?faces-redirect=true";
 	}
 	
@@ -63,6 +89,18 @@ public class OpinionController {
 	 * @return the opinionMark
 	 */
 	public int getOpinionMark() {
+		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
+		log.debug(product.getId());
+		try{
+			opinion = opinionDao.findByUserProduct(product, sessionUser.getUser());
+		}
+		catch(Exception e){
+			opinion = null;
+		}
+		if(opinion != null){
+			opinionComment=opinion.getComment();
+			opinionMark=Math.round(opinion.getMark());
+		}
 		return opinionMark;
 	}
 

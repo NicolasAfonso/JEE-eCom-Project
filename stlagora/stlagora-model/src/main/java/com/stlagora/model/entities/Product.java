@@ -110,7 +110,7 @@ public class Product implements Serializable {
 		this.seller = seller;
 		this.availableDate = availableDate;
 		this.lastUpdate = lastUpdate;
-		this.globalMark = 3f;
+		this.globalMark = 0f;
 		this.category = category;
 		this.isDeleted = false;
 	}
