@@ -17,11 +17,12 @@
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
 	
-	<h:form>
+	
 		<div id="page">
 			<div id="pagecontent">
+		
 				<div class="form_container">
-
+	<h:form>
 					<div class="gray_background">
 						<h1>#{profile.accountParameters}</h1>
 					</div>
@@ -29,6 +30,7 @@
 					<br />
 
 					<div>
+					
 						<h2>#{profile.identify}</h2>
 						<br />
 						<h:outputLabel styleClass="label bold" value="#{profile.fieldEmail}" />
@@ -100,6 +102,7 @@
 							</p:selectOneRadio>
 						</h:panelGrid>
 					</div>
+					</h:form>
 				</div>
 				<br /> 
 				<h:commandButton value="#{profile.backModif}"
@@ -110,7 +113,7 @@
 
 			</div>
 		</div>
-	</h:form>
+	
 
 	<ui:insert name="footer">
 		<ui:include src="/resources/templates/footer.xhtml" />
