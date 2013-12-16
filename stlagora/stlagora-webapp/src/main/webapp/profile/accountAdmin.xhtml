@@ -8,14 +8,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Bienvenue sur STL Agora - Page d'adminisatration -</title>
-	
+	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
-
 <h:body>
 
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
-		<h:outputStylesheet library="css" name="global.css" />
+		
 	</ui:insert>
 
 	<div id="page">
@@ -26,26 +25,19 @@
 					<h1>#{profile.linkStat}</h1>
 				</div>
 				<br /> 
- 
 				<h:outputLabel styleClass="bold" value="#{profile.statMembers}" />
 				<div class="form_container">
-					<div class="form_border"> 
-						<h:outputLabel styleClass="bold" value="Nombre de membres inscrits : " /> 
-						<h:outputLabel value="#{adminController.nbMember}" /> 
-						<br/>
-						<h:outputLabel styleClass="bold" value="Nombre de particuliers : " />
-						<h:outputLabel value="#{adminController.nbMemberPriv}" /> 
-						<br/>
-						<h:outputLabel styleClass="bold" value="Nombre de professionnels : " /> 
-						<h:outputLabel value="#{adminController.nbMemberPro}" /> 
-					</div> 
+				<div class="form_border">
+						 <p:pieChart id="pie_user" value="#{statController.pie}" legendPosition="s" 
+                 style="width:400px;height:300px" diameter="150" showDataLabels="true" title="Répartition des membres sur le site" /> 
 				</div> 
 				<br />
 				<h:outputLabel styleClass="bold" value="#{profile.statProd}" />
 				<div class="form_container">
-					<div class="form_border">
-						 <p:pieChart id="sample" value="#{adminController.pieModelMember}" legendPosition="s"  
-                 style="width:400px;height:300px" diameter="150" />  
+ 					<div class="form_border">
+						 <p:pieChart id="pie_product" value="#{statController.pieProduct}" sliceMargin="10" legendPosition="s" 
+                 style="width:600px;height:500px" diameter="150" showDataLabels="true" title="Répartition des produits sur le site" /> 
+				</div> 
 					</div> 
 				</div>
 				<br/>    

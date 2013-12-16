@@ -92,6 +92,7 @@ public class ManageProfileController implements Serializable {
 		userDao.create(u);
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		sessionUser.setLoggedIn(true);
+		sessionUser.setAdminCo(false);
 		try{
 			User userCreate = userDao.findByLogin(email);
 			sessionUser.setUser(userCreate);

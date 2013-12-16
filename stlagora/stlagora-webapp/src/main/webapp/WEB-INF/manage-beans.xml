@@ -30,8 +30,8 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>adminController</managed-bean-name>
-		<managed-bean-class>com.stlagora.controller.AdminController</managed-bean-class>
+		<managed-bean-name>statController</managed-bean-name>
+		<managed-bean-class>com.stlagora.controller.StatController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>

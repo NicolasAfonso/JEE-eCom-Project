@@ -37,7 +37,7 @@ public class SessionUser implements Serializable{
 		
 	}
 	
-	public boolean isAdminCo(){
+	public boolean getAdminCo(){
 		return adminCo;
 	}
 
