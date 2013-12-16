@@ -42,13 +42,13 @@ public class EmailValidator implements Validator{
 		}
 		if(user!=null)
 		{
-	           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"This email is already use !!","");
+	           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Cet email est déjà utilisé","");
 	           throw new ValidatorException(message);
 		}
 		
 		matcher = pattern.matcher(email);
 		if(!matcher.matches()){
-			 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Invalid E-mail format.","");
+			 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Mauvais format d'email","");
 	         throw new ValidatorException(message);
 		}
 	}
