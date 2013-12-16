@@ -136,7 +136,7 @@ public class ProductController {
 //			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
 //			FacesContext.getCurrentInstance().addMessage(null, msg);
 			log.debug("en bas");
-		return "/home";
+		return "/profile/forSale?faces-redirect=true";
 	}
 	
 	

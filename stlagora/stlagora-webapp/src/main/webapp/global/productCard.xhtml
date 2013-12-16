@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Bienvenue sur STL Agora - Accueil -</title>
+	<title>Bienvenue sur STL Agora - Descriptif produit -</title>
 	<h:outputStylesheet library="css" name="global.css" />
 </h:head>
 
@@ -31,7 +31,7 @@
 							library="images" name="no-image.png" rendered="#{productController.product.name != 'Satria Neo 2000'}"/>
 							
 							<h:graphicImage styleClass="product_card_image"
-							title="product_card_image" alt="product_card_image"
+							title="product_card_image" alt="product_card_image" style="margin:15px"
 							library="images" name="Satria.jpg" rendered="#{productController.product.name == 'Satria Neo 2000'}"/>
 							
 					</div>
