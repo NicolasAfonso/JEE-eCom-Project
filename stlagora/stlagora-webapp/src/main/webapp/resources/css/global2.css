@@ -1,0 +1,734 @@
+@font-face
+{
+    font-family: "EurostileT";
+    src: url("#{resource['fonts/EurostileT.ttf']}") format('truetype');
+    font-family: "EurostileLT";
+    src: url("#{resource['fonts/Eurostile_LT_Medium.ttf']}") format('truetype');
+}
+
+html
+{
+	height: 100%;
+}
+
+body
+{
+	height: 100%;
+    width: 95%;
+	background-color: #e1e1e1;
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.0em;
+    min-width: 1000px;
+    margin: auto;
+    padding: 0;
+}
+
+/* BASICS */
+
+.small
+{
+	font-size: 10px;
+}
+
+.large
+{
+	font-size: 14px;
+}
+
+.x-large
+{
+	font-size: 16px;
+}
+
+.gray
+{
+	color: gray;
+}
+
+.red
+{
+	color: #dc0800;
+}
+
+.white
+{
+	color: white;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.italic
+{
+	font-style: italic;
+}
+
+.underlined
+{
+	text-decoration: underline;
+}
+
+.full_width {
+	
+	width:100%;
+}
+
+#div_container
+{
+	display: table;
+	width: 100%;
+}
+
+.table_cell_middle
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.table_cell_top
+{
+	display: table-cell;
+	vertical-align: top;
+}
+
+h1
+{
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h2
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	color: gray;
+}
+
+/* HEADER */
+
+#header
+{
+    position: fixed;
+    height: 105px;
+    width: inherit;
+  background-color:#50505a;
+    z-index: 3;
+}
+
+#menu
+{
+    text-align: center;
+}
+
+#menu_logo
+{
+	text-align: center;
+/*     min-width: 130px; */
+    width: 20%;
+}
+
+#menu_search
+{
+    text-align: center;
+    max-width: 40%;
+}
+
+.search {
+	width: 90%;
+ 	background: url("#{resource['images/search.png']}") no-repeat 10px 6px #fcfcfc;
+ 	border: 1px solid #d1d1d1;
+    color: darkgray;
+    padding: 6px 0px;
+    padding-left: 10%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+}
+
+.username
+{
+	padding:3px 10px ;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 13px;
+	color: #a7c2ff;
+	text-decoration: none;
+}
+
+#username:after
+{
+    content: url("#{resource['images/profile_arrow.png']}");
+}
+
+.menu_shortcuts
+{
+    /*min-width: ???px*/
+    text-align: center;
+    width: 12%;
+}
+
+.home_menu_icon {
+	height: 21px !important;
+	width: 20px !important;
+	background-image: url("#{resource['images/home.png']}") !important;
+}
+
+/* BODY */
+
+#page
+{
+	background-color: white;
+	min-height: 90%;
+	box-shadow: 0px 0px 20px 3px gray;
+	display: table;
+	width: 100%;
+}
+
+#pagecontent
+{
+    padding: 130px 25px 25px 25px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* HYPERLINKS */
+
+.hyperlink_header_titles
+{
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: white;
+	text-decoration: none;
+}
+
+.hyperlink_header_subtitles
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: #a7c2ff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.hyperlink_classic
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	color: #286bcc;
+	text-decoration: none;
+}
+
+.hyperlink_page
+{
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	color: gray;
+	text-decoration: none;
+}
+
+/* BACKGROUNDS */
+
+.gray_background
+{
+	padding: 5px 20px;
+	background-color: #f1f1f1;
+}
+
+/* TEXTS */
+
+.price
+{
+	color: #dc0800;
+	font-size: x-large;
+	font-weight: bold;
+}
+
+/* FORMS */
+
+#form_container
+{
+	display: table;
+	width: 100%;
+	border-collapse: separate;
+  	border-spacing: 20px;
+}
+
+.form_border
+{
+	display: table-cell;
+	vertical-align: middle;
+	padding: 15px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #92d050;
+}
+
+/* SPECIAL DIVS */
+
+.product_search_title
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.product_search_info
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.ui-menuitem-text
+{
+	width: 14% !important;
+	color:pink !important;
+}
+
+/* BUTTONS */
+
+.button_classic
+{
+	font-family: "EurostileT";
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
+	background-image: -webkit-linear-gradient(bottom, #74C14A 0%, #C2FF81 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #6ecc59;
+	font-weight: bold;
+}
+
+.button_classic:hover
+{
+	font-family: "EurostileT";
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #C2FF81 0%, #74C14A 100%);
+	background-image: -webkit-linear-gradient(bottom, #C2FF81 0%, #74C14A 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #6ecc59;
+	font-weight: bold;
+}
+
+.button_back
+{
+	font-family: "EurostileT";
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+	font-weight: bold;
+}
+
+.button_back:hover
+{
+	font-family: "EurostileT";
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+	font-weight: bold;
+}
+
+.button_delete
+{
+	font-family: "EurostileT";
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #dc0800 0%, #f19c99 100%);
+	background-image: -webkit-linear-gradient(bottom, #dc0800 0%, #f19c99 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #dc0800;
+	font-weight: bold;
+	color: white;
+}
+
+.button_delete:hover
+{
+	font-family: "EurostileT";
+	padding: 5px 15px;
+	background-image: -moz-linear-gradient(bottom, #f19c99 0%, #dc0800 100%);
+	background-image: -webkit-linear-gradient(bottom, #f19c99 0%, #dc0800 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #dc0800;
+	font-weight: bold;
+	color: white;
+}
+
+.button_browse
+{
+	font-family: "EurostileT";
+	background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #FFFFFF 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+}
+
+.button_browse:hover
+{
+	font-family: "EurostileT";
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CCCCCC 100%);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cccccc;
+}
+
+.button_add_card
+{
+	height: 40px;
+	width: 120px;
+}
+
+/* IMAGES */
+
+.star
+{
+	height: 15px;
+	width: 15px;
+}
+
+.product_search_image
+{
+	max-height: 150px;
+	max-width: 200px;
+}
+
+.product_card_image
+{
+	max-height: 250px;
+	max-width: 350px;
+}
+
+/*fuck*/
+
+
+.fancyNav{
+	width: 100%;
+	display: table;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	
+    /* Affects the UL element */
+    overflow: hidden;
+/*     display: inline-block; */
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -moz-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    margin-top: 0px;
+}
+
+.fancyNav li{
+    /* Specifying a fallback color and we define CSS3 gradients for the major browsers: */
+    padding: 0;
+    margin: 0;
+    
+    height: 25px;
+	width: 16%;
+	
+    background-color: #f0f0f0;
+    background-image: -webkit-gradient(linear,left top, left bottom,from(#fefefe), color-stop(0.5,#f0f0f0), color-stop(0.51, #e6e6e6));
+    background-image: -moz-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -o-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -ms-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+
+    border-right: 1px solid rgba(9, 9, 9, 0.125);
+
+    /* Adding a 1px inset highlight for a more polished efect: */
+
+    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+
+    position:relative;
+
+/*     float: left; */
+    list-style: none;
+    
+    display: table-cell;
+}
+
+
+.fancyNav li:after{
+
+    /* This creates a pseudo element inslide each LI */	
+
+    content:'.';
+    text-indent:-9999px;
+    overflow:hidden;
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:1;
+    opacity:0;
+
+    /* Gradients! */
+
+    background-image:-webkit-gradient(linear, left top, right top, from(rgba(168,168,168,0.5)),color-stop(0.5,rgba(168,168,168,0)), to(rgba(168,168,168,0.5)));
+    background-image:-moz-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-o-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-ms-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+
+    /* Creating borders with box-shadow. Useful, as they don't affect the size of the element. */
+
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+
+    /* This will create a smooth transition for the opacity property */
+
+    -moz-transition:0.25s all;
+    -webkit-transition:0.25s all;
+    -o-transition:0.25s all;
+    transition:0.25s all;
+}
+
+/* Treating the first LI and li:after elements separately */
+
+.fancyNav li:first-child{
+    border-radius: 4px 0 0 4px;
+}
+
+.fancyNav li:first-child:after,
+.fancyNav li.selected:first-child:after{
+    box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+
+    border-radius:4px 0 0 4px;
+}
+
+.fancyNav li:last-child{
+    border-radius: 0 4px 4px 0;
+}
+
+/* Treating the last LI and li:after elements separately */
+
+.fancyNav li:last-child:after,
+.fancyNav li.selected:last-child:after
+{
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+
+    border-radius:0 4px 4px 0;
+}
+
+.fancyNav li:hover:after,
+.fancyNav li.selected:after,
+.fancyNav li:target:after{
+    /* This property triggers the CSS3 transition */
+    opacity:1;
+    background-image: -moz-linear-gradient(#c2ff81 50%,#74c14a 100%);
+    background-image: -o-linear-gradient(#c2ff81 50%, #74c14a 100%);
+    background-image: -ms-linear-gradient(#c2ff81 50%, #74c14a 100%);
+    background-image: linear-gradient(#c2ff81 50%, #74c14a 100%);
+}
+
+.fancyNav:hover li.selected:after,
+.fancyNav:hover li:target:after{
+    /* Hides the targeted li when we are hovering on the UL */
+    opacity:0;
+}
+
+.fancyNav li.selected:hover:after,
+.fancyNav li:target:hover:after{
+    opacity:1;
+}
+
+/* Styling the anchor elements */
+
+.fancyNav li a{
+	color: #676767;
+	font-family: "EurostileT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+    display: inline-block;
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+    z-index:2;
+    text-decoration:none !important;
+    white-space:nowrap;
+}
+
+.fancyNav a.homeIcon{
+    background:url("#{resource['images/home.png']}") no-repeat center center;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-indent: -9999px;
+    width: 16px;
+}
+
+#home{
+	width: 3%;
+}
+
+.agile_carousel{
+	margin:auto;
+}
+
+/* FOOTER */
+
+#footer
+{
+    height: 10%;
+   	background-color: #50505a;
+	border-top: dashed white 1.5px;
+/* 	box-shadow: 0px 0px 20px 3px gray; */
+}
+
+#footercontent
+{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-size: small;
+	text-align: center;
+}
+
+#footercontent ul
+{
+	margin: 0;
+	list-style-type: none;
+	padding: 0px;
+}
+
+#footercontent li
+{
+	color: white;
+	margin-left: 2px;
+	display: inline;
+}
+
+#footercontent li a
+{
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	color: white;
+	text-decoration: none;
+}
+
+/* .control_set{ */
+/* 	display:none; */
+/* } */
+
+.content_button_inner{
+	display:none;
+}
+
+/*DROP DOWN MENU*/
+.test ul {
+  text-align: left;
+  display: inline;
+  margin: 0;
+  padding: 15px 4px 17px 0;
+  list-style: none;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.test ul li {
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  padding: 15px 20px;
+/*    background: #fff;  */
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  z-index: 50;
+}
+.test ul li:hover {
+/*   background: #555; */
+  color: #fff;
+}
+.test ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+}
+.test ul li ul li { 
+/*   background: #555;  */
+  display: block; 
+  background-color:#50505a;
+  text-shadow: 0 -1px 0 #000;
+  
+  
+}
+.test ul li ul li:hover { 
+	color:black;
+	opacity:1;
+    background-image: -moz-linear-gradient(#c2ff81 50%,#74c14a 100%);
+    background-image: -o-linear-gradient(#c2ff81 50%, #74c14a 100%);
+    background-image: -ms-linear-gradient(#c2ff81 50%, #74c14a 100%);
+    background-image: linear-gradient(#c2ff81 50%, #74c14a 100%);
+	
+}
+/* 	background: #666; } */
+.test ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.test {
+	height: 20px;
+	font-family: "EurostileLT", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.0em;
+}
+
+.top
+{
+	margin:0px !important;
+	
+
+	}
+}
