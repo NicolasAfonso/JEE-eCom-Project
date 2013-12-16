@@ -61,7 +61,7 @@ public class SellController implements Serializable {
 	
 	private Product productUpload;
 
-	private static String FILER = "C:/filer";
+	private static String FILER = "/home/stladmin/filer";
 	
 	public String validateSell(){
 		if(plan != null && image !=null) {    

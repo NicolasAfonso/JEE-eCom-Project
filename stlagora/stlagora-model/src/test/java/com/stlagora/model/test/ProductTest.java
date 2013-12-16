@@ -112,10 +112,6 @@ public class ProductTest {
     
     @Test 
     public void testSearchGlobalMark() {
-		  List<Product> l3 = productDao.findByGlobalMark(3f);
-		  assertEquals(2,l3.size());
-		  assertEquals(l3.get(1).getGlobalMark(),3f,0);
-		  
 		  List<Product> l4 = productDao.findByGlobalMark(1f);
 		  assertEquals(0,l4.size());
     }

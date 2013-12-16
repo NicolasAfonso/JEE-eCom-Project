@@ -60,7 +60,7 @@ public class ProductController {
 	private Category category;
 	private PRODUCT_STATUS status;
 	private Float price;
-	private static String FILER = "C:/filer";
+	private static String FILER = "/home/stladmin/filer";
 
 	@EJB
 	private ProductDao productDao;

@@ -3,7 +3,7 @@
 	<!-- Changer cette valeur à "Production" lors du déploiement final de l'application -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Development</param-value>
+		<param-value>Production</param-value>
 	</context-param>
 
 	<context-param>
@@ -17,10 +17,9 @@
 	</welcome-file-list>
 
 	<!-- Error pages -->
-<!-- 	<error-page> -->
-<!-- 		<error-code>404</error-code> -->
-<!-- 		<location>/error.xhtml</location> -->
-<!-- 	</error-page> -->
+	<error-page>
+		<location>/global/error.xhtml</location>
+	</error-page>
 	<!-- Login filter -->
 	<filter>
 		<filter-name>LoginFilter</filter-name>
