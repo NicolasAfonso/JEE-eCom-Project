@@ -970,3 +970,34 @@ img
 	color: white;
 	text-decoration: none;
 }
+
+#pageInConstruction{
+	background: url("#{resource['images/page-under-construction.gif']}") no-repeat right;
+	vertical-align: middle; 
+	text-align: center; 
+	font-weight:bold;
+	height:700px;
+	width50%;
+	}
+	
+#pageInConstruction p{
+	position: absolute;
+	top:50%;
+	left:25%;
+}
+
+#pageError{
+	background: url("#{resource['images/error.png']}") no-repeat right;
+	vertical-align: middle; 
+	text-align: center; 
+	font-weight:bold;
+	height:700px;
+	width50%;
+	
+}
+
+#pageError p{
+	position: absolute;
+	top:50%;
+	left:25%;
+}

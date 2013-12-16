@@ -9,11 +9,7 @@
 
 <h:head>
 	<title>Bienvenue sur STL Agora - Accueil -</title>
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-	<h:outputStylesheet library="css" name="agile_carousel.css" />
 	<h:outputStylesheet library="css" name="global.css" />
-	<h:outputScript library="js" name="agile_carousel.alpha.js" />
 </h:head>
 
 <h:body>
@@ -22,10 +18,13 @@
 	</ui:insert>
 
 	<div id="page">
-		<div id="pagecontent" style="vertical-align: middle; text-align: center">
-			Cette page est actuellement en construction
-		</div>
+	<div id="pagecontent" style="vertical-align: middle;">
+	<div id="pageInConstruction">
+		<p>Page en construction. Merci de rééssayer plus tard ;)</p>
 	</div>
+	</div></div>
+	
+	
 
 	<ui:insert name="footer">
 		<ui:include src="/resources/templates/footer.xhtml" />

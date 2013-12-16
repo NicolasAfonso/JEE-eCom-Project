@@ -28,7 +28,12 @@
 					<div class="table_cell_middle" style="width: 350px; text-align: center">
 						<h:graphicImage styleClass="product_card_image"
 							title="product_card_image" alt="product_card_image"
-							library="images" name="logo.png" />
+							library="images" name="no-image.png" rendered="#{productController.product.name != 'Satria Neo 2000'}"/>
+							
+							<h:graphicImage styleClass="product_card_image"
+							title="product_card_image" alt="product_card_image"
+							library="images" name="Satria.jpg" rendered="#{productController.product.name == 'Satria Neo 2000'}"/>
+							
 					</div>
 
 					<div class="table_cell_middle">
