@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.stlagora</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.9.3-SNAPSHOT</version>
+	<version>0.9.4-RELEASE</version>
 	<packaging>pom</packaging>
 	<url>http://maven.apache.org</url>
 
