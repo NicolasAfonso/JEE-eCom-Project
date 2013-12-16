@@ -2,5 +2,5 @@
 GlassFish Application Server 3.1 Servlet 3.0//EN" 
 "http://glassfish.org/dtds/glassfish-web-app_4_0-1.dtd">
 <glassfish-web-app>
-<!-- 	<property name="alternatedocroot_1" value="from=/test/* dir=c:/srv/"/> -->
+<!-- 	<property name="alternatedocroot_1" value="from=/img/* dir=/home/stladmin/filer/public/"/> -->
 </glassfish-web-app>

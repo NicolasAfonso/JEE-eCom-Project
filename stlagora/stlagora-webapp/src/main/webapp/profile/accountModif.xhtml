@@ -16,7 +16,7 @@
 	<ui:insert name="header">
 		<ui:include src="/resources/templates/header.xhtml" />
 	</ui:insert>
-
+	
 	<h:form>
 		<div id="page">
 			<div id="pagecontent">
@@ -48,12 +48,13 @@
 						<br />
 
 
-						<!-- 					TODO : verifier longueur -->
+
 						<h:outputLabel styleClass="label bold" value="#{profile.fieldPassword}" />
 
 						<p:password id="password_creat" required="false"
 							value="#{manageProfileController.password}"
 							match="password_confirm">
+							
 						</p:password>
 						<br />
 

@@ -108,28 +108,42 @@ public class ManageProfileController implements Serializable {
 	{
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
 		User u = sessionUser.getUser();
-		if(password.length() < 8 && password.equals("")){
-			userDao.update(u);
-			return "/profile/accountParameters?faces-redirect=true";
-		}
-
+		
 		if(password.length() <8 && !password.equals(""))
 		{
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Mot de passe trop court","");  
 			FacesContext.getCurrentInstance().addMessage(null, msg);  
 			return "/profile/accountModif";
 		}
-		u.setFirstname(firstname);
-		u.setSurname(surname);
-		u.setEmail(email);
-		u.setPassword(password);
-		u.setPhoneNumber(phoneNumber);
-		u.setSiret(siret);
-		u.setCompanyName(companyName);
-		u.setRib(rib);
-		u.setAccountType(accountType);
+		
+		if(password.length() < 8 && password.equals("")){
+			u.setFirstname(firstname);
+			u.setSurname(surname);
+			u.setEmail(email);
+			u.setPhoneNumber(phoneNumber);
+			u.setSiret(siret);
+			u.setCompanyName(companyName);
+			u.setRib(rib);
+			u.setAccountType(accountType);
+		}
+		else
+		{
+
+			u.setFirstname(firstname);
+			u.setSurname(surname);
+			u.setEmail(email);
+			u.setPhoneNumber(phoneNumber);
+			u.setSiret(siret);
+			u.setCompanyName(companyName);
+			u.setPassword(password);
+			u.setRib(rib);
+			u.setAccountType(accountType);
+		}
+
 		userDao.update(u);
-		return "/profile/accountParameters?faces-redirect=true";
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Modification enregistrée","");  
+		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		return "/profile/accountModif";
 
 	}
 	
