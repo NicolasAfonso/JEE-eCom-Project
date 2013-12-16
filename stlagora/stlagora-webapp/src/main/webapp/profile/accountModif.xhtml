@@ -20,9 +20,9 @@
 	
 		<div id="page">
 			<div id="pagecontent">
-		
+		<h:form>
 				<div class="form_container">
-	<h:form>
+	
 					<div class="gray_background">
 						<h1>#{profile.accountParameters}</h1>
 					</div>
@@ -102,7 +102,7 @@
 							</p:selectOneRadio>
 						</h:panelGrid>
 					</div>
-					</h:form>
+				
 				</div>
 				<br /> 
 				<h:commandButton value="#{profile.backModif}"
@@ -110,7 +110,7 @@
 				<h:commandButton id="button_record" styleClass="button_classic"
 					value="#{profile.button_record}"
 					action="#{manageProfileController.update}" style="float: right"/>
-
+	</h:form>
 			</div>
 		</div>
 	
