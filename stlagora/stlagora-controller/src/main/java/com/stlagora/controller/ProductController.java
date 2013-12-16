@@ -85,6 +85,7 @@ public class ProductController {
 			product = productDao.findById(Long.parseLong(id));
 			this.name = product.getName();
 			this.category = product.getCategory();
+			this.productCategory=product.getCategory().getCategoryName();
 			this.description = product.getDescription();
 			this.status = product.getStatus();
 			this.price = product.getPrice();

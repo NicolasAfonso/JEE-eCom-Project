@@ -32,7 +32,7 @@ public class CBValidator implements Validator{
 		
 		log.debug(cbUser);
 		if(!matcherVisa.matches() &&  !matcherMastercard.matches() && !matcherAmerican.matches()){
-			 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Invalid card format.","");
+			 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Votre numéro de carte est invalide","");
 	         throw new ValidatorException(message);
 		}
 	}

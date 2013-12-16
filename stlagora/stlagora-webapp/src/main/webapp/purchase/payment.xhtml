@@ -53,7 +53,7 @@
 						value="#{general.cardHolder}" />
 
 					<p:inputText id="name_cardHolder" required="true" >
-						<f:validateRegex pattern="[a-zA-Z]*" />
+						<f:validateLength minimum="3" maximum="20"/>
 					</p:inputText>
 					<br />
 					<h:outputLabel styleClass="bold label"
