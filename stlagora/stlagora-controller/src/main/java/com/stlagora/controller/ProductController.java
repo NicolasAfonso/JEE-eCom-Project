@@ -110,30 +110,30 @@ public class ProductController {
 		{
 			log.error("Product Update failed");
 		}
-		if(image != null)
-			
-			try {
-				File fimage = new File(FILER+"/public/"+product.getImages());
-				fimage.createNewFile();
-				saveFile(image.getInputstream(),new FileOutputStream(fimage));	
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				log.error("File creation Problem");
-				e.printStackTrace();
-			}
-		
-		if(plan != null)
-		{
-			try{
-				File fplan = new File(FILER+"/private/"+product.getPlan());
-				fplan.createNewFile();
-				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
-			}catch(Exception e)
-			{
-				log.error("File creation Problem");
-			}
-		}
+//		if(image != null)
+//			
+//			try {
+//				File fimage = new File(FILER+"/public/"+product.getImages());
+//				fimage.createNewFile();
+//				saveFile(image.getInputstream(),new FileOutputStream(fimage));	
+//			} catch (FileNotFoundException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				log.error("File creation Problem");
+//				e.printStackTrace();
+//			}
+//		
+//		if(plan != null)
+//		{
+//			try{
+//				File fplan = new File(FILER+"/private/"+product.getPlan());
+//				fplan.createNewFile();
+//				saveFile(plan.getInputstream(),new FileOutputStream(fplan));
+//			}catch(Exception e)
+//			{
+//				log.error("File creation Problem");
+//			}
+//		}
 //			FacesMessage msg = new FacesMessage("Succesful", plan.getFileName() + " is uploaded.");  
 //			FacesContext.getCurrentInstance().addMessage(null, msg);
 			log.debug("en bas");

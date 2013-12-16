@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
 
@@ -29,6 +31,8 @@ public class Cart implements Serializable {
             products.add(product);
             amount += product.getPrice();
             numberArticle +=1 ; 
+		     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Produit ajouté au panier","");  
+		     FacesContext.getCurrentInstance().addMessage(null, msg);  
     	}
     }
 
@@ -36,6 +40,8 @@ public class Cart implements Serializable {
         products.remove(product);
         amount -= product.getPrice();
         numberArticle -=1 ; 
+	     FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Produit supprimé du panier","");  
+	     FacesContext.getCurrentInstance().addMessage(null, msg);  
     }
     
 
