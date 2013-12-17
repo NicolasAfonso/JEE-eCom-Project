@@ -39,7 +39,7 @@ public class DatabaseCreator {
 	public static char[] charsExtended = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,;:. ".toCharArray();
 
 	public static String[] imgPath = {"pathImg1","pathImg2","pathImg3","pathImg4","pathImg5", ""};
-	public static String[] planPath = {"pathPlan1","pathPlan2","pathPlan3","pathPlan4","pathPlan5"};
+	public static String planPath = "/home/stladmin/filer/private/2/genstl.stl";
 	public static String[] productStatus = {"Available", "Not Available"};
 	public static String[] categoryname={"Jouets","Gadgets", "Pieces de rechange", "Art et Deco", "Outils", "Objets du quotidien" };
 	public static String[] planType = {"STL"};
@@ -133,7 +133,7 @@ public class DatabaseCreator {
 
 				Element productTable_plan = doc.createElement("plan");
 				productTable_row.appendChild(productTable_plan);
-				productTable_plan.appendChild(doc.createTextNode(planPath[random.nextInt(planPath.length)]));
+				productTable_plan.appendChild(doc.createTextNode(planPath));
 
 				Element productTable_price = doc.createElement("price");
 				productTable_row.appendChild(productTable_price);

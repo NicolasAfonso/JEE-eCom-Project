@@ -1,3 +1,5 @@
+// Scripts to be used in the SQL Scrapbook in Eclipse to clean our DB
+
 DROP TABLE TRANSACTIONS;
 DROP TABLE OPINIONS;
 DROP TABLE PRODUCTS;
