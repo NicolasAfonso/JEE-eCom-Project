@@ -18,7 +18,7 @@ import com.stlagora.model.entities.Product;
 public class Cart implements Serializable {
 
     /**
-	 * 
+	 * Cart Controller
 	 */
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(Cart.class.getName());
@@ -87,6 +87,9 @@ public class Cart implements Serializable {
 		this.numberArticle = numberArticle;
 	}
 	
+	/**
+	 * clean the cart
+	 */
 	public void clean(){
 		products.clear();
 		numberArticle = 0 ;

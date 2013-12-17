@@ -52,14 +52,13 @@ public class ProductController {
 	private UploadedFile image;
 	private List<Category> categories = new ArrayList<Category>();
 	private List<Product> products;
-	
 	private String productCategory ;
-	
-	//
 	private String name, description, images, plann;
 	private Category category;
 	private PRODUCT_STATUS status;
 	private Float price;
+	
+	// /!\ WARNING : here is the path of the directory were the files uploaded by the client (images & plans)  /!\
 	private static String FILER = "/home/stladmin/filer";
 
 	@EJB
@@ -75,7 +74,6 @@ public class ProductController {
 	
 	private void init()
 	{
-		log.debug("ici :)");
 		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 		if(id != null )
 		{
@@ -94,7 +92,6 @@ public class ProductController {
 	}
 	public String validateSellModif(String id){
 		SessionUser sessionUser = (SessionUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUser");
-		log.debug("ici :)");
 		//product = productDao.findById(Long.parseLong(id));
 		modif = false ; 
 		product.setName(name);
@@ -257,7 +254,6 @@ public class ProductController {
 			stream = new FileInputStream(f);
 	        file = new DefaultStreamedContent(stream, "image/png", f.getName());  
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}//((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream(FILER+"/private/"+productDownload.getPlan());  
 		return file;

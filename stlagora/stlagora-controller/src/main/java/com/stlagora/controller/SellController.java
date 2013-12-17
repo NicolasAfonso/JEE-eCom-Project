@@ -51,18 +51,19 @@ public class SellController implements Serializable {
 	private CategoryDao categoryDao ;
 
 	private List<Category> categories = new ArrayList<Category>();
-	
-	
+
+
 	private String name ;
 	private String description ;
 	private Float price;
 	private String productCategory ; 
 	private PRODUCT_STATUS productStatus;
-	
+
 	private Product productUpload;
 
+	// /!\ WARNING : here is the path of the directory were the files uploaded by the client (images & plans)  /!\
 	private static String FILER = "/home/stladmin/filer";
-	
+
 	public String validateSell(){
 		if(plan != null && image !=null) {    
 			log.debug(plan.getFileName());
@@ -77,18 +78,18 @@ public class SellController implements Serializable {
 				List<Product> listProduct = productDao.findBySeller(sessionUser.getUser());
 				if(listProduct.size()>=10)
 				{
-//					int inc = 0;
-//					for (Product p: listProduct) {
-//						if(!p.isDeleted())
-//						{
-//							inc ++;
-//						}
-//					}
-//					
-//					if(inc>=10)
-//					{
-						return "/sell/error_private?faces-redirect=true";
-//					}
+					//					int inc = 0;
+					//					for (Product p: listProduct) {
+					//						if(!p.isDeleted())
+					//						{
+					//							inc ++;
+					//						}
+					//					}
+					//					
+					//					if(inc>=10)
+					//					{
+					return "/sell/error_private?faces-redirect=true";
+					//					}
 				}
 			}
 			Category c = categoryDao.findByName(productCategory);
@@ -100,18 +101,18 @@ public class SellController implements Serializable {
 				log.error("Product Already Exist");
 			}
 			p = productDao.findByName(name);
-			   if(!new File(FILER+"/private/"+p.getId()+"/").exists())
-		        {
-		            // Cr�er le dossier avec tous ses parents
-		            new File(FILER+"/private/"+p.getId()+"/").mkdirs();
-		 
-		        }
-			   if(!new File(FILER+"/public/"+p.getId()+"/").exists())
-		        {
-		            // Cr�er le dossier avec tous ses parents
-		            new File(FILER+"/public/"+p.getId()+"/").mkdirs();
-		 
-		        }
+			if(!new File(FILER+"/private/"+p.getId()+"/").exists())
+			{
+				// Cr�er le dossier avec tous ses parents
+				new File(FILER+"/private/"+p.getId()+"/").mkdirs();
+
+			}
+			if(!new File(FILER+"/public/"+p.getId()+"/").exists())
+			{
+				// Cr�er le dossier avec tous ses parents
+				new File(FILER+"/public/"+p.getId()+"/").mkdirs();
+
+			}
 
 			try {
 				File fimage = new File(FILER+"/public/"+p.getId()+"/"+image.getFileName());
@@ -135,38 +136,38 @@ public class SellController implements Serializable {
 		}
 		return "/sell/validationUpload";
 	}
-	
-	
+
+
 	private void saveFile(InputStream inputStream, OutputStream out) throws IOException{
-            int read = 0;
-            byte[] bytes = new byte[1024];
-            while ((read = inputStream.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-            inputStream.close();
-            out.flush();
-            out.close();
+		int read = 0;
+		byte[] bytes = new byte[1024];
+		while ((read = inputStream.read(bytes)) != -1) {
+			out.write(bytes, 0, read);
+		}
+		inputStream.close();
+		out.flush();
+		out.close();
 
 	}
 
 	public PRODUCT_STATUS[] getAllProductStatus() {
 		return PRODUCT_STATUS.values();
 	}
-	
 
-	
+
+
 	public String goToSell(){
 		return "/sell/sell?faces-redirect=true";
 	}
-	
-	
+
+
 	/**
 	 * 
 	 * GETTER ET SETTER
 	 */
-	
-	
-	
+
+
+
 	/**
 	 * @return the categories
 	 */
@@ -182,7 +183,7 @@ public class SellController implements Serializable {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
-	
+
 	/**
 	 * @param productStatus the productStatus to set
 	 */
@@ -297,8 +298,8 @@ public class SellController implements Serializable {
 	public void setProductUpload(Product productUpload) {
 		this.productUpload = productUpload;
 	}
-	
-	
+
+
 
 
 

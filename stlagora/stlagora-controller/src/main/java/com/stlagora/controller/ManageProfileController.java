@@ -142,7 +142,7 @@ public class ManageProfileController implements Serializable {
 		}
 
 		userDao.update(u);
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Modification enregistrÃ©e","");  
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Modification enregistrée","");  
 		FacesContext.getCurrentInstance().addMessage(null, msg);  
 		return "/profile/accountModif";
 

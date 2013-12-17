@@ -28,7 +28,7 @@ public class CBValidator implements Validator{
 		Matcher matcherMastercard = patternMastercard.matcher(cbUser);
 		
 		Pattern patternAmerican = Pattern.compile(CB_PATTERN_AMERICAN);
-		Matcher matcherAmerican = patternMastercard.matcher(cbUser);
+		Matcher matcherAmerican = patternAmerican.matcher(cbUser);
 		
 		log.debug(cbUser);
 		if(!matcherVisa.matches() &&  !matcherMastercard.matches() && !matcherAmerican.matches()){

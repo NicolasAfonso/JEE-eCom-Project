@@ -46,10 +46,10 @@ public class HomeController implements Serializable {
 	 */
 	private static final long serialVersionUID = -7356175149995220589L;
 	private Logger log = Logger.getLogger(HomeController.class.getName());
-	
+
 	private String search;
 	private String category;
-	
+
 	@EJB
 	private UserDao userDao;
 	@EJB
@@ -58,84 +58,65 @@ public class HomeController implements Serializable {
 	private ProductDao productDao;
 	@EJB
 	private CategoryDao categoryDao;
-	
+
 	public HomeController(){
-		
+
 	}
-	
+
 	public String moveToHome() {
 		return "/home.xhtml?faces-redirect=true";
 	}
-	
+
 	public String moveToMyProfile()
 	{
 		return "/profile/accountParameters?faces-redirect=true";
 	}
-	
+
 	public String moveToHistSell() {
 		return "/profile/historySell.xhtml?faces-redirect=true";
 	}
-	
+
 	public String moveToHistPurchase() {
 		return "/profile/historyPurchase.xhtml?faces-redirect=true";
 	}
-	
+
 	public String moveToCart(){
 		return "/global/cart?faces-redirect=true";
 	}
-	
+
 	public String moveToSell(){
 		return "/profile/forSale?faces-redirect=true";
 	}
-	
-//	public String moveToSearch(){
-//		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash(); 
-//        flash.put("search", search); 
-//        flash.put("categorySearch", category);  
-//		return "/search/search?faces-redirect=true";
-//	}
-	
+
 	public String moveToSearch(){
 		return "/search/search?faces-redirect=true&categorySearch="+category+"&search="+search;
 	}
-	
-	
+
+
 	public String moveToSearchFromMenu(String category){
 		return "/search/search?categorySearch="+category+"&faces-redirect=true";
 	}
-	
+
 	public void initBDD(){
-//		UserDaoImpl userDao = new UserDaoImpl();
-//		
-//		CategoryDaoImpl categoryDao = new CategoryDaoImpl();
-//		ProductDaoImpl productDao = new ProductDaoImpl();	
-//		Create minimum User
+
+		//Create minimum User list in DB
 		userDao.create(new User("tutu",TITLE.Mr ,"tutu", "tutu", "tutu@tata.com","test", new Date(0),"00000000","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		userDao.create(new User("tata",TITLE.Mr ,"tata", "tata", "tata@tata.com","test", new Date(0), "11111111","","","",ACCOUNT_TYPE.PRIVATE, ROLE.MEMBER));
 		userDao.create(new User("toto",TITLE.Mr ,"toto", "toto", "toto@tata.com","test", new Date(0), "22222222","","","",ACCOUNT_TYPE.PRIVATE, ROLE.ADMIN));
 
-		//Create minimum 
-		categoryDao.create(new Category("Test","test-desc"));
+		//Create minimum Category in DB
 		categoryDao.create(new Category("Jouets", "Jouets desc"));
 		categoryDao.create(new Category("Gadgets", "Gadgets desc"));
 		categoryDao.create(new Category("Pieces de rechange", "Pièces de rechange desc"));
 		categoryDao.create(new Category("Art et Deco", "Art & Déco desc"));
 		categoryDao.create(new Category("Outils", "Outils desc"));
 		categoryDao.create(new Category("Objets du quotidien", "Objets du quotidien desc"));
-		
+
 		Category c = categoryDao.findByName("Jouets");
 		User u1 = userDao.findByEmail("tata@tata.com");
-//		User u2 = userDao.findByEmail("tutu@tata.com");
-
-//		Product p = productDao.findById(1);
-//		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
-//		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
-//		transactionDao.create(new Transaction(u1, u2, 2.f, new Date(System.currentTimeMillis()), p));
 		
-//		productDao.create(new Product("p1", "tato", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));  
-//		productDao.create(new Product("p2", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u1 ,new Date(0), new Date(0)));  
-//		productDao.create(new Product("p3", "toto", "toto", "toto", c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 2f, u2 ,new Date(0), new Date(0)));  
-productDao.create(new Product("Satria Neo 2000","Voiture miniature plus vraie que nature", "toto","toto",c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 1f, u1 ,new Date(0), new Date(0)));		
+		//Create minimum Product list in DB
+		productDao.create(new Product("Satria Neo 2000","Voiture miniature plus vraie que nature !", "toto","/home/stladmin/filer/private/1/satria.stl",c,TYPE_FICHIER.STL,PRODUCT_STATUS.AVAILABLE, 12.99f, u1 ,new Date(0), new Date(0)));		
 	}
 
 	/**
@@ -157,9 +138,8 @@ productDao.create(new Product("Satria Neo 2000","Voiture miniature plus vraie qu
 	}
 
 	public void setCategory(String category) {
-		log.info("CAT SET");
 		this.category = category;
 	}
-	
-	
+
+
 }

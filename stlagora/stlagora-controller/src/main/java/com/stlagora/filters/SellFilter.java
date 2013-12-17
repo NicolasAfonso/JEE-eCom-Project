@@ -27,8 +27,6 @@ public class SellFilter implements Filter {
 	ProductDao productDao;
 
 	public void destroy() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -73,8 +71,6 @@ public class SellFilter implements Filter {
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-
 	}
 
 }

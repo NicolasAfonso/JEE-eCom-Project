@@ -14,9 +14,7 @@ import org.apache.log4j.Logger;
 import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.ProductDao;
 import com.stlagora.model.dao.UserDao;
-import com.stlagora.model.dao.UserDaoImpl;
 import com.stlagora.model.entities.User;
-import com.stlagora.model.entities.enumerate.ACCOUNT_TYPE;
 import com.stlagora.model.entities.enumerate.ROLE;
 
 @ManagedBean(name = "loginController")

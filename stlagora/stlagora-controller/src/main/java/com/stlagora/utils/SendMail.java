@@ -45,10 +45,10 @@ public class SendMail {
 
 
 		try { 
-			
+
 			session.setDebug(true);
 			transport = session.getTransport("smtp"); 
-			transport.connect("stl-agora@outlook.com", "azerty123"); 
+			transport.connect("stl-agora@outlook.com", "azerty1234"); 
 
 			transport.sendMessage(message, new Address[] { new InternetAddress(destinataire), 
 

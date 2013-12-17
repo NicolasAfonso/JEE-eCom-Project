@@ -17,8 +17,6 @@ import org.apache.log4j.Logger;
 import com.stlagora.beans.Cart;
 import com.stlagora.beans.SessionUser;
 import com.stlagora.model.dao.TransactionDao;
-import com.stlagora.model.dao.TransactionDaoImpl;
-import com.stlagora.model.entities.Category;
 import com.stlagora.model.entities.Product;
 import com.stlagora.model.entities.Transaction;
 import com.stlagora.utils.SendMail;
@@ -38,6 +36,7 @@ public class PurchaseController implements Serializable {
 
 	@ManagedProperty("productList")
 	private List<Product> productList = new ArrayList<Product>();
+	//TODO: must be internationalized
 	private List<String> months = Arrays.asList("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 	private List<String> years = Arrays.asList("2013","2014","2015","2016","2017");
 	
