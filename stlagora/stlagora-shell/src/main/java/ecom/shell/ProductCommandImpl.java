@@ -56,7 +56,6 @@ public class ProductCommandImpl implements ShellCommand, EcomShellConstantes {
 				else if(context_language.equals("FR")) err.println(ERROR_UNKNOWN_OR_UNSUPPORTED_ARGS_FR);
 			}else if(format.equals("-add"))
 			{	ProductDaoImpl p = new ProductDaoImpl("STLAGORA_PU_SHELL");
-				System.out.println("Tutu");
 			}
 			else if(format.equals("-remove"))
 			{
@@ -80,22 +79,22 @@ public class ProductCommandImpl implements ShellCommand, EcomShellConstantes {
 					}
 				}
 			}else if(format.equals("-addRandom")){
-			
+
 				Scanner sc = new Scanner(System.in);
 				System.out.println("How many product do you want to be randomly inserted into your database ?");
 				int nbProduct = Integer.parseInt(sc.nextLine());
-				
+
 				DatabaseCreator dbcreator = new DatabaseCreator();
 				dbcreator.create(nbProduct);
 				dbcreator.FillDatabase();
-				
+
 			}
 			else
 			{
 				System.out.println("No product in database");
 			}
 		}
-		
+
 	}
 
 

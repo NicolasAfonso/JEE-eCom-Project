@@ -136,7 +136,7 @@ public class Shell implements Runnable, ShellConstantes {
         StringBuffer sb = new StringBuffer();
         sb.append("\n-------------------------------------------------");
         sb.append("\n| Generic Shell                                 |");
-        sb.append("\n| Author: D. Donsez, 11/2002                    |");
+        sb.append("\n| forked from a D. Donsez Work                  |");
         sb.append("\n-------------------------------------------------");
 
         return sb.toString();

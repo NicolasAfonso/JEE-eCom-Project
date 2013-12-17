@@ -68,23 +68,17 @@ public class DatabaseCreator {
 
 	public static String createRandomDate(){
 		GregorianCalendar gc = new GregorianCalendar();
-
 		int year = randBetween(1900, 2013);
-
 		gc.set(gc.YEAR, year);
-
 		int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
-
 		gc.set(gc.DAY_OF_YEAR, dayOfYear);
-
 		return gc.get(gc.DAY_OF_MONTH) + "/" + gc.get(gc.MONTH) + "/" + gc.get(gc.YEAR);
 	}
 
 
-	//public int randomInt
 
 	public void create(int nbEntries) {
-		// the first argument is the number of products we want to put in our database
+		// the argument is the number of products we want to put in our database
 		try {
 
 			long i = 0;
@@ -197,15 +191,6 @@ public class DatabaseCreator {
 
 			transformer.transform(source, result);
 
-			System.out.println("File saved!");
-
-
-
-			//	char test[] = ", ".toCharArray();
-			//System.out.println(Arrays.toString(test));
-			//String str = createRandomString(5);
-
-			//System.out.println(str);
 		}
 		catch (Exception e){
 		}
@@ -254,19 +239,14 @@ public class DatabaseCreator {
 					date = new Date(dateformatter.parse(element.getElementsByTagName("availabledate").item(0).getTextContent()).getTime());
 					currentProduct.setAvailableDate(date);
 				} catch (Exception e) {
-					//System.out.println(e);
 					System.out.println(e.getMessage());
 				}
 				
 				Category category = categoryDao.findByName(element.getElementsByTagName("category").item(0).getTextContent());
 				//category.(element.getElementsByTagName("category").item(0).getTextContent());
 				
-				
 				currentProduct.setCategory(category);
 				
-				
-				
-
 				currentProduct.setDescription(element.getElementsByTagName("description").item(0).getTextContent());
 
 				float mark = Float.parseFloat(element.getElementsByTagName("globalmark").item(0).getTextContent());
@@ -299,16 +279,9 @@ public class DatabaseCreator {
 
 				productList.add(currentProduct);
 			}
-
-			Product test = productList.get(0);
 		
-			
-			//Iterator<Product> iterator = productList.iterator();
 			ProductDaoImpl productDao = new ProductDaoImpl("STLAGORA_PU_SHELL");
-			//while (iterator.hasNext()){
 				for (Product product : productList) {
-					
-				
 
 				try {
 					productDao.createByEm(product);
